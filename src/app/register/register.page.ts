@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth'
-import { auth } from 'firebase/app'
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
 
-import { AngularFirestore } from '@angular/fire/firestore'
+import { AngularFirestore } from '@angular/fire/firestore';
 
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
