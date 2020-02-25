@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth'
-import { auth } from 'firebase/app';
+import { auth } from 'firebase/app'
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 
@@ -30,7 +30,7 @@ export class LoginPage implements OnInit {
 					username,
 					uid: res.user.uid
 				})
-				this.router.navigate(['/home'])
+				this.router.navigate(['/tabs'])
 			}
 		
 		} catch(err) {
