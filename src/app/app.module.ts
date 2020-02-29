@@ -8,9 +8,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+
 import firebaseConfig from './firebase'
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth'
+import {UserService} from './user.service';
 
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 @NgModule({
@@ -26,7 +28,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy,  }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy  },
+    UserService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Hotel Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+      <ion-item>
+          <ion-thumbnail slot="start">
+            <ion-img src="assets/img/cat_tube.png" width="38%" height="18%"></ion-img>
+          </ion-thumbnail>
+          <ion-label>
+            <h3>Cat Tube</h3>
+            <p>RM15</p>
+            <p>Tube Style Accomodation</p>
+          </ion-label>
+          <ion-button [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" (click)="hotelbooking()">Book</ion-button>
+        </ion-item>
+  </ion-card>
+
+  <ion-card>
+      <ion-item>
+          <ion-thumbnail slot="start">
+            <img src="assets/img/cat_villa.png" width="38%" height="18%">
+          </ion-thumbnail>
+          <ion-label>
+            <h3>Cat Villa</h3>
+            <p>RM25</p>
+            <p>Exclusive Style Accomodation</p>
+          </ion-label>
+          <ion-button [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" (click)="hotelbooking()">Book</ion-button>
+        </ion-item>
+  </ion-card>
+
+  <ion-card>
+      <ion-item>
+          <ion-thumbnail slot="start">
+            <img src="assets/img/cat_cage.png" width="38%" height="18%">
+          </ion-thumbnail>
+          <ion-label>
+            <h3>Cat Cage</h3>
+            <p>RM10</p>
+            <p>Cage Style Accomodation</p>
+          </ion-label>
+          <ion-button [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" (click)="hotelbooking()">Book</ion-button>
+        </ion-item>
+  </ion-card>
+  
+ <!--Other design
+ <ion-card>
+    <ion-card-header>
+        <img src="assets/img/cat_cage.png" width="20%" height="15%" position="centre">
+      <ion-card-title>Cat Tube</ion-card-title>
+      <ion-card-subtitle>RM10</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Keep close to Nature's heart... and break clear away, once in awhile,
+      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+    </ion-card-content>
+    <ion-button [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" (click)="hotelbooking()">Book</ion-button>
+  </ion-card>-->
+  
+ 
+</ion-content>

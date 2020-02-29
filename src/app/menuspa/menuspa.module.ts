@@ -1,26 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPage } from './login.page';
+import { MenuspaPageRoutingModule } from './menuspa-routing.module';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: LoginPage
-  }
-];
+import { MenuspaPage } from './menuspa.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    MenuspaPageRoutingModule
   ],
-  declarations: [LoginPage]
+  declarations: [MenuspaPage]
 })
-export class LoginPageModule {}
+export class MenuspaPageModule {}
