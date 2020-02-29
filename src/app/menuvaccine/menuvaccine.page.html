@@ -5,5 +5,45 @@
 </ion-header>
 
 <ion-content>
-
+    <ion-card>
+        <ion-item>
+            <ion-thumbnail slot="start">
+              <ion-img size="large" src="assets/img/cat.png"></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h3>Cat Vaccine</h3>
+              <p>RM50</p>
+            
+            </ion-label>
+            <ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" (click)="hotelbooking()">Book</ion-button>
+          </ion-item>
+    </ion-card>
+  
+    <ion-card>
+        <ion-item>
+            <ion-thumbnail slot="start">
+              <img src="assets/img/cat.png" width="38%" height="18%">
+            </ion-thumbnail>
+            <ion-label>
+              <h3>Cat Neuter</h3>
+              <p>RM150</p>
+              <p>Female Cat</p>
+            </ion-label>
+            <ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" (click)="hotelbooking()">Book</ion-button>
+          </ion-item>
+    </ion-card>
+  
+    <ion-card>
+        <ion-item>
+            <ion-thumbnail slot="start">
+              <img src="assets/img/cat.png" width="38%" height="18%">
+            </ion-thumbnail>
+            <ion-label>
+              <h3>Cat Neuter</h3>
+              <p>RM100</p>
+              <p>Male Cat</p>
+            </ion-label>
+            <ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" (click)="hotelbooking()">Book</ion-button>
+          </ion-item>
+    </ion-card>
 </ion-content>
