@@ -1,46 +1,53 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>menugrab</ion-title>
+    <ion-title>Cat Grab Menu</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="background">
   <ion-row size-lg="10" offset-md="3">
       <ion-col size-md="6" >
           <div>
+          
               <ion-card>
                   <ion-item>
-                      <ion-thumbnail slot="start">
-                        <ion-img size="large" src="assets/img/car 1.png"></ion-img>
-                      </ion-thumbnail>
-                      <ion-label>
-                        <h3>Skudai Area</h3>
-                        <p>RM5</p>
-                        <p>Delivery for cat aroud Skudai area.</p>
-                      </ion-label>
-                      <ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" (click)="hotelbooking()">Book</ion-button>
+                        <ion-col>
+                            <ion-img class="img" src="assets/img/car 1.png"></ion-img>
+                        </ion-col>
+              
+                    <ion-col>
+                        <ion-text>
+                            <h3>Skudai Area</h3>
+                            <h2>RM5</h2>
+                          <p>Delivery for cat aroud Skudai area.</p>
+                          </ion-text>
+                    </ion-col>  
+                   
+                      <ion-button class="button" size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" >Book</ion-button>
                     </ion-item>
               </ion-card>
           </div>
-      
-        </ion-col>
+      </ion-col>
 
-      
-            <ion-col>
+            <ion-col  size-md="6" >
               <div>
                   <ion-card>
                       <ion-item>
-                          <ion-thumbnail slot="start">
-                            <ion-img size="large" src="assets/img/car.png"></ion-img>
-                          </ion-thumbnail>
-                          <ion-label>
-                            <h3>Outside Skudai</h3>
-                            <p>RM10</p>
-                            <p>Delivery for cat other than Skudai area.</p>
-                          </ion-label>
-                          <ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" (click)="hotelbooking()">Book</ion-button>
+                            <ion-col>
+                                <ion-img class="img" src="assets/img/car.png"></ion-img>
+                            </ion-col>
+                  
+                        <ion-col>
+                            <ion-text>
+                                <h3>Outside Skudai</h3>
+                                <h2>RM10</h2>
+                              <p>Delivery for cat other than Skudai area.</p>
+                              </ion-text>
+                        </ion-col>  
+                        <ion-col size-sm="3"><ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" >Book</ion-button></ion-col> 
                         </ion-item>
                   </ion-card>
+              
               </div>
                
             </ion-col>

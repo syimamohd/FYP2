@@ -4,50 +4,60 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="background">
   <ion-card>
       <ion-item>
-          <ion-thumbnail slot="start">
-            <ion-img size="large" src="assets/img/cat_tube.png"></ion-img>
-          </ion-thumbnail>
-          <ion-label>
-            <h3>Cat Tube</h3>
-            <p>RM15</p>
-            <p>Tube Style Accomodation</p>
-          </ion-label>
-          <ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" (click)="hotelbooking()">Book</ion-button>
-        </ion-item>
-  </ion-card>
-
-  <ion-card>
-      <ion-item>
-          <ion-thumbnail slot="start">
-            <img src="assets/img/cat_villa.png" width="38%" height="18%">
-          </ion-thumbnail>
-          <ion-label>
-            <h3>Cat Villa</h3>
-            <p>RM25</p>
-            <p>Exclusive Style Accomodation</p>
-          </ion-label>
-          <ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" (click)="hotelbooking()">Book</ion-button>
-        </ion-item>
-  </ion-card>
-
-  <ion-card>
-      <ion-item>
-          <ion-thumbnail slot="start">
-            <img src="assets/img/cat_cage.png" width="38%" height="18%">
-          </ion-thumbnail>
-          <ion-label>
-            <h3>Cat Cage</h3>
-            <p>RM10</p>
-            <p>Cage Style Accomodation</p>
-          </ion-label>
-          <ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" (click)="hotelbooking()">Book</ion-button>
-        </ion-item>
-  </ion-card>
+            <ion-col>
+                <ion-img class="img" src="assets/img/cat_tube.png"></ion-img>
+            </ion-col>
   
- <!--Other design
+        <ion-col>
+            <ion-text>
+                <h3>Cat Tube</h3>
+                <h2>RM15</h2>
+              <p>Tube Style Accomodation</p>
+              </ion-text>
+        </ion-col>  
+        <ion-col size-sm="3"><ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" >Book</ion-button></ion-col> 
+        </ion-item>
+  </ion-card>
+
+  <ion-card>
+      <ion-item>
+            <ion-col>
+                <ion-img class="img" src="assets/img/cat_villa.png"></ion-img>
+            </ion-col>
+
+        <ion-col>
+            <ion-text>
+                <h3>Cat Villa</h3>
+                <h2>RM25</h2>
+              <p>Exclusive Style Accomodation</p>
+              </ion-text>
+        </ion-col>  
+        <ion-col size-sm="3"><ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" >Book</ion-button></ion-col> 
+        </ion-item>
+  </ion-card>
+
+  <ion-card>
+      <ion-item>
+            <ion-col>
+                <ion-img class="img" src="assets/img/cat_cage.png"></ion-img>
+            </ion-col>
+
+        <ion-col>
+            <ion-text>
+                <h3>Cat Cage</h3>
+                <h2>RM10</h2>
+              <p>Cage Style Accomodation</p>
+              </ion-text>
+        </ion-col>  
+        <ion-col size-sm="3"><ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" >Book</ion-button></ion-col> 
+        </ion-item>
+  </ion-card>
+</ion-content>
+
+<!--Other design
  <ion-card>
     <ion-card-header>
         <img src="assets/img/cat_cage.png" width="20%" height="15%" position="centre">
@@ -61,6 +71,3 @@
     </ion-card-content>
     <ion-button [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" (click)="hotelbooking()">Book</ion-button>
   </ion-card>-->
-  
- 
-</ion-content>

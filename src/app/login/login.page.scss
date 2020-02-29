@@ -1,0 +1,29 @@
+#container 
+{
+    align-items: center;
+}
+
+#imglogin
+{
+    height: 15%;
+    width: 15%;
+    align-items: center;
+}
+
+#card
+{
+    height: 50%;
+    width: 80%;
+    align-items: center;
+    justify-content: center
+}
+
+#button
+{
+    align-items: center;
+    size: medium;
+}
+
+ion-content.background{
+    --background: url(../../assets/img/background.jpg) 0 0/100% 100% no-repeat;
+}

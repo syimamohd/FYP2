@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>menuvaccine</ion-title>
+    <ion-title>Cat Vaccine Menu</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding class="background">
     <ion-card>
         <ion-item>
             <ion-thumbnail slot="start">
@@ -15,8 +15,9 @@
               <p>RM50</p>
             
             </ion-label>
-            <ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" (click)="hotelbooking()">Book</ion-button>
+            
           </ion-item>
+          <ion-button class="button" size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark">Book</ion-button>
     </ion-card>
   
     <ion-card>
@@ -29,7 +30,7 @@
               <p>RM150</p>
               <p>Female Cat</p>
             </ion-label>
-            <ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" (click)="hotelbooking()">Book</ion-button>
+            <ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark">Book</ion-button>
           </ion-item>
     </ion-card>
   
@@ -43,7 +44,7 @@
               <p>RM100</p>
               <p>Male Cat</p>
             </ion-label>
-            <ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" (click)="hotelbooking()">Book</ion-button>
+            <ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark">Book</ion-button>
           </ion-item>
     </ion-card>
 </ion-content>
