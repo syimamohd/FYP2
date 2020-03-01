@@ -55,6 +55,14 @@ const routes: Routes = [
   {
     path: 'menuvaccine-admin',
     loadChildren: () => import('./menuvaccine-admin/menuvaccine-admin.module').then( m => m.MenuvaccineAdminPageModule)
+  },
+  {
+    path: 'receipthotel',
+    loadChildren: () => import('./receipthotel/receipthotel.module').then( m => m.ReceipthotelPageModule)
+  },
+  {
+    path: 'receiptservice',
+    loadChildren: () => import('./receiptservice/receiptservice.module').then( m => m.ReceiptservicePageModule)
   }
 ];
 

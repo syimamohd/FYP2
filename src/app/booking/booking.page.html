@@ -1,25 +1,34 @@
 <ion-header>
   <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="arrow-back-outline"></ion-back-button>
+        </ion-buttons>
     <ion-title>Cat Services</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-<ion-row>
-  <ion-col size-md="6">
-    <ion-button [routerLink]="['/menuhotel']" fill="solid" expand="block" color="dark" >Cat Boarding</ion-button>
-  </ion-col>
-  <ion-col>
-    <ion-button [routerLink]="['/menuspa']" fill="solid" expand="block" color="dark" >Cat Spa & Grooming</ion-button>
-  </ion-col>
-</ion-row>
 
-<ion-row>
-  <ion-col size-md="6">
-    <ion-button [routerLink]="['/menugrab']" fill="solid" expand="block" color="dark" >Cat Grab</ion-button>
-  </ion-col>
-  <ion-col>
-    <ion-button [routerLink]="['/menuvaccine']" fill="solid" expand="block" color="dark">Cat Vaccine & Neuter</ion-button>
-  </ion-col>
-</ion-row>
-</ion-content>
+    <ion-content padding >
+      <div id="container">
+          <ion-row>
+              <ion-col size-md="6">
+                <ion-button [routerLink]="['/menuhotel']" fill="solid" size="med" expand="block" color="dark" >Cat Boarding</ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button [routerLink]="['/menuspa']" fill="solid" size="med"  expand="block" color="dark" >Cat Spa & Grooming</ion-button>
+              </ion-col>
+            </ion-row>
+            
+            <ion-row>
+              <ion-col size-md="6">
+                <ion-button [routerLink]="['/menugrab']" fill="solid" size="med"  expand="block" color="dark" >Cat Grab</ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button [routerLink]="['/menuvaccine']" fill="solid" size="med"  expand="block" color="dark">Cat Vaccine & Neuter</ion-button>
+              </ion-col>
+            </ion-row>
+      </div>
+       
+        </ion-content>
+
+

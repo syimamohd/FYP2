@@ -1,9 +1,76 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>menuhotel_admin</ion-title>
+      <ion-buttons slot="start">
+          <ion-back-button icon="arrow-back-outline"></ion-back-button>
+        </ion-buttons>
+    <ion-title>Cat Hotel Menu (Admin)</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="background">
+  <ion-card>
+      <ion-item>
+            <ion-col>
+                <ion-img class="img" src="assets/img/cat_tube.png"></ion-img>
+            </ion-col>
+  
+        <ion-col>
+            <ion-text>
+                <h3>Cat Tube</h3>
+                <h2>RM15</h2>
+              <p>Tube Style Accomodation</p>
+              </ion-text>
+        </ion-col>  
+        <ion-col size-sm="3"><ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" >Book</ion-button></ion-col> 
+        </ion-item>
+  </ion-card>
 
+  <ion-card>
+      <ion-item>
+            <ion-col>
+                <ion-img class="img" src="assets/img/cat_villa.png"></ion-img>
+            </ion-col>
+
+        <ion-col>
+            <ion-text>
+                <h3>Cat Villa</h3>
+                <h2>RM25</h2>
+              <p>Exclusive Style Accomodation</p>
+              </ion-text>
+        </ion-col>  
+        <ion-col size-sm="3"><ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" >Book</ion-button></ion-col> 
+        </ion-item>
+  </ion-card>
+
+  <ion-card>
+      <ion-item>
+            <ion-col>
+                <ion-img class="img" src="assets/img/cat_cage.png"></ion-img>
+            </ion-col>
+
+        <ion-col>
+            <ion-text>
+                <h3>Cat Cage</h3>
+                <h2>RM10</h2>
+              <p>Cage Style Accomodation</p>
+              </ion-text>
+        </ion-col>  
+        <ion-col size-sm="3"><ion-button size="med" [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" >Book</ion-button></ion-col> 
+        </ion-item>
+  </ion-card>
 </ion-content>
+
+<!--Other design
+ <ion-card>
+    <ion-card-header>
+        <img src="assets/img/cat_cage.png" width="20%" height="15%" position="centre">
+      <ion-card-title>Cat Tube</ion-card-title>
+      <ion-card-subtitle>RM10</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Keep close to Nature's heart... and break clear away, once in awhile,
+      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+    </ion-card-content>
+    <ion-button [routerLink]="['/bookinghotel']" fill="solid" expand="block" color="dark" (click)="hotelbooking()">Book</ion-button>
+  </ion-card>-->
