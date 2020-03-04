@@ -14,7 +14,12 @@ export class LoginPage implements OnInit {
 	username: string = ""
 	password: string = ""
 
-	constructor(public afAuth: AngularFireAuth, public user: UserService, public router: Router) { }
+	constructor
+	(
+		public afAuth: AngularFireAuth, 
+		public user: UserService, 
+		public router: Router
+	) { }
 
 	ngOnInit() {
 	}
