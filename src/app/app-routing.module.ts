@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'menuvaccine-admin', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home',
    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
@@ -71,32 +71,32 @@ const routes: Routes = [
     loadChildren: () => import('./services/firebase.service')
   },
   {
-    path: 'modal',
-    loadChildren: () => import('./modal/Note')
+    path: 'model',
+    loadChildren: () => import('./model/Note')
   },
   {
-    path: 'modal',
-    loadChildren: () => import('./modal/CatHotel')
+    path: 'model',
+    loadChildren: () => import('./model/CatHotel')
   },
   {
-    path: 'modal',
-    loadChildren: () => import('./modal/CatSpa')
+    path: 'model',
+    loadChildren: () => import('./model/CatSpa')
   },
   {
-    path: 'modal',
-    loadChildren: () => import('./modal/CatVaccine')
+    path: 'model',
+    loadChildren: () => import('./model/CatVaccine')
   },
   {
-    path: 'modal',
-    loadChildren: () => import('./modal/CatGrab')
+    path: 'model',
+    loadChildren: () => import('./model/CatGrab')
   },
   {
-    path: 'modal',
-    loadChildren: () => import('./modal/CatProduct')
+    path: 'model',
+    loadChildren: () => import('./model/CatProduct')
   },
   {
-    path: 'modal',
-    loadChildren: () => import('./modal/CatVaccine')
+    path: 'model',
+    loadChildren: () => import('./model/CatVaccine')
   },
   {
     path: 'add-note',
@@ -169,6 +169,10 @@ const routes: Routes = [
   {
     path: 'update-product/:id',
     loadChildren: () => import('./update-product/update-product.module').then( m => m.UpdateProductPageModule)
+  },
+  {
+    path: 'menuproduct-admin',
+    loadChildren: () => import('./menuproduct-admin/menuproduct-admin.module').then( m => m.MenuproductAdminPageModule)
   }
 ];
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FirebaseService} from '../services/firebase.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastController} from '@ionic/angular';
-import {CatHotel} from '../modal/CatHotel';
+import {CatHotel} from '../model/CatHotel';
 
 @Component({
   selector: 'app-add-hotel',

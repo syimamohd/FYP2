@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
-import {CatHotel} from '../modal/CatHotel';
+import {CatHotel} from '../model/CatHotel';
 //call the page that has crud operaions in firebase.service
 import {FirebaseService} from '../services/firebase.service';
 

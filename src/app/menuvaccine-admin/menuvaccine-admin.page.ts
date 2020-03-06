@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 //call the page that has crud operaions in firebase.service
 import {FirebaseService} from '../services/firebase.service';
-import { CatVaccine } from '../modal/CatVaccine';
+import { CatVaccine } from '../model/CatVaccine';
 
 
 @Component({

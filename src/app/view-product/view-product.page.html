@@ -1,9 +1,23 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>view-product</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>{{product.productName}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card color="secondary">
+    <ion-card-header>
+      <ion-card-subtitle>{{product.createdAt | date: 'short'}}</ion-card-subtitle>
+      <ion-card-title>{{product.productName}}</ion-card-title>
+    </ion-card-header>
 
+    <ion-card-content>
+      <p align="justify">{{product.productDetails}}</p>
+      <br>
+      <p align="justify">{{product.productPrice}}</p>
+      <ion-button slot="start" color="warning" [routerLink]="'/update-product/' + product.id">Edit</ion-button>
+      <ion-button slot="end" color="danger" (click)="deleteProduct()">Delete</ion-button>
+    </ion-card-content>
+
+  </ion-card>
 </ion-content>

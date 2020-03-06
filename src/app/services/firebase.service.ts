@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
-import {Note} from '../modal/Note';
-import {CatHotel} from '../modal/CatHotel';
-import {CatSpa} from '../modal/CatSpa';
-import {CatVaccine} from '../modal/CatVaccine';
-import {CatGrab} from '../modal/CatGrab';
-import {CatProduct} from '../modal/CatProduct';
+import {Note} from '../model/Note';
+import {CatHotel} from '../model/CatHotel';
+import {CatSpa} from '../model/CatSpa';
+import {CatVaccine} from '../model/CatVaccine';
+import {CatGrab} from '../model/CatGrab';
+import {CatProduct} from '../model/CatProduct';
 
 import {AngularFirestore, AngularFirestoreCollection, DocumentReference} from '@angular/fire/firestore';
 import {map, take} from 'rxjs/operators';
@@ -267,4 +267,77 @@ export class FirebaseService
     return this.catVaccineCollection.doc(id).delete();
   }
 
+  //-----------------------------------------CAT GRAB-----------------------------------------------
+  //getting all catGrab
+  getGrabs(): Observable<CatGrab[]> 
+  {
+    return this.catGrab;
+  }
+
+  //getting single cat grab
+  getGrab(id: string): Observable<CatGrab> 
+  {
+    return this.catGrabCollection.doc<CatGrab>(id).valueChanges().pipe(
+        take(1),
+        map(grab => {
+         grab.id = id;
+          return grab;
+        })
+    );
+  }
+  
+  //create new grab
+  addGrab(grab: CatGrab): Promise<DocumentReference> 
+  {
+    return this.catGrabCollection.add(grab);
+  }
+
+  //update grab details
+  updateGrab(grab: CatGrab): Promise<void> 
+  {
+    return this.catGrabCollection.doc(grab.id).update({ grabName: grab.grabName, grabDetails: grab.grabDetails, grabPrice: grab.grabPrice });
+  }
+
+  //delete grab
+  deleteGrab(id: string): Promise<void> 
+  {
+    return this.catGrabCollection.doc(id).delete();
+  }
+
+  //-----------------------------------------CAT PRODUCT-----------------------------------------------
+  //getting all cat product
+  getProducts(): Observable<CatProduct[]> 
+  {
+    return this.catProduct;
+  }
+
+  //getting single cat product
+  getProduct(id: string): Observable<CatProduct> 
+  {
+    return this.catProductCollection.doc<CatProduct>(id).valueChanges().pipe(
+        take(1),
+        map(product => {
+          product.id = id;
+          return product;
+        })
+    );
+  }
+  
+  //create new product
+  addProduct(product: CatProduct): Promise<DocumentReference> 
+  {
+    return this.catProductCollection.add(product);
+  }
+
+  //update product details
+  updateProduct(product: CatProduct): Promise<void> 
+  {
+    return this.catProductCollection.doc(product.id).update({ productName: product.productName, productDetails: product.productDetails, productPrice: product.productPrice });
+  }
+
+  //delete product
+  deleteProduct(id: string): Promise<void> 
+  {
+    return this.catProductCollection.doc(id).delete();
+  }
 }

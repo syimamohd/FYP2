@@ -1,9 +1,20 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>update-grab</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Update Grab</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+      <ion-item>
+          <ion-input placeholder="Enter Grab Name" [(ngModel)]="grab.grabName"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-textarea rows="6" [(ngModel)]="grab.grabDetails" placeholder="Enter grab details here..."></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-input placeholder="Enter Grab Price" [(ngModel)]="grab.grabPrice"></ion-input>
+        </ion-item>
+  </ion-list>
+  <ion-button color="primary" expand="full" (click)="updateGrab()">Update</ion-button>
 </ion-content>

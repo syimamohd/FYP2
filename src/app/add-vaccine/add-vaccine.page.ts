@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FirebaseService} from '../services/firebase.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastController} from '@ionic/angular';
-import {CatVaccine} from '../modal/CatVaccine';
+import {CatVaccine} from '../model/CatVaccine';
 
 @Component({
   selector: 'app-add-vaccine',

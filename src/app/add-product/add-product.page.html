@@ -1,9 +1,20 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>add-product</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>New Product</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+<ion-list>
+  <ion-item>
+    <ion-input placeholder="Enter Product Name" [(ngModel)]="product.productName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-textarea rows="6" [(ngModel)]="product.productDetails" placeholder="Enter product details here..."></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Enter Product Price" [(ngModel)]="product.productPrice"></ion-input>
+  </ion-item>
+</ion-list>
+  <ion-button color="primary" expand="full" (click)="addProduct()">Create</ion-button>
 </ion-content>

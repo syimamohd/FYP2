@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FirebaseService} from '../services/firebase.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastController} from '@ionic/angular';
-import {CatSpa} from '../modal/CatSpa';
+import {CatSpa} from '../model/CatSpa';
 
 @Component({
   selector: 'app-add-spa',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FirebaseService} from '../services/firebase.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastController} from '@ionic/angular';
-import {Note} from '../modal/Note';
+import {Note} from '../model/Note';
 
 @Component({
   selector: 'app-add-note',

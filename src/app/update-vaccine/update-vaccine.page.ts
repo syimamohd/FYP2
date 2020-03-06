@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {CatVaccine} from '../modal/CatVaccine';
+import {CatVaccine} from '../model/CatVaccine';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FirebaseService} from '../services/firebase.service';
 

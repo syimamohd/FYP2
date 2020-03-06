@@ -1,9 +1,23 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>view-grab</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>{{grab.grabName}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card color="secondary">
+    <ion-card-header>
+      <ion-card-subtitle>{{grab.createdAt | date: 'short'}}</ion-card-subtitle>
+      <ion-card-title>{{grab.grabName}}</ion-card-title>
+    </ion-card-header>
 
+    <ion-card-content>
+      <p align="justify">{{grab.grabDetails}}</p>
+      <br>
+      <p align="justify">{{grab.grabPrice}}</p>
+      <ion-button slot="start" color="warning" [routerLink]="'/update-grab/' + grab.id">Edit</ion-button>
+      <ion-button slot="end" color="danger" (click)="deleteGrab()">Delete</ion-button>
+    </ion-card-content>
+
+  </ion-card>
 </ion-content>
