@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Update Spa</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+        <ion-item>
+            <ion-input placeholder="Enter Spa Name" [(ngModel)]="spa.spaName"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-textarea rows="6" [(ngModel)]="spa.spaDetails" placeholder="Enter spa details here..."></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-input placeholder="Enter Spa Price" [(ngModel)]="spa.spaPrice"></ion-input>
+          </ion-item>
+    </ion-list>
+    <ion-button color="primary" expand="full" (click)="updateSpa()">Update</ion-button>
+  </ion-content>

@@ -1,23 +1,22 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {Note} from '../modal/Note';
+import {CatVaccine} from '../modal/CatVaccine';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FirebaseService} from '../services/firebase.service';
 
 @Component
 ({
-  selector: 'app-update-note',
-  templateUrl: './update-note.page.html',
-  styleUrls: ['./update-note.page.scss'],
+  selector: 'app-update-vaccine',
+  templateUrl: './update-vaccine.page.html',
+  styleUrls: ['./update-vaccine.page.scss'],
 })
 
-export class UpdateNotePage implements OnInit, AfterViewInit 
+export class UpdateVaccinePage implements OnInit, AfterViewInit 
 {
-  note: Note = 
-  {
-    id: '',
-    title: '',
-    content: '',
-    createdAt: ''
+  vaccine: CatVaccine = {
+    vaccineName: '',
+    vaccineDetails: '',
+    vaccinePrice:''
+    // createdAt: new Date().getTime()
   };
 
   constructor(private activatedRoute: ActivatedRoute, private fbService: FirebaseService, private router: Router) 
@@ -30,15 +29,15 @@ export class UpdateNotePage implements OnInit, AfterViewInit
   {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id) {
-      this.fbService.getNote(id).subscribe(noteData => {
-        this.note = noteData;
+      this.fbService.getVaccine(id).subscribe(vaccineData => {
+        this.vaccine = vaccineData;
       });
     }
   }
 
-  updateNote() 
+  updateVaccine() 
   {
-    this.fbService.updateNote(this.note).then(() => {
+    this.fbService.updateVaccine(this.vaccine).then(() => {
      this.router.navigate(['/']);
     }, err => {
     });

@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  { path: '', redirectTo: 'menuvaccine-admin', pathMatch: 'full' },
+  { path: 'home',
+   loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
@@ -73,6 +75,30 @@ const routes: Routes = [
     loadChildren: () => import('./modal/Note')
   },
   {
+    path: 'modal',
+    loadChildren: () => import('./modal/CatHotel')
+  },
+  {
+    path: 'modal',
+    loadChildren: () => import('./modal/CatSpa')
+  },
+  {
+    path: 'modal',
+    loadChildren: () => import('./modal/CatVaccine')
+  },
+  {
+    path: 'modal',
+    loadChildren: () => import('./modal/CatGrab')
+  },
+  {
+    path: 'modal',
+    loadChildren: () => import('./modal/CatProduct')
+  },
+  {
+    path: 'modal',
+    loadChildren: () => import('./modal/CatVaccine')
+  },
+  {
     path: 'add-note',
     loadChildren: () => import('./add-note/add-note.module').then( m => m.AddNotePageModule)
   },
@@ -83,6 +109,66 @@ const routes: Routes = [
   {
     path: 'update-note/:id',
     loadChildren: () => import('./update-note/update-note.module').then( m => m.UpdateNotePageModule)
+  },
+  {
+    path: 'add-hotel',
+    loadChildren: () => import('./add-hotel/add-hotel.module').then( m => m.AddHotelPageModule)
+  },
+  {
+    path: 'view-hotel/:id',
+    loadChildren: () => import('./view-hotel/view-hotel.module').then( m => m.ViewHotelPageModule)
+  },
+  {
+    path: 'update-hotel/:id',
+    loadChildren: () => import('./update-hotel/update-hotel.module').then( m => m.UpdateHotelPageModule)
+  },
+  {
+    path: 'add-spa',
+    loadChildren: () => import('./add-spa/add-spa.module').then( m => m.AddSpaPageModule)
+  },
+  {
+    path: 'view-spa/:id',
+    loadChildren: () => import('./view-spa/view-spa.module').then( m => m.ViewSpaPageModule)
+  },
+  {
+    path: 'update-spa/:id',
+    loadChildren: () => import('./update-spa/update-spa.module').then( m => m.UpdateSpaPageModule)
+  },
+  {
+    path: 'add-vaccine',
+    loadChildren: () => import('./add-vaccine/add-vaccine.module').then( m => m.AddVaccinePageModule)
+  },
+  {
+    path: 'view-vaccine/:id',
+    loadChildren: () => import('./view-vaccine/view-vaccine.module').then( m => m.ViewVaccinePageModule)
+  },
+  {
+    path: 'update-vaccine/:id',
+    loadChildren: () => import('./update-vaccine/update-vaccine.module').then( m => m.UpdateVaccinePageModule)
+  },
+  {
+    path: 'add-grab',
+    loadChildren: () => import('./add-grab/add-grab.module').then( m => m.AddGrabPageModule)
+  },
+  {
+    path: 'view-grab/:id',
+    loadChildren: () => import('./view-grab/view-grab.module').then( m => m.ViewGrabPageModule)
+  },
+  {
+    path: 'update-grab/:id',
+    loadChildren: () => import('./update-grab/update-grab.module').then( m => m.UpdateGrabPageModule)
+  },
+  {
+    path: 'add-product',
+    loadChildren: () => import('./add-product/add-product.module').then( m => m.AddProductPageModule)
+  },
+  {
+    path: 'view-product/:id',
+    loadChildren: () => import('./view-product/view-product.module').then( m => m.ViewProductPageModule)
+  },
+  {
+    path: 'update-product/:id',
+    loadChildren: () => import('./update-product/update-product.module').then( m => m.UpdateProductPageModule)
   }
 ];
 

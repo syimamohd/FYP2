@@ -1,23 +1,22 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {Note} from '../modal/Note';
+import {CatSpa} from '../modal/CatSpa';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FirebaseService} from '../services/firebase.service';
 
 @Component
 ({
-  selector: 'app-update-note',
-  templateUrl: './update-note.page.html',
-  styleUrls: ['./update-note.page.scss'],
+  selector: 'app-update-spa',
+  templateUrl: './update-spa.page.html',
+  styleUrls: ['./update-spa.page.scss'],
 })
 
-export class UpdateNotePage implements OnInit, AfterViewInit 
+export class UpdateSpaPage implements OnInit, AfterViewInit 
 {
-  note: Note = 
-  {
-    id: '',
-    title: '',
-    content: '',
-    createdAt: ''
+  spa: CatSpa = {
+    spaName: '',
+    spaDetails: '',
+    spaPrice:''
+    // createdAt: new Date().getTime()
   };
 
   constructor(private activatedRoute: ActivatedRoute, private fbService: FirebaseService, private router: Router) 
@@ -30,15 +29,15 @@ export class UpdateNotePage implements OnInit, AfterViewInit
   {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id) {
-      this.fbService.getNote(id).subscribe(noteData => {
-        this.note = noteData;
+      this.fbService.getSpa(id).subscribe(spaData => {
+        this.spa = spaData;
       });
     }
   }
 
-  updateNote() 
+  updateSpa() 
   {
-    this.fbService.updateNote(this.note).then(() => {
+    this.fbService.updateSpa(this.spa).then(() => {
      this.router.navigate(['/']);
     }, err => {
     });

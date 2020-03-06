@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>{{vaccine.vaccineName}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-card color="secondary">
+      <ion-card-header>
+        <ion-card-subtitle>{{vaccine.createdAt | date: 'short'}}</ion-card-subtitle>
+        <ion-card-title>{{vaccine.vaccineName}}</ion-card-title>
+      </ion-card-header>
+  
+      <ion-card-content>
+        <p align="justify">{{vaccine.vaccineDetails}}</p>
+        <br>
+        <p align="justify">{{vaccine.vaccinePrice}}</p>
+        <ion-button slot="start" color="warning" [routerLink]="'/update-vaccine/' + vaccine.id">Edit</ion-button>
+        <ion-button slot="end" color="danger" (click)="deleteVaccine()">Delete</ion-button>
+      </ion-card-content>
+  
+    </ion-card>
+  </ion-content>

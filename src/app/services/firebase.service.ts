@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {Note} from '../modal/Note';
+import {CatHotel} from '../modal/CatHotel';
+import {CatSpa} from '../modal/CatSpa';
+import {CatVaccine} from '../modal/CatVaccine';
+import {CatGrab} from '../modal/CatGrab';
+import {CatProduct} from '../modal/CatProduct';
+
 import {AngularFirestore, AngularFirestoreCollection, DocumentReference} from '@angular/fire/firestore';
 import {map, take} from 'rxjs/operators';
 
@@ -11,12 +17,29 @@ import {map, take} from 'rxjs/operators';
 export class FirebaseService 
 {
   private notes: Observable<Note[]>;
+  private catHotel: Observable<CatHotel[]>;
+  private catSpa: Observable<CatSpa[]>;
+  private catVaccine: Observable<CatVaccine[]>;
+  private catGrab: Observable<CatGrab[]>;
+  private catProduct: Observable<CatProduct[]>;
+
   private noteCollection: AngularFirestoreCollection<Note>;
+  private catHotelCollection: AngularFirestoreCollection<CatHotel>;
+  private catSpaCollection: AngularFirestoreCollection<CatSpa>;
+  private catVaccineCollection: AngularFirestoreCollection<CatVaccine>;
+  private catGrabCollection: AngularFirestoreCollection<CatGrab>;
+  private catProductCollection: AngularFirestoreCollection<CatProduct>;
 
   constructor(private afs: AngularFirestore) 
   {
     //define collection
     this.noteCollection = this.afs.collection<Note>('notes');
+    this.catHotelCollection = this.afs.collection<CatHotel>('catHotel');
+    this.catSpaCollection = this.afs.collection<CatSpa>('catSpa');
+    this.catVaccineCollection = this.afs.collection<CatVaccine>('catVaccine');
+    this.catGrabCollection = this.afs.collection<CatGrab>('catGrab');
+    this.catProductCollection = this.afs.collection<CatProduct>('catProduct');
+
     //get collection data
     this.notes = this.noteCollection.snapshotChanges().pipe(
         map(actions => 
@@ -29,8 +52,74 @@ export class FirebaseService
             });
           })
     );
+
+    //get cat hotel collection data
+    this.catHotel = this.catHotelCollection.snapshotChanges().pipe(
+      map(actions => 
+        {
+        return actions.map(a => 
+          {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+          });
+        })
+    );
+
+    //get cat spa collection data
+    this.catSpa = this.catSpaCollection.snapshotChanges().pipe(
+      map(actions => 
+        {
+        return actions.map(a => 
+          {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+          });
+        })
+    );
+
+    //get cat vaccine collection data
+    this.catVaccine = this.catVaccineCollection.snapshotChanges().pipe(
+      map(actions => 
+        {
+        return actions.map(a => 
+          {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+          });
+        })
+    );
+
+    //get cat grab collection data
+    this.catGrab = this.catGrabCollection.snapshotChanges().pipe(
+      map(actions => 
+        {
+        return actions.map(a => 
+          {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+          });
+        })
+    );
+
+    //get cat product collection data
+    this.catProduct = this.catProductCollection.snapshotChanges().pipe(
+      map(actions => 
+        {
+        return actions.map(a => 
+          {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+          });
+        })
+    );
   }
 
+  //--------------------------------------NOTE TUTORIAL--------------------------------------------------
   //getting all notes
   getNotes(): Observable<Note[]> 
   {
@@ -66,4 +155,116 @@ export class FirebaseService
   {
     return this.noteCollection.doc(id).delete();
   }
+
+  //--------------------------------------CAT HOTEL--------------------------------------------------
+  //getting all catHotel
+  getHotels(): Observable<CatHotel[]> 
+  {
+    return this.catHotel;
+  }
+
+  //getting single cat hotel
+  getHotel(id: string): Observable<CatHotel> 
+  {
+    return this.catHotelCollection.doc<CatHotel>(id).valueChanges().pipe(
+        take(1),
+        map(hotel => {
+          hotel.id = id;
+          return hotel;
+        })
+    );
+  }
+
+  //create new hotel
+  addHotel(hotel: CatHotel): Promise<DocumentReference> 
+  {
+    return this.catHotelCollection.add(hotel);
+  }
+
+  //update hotel details
+  updateHotel(hotel: CatHotel): Promise<void> 
+  {
+    return this.catHotelCollection.doc(hotel.id).update({ hotelName: hotel.hotelName, hotelDetails: hotel.hotelDetails, hotelPrice: hotel.hotelPrice });
+  }
+
+  //delete hotel
+  deleteHotel(id: string): Promise<void> 
+  {
+    return this.catHotelCollection.doc(id).delete();
+  }
+
+  //--------------------------------------CAT SPA & GROOMING-----------------------------------------------
+  //getting all catSpa
+  getSpas(): Observable<CatSpa[]> 
+  {
+    return this.catSpa;
+  }
+
+  //getting single cat spa
+  getSpa(id: string): Observable<CatSpa> 
+  {
+    return this.catSpaCollection.doc<CatSpa>(id).valueChanges().pipe(
+        take(1),
+        map(spa => {
+         spa.id = id;
+          return spa;
+        })
+    );
+  }
+  
+  //create new spa
+  addSpa(spa: CatSpa): Promise<DocumentReference> 
+  {
+    return this.catSpaCollection.add(spa);
+  }
+
+  //update spa details
+  updateSpa(spa: CatSpa): Promise<void> 
+  {
+    return this.catSpaCollection.doc(spa.id).update({ spaName: spa.spaName, spaDetails: spa.spaDetails, spaPrice: spa.spaPrice });
+  }
+
+  //delete spa
+  deleteSpa(id: string): Promise<void> 
+  {
+    return this.catSpaCollection.doc(id).delete();
+  }
+
+  //--------------------------------------CAT VACCINE & NEUTER-----------------------------------------------
+  //getting all catVaccine
+  getVaccines(): Observable<CatVaccine[]> 
+  {
+    return this.catVaccine;
+  }
+
+  //getting single cat vaccine
+  getVaccine(id: string): Observable<CatVaccine> 
+  {
+    return this.catVaccineCollection.doc<CatVaccine>(id).valueChanges().pipe(
+        take(1),
+        map(vaccine => {
+         vaccine.id = id;
+          return vaccine;
+        })
+    );
+  }
+  
+  //create new vaccine
+  addVaccine(vaccine: CatVaccine): Promise<DocumentReference> 
+  {
+    return this.catVaccineCollection.add(vaccine);
+  }
+
+  //update vaccine details
+  updateVaccine(vaccine: CatVaccine): Promise<void> 
+  {
+    return this.catVaccineCollection.doc(vaccine.id).update({ vaccineName: vaccine.vaccineName, vaccineDetails: vaccine.vaccineDetails, vaccinePrice: vaccine.vaccinePrice });
+  }
+
+  //delete vaccine
+  deleteVaccine(id: string): Promise<void> 
+  {
+    return this.catVaccineCollection.doc(id).delete();
+  }
+
 }
