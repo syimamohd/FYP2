@@ -99,6 +99,18 @@ const routes: Routes = [
     loadChildren: () => import('./model/CatVaccine')
   },
   {
+    path: 'model',
+    loadChildren: () => import('./model/BookingHotel')
+  },
+  {
+    path: 'model',
+    loadChildren: () => import('./model/BookingSpa')
+  },
+  {
+    path: 'model',
+    loadChildren: () => import('./model/BookingVacc')
+  },
+  {
     path: 'add-note',
     loadChildren: () => import('./add-note/add-note.module').then( m => m.AddNotePageModule)
   },
@@ -173,6 +185,18 @@ const routes: Routes = [
   {
     path: 'menuproduct-admin',
     loadChildren: () => import('./menuproduct-admin/menuproduct-admin.module').then( m => m.MenuproductAdminPageModule)
+  },
+  {
+    path: 'bookingspa',
+    loadChildren: () => import('./bookingspa/bookingspa.module').then( m => m.BookingspaPageModule)
+  },
+  {
+    path: 'bookingvacc',
+    loadChildren: () => import('./bookingvacc/bookingvacc.module').then( m => m.BookingvaccPageModule)
+  },
+  {
+    path: 'bookinggrab',
+    loadChildren: () => import('./bookinggrab/bookinggrab.module').then( m => m.BookinggrabPageModule)
   }
 ];
 

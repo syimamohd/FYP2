@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {Observable} from 'rxjs';
-import {Note} from '../modal/Note';
+import {Note} from '../model/Note';
 //call the page that has crud operaions in firebase.service
 import {FirebaseService} from '../services/firebase.service';
 

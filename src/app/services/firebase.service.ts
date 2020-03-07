@@ -6,6 +6,7 @@ import {CatSpa} from '../model/CatSpa';
 import {CatVaccine} from '../model/CatVaccine';
 import {CatGrab} from '../model/CatGrab';
 import {CatProduct} from '../model/CatProduct';
+import {BookingHotel} from '../model/BookingHotel';
 
 import {AngularFirestore, AngularFirestoreCollection, DocumentReference} from '@angular/fire/firestore';
 import {map, take} from 'rxjs/operators';
@@ -16,6 +17,7 @@ import {map, take} from 'rxjs/operators';
 })
 export class FirebaseService 
 {
+  //hotel & services & product info in db
   private notes: Observable<Note[]>;
   private catHotel: Observable<CatHotel[]>;
   private catSpa: Observable<CatSpa[]>;
@@ -23,12 +25,17 @@ export class FirebaseService
   private catGrab: Observable<CatGrab[]>;
   private catProduct: Observable<CatProduct[]>;
 
+  //booking hotel & services table in db
+  private hotelBooking: Observable<BookingHotel[]>;
+
   private noteCollection: AngularFirestoreCollection<Note>;
   private catHotelCollection: AngularFirestoreCollection<CatHotel>;
   private catSpaCollection: AngularFirestoreCollection<CatSpa>;
   private catVaccineCollection: AngularFirestoreCollection<CatVaccine>;
   private catGrabCollection: AngularFirestoreCollection<CatGrab>;
   private catProductCollection: AngularFirestoreCollection<CatProduct>;
+
+  private catHotelBookingCollection: AngularFirestoreCollection<BookingHotel>;
 
   constructor(private afs: AngularFirestore) 
   {
@@ -39,6 +46,8 @@ export class FirebaseService
     this.catVaccineCollection = this.afs.collection<CatVaccine>('catVaccine');
     this.catGrabCollection = this.afs.collection<CatGrab>('catGrab');
     this.catProductCollection = this.afs.collection<CatProduct>('catProduct');
+
+    this.catHotelBookingCollection = this.afs.collection<BookingHotel>('hotelBooking');
 
     //get collection data
     this.notes = this.noteCollection.snapshotChanges().pipe(
@@ -107,6 +116,19 @@ export class FirebaseService
 
     //get cat product collection data
     this.catProduct = this.catProductCollection.snapshotChanges().pipe(
+      map(actions => 
+        {
+        return actions.map(a => 
+          {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+          });
+        })
+    );
+
+    //get cat hotel booking collection data
+    this.hotelBooking = this.catHotelBookingCollection.snapshotChanges().pipe(
       map(actions => 
         {
         return actions.map(a => 
@@ -340,4 +362,41 @@ export class FirebaseService
   {
     return this.catProductCollection.doc(id).delete();
   }
+
+  //--------------------------------------CAT HOTEL BOOKING------------------------------------------------
+  // //getting all catHotel
+  // getHotels(): Observable<CatHotel[]> 
+  // {
+  //   return this.catHotel;
+  // }
+
+  // //getting single cat hotel
+  // getHotel(id: string): Observable<CatHotel> 
+  // {
+  //   return this.catHotelCollection.doc<CatHotel>(id).valueChanges().pipe(
+  //       take(1),
+  //       map(hotel => {
+  //         hotel.id = id;
+  //         return hotel;
+  //       })
+  //   );
+  // }
+
+  //create new hotel
+  submitBookingHotel(bookinghotel: BookingHotel): Promise<DocumentReference> 
+  {
+    return this.catHotelBookingCollection.add(bookinghotel);
+  }
+
+  // //update hotel details
+  // updateHotel(hotel: CatHotel): Promise<void> 
+  // {
+  //   return this.catHotelCollection.doc(hotel.id).update({ hotelName: hotel.hotelName, hotelDetails: hotel.hotelDetails, hotelPrice: hotel.hotelPrice });
+  // }
+
+  // //delete hotel
+  // deleteHotel(id: string): Promise<void> 
+  // {
+  //   return this.catHotelCollection.doc(id).delete();
+  // }
 }
