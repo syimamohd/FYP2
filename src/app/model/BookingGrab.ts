@@ -1,6 +1,6 @@
 
 //create data field in database
-export interface BookingSpa 
+export interface BookingGrab 
 {
     id?: any;
     customerName: string;

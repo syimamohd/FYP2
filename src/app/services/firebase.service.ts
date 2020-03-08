@@ -7,6 +7,9 @@ import {CatVaccine} from '../model/CatVaccine';
 import {CatGrab} from '../model/CatGrab';
 import {CatProduct} from '../model/CatProduct';
 import {BookingHotel} from '../model/BookingHotel';
+import {BookingSpa} from '../model/BookingSpa';
+import {BookingVacc} from '../model/BookingVacc';
+import {BookingGrab} from '../model/BookingGrab';
 
 import {AngularFirestore, AngularFirestoreCollection, DocumentReference} from '@angular/fire/firestore';
 import {map, take} from 'rxjs/operators';
@@ -27,6 +30,9 @@ export class FirebaseService
 
   //booking hotel & services table in db
   private hotelBooking: Observable<BookingHotel[]>;
+  private spaBooking: Observable<BookingSpa[]>;
+  private vaccBooking: Observable<BookingVacc[]>;
+  private grabBooking: Observable<BookingGrab[]>;
 
   private noteCollection: AngularFirestoreCollection<Note>;
   private catHotelCollection: AngularFirestoreCollection<CatHotel>;
@@ -36,6 +42,9 @@ export class FirebaseService
   private catProductCollection: AngularFirestoreCollection<CatProduct>;
 
   private catHotelBookingCollection: AngularFirestoreCollection<BookingHotel>;
+  private catSpaBookingCollection: AngularFirestoreCollection<BookingSpa>;
+  private catVaccBookingCollection: AngularFirestoreCollection<BookingVacc>;
+  private catGrabBookingCollection: AngularFirestoreCollection<BookingGrab>;
 
   constructor(private afs: AngularFirestore) 
   {
@@ -48,6 +57,9 @@ export class FirebaseService
     this.catProductCollection = this.afs.collection<CatProduct>('catProduct');
 
     this.catHotelBookingCollection = this.afs.collection<BookingHotel>('hotelBooking');
+    this.catSpaBookingCollection = this.afs.collection<BookingSpa>('spaBooking');
+    this.catVaccBookingCollection = this.afs.collection<BookingVacc>('vaccBooking');
+    this.catGrabBookingCollection = this.afs.collection<BookingGrab>('grabBooking');
 
     //get collection data
     this.notes = this.noteCollection.snapshotChanges().pipe(
@@ -129,6 +141,47 @@ export class FirebaseService
 
     //get cat hotel booking collection data
     this.hotelBooking = this.catHotelBookingCollection.snapshotChanges().pipe(
+      map(actions => 
+        {
+        return actions.map(a => 
+          {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+          });
+        })
+    );
+
+    //get cat spa booking collection data
+    this.spaBooking = this.catSpaBookingCollection.snapshotChanges().pipe(
+      map(actions => 
+        {
+        return actions.map(a => 
+          {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+          });
+        })
+    );
+
+    
+    //get cat vacc n neuter booking collection data
+    this.vaccBooking = this.catVaccBookingCollection.snapshotChanges().pipe(
+      map(actions => 
+        {
+        return actions.map(a => 
+          {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+          });
+        })
+    );
+
+     
+    //get cat grab booking collection data
+    this.grabBooking = this.catGrabBookingCollection.snapshotChanges().pipe(
       map(actions => 
         {
         return actions.map(a => 
@@ -364,25 +417,25 @@ export class FirebaseService
   }
 
   //--------------------------------------CAT HOTEL BOOKING------------------------------------------------
-  // //getting all catHotel
-  // getHotels(): Observable<CatHotel[]> 
-  // {
-  //   return this.catHotel;
-  // }
+  //getting all catHotel booking
+  getHotelBookings(): Observable<BookingHotel[]> 
+  {
+    return this.hotelBooking;
+  }
 
-  // //getting single cat hotel
-  // getHotel(id: string): Observable<CatHotel> 
-  // {
-  //   return this.catHotelCollection.doc<CatHotel>(id).valueChanges().pipe(
-  //       take(1),
-  //       map(hotel => {
-  //         hotel.id = id;
-  //         return hotel;
-  //       })
-  //   );
-  // }
+  //getting single cat hotel booking
+  getHotelBooking(id: string): Observable<BookingHotel> 
+  {
+    return this.catHotelBookingCollection.doc<BookingHotel>(id).valueChanges().pipe(
+        take(1),
+        map(hotelbooking => {
+          hotelbooking.id = id;
+          return hotelbooking;
+        })
+    );
+  }
 
-  //create new hotel
+  //create new hotel booking
   submitBookingHotel(bookinghotel: BookingHotel): Promise<DocumentReference> 
   {
     return this.catHotelBookingCollection.add(bookinghotel);
@@ -399,4 +452,116 @@ export class FirebaseService
   // {
   //   return this.catHotelCollection.doc(id).delete();
   // }
+
+  //--------------------------------------CAT SPA & GROOMING BOOKING-----------------------------------------------
+  //getting all catSpa
+  // getSpas(): Observable<CatSpa[]> 
+  // {
+  //   return this.catSpa;
+  // }
+
+  // //getting single cat spa
+  // getSpa(id: string): Observable<CatSpa> 
+  // {
+  //   return this.catSpaCollection.doc<CatSpa>(id).valueChanges().pipe(
+  //       take(1),
+  //       map(spa => {
+  //        spa.id = id;
+  //         return spa;
+  //       })
+  //   );
+  // }
+  
+  //create new spa booking
+  submitBookingSpa(bookingspa: BookingSpa): Promise<DocumentReference> 
+  {
+    return this.catSpaBookingCollection.add(bookingspa);
+  }
+
+  // //update spa details
+  // updateSpa(spa: CatSpa): Promise<void> 
+  // {
+  //   return this.catSpaCollection.doc(spa.id).update({ spaName: spa.spaName, spaDetails: spa.spaDetails, spaPrice: spa.spaPrice });
+  // }
+
+  // //delete spa
+  // deleteSpa(id: string): Promise<void> 
+  // {
+  //   return this.catSpaCollection.doc(id).delete();
+  // }
+
+  //--------------------------------------CAT VACCINE & NEUTER BOOKING---------------------------------------------
+  // //getting all catVaccine
+  // getVaccines(): Observable<CatVaccine[]> 
+  // {
+  //   return this.catVaccine;
+  // }
+
+  // //getting single cat vaccine
+  // getVaccine(id: string): Observable<CatVaccine> 
+  // {
+  //   return this.catVaccineCollection.doc<CatVaccine>(id).valueChanges().pipe(
+  //       take(1),
+  //       map(vaccine => {
+  //        vaccine.id = id;
+  //         return vaccine;
+  //       })
+  //   );
+  // }
+  
+  //create new vaccine
+  submitBookingVacc(bookingvacc: BookingVacc): Promise<DocumentReference> 
+  {
+    return this.catVaccBookingCollection.add(bookingvacc);
+  }
+
+  // //update vaccine details
+  // updateVaccine(vaccine: CatVaccine): Promise<void> 
+  // {
+  //   return this.catVaccineCollection.doc(vaccine.id).update({ vaccineName: vaccine.vaccineName, vaccineDetails: vaccine.vaccineDetails, vaccinePrice: vaccine.vaccinePrice });
+  // }
+
+  // //delete vaccine
+  // deleteVaccine(id: string): Promise<void> 
+  // {
+  //   return this.catVaccineCollection.doc(id).delete();
+  // }
+
+  //-----------------------------------------CAT GRAB BOOKING-----------------------------------------------
+  // //getting all catGrab
+  // getGrabs(): Observable<CatGrab[]> 
+  // {
+  //   return this.catGrab;
+  // }
+
+  // //getting single cat grab
+  // getGrab(id: string): Observable<CatGrab> 
+  // {
+  //   return this.catGrabCollection.doc<CatGrab>(id).valueChanges().pipe(
+  //       take(1),
+  //       map(grab => {
+  //        grab.id = id;
+  //         return grab;
+  //       })
+  //   );
+  // }
+  
+  //create new grab
+  submitBookingGrab(bookinggrab: BookingGrab): Promise<DocumentReference> 
+  {
+    return this.catGrabBookingCollection.add(bookinggrab);
+  }
+
+  // //update grab details
+  // updateGrab(grab: CatGrab): Promise<void> 
+  // {
+  //   return this.catGrabCollection.doc(grab.id).update({ grabName: grab.grabName, grabDetails: grab.grabDetails, grabPrice: grab.grabPrice });
+  // }
+
+  // //delete grab
+  // deleteGrab(id: string): Promise<void> 
+  // {
+  //   return this.catGrabCollection.doc(id).delete();
+  // }
+
 }

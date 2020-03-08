@@ -72,7 +72,8 @@
     </ion-list>
     <ion-row>
       <ion-col>
-        <ion-button color="primary" expand="full" [routerLink]="['/receipthotel']" (click)="submitBookingHotel()">Confirm</ion-button>
+        <ion-button color="primary" expand="full" [routerLink]="'/receipthotel/'+bookinghotel.id" (click)="submitBookingHotel()">Confirm</ion-button>
+        <!-- <ion-button fill="outline" slot="end" [routerLink]="'/view-product/'+product.id">View</ion-button> -->
         <!-- <ion-button [routerLink]="['/receipthotel']" fill="solid" expand="block" size="med" color="primary">Confirm</ion-button> -->
       </ion-col>
       <ion-col>

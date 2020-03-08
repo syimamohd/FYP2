@@ -1,12 +1,56 @@
+<!-- Cat Hotel Menu -->
 <ion-header>
-  <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-back-button icon="arrow-back-outline"></ion-back-button>
-        </ion-buttons>
-    <ion-title>Cat Hotel Booking Receipt</ion-title>
+  <ion-toolbar color="dark">
+    <ion-title>
+      Cat Hotel Booking Receipt
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Booking Receipt</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let hotelbooking of (hotelBooking | async)">
+      <!-- <ion-thumbnail slot="start">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+      </ion-thumbnail> -->
+      <ion-label>
+        <ion-item>
+            <h2>Customer Name : </h2>
+            <h2>{{hotelbooking.customerName}}</h2>
+        </ion-item>
+        <ion-item>
+            <h2>Contact Number : </h2>
+            <h2>{{hotelbooking.contactNumber}}</h2>
+        </ion-item>
+        <ion-item>
+            <h2>Cat Name : </h2>
+            <p>{{hotelbooking. catName}}</p>
+        </ion-item>
+        <ion-item>
+            <h2>Contact Number : </h2>
+            <p>{{hotelbooking.remark}}</p>
+        </ion-item>
+        <ion-item>
+            <h2>Check In Date : </h2>
+            <p>{{hotelbooking.checkInDate}}</p>
+        </ion-item>
+        <ion-item>
+            <h2>Check Out Date : </h2>
+            <p>{{hotelbooking.checkOutDate}}</p>
+        </ion-item>
+        <ion-item>
+            <h2>Check In Time : </h2>
+            <p>{{hotelbooking.timeIn}}</p>
+        </ion-item>
+        <ion-item>
+            <h2>Check Out Time : </h2>
+            <p>{{hotelbooking.timeOut}}</p>
+        </ion-item>
+      </ion-label>
+      <!-- <ion-button fill="outline" slot="end" [routerLink]="'/bookinghotel'">BOOK</ion-button> -->
+    </ion-item>
+  </ion-list>
 </ion-content>
