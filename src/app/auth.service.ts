@@ -1,11 +1,15 @@
-  
-  
 import { Injectable } from '@angular/core'
 import { Router, CanActivate } from '@angular/router'
 import { UserService } from './user.service'
 
 @Injectable()
-export class AuthService implements CanActivate {
+export class AuthService implements CanActivate 
+{
+	private _userIsAuthenticated = false;
+
+	get userIsAuthenticated() {
+		return this._userIsAuthenticated;
+	  }
 
 	constructor(private router: Router, private user: UserService) {
 
@@ -19,4 +23,13 @@ export class AuthService implements CanActivate {
 		this.router.navigate(['/login'])
 		return false
 	}
+
+	login() 
+	{
+		this._userIsAuthenticated = true;
+	  }
+
+	logout() {
+		this._userIsAuthenticated = false;
+	  }
 }

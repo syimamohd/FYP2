@@ -1,12 +1,47 @@
 <ion-header>
-  <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-back-button icon="arrow-back-outline"></ion-back-button>
-        </ion-buttons>
-    <ion-title>Cat Service Booking Receipt</ion-title>
+  <ion-toolbar color="dark">
+    <ion-title>
+      Cat Service Booking Receipt
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Booking Receipt</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let bookingspa of (spaBooking | async)"> 
+      <!-- <ion-thumbnail slot="start">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+      </ion-thumbnail> -->
+      <ion-label>
+        <ion-item>
+            <h2>Customer Name : </h2>
+            <h2>{{bookingspa.customerName}}</h2>
+        </ion-item>
+        <ion-item>
+            <h2>Contact Number : </h2>
+            <h2>{{bookingspa.contactNumber}}</h2>
+        </ion-item>
+        <ion-item>
+            <h2>Cat Name : </h2>
+            <p>{{bookingspa.catName}}</p>
+        </ion-item>
+        <ion-item>
+            <h2>Contact Number : </h2>
+            <p>{{bookingspa.remark}}</p>
+        </ion-item>
+        <ion-item>
+            <h2> Date : </h2>
+            <p>{{bookingspa.date}}</p>
+        </ion-item>
+        <ion-item>
+            <h2> Time : </h2>
+            <p>{{bookingspa.time}}</p>
+        </ion-item>
+      </ion-label>
+      <!-- <ion-button fill="outline" slot="end" [routerLink]="'/bookinghotel'">BOOK</ion-button> -->
+     </ion-item> 
+  </ion-list>
 </ion-content>

@@ -1,4 +1,3 @@
-<!-- Cat Hotel Menu -->
 <ion-header>
   <ion-toolbar color="dark">
     <ion-title>
@@ -12,45 +11,45 @@
     <ion-list-header>
       <ion-label>Booking Receipt</ion-label>
     </ion-list-header>
-    <ion-item *ngFor="let hotelbooking of (hotelBooking | async)">
+    <ion-item *ngFor="let bookinghotel of (hotelBooking | async)"> 
       <!-- <ion-thumbnail slot="start">
         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
       </ion-thumbnail> -->
       <ion-label>
         <ion-item>
             <h2>Customer Name : </h2>
-            <h2>{{hotelbooking.customerName}}</h2>
+            <h2>{{bookinghotel.customerName}}</h2>
         </ion-item>
         <ion-item>
             <h2>Contact Number : </h2>
-            <h2>{{hotelbooking.contactNumber}}</h2>
+            <h2>{{bookinghotel.contactNumber}}</h2>
         </ion-item>
         <ion-item>
             <h2>Cat Name : </h2>
-            <p>{{hotelbooking. catName}}</p>
+            <p>{{bookinghotel.catName}}</p>
         </ion-item>
         <ion-item>
             <h2>Contact Number : </h2>
-            <p>{{hotelbooking.remark}}</p>
+            <p>{{bookinghotel.remark}}</p>
         </ion-item>
         <ion-item>
             <h2>Check In Date : </h2>
-            <p>{{hotelbooking.checkInDate}}</p>
+            <p>{{bookinghotel.checkInDate}}</p>
         </ion-item>
         <ion-item>
             <h2>Check Out Date : </h2>
-            <p>{{hotelbooking.checkOutDate}}</p>
+            <p>{{bookinghotel.checkOutDate}}</p>
         </ion-item>
         <ion-item>
             <h2>Check In Time : </h2>
-            <p>{{hotelbooking.timeIn}}</p>
+            <p>{{bookinghotel.timeIn}}</p>
         </ion-item>
         <ion-item>
             <h2>Check Out Time : </h2>
-            <p>{{hotelbooking.timeOut}}</p>
+            <p>{{bookinghotel.timeOut}}</p>
         </ion-item>
       </ion-label>
       <!-- <ion-button fill="outline" slot="end" [routerLink]="'/bookinghotel'">BOOK</ion-button> -->
-    </ion-item>
+     </ion-item> 
   </ion-list>
 </ion-content>

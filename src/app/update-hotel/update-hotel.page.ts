@@ -38,7 +38,7 @@ export class UpdateHotelPage implements OnInit, AfterViewInit
   updateHotel() 
   {
     this.fbService.updateHotel(this.hotel).then(() => {
-     this.router.navigate(['/']);
+     this.router.navigate(['/menuhotel']);
     }, err => {
     });
   }

@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title >My Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <!-- <app-loading *ngIf="!posts"></app-loading> -->
+    <ion-grid>
+    <div id="profile-info" *ngIf="username">
+      
+        <ion-row>
+          <ion-col size="4" class="user-image">
+            <ion-img src="https://ucarecdn.com/{{ profilePic }}/-/scale_crop/200x200/center/"></ion-img>
+          </ion-col>
+          <ion-col size="8">
+            <p>Welcome!</p>
+            <p>Name: {{ username }}</p>
+            <p>Contact Number: {{ contact }}</p>
+            <p>Address: {{ address }}</p>
+            <ion-button shape="round" color="primary" routerLink="/edit-profile">Edit Profile</ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div>  
+        <ion-label>
+          <p>Your Hotel Booking:</p>
+            <ion-item *ngFor="let bookinghotel of (hotelBooking | async)">
+                <ion-label>
+                  <ion-row>
+                    <ion-col>
+                        <h2>Check In Date: {{bookinghotel.checkInDate}}</h2>
+                    </ion-col>
+                    <ion-col>
+                        <p>Check Out Date: {{bookinghotel.checkOutDate}}</p>
+                    </ion-col>
+                  </ion-row>  
+                  <ion-row>
+                    <ion-col>
+                        <p>Time In Date: {{bookinghotel.timeIn}}</p>
+                    </ion-col>
+                    <ion-col>
+                        <p>Time Out Date: {{bookinghotel.timeOut}}</p>
+                    </ion-col>
+                  </ion-row>
+                </ion-label>
+                <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/view-booking-hotel/'+bookinghotel.id">View</ion-button>
+              </ion-item>
+        </ion-label>     
+      </div>
+    
+   
+    <!-- <div>
+        <ion-row>
+            <ion-col>
+                <ion-button shape="round" color="primary" routerLink="/">View Purchased Item</ion-button>
+            </ion-col>
+        </ion-row>
+    </div> -->
+    <!-- <div id="images" *ngIf="posts">
+      <div class="image" *ngFor="let post of posts">
+        <img (click)="goTo(post)" class="main-image" src="https://ucarecdn.com/{{ post }}/-/scale_crop/200x200/center/" />
+      </div>
+    </div> -->
+  </ion-grid>
+  </ion-content>

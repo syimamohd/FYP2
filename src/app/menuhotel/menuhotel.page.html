@@ -1,9 +1,12 @@
 <!-- Cat Hotel Menu -->
 <ion-header>
   <ion-toolbar color="dark">
-    <ion-title>
-      Cat Hotel Menu
-    </ion-title>
+      <ion-title>Cat Hotel Menu</ion-title>
+      <ion-buttons slot="start">
+          <ion-menu-button autoHide="false">
+            </ion-menu-button>
+          <!-- <ion-back-button icon="arrow-back-outline"></ion-back-button> -->
+        </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -21,9 +24,15 @@
         <p>{{hotel.hotelDetails}}</p>
         <p>{{hotel.hotelPrice}}</p>
       </ion-label>
-      <ion-button fill="outline" slot="end" [routerLink]="'/bookinghotel'">BOOK</ion-button>
+      <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/bookinghotel'">BOOK</ion-button>
+      <ion-button *ngIf="isAdmin" fill="outline" slot="end" [routerLink]="'/view-hotel/'+hotel.id">View</ion-button>
     </ion-item>
   </ion-list>
+  <ion-fab *ngIf="isAdmin" vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button [routerLink]="'/add-hotel'">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
 </ion-content>
 
 <!-- <ion-header>

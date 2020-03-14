@@ -3,28 +3,42 @@ import { AngularFireAuth } from '@angular/fire/auth'
 import { first } from 'rxjs/operators'
 import { auth } from 'firebase/app'
 
-interface user {
+interface user 
+{
 	username: string,
-	uid: string
+	uid: string,
+	// contact: string,
+	// address: string
 }
 
 @Injectable()
 export class UserService {
 	private user: user
 
-	constructor(private afAuth: AngularFireAuth) {
+	constructor(private afAuth: AngularFireAuth) 
+	{
 
 	}
 
-	setUser(user: user) {
-		this.user = user
-	}
+	setUser(user: user) {	this.user = user}
 
-	getUsername(): string {
+	getUsername(): string 
+	{
 		return this.user.username
 	}
 
-	reAuth(username: string, password: string) {
+	// getContact(): string 
+	// {
+	// 	return this.user.contact
+	// }
+
+	// getAddress(): string 
+	// {
+	// 	return this.user.address
+	// }
+
+	reAuth(username: string, password: string) //, contact: string, address: string
+	{
 		return this.afAuth.auth.currentUser.reauthenticateWithCredential(auth.EmailAuthProvider.credential(username + '@codedamn.com', password))
 	}
 
@@ -36,15 +50,19 @@ export class UserService {
 		return this.afAuth.auth.currentUser.updateEmail(newemail + '@codedamn.com')
 	}
 
-	async isAuthenticated() {
+	async isAuthenticated() 
+	{
 		if(this.user) return true
 
 		const user = await this.afAuth.authState.pipe(first()).toPromise()
 
-		if(user) {
+		if(user) 
+		{
 			this.setUser({
 				username: user.email.split('@')[0],
-				uid: user.uid
+				uid: user.uid,
+				// contact: user.contact,
+				// address: user.address
 			})
 
 			return true
@@ -52,7 +70,8 @@ export class UserService {
 		return false
 	}
 
-	getUID(): string {
+	getUID(): string 
+	{
 		return this.user.uid
 	}
 }

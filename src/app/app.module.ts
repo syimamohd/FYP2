@@ -13,8 +13,10 @@ import firebaseConfig from './firebase'
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth'
 import {UserService} from './user.service';
-
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+// import { HTTP } from '@ionic-native/http/ngx';
+import {NativeStorage} from '@ionic-native/native-storage/ngx';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,10 +27,15 @@ import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/fi
     AppRoutingModule, 
     AngularFireModule.initializeApp(firebaseConfig),
 	  AngularFireAuthModule,
-	  AngularFirestoreModule],
+    AngularFirestoreModule,
+    // HTTP
+  ],
   providers: [
     StatusBar,
     SplashScreen,
+    NativeStorage,
+    AuthService,
+    
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy  },
     { provide: FirestoreSettingsToken, useValue: {}},
     UserService

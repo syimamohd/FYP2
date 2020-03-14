@@ -42,7 +42,7 @@
         <ion-item>
             <ion-label>TIME IN</ion-label>
             <ion-input>
-                <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z"  [(ngModel)]="bookinghotel.timeIn"></ion-datetime>
+                <ion-datetime display-format="h:mm A" picker-format="h:mm A" [(ngModel)]="bookinghotel.timeIn"></ion-datetime>
             </ion-input>
         </ion-item>
       </ion-col>
@@ -59,9 +59,9 @@
         <ion-item>
           <ion-label>TIME OUT</ion-label>
           <ion-input>
-              <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z"  [(ngModel)]="bookinghotel.timeOut"></ion-datetime>
+              <ion-datetime display-format="h:mm A" picker-format="h:mm A" [(ngModel)]="bookinghotel.timeOut"></ion-datetime>
           </ion-input>
-          <!-- <ion-input placeholder="Check Out Time" [(ngModel)]="bookinghotel.timeOut"></ion-input> -->
+          <!-- <ion-input placeholder="Check Out Time" value="1990-02-19T07:43Z" [(ngModel)]="bookinghotel.timeOut"></ion-input> -->
         </ion-item>
       </ion-col>
     </ion-row>
@@ -72,9 +72,9 @@
     </ion-list>
     <ion-row>
       <ion-col>
-        <ion-button color="primary" expand="full" [routerLink]="'/receipthotel/'+bookinghotel.id" (click)="submitBookingHotel()">Confirm</ion-button>
+        <!-- <ion-button color="primary" expand="full" (click)="submitBookingHotel()">Confirm</ion-button> -->
         <!-- <ion-button fill="outline" slot="end" [routerLink]="'/view-product/'+product.id">View</ion-button> -->
-        <!-- <ion-button [routerLink]="['/receipthotel']" fill="solid" expand="block" size="med" color="primary">Confirm</ion-button> -->
+        <ion-button (click)="submitBookingHotel()" fill="solid" expand="block" size="med" color="primary">Confirm</ion-button>
       </ion-col>
       <ion-col>
         <ion-button [routerLink]="['/menuhotel']" fill="solid" expand="block" size="med" color="warning" >Cancel</ion-button>
@@ -83,3 +83,5 @@
     
     <!-- <ion-button fill="solid" expand="block" color="dark" (click)="login()">Continue</ion-button> -->
 </ion-content>
+
+<!-- [routerLink]="'/receipthotel/'+bookinghotel.id"  -->

@@ -1,8 +1,12 @@
 <ion-header>
   <ion-toolbar color="dark">
-    <ion-title>
-      Cat Grab Menu
-    </ion-title>
+      <ion-title> Cat Grab Menu</ion-title>
+      <ion-buttons slot="start">
+          <!-- <ion-back-button icon="arrow-back-outline"></ion-back-button> -->
+          <ion-menu-button autoHide="false">
+          </ion-menu-button>
+          <!-- <ion-back-button></ion-back-button> -->
+        </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -20,9 +24,15 @@
         <p>{{grab.grabDetails}}</p>
         <p>{{grab.grabPrice}}</p>
       </ion-label>
-      <ion-button fill="outline" slot="end" [routerLink]="'/bookinggrab'">BOOK</ion-button>
+      <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/bookinggrab'">BOOK</ion-button>
+      <ion-button *ngIf="isAdmin" fill="outline" slot="end" [routerLink]="'/view-grab/'+grab.id">View</ion-button>
     </ion-item>
   </ion-list>
+  <ion-fab *ngIf="isAdmin" vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button [routerLink]="'/add-grab'">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
 </ion-content>
 <!-- 
 <ion-header>

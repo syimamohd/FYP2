@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
 					username,
 					uid: res.user.uid
 				})
-				this.router.navigate(['/booking'])
+				this.router.navigate(['/home'])
 			}
 		
 		} catch(err) {

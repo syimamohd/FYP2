@@ -18,6 +18,7 @@ import {map, take} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
 export class FirebaseService 
 {
   //hotel & services & product info in db
@@ -428,9 +429,9 @@ export class FirebaseService
   {
     return this.catHotelBookingCollection.doc<BookingHotel>(id).valueChanges().pipe(
         take(1),
-        map(hotelbooking => {
-          hotelbooking.id = id;
-          return hotelbooking;
+        map(bookinghotel => {
+          bookinghotel.id = id;
+          return bookinghotel;
         })
     );
   }
@@ -441,36 +442,42 @@ export class FirebaseService
     return this.catHotelBookingCollection.add(bookinghotel);
   }
 
-  // //update hotel details
-  // updateHotel(hotel: CatHotel): Promise<void> 
-  // {
-  //   return this.catHotelCollection.doc(hotel.id).update({ hotelName: hotel.hotelName, hotelDetails: hotel.hotelDetails, hotelPrice: hotel.hotelPrice });
-  // }
+  //update hotel details
+  updateBookingHotel(bookinghotel: BookingHotel): Promise<void> 
+  {
+    return this.catHotelBookingCollection.doc(bookinghotel.id).update
+    ({ 
+      customerName: bookinghotel.customerName, contactNumber: bookinghotel.contactNumber,
+      catName: bookinghotel.catName, remark: bookinghotel.remark, checkInDate: bookinghotel.checkInDate,
+      checkOutDate: bookinghotel.checkOutDate, timeIn: bookinghotel.timeIn,
+      timeOut: bookinghotel.timeOut 
+    });
+  }
 
-  // //delete hotel
-  // deleteHotel(id: string): Promise<void> 
-  // {
-  //   return this.catHotelCollection.doc(id).delete();
-  // }
+  //delete hotel
+  deleteBookingHotel(id: string): Promise<void> 
+  {
+    return this.catHotelBookingCollection.doc(id).delete();
+  }
 
   //--------------------------------------CAT SPA & GROOMING BOOKING-----------------------------------------------
-  //getting all catSpa
-  // getSpas(): Observable<CatSpa[]> 
-  // {
-  //   return this.catSpa;
-  // }
+  //getting all catSpa booking
+  getSpaBookings(): Observable<BookingSpa[]> 
+  {
+    return this.spaBooking;
+  }
 
-  // //getting single cat spa
-  // getSpa(id: string): Observable<CatSpa> 
-  // {
-  //   return this.catSpaCollection.doc<CatSpa>(id).valueChanges().pipe(
-  //       take(1),
-  //       map(spa => {
-  //        spa.id = id;
-  //         return spa;
-  //       })
-  //   );
-  // }
+  //getting single cat spa booking
+  getSpaBooking(id: string): Observable<BookingSpa> 
+  {
+    return this.catSpaCollection.doc<BookingSpa>(id).valueChanges().pipe(
+        take(1),
+        map(bookingspa => {
+         bookingspa.id = id;
+          return bookingspa;
+        })
+    );
+  }
   
   //create new spa booking
   submitBookingSpa(bookingspa: BookingSpa): Promise<DocumentReference> 

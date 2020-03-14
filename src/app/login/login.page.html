@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
+		<ion-title>Login</ion-title>
 		<ion-buttons slot="start">
-				<ion-back-button icon="arrow-back-outline"></ion-back-button>
-			  </ion-buttons>
-    <ion-title>Login</ion-title>
+				<ion-back-button></ion-back-button>
+		</ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -26,6 +26,7 @@
 									</ion-item>		  
 									</ion-list>
 									<ion-button class="button" fill="solid"  color="dark" (click)="login()">Login</ion-button>
+									<ion-button class="button" fill="solid"  color="dark" [routerLink]="['/register']">Sign Up</ion-button>
 							</ion-col>			
 						</ion-row>		
 					</ion-card>

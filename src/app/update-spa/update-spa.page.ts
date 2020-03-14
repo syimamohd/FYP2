@@ -38,7 +38,7 @@ export class UpdateSpaPage implements OnInit, AfterViewInit
   updateSpa() 
   {
     this.fbService.updateSpa(this.spa).then(() => {
-     this.router.navigate(['/']);
+     this.router.navigate(['/menuspa']);
     }, err => {
     });
   }

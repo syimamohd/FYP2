@@ -38,7 +38,7 @@ export class UpdateGrabPage implements OnInit, AfterViewInit
   updateGrab() 
   {
     this.fbService.updateGrab(this.grab).then(() => {
-     this.router.navigate(['/']);
+     this.router.navigate(['/menugrab']);
     }, err => {
     });
   }

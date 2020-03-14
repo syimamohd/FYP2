@@ -1,8 +1,9 @@
 <ion-header>
     <ion-toolbar color="dark">
-      <ion-title>
-        Cat Vaccine & Neuter Menu
-      </ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button icon="arrow-back-outline"></ion-back-button>
+          </ion-buttons>
+      <ion-title>Cat Vaccine & Neuter Menu</ion-title>
     </ion-toolbar>
   </ion-header>
   
@@ -20,9 +21,15 @@
           <p>{{vaccine.vaccineDetails}}</p>
           <p>{{vaccine.vaccinePrice}}</p>
         </ion-label>
-        <ion-button fill="outline" slot="end" [routerLink]="'/bookingvacc'">BOOK</ion-button>
-      </ion-item>
-    </ion-list>
+        <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/bookingvacc'">BOOK</ion-button>
+      <ion-button *ngIf="isAdmin" fill="outline" slot="end" [routerLink]="'/view-vaccine/'+vaccine.id">View</ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-fab *ngIf="isAdmin" vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button [routerLink]="'/add-vaccine'">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </ion-content>
   
 <!-- 

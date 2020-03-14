@@ -1,0 +1,62 @@
+
+<ion-header>
+    <ion-toolbar color="dark">
+      <ion-title>
+        Cat Hotel Booking Receipt
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Booking Receipt</ion-label>
+      </ion-list-header>
+        <ion-card-content>
+            <ion-item>
+                <h2>Customer Name : </h2>
+                <h2>{{bookinghotel.customerName}}</h2>
+            </ion-item>
+            <ion-item>
+                <h2>Contact Number : </h2>
+                <h2>{{bookinghotel.contactNumber}}</h2>
+            </ion-item>
+            <ion-item>
+                <h2>Cat Name : </h2>
+                <p>{{bookinghotel.catName}}</p>
+            </ion-item>
+            <ion-item>
+                <h2>Remark : </h2>
+                <p>{{bookinghotel.remark}}</p>
+            </ion-item>
+            <ion-item>
+                <h2>Check In Date : </h2>
+                <p>{{bookinghotel.checkInDate}}</p>
+            </ion-item>
+            <ion-item>
+                <h2>Check Out Date : </h2>
+                <p>{{bookinghotel.checkOutDate}}</p>
+            </ion-item>
+            <ion-item>
+                <h2>Check In Time : </h2>
+                <p>{{bookinghotel.timeIn}}</p>
+            </ion-item>
+            <ion-item>
+                <h2>Check Out Time : </h2>
+                <p>{{bookinghotel.timeOut}}</p>
+            </ion-item>
+            <!-- <p align="justify">{{bookinghotel.customerName}}</p>
+            <br>
+            <p align="justify">{{bookinghotel.catName}}</p> -->
+            <ion-button slot="start" color="warning" [routerLink]="'/update-booking-hotel/' + bookinghotel.id">Edit</ion-button>
+            <ion-button slot="end" color="danger" (click)="deleteBookingHotel()">Delete</ion-button>
+          </ion-card-content>
+        <!-- <ion-button fill="outline" slot="end" [routerLink]="'/bookinghotel'">BOOK</ion-button> -->
+       <!-- </ion-item>  -->
+       <!-- <ion-button slot="start" color="warning" [routerLink]="'/update-hotel-booking/' + bookinghotel.id">Edit</ion-button>
+       <ion-button slot="end" color="danger" (click)="deleteHotelBooking()">Delete</ion-button> -->
+    </ion-list>
+  </ion-content>
+
+
+    

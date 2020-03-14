@@ -38,7 +38,7 @@ export class UpdateVaccinePage implements OnInit, AfterViewInit
   updateVaccine() 
   {
     this.fbService.updateVaccine(this.vaccine).then(() => {
-     this.router.navigate(['/']);
+     this.router.navigate(['/menuvaccine']);
     }, err => {
     });
   }
