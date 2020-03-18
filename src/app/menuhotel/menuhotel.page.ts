@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {CatHotel} from '../model/CatHotel';
-//call the page that has crud operaions in firebase.service
+//call the page that has crud operations in firebase.service
 import {FirebaseService} from '../services/firebase.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
@@ -16,6 +16,7 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 export class MenuhotelPage implements OnInit 
 {
   private catHotel: Observable<CatHotel[]>;
+
   sub: any;
   username: string;
   mainuser: AngularFirestoreDocument;

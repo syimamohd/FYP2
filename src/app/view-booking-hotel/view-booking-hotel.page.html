@@ -4,6 +4,9 @@
       <ion-title>
         Cat Hotel Booking Receipt
       </ion-title>
+              <ion-buttons slot="start">     
+                  <ion-back-button icon="arrow-back-outline"></ion-back-button>
+                </ion-buttons>
     </ion-toolbar>
   </ion-header>
   
@@ -31,23 +34,24 @@
             </ion-item>
             <ion-item>
                 <h2>Check In Date : </h2>
-                <p>{{bookinghotel.checkInDate}}</p>
+                <p>{{bookinghotel.checkInDate | date: "dd/MM/yyyy"}}</p>
             </ion-item>
             <ion-item>
                 <h2>Check Out Date : </h2>
-                <p>{{bookinghotel.checkOutDate}}</p>
+                <p>{{bookinghotel.checkOutDate |  date: "dd/MM/yyyy"}}</p>
             </ion-item>
             <ion-item>
                 <h2>Check In Time : </h2>
-                <p>{{bookinghotel.timeIn}}</p>
+                <p>{{bookinghotel.timeIn | date: "shortTime" }}</p>
             </ion-item>
             <ion-item>
                 <h2>Check Out Time : </h2>
-                <p>{{bookinghotel.timeOut}}</p>
+                <p>{{bookinghotel.timeOut | date: "shortTime" }}</p>
             </ion-item>
-            <!-- <p align="justify">{{bookinghotel.customerName}}</p>
-            <br>
-            <p align="justify">{{bookinghotel.catName}}</p> -->
+            <!-- <ion-item>
+
+            </ion-item> -->
+            
             <ion-button slot="start" color="warning" [routerLink]="'/update-booking-hotel/' + bookinghotel.id">Edit</ion-button>
             <ion-button slot="end" color="danger" (click)="deleteBookingHotel()">Delete</ion-button>
           </ion-card-content>

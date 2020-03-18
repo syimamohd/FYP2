@@ -62,11 +62,11 @@ export class AppComponent {
           icon: "information",
           url: "/"
         },
-        {
-          pagename: "Log Out",
-          icon: "exit",
-          url: "/"
-        }
+        // {
+        //   pagename: "Log Out",
+        //   icon: "exit",
+        //   url: "/"
+        // }
       ]
     });
   }

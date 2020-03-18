@@ -17,7 +17,14 @@
             <ion-icon [name]="page.icon" slot="start"></ion-icon>
             <ion-label>{{page.pagename}}</ion-label>
           </ion-item>
+          
         </ion-menu-toggle>
+      </ion-list>
+      <ion-list>
+        <ion-item (click)= "onLogout()">
+          <ion-icon name="exit" slot="start"></ion-icon>
+          <ion-label>Log Out</ion-label>
+        </ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-// import { Http } from '@angular/http';
+import { Http } from '@angular/http';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
 import { AlertController } from '@ionic/angular';
@@ -26,14 +26,14 @@ export class EditProfilePage implements OnInit {
 
 	busy: boolean = false
 
-  // @ViewChild('fileBtn') fileBtn: 
-  // {
-	// 	nativeElement: HTMLInputElement
-	// }
+  @ViewChild('fileBtn', {static: false}) fileBtn: 
+  {
+		nativeElement: HTMLInputElement
+	}
 
   constructor
   (
-		// private http: Http, 
+		private http: Http, 
 		private afs: AngularFirestore,
 		private router: Router,
 		private alertController: AlertController,
@@ -52,33 +52,34 @@ export class EditProfilePage implements OnInit {
 
 	ngOnInit() {}
 
-  ngOnDestroy() 
-  {
+  	ngOnDestroy() 
+  	{
 		this.sub.unsubscribe()
 	}
 
-  // updateProfilePic() 
-  // {
-	// 	this.fileBtn.nativeElement.click()
-	// }
+  	updateProfilePic() 
+  	{
+		this.fileBtn.nativeElement.click()
+	}
 
-  // uploadPic(event) 
-  // {
-	// 	const files = event.target.files
+	uploadPic(event) 
+	{
+			const files = event.target.files
 
-	// 	const data = new FormData()
-	// 	data.append('file', files[0])
-	// 	data.append('UPLOADCARE_STORE', '1')
-	// 	data.append('UPLOADCARE_PUB_KEY', 'ada5e3cb2da06dee6d82')
-		
-	// 	this.http.post('https://upload.uploadcare.com/base/', data)
-	// 	.subscribe(event => {
-	// 		const uuid = event.json().file
-	// 		this.mainuser.update({
-	// 			profilePic: uuid
-	// 		})
-	// 	})
-	// }
+			const data = new FormData()
+			data.append('file', files[0])
+			data.append('UPLOADCARE_STORE', '1')
+			data.append('UPLOADCARE_PUB_KEY', '00f055ada25dcea69cac')
+
+			
+			this.http.post('https://upload.uploadcare.com/base/', data)
+			.subscribe(event => {
+				const uuid = event.json().file
+				this.mainuser.update({
+					profilePic: uuid
+				})
+			})
+		}
 
   async presentAlert(title: string, content: string) 
   {
@@ -138,5 +139,7 @@ export class EditProfilePage implements OnInit {
 
 		this.router.navigate(['/view-profile'])
 	}
+
+	
 
 }

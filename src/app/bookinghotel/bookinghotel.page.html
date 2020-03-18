@@ -34,15 +34,15 @@
         <ion-item>
             <ion-label>CHECK IN DATE</ion-label>
             <ion-input>
-                <ion-datetime value="19-02-1990" placeholder="Select Date"  [(ngModel)]="bookinghotel.checkInDate"></ion-datetime>
+                <ion-datetime displayFormat="D/MM/YYYY" pickerFormat="DDDD MMMM YYYY" placeholder="Select Date"  [(ngModel)]="bookinghotel.checkInDate"></ion-datetime>
+                <!-- <ion-datetime value="19-02-1990" placeholder="Select Date"  [(ngModel)]="bookinghotel.checkInDate"></ion-datetime> -->
             </ion-input>
-          <!-- <ion-input placeholder="Check In Date" [(ngModel)]="bookinghotel.checkInDate"></ion-input> -->
         </ion-item>
 
         <ion-item>
             <ion-label>TIME IN</ion-label>
             <ion-input>
-                <ion-datetime display-format="h:mm A" picker-format="h:mm A" [(ngModel)]="bookinghotel.timeIn"></ion-datetime>
+                <ion-datetime display-format="HH:mm A" picker-format="HH:mm A" [(ngModel)]="bookinghotel.timeIn"></ion-datetime>
             </ion-input>
         </ion-item>
       </ion-col>
@@ -51,15 +51,15 @@
         <ion-item>
           <ion-label>CHECK OUT DATE</ion-label>
           <ion-input>
-              <ion-datetime value="19-02-1990" placeholder="Select Date"  [(ngModel)]="bookinghotel.checkOutDate"></ion-datetime>
+              <ion-datetime displayFormat="D/MM/YYYY" pickerFormat="DDDD MMMM YYYY" placeholder="Select Date"  [(ngModel)]="bookinghotel.checkOutDate"></ion-datetime>
+              <!-- <ion-datetime value="19-02-1990" placeholder="Select Date"  [(ngModel)]="bookinghotel.checkOutDate"></ion-datetime> -->
           </ion-input>
-          <!-- <ion-input placeholder="Check Out Date" [(ngModel)]="bookinghotel.checkOutDate"></ion-input> -->
         </ion-item>
 
         <ion-item>
           <ion-label>TIME OUT</ion-label>
           <ion-input>
-              <ion-datetime display-format="h:mm A" picker-format="h:mm A" [(ngModel)]="bookinghotel.timeOut"></ion-datetime>
+              <ion-datetime display-format="HH:mm A" picker-format="HH:mm A" [(ngModel)]="bookinghotel.timeOut"></ion-datetime>
           </ion-input>
           <!-- <ion-input placeholder="Check Out Time" value="1990-02-19T07:43Z" [(ngModel)]="bookinghotel.timeOut"></ion-input> -->
         </ion-item>
@@ -81,7 +81,6 @@
       </ion-col>
     </ion-row>
     
-    <!-- <ion-button fill="solid" expand="block" color="dark" (click)="login()">Continue</ion-button> -->
 </ion-content>
 
 <!-- [routerLink]="'/receipthotel/'+bookinghotel.id"  -->

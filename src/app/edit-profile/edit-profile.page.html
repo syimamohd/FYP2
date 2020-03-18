@@ -1,19 +1,28 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="dark">
+        <ion-buttons slot="start">
+            <ion-back-button icon="arrow-back-outline"></ion-back-button>
+          </ion-buttons>
       <ion-title>Edit Profile</ion-title>
+      <ion-buttons slot="end" (click)="onLogout()">
+          <ion-icon name="exit-outline"></ion-icon>
+        </ion-buttons>
+        
     </ion-toolbar>
   </ion-header>
   
   <ion-content padding>
   
     <!-- <app-loading *ngIf="busy"></app-loading> -->
+    <ion-grid>
   
     <div *ngIf="!busy">
   
       <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)" />
   
       <div>
-        <ion-img class="profile-pic" (click)="updateProfilePic()" src="https://ucarecdn.com/{{ profilePic }}/-/scale_crop/150x150/center/"></ion-img>
+        <ion-img class="profile-pic" src="https://ucarecdn.com/{{ profilePic }}/-/scale_crop/150x150/center/"></ion-img>
+        <ion-button  (click)="updateProfilePic()">Change</ion-button>
       </div>
   
   
@@ -45,7 +54,6 @@
   
         <ion-button fill="solid" expand="block" color="dark" (click)="updateDetails()">Save</ion-button>
       </div>
-  
     </div>
-  
+  </ion-grid>
   </ion-content>

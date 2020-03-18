@@ -73,10 +73,14 @@ export class ViewBookingHotelPage implements OnInit, AfterViewInit
   ngAfterViewInit(): void 
   {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    if (id) {
-      this.fbService.getHotelBooking(id).subscribe(hotelBookingData => {
+    if (id) 
+    {
+      this.fbService.getHotelBooking(id).subscribe(hotelBookingData => 
+      {
         this.bookinghotel = hotelBookingData;
       });
+
+      
     }
   }
 

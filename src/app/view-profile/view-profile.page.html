@@ -1,56 +1,91 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar  color="dark">
     <ion-title >My Profile</ion-title>
+    <ion-buttons slot="start">
+        <ion-menu-button autoHide="false">
+          </ion-menu-button>
+        <!-- <ion-back-button icon="arrow-back-outline"></ion-back-button> -->
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
-    <!-- <app-loading *ngIf="!posts"></app-loading> -->
-    <ion-grid>
-    <div id="profile-info" *ngIf="username">
-      
+      <!-- <app-loading *ngIf="!posts"></app-loading> -->
+      <ion-grid>
+      <div class="center"id="profile-info" *ngIf="username">
+        <!-- <ion-grid> -->
+          <ion-row>
+            <ion-col size="4" class="user-image">
+              <ion-img src="https://ucarecdn.com/{{ profilePic }}/-/scale_crop/200x200/center/"></ion-img>
+            </ion-col>
+            <ion-col size="8">
+              <!-- <p>{{ username }}</p>
+              <ion-button shape="round" color="primary" routerLink="/tabs/edit-profile">Edit Profile</ion-button> -->
+            </ion-col>
+          </ion-row>
+        <!-- </ion-grid> -->
+          <!-- <app-loading *ngIf="busy"></app-loading> -->
+
+          <!-- <div class="center" *ngIf="!busy">
+            <div class="camera"></div>
+        
+            <input type="file" *ngIf="!imageURL" (change)="fileChanged($event)" class="filebtn" #fileButton />
+        
+            <ion-button shape="round" color="primary" (click)="uploadFile()" *ngIf="!imageURL" fill="outline">Upload File</ion-button>
+          </div> -->
+      </div>
+      <div>
         <ion-row>
-          <ion-col size="4" class="user-image">
-            <ion-img src="https://ucarecdn.com/{{ profilePic }}/-/scale_crop/200x200/center/"></ion-img>
-          </ion-col>
           <ion-col size="8">
             <p>Welcome!</p>
-            <p>Name: {{ username }}</p>
-            <p>Contact Number: {{ contact }}</p>
-            <p>Address: {{ address }}</p>
+            <p>Welcome, {{ username }}</p>
+            <!-- <p>Contact Number: {{ contact }}</p>
+            <p>Address: {{ address }}</p> -->
             <ion-button shape="round" color="primary" routerLink="/edit-profile">Edit Profile</ion-button>
           </ion-col>
         </ion-row>
       </div>
+      
       <div>  
-        <ion-label>
-          <p>Your Hotel Booking:</p>
+        <ion-card>
+            <ion-title>Your Hotel Booking:</ion-title>
             <ion-item *ngFor="let bookinghotel of (hotelBooking | async)">
-                <ion-label>
+              <ion-label>
+                  <ion-row>
+                      <ion-col>
+                          <p>Name: {{bookinghotel.customerName}}</p>
+                      </ion-col>
+                      <ion-col>
+                          <p>Cat Name: {{bookinghotel.catName}}</p>
+                      </ion-col>
+                    </ion-row> 
                   <ion-row>
                     <ion-col>
-                        <h2>Check In Date: {{bookinghotel.checkInDate}}</h2>
+                        <p>Check In : {{bookinghotel.checkInDate | date: "dd/MM/yyyy"}}</p>
                     </ion-col>
                     <ion-col>
-                        <p>Check Out Date: {{bookinghotel.checkOutDate}}</p>
+                        <p>Check Out : {{bookinghotel.checkOutDate | date: "dd/MM/yyyy"}}</p>
                     </ion-col>
                   </ion-row>  
                   <ion-row>
                     <ion-col>
-                        <p>Time In Date: {{bookinghotel.timeIn}}</p>
+                        <p>Time In : {{bookinghotel.timeIn | date: "shortTime" }}</p>
                     </ion-col>
                     <ion-col>
-                        <p>Time Out Date: {{bookinghotel.timeOut}}</p>
+                        <p>Time Out : {{bookinghotel.timeOut | date: "shortTime" }}</p>
                     </ion-col>
                   </ion-row>
-                </ion-label>
+              </ion-label>
                 <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/view-booking-hotel/'+bookinghotel.id">View</ion-button>
               </ion-item>
-        </ion-label>     
+        </ion-card>     
       </div>
-    
-   
+      <!-- </div> -->
+  </ion-grid>
+  </ion-content>
+
+     
     <!-- <div>
         <ion-row>
             <ion-col>
@@ -63,5 +98,3 @@
         <img (click)="goTo(post)" class="main-image" src="https://ucarecdn.com/{{ post }}/-/scale_crop/200x200/center/" />
       </div>
     </div> -->
-  </ion-grid>
-  </ion-content>
