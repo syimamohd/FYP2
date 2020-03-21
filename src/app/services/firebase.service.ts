@@ -470,7 +470,7 @@ export class FirebaseService
   //getting single cat spa booking
   getSpaBooking(id: string): Observable<BookingSpa> 
   {
-    return this.catSpaCollection.doc<BookingSpa>(id).valueChanges().pipe(
+    return this.catSpaBookingCollection.doc<BookingSpa>(id).valueChanges().pipe(
         take(1),
         map(bookingspa => {
          bookingspa.id = id;
@@ -485,36 +485,40 @@ export class FirebaseService
     return this.catSpaBookingCollection.add(bookingspa);
   }
 
-  // //update spa details
-  // updateSpa(spa: CatSpa): Promise<void> 
-  // {
-  //   return this.catSpaCollection.doc(spa.id).update({ spaName: spa.spaName, spaDetails: spa.spaDetails, spaPrice: spa.spaPrice });
-  // }
+  //update spa details
+  updateBookingSpa(bookingspa: BookingSpa): Promise<void> 
+  {
+    return this.catSpaBookingCollection.doc(bookingspa.id).update(
+      { customerName: bookingspa.customerName, contactNumber: bookingspa.contactNumber,
+        catName: bookingspa.catName, remark: bookingspa.remark, date: bookingspa.date,
+        time: bookingspa.time 
+      });
+  }
 
-  // //delete spa
-  // deleteSpa(id: string): Promise<void> 
-  // {
-  //   return this.catSpaCollection.doc(id).delete();
-  // }
+  //delete spa
+  deleteBookingSpa(id: string): Promise<void> 
+  {
+    return this.catSpaBookingCollection.doc(id).delete();
+  }
 
   //--------------------------------------CAT VACCINE & NEUTER BOOKING---------------------------------------------
-  // //getting all catVaccine
-  // getVaccines(): Observable<CatVaccine[]> 
-  // {
-  //   return this.catVaccine;
-  // }
+  //getting all catVaccine
+  getVaccBookings(): Observable<BookingVacc[]> 
+  {
+    return this.vaccBooking;
+  }
 
-  // //getting single cat vaccine
-  // getVaccine(id: string): Observable<CatVaccine> 
-  // {
-  //   return this.catVaccineCollection.doc<CatVaccine>(id).valueChanges().pipe(
-  //       take(1),
-  //       map(vaccine => {
-  //        vaccine.id = id;
-  //         return vaccine;
-  //       })
-  //   );
-  // }
+  //getting single cat vaccine
+  getVaccBooking(id: string): Observable<BookingVacc> 
+  {
+    return this.catVaccBookingCollection.doc<BookingVacc>(id).valueChanges().pipe(
+        take(1),
+        map(vaccine => {
+         vaccine.id = id;
+          return vaccine;
+        })
+    );
+  }
   
   //create new vaccine
   submitBookingVacc(bookingvacc: BookingVacc): Promise<DocumentReference> 
@@ -522,36 +526,39 @@ export class FirebaseService
     return this.catVaccBookingCollection.add(bookingvacc);
   }
 
-  // //update vaccine details
-  // updateVaccine(vaccine: CatVaccine): Promise<void> 
-  // {
-  //   return this.catVaccineCollection.doc(vaccine.id).update({ vaccineName: vaccine.vaccineName, vaccineDetails: vaccine.vaccineDetails, vaccinePrice: vaccine.vaccinePrice });
-  // }
+  //update vaccine details
+  updateBookingVacc(bookingvacc: BookingVacc): Promise<void> 
+  {
+    return this.catVaccBookingCollection.doc(bookingvacc.id).update(
+      { customerName: bookingvacc.customerName, contactNumber: bookingvacc.contactNumber,
+        catName: bookingvacc.catName, remark:bookingvacc.remark, date: bookingvacc.date,
+        time: bookingvacc.time  });
+  }
 
-  // //delete vaccine
-  // deleteVaccine(id: string): Promise<void> 
-  // {
-  //   return this.catVaccineCollection.doc(id).delete();
-  // }
+  //delete vaccine
+  deleteBookingVacc(id: string): Promise<void> 
+  {
+    return this.catVaccBookingCollection.doc(id).delete();
+  }
 
   //-----------------------------------------CAT GRAB BOOKING-----------------------------------------------
-  // //getting all catGrab
-  // getGrabs(): Observable<CatGrab[]> 
-  // {
-  //   return this.catGrab;
-  // }
+  //getting all catGrab
+  getGrabBookings(): Observable<BookingGrab[]> 
+  {
+    return this.grabBooking;
+  }
 
-  // //getting single cat grab
-  // getGrab(id: string): Observable<CatGrab> 
-  // {
-  //   return this.catGrabCollection.doc<CatGrab>(id).valueChanges().pipe(
-  //       take(1),
-  //       map(grab => {
-  //        grab.id = id;
-  //         return grab;
-  //       })
-  //   );
-  // }
+  //getting single cat grab
+  getGrabBooking(id: string): Observable<BookingGrab> 
+  {
+    return this.catGrabBookingCollection.doc<BookingGrab>(id).valueChanges().pipe(
+        take(1),
+        map(grab => {
+         grab.id = id;
+          return grab;
+        })
+    );
+  }
   
   //create new grab
   submitBookingGrab(bookinggrab: BookingGrab): Promise<DocumentReference> 
@@ -559,16 +566,19 @@ export class FirebaseService
     return this.catGrabBookingCollection.add(bookinggrab);
   }
 
-  // //update grab details
-  // updateGrab(grab: CatGrab): Promise<void> 
-  // {
-  //   return this.catGrabCollection.doc(grab.id).update({ grabName: grab.grabName, grabDetails: grab.grabDetails, grabPrice: grab.grabPrice });
-  // }
+  //update grab details
+  updateBookingGrab(bookinggrab: BookingGrab): Promise<void> 
+  {
+    return this.catGrabBookingCollection.doc(bookinggrab.id).update(
+    { customerName: bookinggrab.customerName, contactNumber: bookinggrab.contactNumber,
+      catName: bookinggrab.catName, remark:bookinggrab.remark, date:bookinggrab.date,
+      time: bookinggrab.time });
+  }
 
-  // //delete grab
-  // deleteGrab(id: string): Promise<void> 
-  // {
-  //   return this.catGrabCollection.doc(id).delete();
-  // }
+  //delete grab
+  deleteBookingGrab(id: string): Promise<void> 
+  {
+    return this.catGrabBookingCollection.doc(id).delete();
+  }
 
 }

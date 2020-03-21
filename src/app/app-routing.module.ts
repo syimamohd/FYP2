@@ -14,8 +14,6 @@ const routes: Routes = [
   { path: 'menuspa', loadChildren: () => import('./menuspa/menuspa.module').then( m => m.MenuspaPageModule)},
   { path: 'menugrab', loadChildren: () => import('./menugrab/menugrab.module').then( m => m.MenugrabPageModule)},
   { path: 'menuvaccine', loadChildren: () => import('./menuvaccine/menuvaccine.module').then( m => m.MenuvaccinePageModule)},
-  { path: 'receipthotel/:id',loadChildren: () => import('./receipthotel/receipthotel.module').then( m => m.ReceipthotelPageModule)},
-  { path: 'receiptservice',loadChildren: () => import('./receiptservice/receiptservice.module').then( m => m.ReceiptservicePageModule)},
   { path: 'services',loadChildren: () => import('./services/firebase.service')},
   { path: 'model',loadChildren: () => import('./model/Note')},
   { path: 'model',loadChildren: () => import('./model/CatHotel')},
@@ -56,6 +54,9 @@ const routes: Routes = [
   { path: 'view-booking-grab/:id', loadChildren: () => import('./view-booking-grab/view-booking-grab.module').then( m => m.ViewBookingGrabPageModule)},
   { path: 'view-booking-vaccine/:id', loadChildren: () => import('./view-booking-vaccine/view-booking-vaccine.module').then( m => m.ViewBookingVaccinePageModule)},
   { path: 'update-booking-hotel/:id', loadChildren: () => import('./update-booking-hotel/update-booking-hotel.module').then( m => m.UpdateBookingHotelPageModule)},
+  { path: 'update-booking-spa/:id', loadChildren: () => import('./update-booking-spa/update-booking-spa.module').then( m => m.UpdateBookingSpaPageModule)},
+  { path: 'update-booking-grab/:id', loadChildren: () => import('./update-booking-grab/update-booking-grab.module').then( m => m.UpdateBookingGrabPageModule)},
+  { path: 'update-booking-vacc/:id', loadChildren: () => import('./update-booking-vacc/update-booking-vacc.module').then( m => m.UpdateBookingVaccPageModule)},
 
 ];
 

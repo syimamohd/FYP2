@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Update Vaccine & Neuter Booking</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+        <ion-item>
+            <ion-input placeholder="Enter Customer Name" [(ngModel)]="bookingvacc.customerName"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input placeholder="Enter Contact Number" [(ngModel)]="bookingvacc.contactNumber"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-input placeholder="Enter Cat Name" [(ngModel)]="bookingvacc.catName"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-textarea rows="6" [(ngModel)]="bookingvacc.remark" placeholder="Enter new remark here..."></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-input>
+                <ion-datetime value="19-02-1990" placeholder="Select Date"  [(ngModel)]="bookingvacc.date"></ion-datetime>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-input>
+                  <ion-datetime display-format="h:mm A" placeholder="Select Time" picker-format="h:mm A" [(ngModel)]="bookingvacc.time"></ion-datetime>
+              </ion-input>
+          </ion-item>
+    </ion-list>
+    <ion-button color="primary" expand="full" (click)="updateBookingVacc()">Update</ion-button>
+  </ion-content>

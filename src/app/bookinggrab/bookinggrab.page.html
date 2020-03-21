@@ -10,23 +10,15 @@
 <ion-content padding class="background">
 	<ion-list>
 		<ion-item>
-		  <!-- <ion-label position="floating">NAME  </ion-label> -->
-      <!-- <ion-input type="text" [(ngModel)]="username"></ion-input> -->
       <ion-input placeholder=" Name" [(ngModel)]="bookinggrab.customerName"></ion-input>
     </ion-item>
     <ion-item>
-		  <!-- <ion-label position="floating">CONTACT NUMBER  </ion-label>
-      <ion-input type="text" [(ngModel)]="username"></ion-input> -->
       <ion-input placeholder="Contact Number" [(ngModel)]="bookinggrab.contactNumber"></ion-input>
     </ion-item>
     <ion-item>
-		  <!-- <ion-label position="floating">CAT NAME  </ion-label>
-      <ion-input type="text" [(ngModel)]="username"></ion-input> -->
       <ion-input placeholder="Cat Name" [(ngModel)]="bookinggrab.catName"></ion-input>
     </ion-item>
     <ion-item>
-		  <!-- <ion-label position="floating">REMARK  </ion-label>
-      <ion-input type="text" [(ngModel)]="username"></ion-input> -->
       <ion-input placeholder="Remark" [(ngModel)]="bookinggrab.remark"></ion-input>
     </ion-item>
     <ion-row>
@@ -36,13 +28,12 @@
             <ion-input>
                 <ion-datetime value="19-02-1990" placeholder="Select Date"  [(ngModel)]="bookinggrab.date"></ion-datetime>
             </ion-input>
-          <!-- <ion-input placeholder="Check In Date" [(ngModel)]="bookinghotel.checkInDate"></ion-input> -->
         </ion-item>
 
         <ion-item>
             <ion-label>TIME </ion-label>
             <ion-input>
-                <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z"  [(ngModel)]="bookinggrab.time"></ion-datetime>
+                <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z" placeholder="Select Time" [(ngModel)]="bookinggrab.time"></ion-datetime>
             </ion-input>
         </ion-item>
       </ion-col>
@@ -54,13 +45,10 @@
     </ion-list>
     <ion-row>
       <ion-col>
-        <ion-button color="primary" expand="full" [routerLink]="['/receiptservice']" (click)="submitBookingGrab()">Confirm</ion-button>
-        <!-- <ion-button [routerLink]="['/receipthotel']" fill="solid" expand="block" size="med" color="primary">Confirm</ion-button> -->
+        <ion-button color="primary" expand="full"  (click)="submitBookingGrab()">Confirm</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button [routerLink]="['/menuhotel']" fill="solid" expand="block" size="med" color="warning" >Cancel</ion-button>
+        <ion-button [routerLink]="['/menugrab']" fill="solid" expand="block" size="med" color="warning" >Cancel</ion-button>
       </ion-col>
     </ion-row>
-    
-    <!-- <ion-button fill="solid" expand="block" color="dark" (click)="login()">Continue</ion-button> -->
 </ion-content>

@@ -7,7 +7,7 @@
   <ion-content>
     <ion-list>
         <ion-item>
-            <ion-input placeholder="Enter Hotel Name" [(ngModel)]="bookinghotel.customerName"></ion-input>
+            <ion-input placeholder="Enter Customer Name" [(ngModel)]="bookinghotel.customerName"></ion-input>
           </ion-item>
           <ion-item>
             <ion-input placeholder="Enter Contact Number" [(ngModel)]="bookinghotel.contactNumber"></ion-input>
@@ -30,12 +30,12 @@
           </ion-item>
           <ion-item>
               <ion-input>
-                  <ion-datetime display-format="h:mm A" picker-format="h:mm A" [(ngModel)]="bookinghotel.timeIn"></ion-datetime>
+                  <ion-datetime display-format="h:mm A" picker-format="h:mm A" placeholder="Select Time" [(ngModel)]="bookinghotel.timeIn"></ion-datetime>
               </ion-input>
           </ion-item>
           <ion-item>
               <ion-input>
-                  <ion-datetime display-format="h:mm A" picker-format="h:mm A" [(ngModel)]="bookinghotel.timeOut"></ion-datetime>
+                  <ion-datetime display-format="h:mm A" picker-format="h:mm A" placeholder="Select Time" [(ngModel)]="bookinghotel.timeOut"></ion-datetime>
               </ion-input>
           </ion-item>
     </ion-list>

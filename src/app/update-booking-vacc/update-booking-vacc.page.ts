@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {BookingHotel} from '../model/BookingHotel';
+import {BookingVacc} from '../model/BookingVacc';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FirebaseService} from '../services/firebase.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
@@ -7,14 +7,13 @@ import { UserService } from '../user.service';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 @Component({
-  selector: 'app-view-booking-hotel',
-  templateUrl: './view-booking-hotel.page.html',
-  styleUrls: ['./view-booking-hotel.page.scss'],
+  selector: 'app-update-booking-vacc',
+  templateUrl: './update-booking-vacc.page.html',
+  styleUrls: ['./update-booking-vacc.page.scss'],
 })
-
-export class ViewBookingHotelPage implements OnInit, AfterViewInit 
+export class UpdateBookingVaccPage implements OnInit, AfterViewInit  
 {
-  // private bookinghotel: Observable<BookingHotel[]>;
+
   sub: any;
   username: string;
   mainuser: AngularFirestoreDocument;
@@ -24,16 +23,14 @@ export class ViewBookingHotelPage implements OnInit, AfterViewInit
   contact: string;
   address: string;
 
-  bookinghotel: BookingHotel = 
+  bookingvacc: BookingVacc = 
   {
     customerName: '',
     contactNumber: '',
     catName: '',
     remark: '',
-    checkInDate: '',
-    checkOutDate: '',
-    timeIn: '',
-    timeOut: ''
+    date: '',
+    time: ''
   };
 
   constructor
@@ -44,9 +41,9 @@ export class ViewBookingHotelPage implements OnInit, AfterViewInit
     private afs: AngularFirestore,
     private user: UserService, 
     private storage: NativeStorage
-    ) 
-    {
-      this.mainuser = afs.doc(`users/${user.getUID()}`)
+  ) 
+  { 
+    this.mainuser = afs.doc(`users/${user.getUID()}`)
     this.sub = this.mainuser.valueChanges().subscribe(event => 
       {
         this.username = event.username
@@ -57,7 +54,7 @@ export class ViewBookingHotelPage implements OnInit, AfterViewInit
         this.contact = event.contact
         this.address = event.address
 		})
-    }
+  }
 
   ngOnInit() 
   {
@@ -71,22 +68,19 @@ export class ViewBookingHotelPage implements OnInit, AfterViewInit
   ngAfterViewInit(): void 
   {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    if (id) 
-    {
-      this.fbService.getHotelBooking(id).subscribe(hotelBookingData => 
-      {
-        this.bookinghotel = hotelBookingData;
+    if (id) {
+      this.fbService.getVaccBooking(id).subscribe(vaccBookingData => {
+        this.bookingvacc = vaccBookingData;
       });
-
-      
     }
   }
 
-  deleteBookingHotel() 
+  updateBookingVacc() 
   {
-    this.fbService.deleteBookingHotel(this.bookinghotel.id).then(() => {
-      this.router.navigateByUrl('/view-profile');
+    this.fbService.updateBookingVacc(this.bookingvacc).then(() => {
+     this.router.navigate(['/view-profile']);
     }, err => {
     });
   }
+
 }

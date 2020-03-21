@@ -24,22 +24,13 @@
               <ion-button shape="round" color="primary" routerLink="/tabs/edit-profile">Edit Profile</ion-button> -->
             </ion-col>
           </ion-row>
-        <!-- </ion-grid> -->
-          <!-- <app-loading *ngIf="busy"></app-loading> -->
-
-          <!-- <div class="center" *ngIf="!busy">
-            <div class="camera"></div>
-        
-            <input type="file" *ngIf="!imageURL" (change)="fileChanged($event)" class="filebtn" #fileButton />
-        
-            <ion-button shape="round" color="primary" (click)="uploadFile()" *ngIf="!imageURL" fill="outline">Upload File</ion-button>
-          </div> -->
       </div>
+
       <div>
         <ion-row>
           <ion-col size="8">
             <p>Welcome!</p>
-            <p>Welcome, {{ username }}</p>
+            <p>Welcome, {{ username }} !</p>
             <!-- <p>Contact Number: {{ contact }}</p>
             <p>Address: {{ address }}</p> -->
             <ion-button shape="round" color="primary" routerLink="/edit-profile">Edit Profile</ion-button>
@@ -81,6 +72,88 @@
               </ion-item>
         </ion-card>     
       </div>
+
+      <div>  
+        <ion-card>
+            <ion-title>Your Spa & Grooming Booking:</ion-title>
+            <ion-item *ngFor="let bookingspa of (spaBooking | async)">
+              <ion-label>
+                  <ion-row>
+                      <ion-col>
+                          <p>Name: {{bookingspa.customerName}}</p>
+                      </ion-col>
+                      <ion-col>
+                          <p>Cat Name: {{bookingspa.catName}}</p>
+                      </ion-col>
+                    </ion-row> 
+                  <ion-row>
+                    <ion-col>
+                        <p>Date : {{bookingspa.date | date: "dd/MM/yyyy"}}</p>
+                    </ion-col>
+                    <ion-col>
+                        <p>Time : {{bookingspa.time | date: "shortTime" }}</p>
+                    </ion-col>
+                  </ion-row>
+              </ion-label>
+                <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/view-booking-spa/'+bookingspa.id">View</ion-button>
+              </ion-item>
+        </ion-card>     
+      </div>
+
+      <div>  
+          <ion-card>
+              <ion-title>Your Vaccine & Neuter Booking:</ion-title>
+              <ion-item *ngFor="let bookingvacc of (vaccBooking | async)">
+                <ion-label>
+                    <ion-row>
+                        <ion-col>
+                            <p>Name: {{bookingvacc.customerName}}</p>
+                        </ion-col>
+                        <ion-col>
+                            <p>Cat Name: {{bookingvacc.catName}}</p>
+                        </ion-col>
+                      </ion-row> 
+                    <ion-row>
+                      <ion-col>
+                          <p>Date : {{bookingvacc.date | date: "dd/MM/yyyy"}}</p>
+                      </ion-col>
+                      <ion-col>
+                          <p>Time : {{bookingvacc.time | date: "shortTime" }}</p>
+                      </ion-col>
+                    </ion-row>
+                </ion-label>
+                  <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/view-booking-vaccine/'+bookingvacc.id">View</ion-button>
+                </ion-item>
+          </ion-card>     
+        </div>
+
+        <div>  
+            <ion-card>
+                <ion-title>Your Grab Booking:</ion-title>
+                <ion-item *ngFor="let bookinggrab of (grabBooking | async)">
+                  <ion-label>
+                      <ion-row>
+                          <ion-col>
+                              <p>Name: {{bookinggrab.customerName}}</p>
+                          </ion-col>
+                          <ion-col>
+                              <p>Cat Name: {{bookinggrab.catName}}</p>
+                          </ion-col>
+                        </ion-row> 
+                      <ion-row>
+                        <ion-col>
+                            <p>Date : {{bookinggrab.date | date: "dd/MM/yyyy"}}</p>
+                        </ion-col>
+                        <ion-col>
+                            <p>Time : {{bookinggrab.time | date: "shortTime" }}</p>
+                        </ion-col>
+                      </ion-row>
+                  </ion-label>
+                    <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/view-booking-grab/'+bookinggrab.id">View</ion-button>
+                  </ion-item>
+            </ion-card>     
+          </div>
+
       <!-- </div> -->
   </ion-grid>
   </ion-content>
