@@ -32,14 +32,13 @@ export class MenuhotelPage implements OnInit
   )
     {
       this.mainuser = afs.doc(`users/${user.getUID()}`)
-    this.sub = this.mainuser.valueChanges().subscribe(event => 
+      this.sub = this.mainuser.valueChanges().subscribe(event => 
       {
-		
-			this.username = event.username
-      // this.profilePic = event.profilePic
-      this.isAdmin= event.isAdmin
-      this.isCustomer= event.isCustomer
-		})
+        this.username = event.username
+        // this.profilePic = event.profilePic
+        this.isAdmin= event.isAdmin
+        this.isCustomer= event.isCustomer
+		  })
     }
 
   ngOnInit(): void 

@@ -2,6 +2,9 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {CatProduct} from '../model/CatProduct';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FirebaseService} from '../services/firebase.service';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { UserService } from '../user.service';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 @Component({
   selector: 'app-view-product',
@@ -11,18 +14,48 @@ import {FirebaseService} from '../services/firebase.service';
 
 export class ViewProductPage implements OnInit, AfterViewInit 
 {
-  //note properties
+  sub: any;
+  username: string;
+  mainuser: AngularFirestoreDocument;
+  isAdmin: boolean = false;
+  isCustomer: boolean = true;
+  productPic: string;
+
   product: CatProduct = {
     productName: '',
     productDetails: '',
-    productPrice: ''
+    productPrice: null,
+    amount: null
     // createdAt: ''
   };
 
-  constructor(private activatedRoute: ActivatedRoute, private fbService: FirebaseService, private router: Router) { }
+  constructor
+  (
+    private activatedRoute: ActivatedRoute,
+    private fbService: FirebaseService, 
+    private router: Router,
+    private afs: AngularFirestore,
+    private user: UserService, 
+    private storage: NativeStorage
+  )
+  {
+    this.mainuser = afs.doc(`users/${user.getUID()}`)
+    this.sub = this.mainuser.valueChanges().subscribe(event => 
+    {
+      this.username = event.username
+      // this.profilePic = event.profilePic
+      this.isAdmin= event.isAdmin
+      this.isCustomer= event.isCustomer
+    })
+  }
 
-  ngOnInit() 
-  {}
+  
+  ngOnInit(): void 
+  {
+    this.storage.setItem('username', this.username);
+    this.storage.setItem('isAdmin', this.isAdmin);
+    this.storage.setItem('isCustomer', this.isCustomer);
+  }
 
   ngAfterViewInit(): void 
   {

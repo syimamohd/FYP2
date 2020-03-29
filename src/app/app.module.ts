@@ -18,6 +18,7 @@ import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/fi
 import { HttpModule } from '@angular/http';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { AuthService } from './auth.service';
+import { CartModalPageModule } from './cart-modal/cart-modal.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +31,7 @@ import { AuthService } from './auth.service';
 	  AngularFireAuthModule,
     AngularFirestoreModule,
     HttpModule,
+    CartModalPageModule
   ],
   providers: [
     StatusBar,

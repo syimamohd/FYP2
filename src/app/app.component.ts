@@ -32,11 +32,11 @@ export class AppComponent {
       this.splashScreen.hide();
 
       this.pages = [
-        // {
-        // pagename: "Login",
-        // icon: "enter",
-        // url: "/login"
-        // },
+        {
+        pagename: "Dashboard",
+        icon: "home",
+        url: "/home"
+        },
         // {
         //   pagename: "Sign Up",
         //   icon: "person-add-outline",
@@ -53,15 +53,20 @@ export class AppComponent {
           url: "/booking"
         },
         {
+          pagename: "Cat Products",
+          icon: "basket",
+          url: "/menuproduct"
+        },
+        {
           pagename: "Contact Us",
           icon: "call",
           url: "/"
         },
-        {
-          pagename: "Information",
-          icon: "information",
-          url: "/"
-        },
+        // {
+        //   pagename: "Information",
+        //   icon: "information",
+        //   url: "/"
+        // },
         // {
         //   pagename: "Log Out",
         //   icon: "exit",

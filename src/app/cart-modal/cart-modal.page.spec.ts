@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { MenuproductAdminPage } from './menuproduct-admin.page';
+import { CartModalPage } from './cart-modal.page';
 
-describe('MenuproductAdminPage', () => {
-  let component: MenuproductAdminPage;
-  let fixture: ComponentFixture<MenuproductAdminPage>;
+describe('CartModalPage', () => {
+  let component: CartModalPage;
+  let fixture: ComponentFixture<CartModalPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MenuproductAdminPage ],
+      declarations: [ CartModalPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MenuproductAdminPage);
+    fixture = TestBed.createComponent(CartModalPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

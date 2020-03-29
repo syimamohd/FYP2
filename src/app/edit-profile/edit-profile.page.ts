@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 	styleUrls: ['./edit-profile.page.scss'],
 })
 
-export class EditProfilePage implements OnInit {
+export class EditProfilePage implements OnInit 
+{
 
 	mainuser: AngularFirestoreDocument
 	sub

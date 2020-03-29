@@ -86,9 +86,7 @@ export class BookinghotelPage implements OnInit
 
       this.router.navigateByUrl('/menuhotel');
     }, err => {
-    });
-
- 
+    })
 
   }
 

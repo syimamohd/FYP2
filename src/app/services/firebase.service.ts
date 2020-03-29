@@ -10,14 +10,11 @@ import {BookingHotel} from '../model/BookingHotel';
 import {BookingSpa} from '../model/BookingSpa';
 import {BookingVacc} from '../model/BookingVacc';
 import {BookingGrab} from '../model/BookingGrab';
-
 import {AngularFirestore, AngularFirestoreCollection, DocumentReference} from '@angular/fire/firestore';
 import {map, take} from 'rxjs/operators';
+import { PurchasedItem } from '../model/PurchasedItem';
 
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root'})
 
 export class FirebaseService 
 {
@@ -34,6 +31,7 @@ export class FirebaseService
   private spaBooking: Observable<BookingSpa[]>;
   private vaccBooking: Observable<BookingVacc[]>;
   private grabBooking: Observable<BookingGrab[]>;
+  private purchasedItem: Observable<PurchasedItem[]>;
 
   private noteCollection: AngularFirestoreCollection<Note>;
   private catHotelCollection: AngularFirestoreCollection<CatHotel>;
@@ -46,6 +44,7 @@ export class FirebaseService
   private catSpaBookingCollection: AngularFirestoreCollection<BookingSpa>;
   private catVaccBookingCollection: AngularFirestoreCollection<BookingVacc>;
   private catGrabBookingCollection: AngularFirestoreCollection<BookingGrab>;
+  private purchasedItemCollection: AngularFirestoreCollection<PurchasedItem>;
 
   constructor(private afs: AngularFirestore) 
   {
@@ -61,6 +60,20 @@ export class FirebaseService
     this.catSpaBookingCollection = this.afs.collection<BookingSpa>('spaBooking');
     this.catVaccBookingCollection = this.afs.collection<BookingVacc>('vaccBooking');
     this.catGrabBookingCollection = this.afs.collection<BookingGrab>('grabBooking');
+    this.purchasedItemCollection = this.afs.collection<PurchasedItem>('purchasedItem');
+
+    //get collection data
+    this.purchasedItem = this.purchasedItemCollection.snapshotChanges().pipe(
+      map(actions => 
+        {
+        return actions.map(a => 
+          {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+          });
+        })
+        );
 
     //get collection data
     this.notes = this.noteCollection.snapshotChanges().pipe(
@@ -580,5 +593,45 @@ export class FirebaseService
   {
     return this.catGrabBookingCollection.doc(id).delete();
   }
+
+  //-----------------------------------------PURCHASED ITEM-----------------------------------------------
+  //getting all item
+  getPurchasedItems(): Observable<PurchasedItem[]> 
+  {
+    return this.purchasedItem;
+  }
+
+  //getting single item
+  getPurchasedItem(id: string): Observable<PurchasedItem> 
+  {
+    return this.purchasedItemCollection.doc<PurchasedItem>(id).valueChanges().pipe(
+        take(1),
+        map(item => {
+         item.id = id;
+          return item;
+        })
+    );
+  }
+  
+  //create new item
+  submitPurchasedItem (item: PurchasedItem): Promise<DocumentReference> 
+  {
+    return this.purchasedItemCollection.add(item);
+  }
+
+  // //update grab details
+  // updateBookingGrab(bookinggrab: BookingGrab): Promise<void> 
+  // {
+  //   return this.catGrabBookingCollection.doc(bookinggrab.id).update(
+  //   { customerName: bookinggrab.customerName, contactNumber: bookinggrab.contactNumber,
+  //     catName: bookinggrab.catName, remark:bookinggrab.remark, date:bookinggrab.date,
+  //     time: bookinggrab.time });
+  // }
+
+  // //delete grab
+  // deleteBookingGrab(id: string): Promise<void> 
+  // {
+  //   return this.catGrabBookingCollection.doc(id).delete();
+  // }
 
 }

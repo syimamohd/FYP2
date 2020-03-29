@@ -1,17 +1,18 @@
 import { AfterViewInit,Component, OnInit, ViewChild } from '@angular/core';
 import { Http } from '@angular/http';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
-import {FirebaseService} from '../services/firebase.service';
+import { FirebaseService } from '../services/firebase.service';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { firestore } from 'firebase/app';
-import {BookingHotel} from '../model/BookingHotel';
-import {BookingSpa} from '../model/BookingSpa';
-import {BookingVacc} from '../model/BookingVacc';
-import {BookingGrab} from '../model/BookingGrab';
+import { BookingHotel } from '../model/BookingHotel';
+import { BookingSpa } from '../model/BookingSpa';
+import { BookingVacc } from '../model/BookingVacc';
+import { BookingGrab } from '../model/BookingGrab';
+import { PurchasedItem } from '../model/PurchasedItem';
 
 @Component({
   selector: 'app-view-profile',
@@ -25,6 +26,7 @@ export class ViewProfilePage implements OnInit //, AfterViewInit
   private spaBooking: Observable<BookingSpa[]>;
   private vaccBooking: Observable<BookingVacc[]>;
   private grabBooking: Observable<BookingGrab[]>;
+  private purchasedItem: Observable<PurchasedItem[]>;
 
   sub: any;
   username: string;
@@ -77,6 +79,13 @@ export class ViewProfilePage implements OnInit //, AfterViewInit
     time: ''
   };
 
+  item: PurchasedItem =
+  {
+    customerName: '',
+    contactNumber: '',
+    address:''
+  };
+
   constructor
   (
     public http: Http,
@@ -114,6 +123,7 @@ export class ViewProfilePage implements OnInit //, AfterViewInit
     this.spaBooking = this.fbService.getSpaBookings();
     this.vaccBooking = this.fbService.getVaccBookings();
     this.grabBooking = this.fbService.getGrabBookings();
+    this.purchasedItem = this.fbService.getPurchasedItems();
 
     this.storage.setItem('username', this.username);
     this.storage.setItem('isAdmin', this.isAdmin);

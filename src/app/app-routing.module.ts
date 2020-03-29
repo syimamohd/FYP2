@@ -25,6 +25,7 @@ const routes: Routes = [
   { path: 'model',  loadChildren: () => import('./model/BookingHotel')},
   { path: 'model',  loadChildren: () => import('./model/BookingSpa')},
   { path: 'model',loadChildren: () => import('./model/BookingVacc')},
+  { path: 'model',loadChildren: () => import('./model/PurchasedItem')},
   { path: 'add-note',loadChildren: () => import('./add-note/add-note.module').then( m => m.AddNotePageModule)},
   { path: 'view-note/:id', loadChildren: () => import('./view-note/view-note.module').then( m => m.ViewNotePageModule)},
   { path: 'update-note/:id',loadChildren: () => import('./update-note/update-note.module').then( m => m.UpdateNotePageModule)},
@@ -43,7 +44,6 @@ const routes: Routes = [
   { path: 'add-product',  loadChildren: () => import('./add-product/add-product.module').then( m => m.AddProductPageModule)},
   { path: 'view-product/:id',loadChildren: () => import('./view-product/view-product.module').then( m => m.ViewProductPageModule)},
   { path: 'update-product/:id', loadChildren: () => import('./update-product/update-product.module').then( m => m.UpdateProductPageModule)},
-  { path: 'menuproduct-admin', loadChildren: () => import('./menuproduct-admin/menuproduct-admin.module').then( m => m.MenuproductAdminPageModule)},
   { path: 'bookingspa',  loadChildren: () => import('./bookingspa/bookingspa.module').then( m => m.BookingspaPageModule)},
   { path: 'bookingvacc',  loadChildren: () => import('./bookingvacc/bookingvacc.module').then( m => m.BookingvaccPageModule)},
   { path: 'bookinggrab', loadChildren: () => import('./bookinggrab/bookinggrab.module').then( m => m.BookinggrabPageModule)},
@@ -57,7 +57,12 @@ const routes: Routes = [
   { path: 'update-booking-spa/:id', loadChildren: () => import('./update-booking-spa/update-booking-spa.module').then( m => m.UpdateBookingSpaPageModule)},
   { path: 'update-booking-grab/:id', loadChildren: () => import('./update-booking-grab/update-booking-grab.module').then( m => m.UpdateBookingGrabPageModule)},
   { path: 'update-booking-vacc/:id', loadChildren: () => import('./update-booking-vacc/update-booking-vacc.module').then( m => m.UpdateBookingVaccPageModule)},
-
+  { path: 'menuproduct', loadChildren: () => import('./menuproduct/menuproduct.module').then( m => m.MenuproductPageModule)},
+  { path: 'checkout', loadChildren: () => import('./checkout/checkout.module').then( m => m.CheckoutPageModule)},
+  {
+    path: 'cart-modal/:id',
+    loadChildren: () => import('./cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
+  },
 ];
 
 @NgModule({
