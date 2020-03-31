@@ -2,7 +2,6 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CatProduct} from '../model/CatProduct';
-//call the page that has crud operaions in firebase.service
 import {FirebaseService} from '../services/firebase.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserService } from '../user.service';

@@ -17,7 +17,6 @@ export class CartModalPage implements OnInit
     productPrice: null,
     amount: null,
     id: null
-  
   };
  
   cart: CatProduct[] = [];

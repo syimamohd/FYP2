@@ -13,6 +13,7 @@ import {BookingGrab} from '../model/BookingGrab';
 import {AngularFirestore, AngularFirestoreCollection, DocumentReference} from '@angular/fire/firestore';
 import {map, take} from 'rxjs/operators';
 import { PurchasedItem } from '../model/PurchasedItem';
+import { Content } from '../model/Content';
 
 @Injectable({ providedIn: 'root'})
 
@@ -32,6 +33,7 @@ export class FirebaseService
   private vaccBooking: Observable<BookingVacc[]>;
   private grabBooking: Observable<BookingGrab[]>;
   private purchasedItem: Observable<PurchasedItem[]>;
+  private contentItem: Observable<Content[]>;
 
   private noteCollection: AngularFirestoreCollection<Note>;
   private catHotelCollection: AngularFirestoreCollection<CatHotel>;
@@ -45,6 +47,7 @@ export class FirebaseService
   private catVaccBookingCollection: AngularFirestoreCollection<BookingVacc>;
   private catGrabBookingCollection: AngularFirestoreCollection<BookingGrab>;
   private purchasedItemCollection: AngularFirestoreCollection<PurchasedItem>;
+  private contentCollection: AngularFirestoreCollection<Content>;
 
   constructor(private afs: AngularFirestore) 
   {
@@ -61,6 +64,20 @@ export class FirebaseService
     this.catVaccBookingCollection = this.afs.collection<BookingVacc>('vaccBooking');
     this.catGrabBookingCollection = this.afs.collection<BookingGrab>('grabBooking');
     this.purchasedItemCollection = this.afs.collection<PurchasedItem>('purchasedItem');
+    this.contentCollection = this.afs.collection<Content>('contentItem');
+
+    //content data collection
+    this.contentItem = this.contentCollection.snapshotChanges().pipe(
+      map(actions => 
+        {
+        return actions.map(a => 
+          {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+          });
+        })
+        );
 
     //get collection data
     this.purchasedItem = this.purchasedItemCollection.snapshotChanges().pipe(
@@ -633,5 +650,43 @@ export class FirebaseService
   // {
   //   return this.catGrabBookingCollection.doc(id).delete();
   // }
+
+  //-----------------------------------------DASHBOARD CONTENT-----------------------------------------------
+  //getting all item
+  getContents(): Observable<Content[]> 
+  {
+    return this.contentItem;
+  }
+
+  //getting single item
+  getContent(id: string): Observable<Content> 
+  {
+    return this.contentCollection.doc<Content>(id).valueChanges().pipe(
+        take(1),
+        map(content => {
+         content.id = id;
+          return content;
+        })
+    );
+  }
+  
+  //create new item
+  addContent (content: Content): Promise<DocumentReference> 
+  {
+    return this.contentCollection.add(content);
+  }
+
+
+  //update content details
+  updateContent(content: Content): Promise<void> 
+  {
+    return this.contentCollection.doc(content.id).update({ title: content.title, contentDetails: content.contentDetails });
+  }
+
+  //delete hotel
+  deleteContent(id: string): Promise<void> 
+  {
+    return this.contentCollection.doc(id).delete();
+  }
 
 }

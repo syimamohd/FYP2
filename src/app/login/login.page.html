@@ -1,34 +1,40 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
 		<ion-title>Login</ion-title>
 		<ion-buttons slot="start">
 				<ion-back-button></ion-back-button>
 		</ion-buttons>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content padding class="background">
-		<div class="container" size="small">
-				<ion-card>
-						<ion-row>
-							<ion-col size-sm="2" ><ion-img class="imglogin" src="assets/img/sign in.jpg"></ion-img></ion-col>
-				
-							<ion-col>
-								<ion-list>
-									<ion-item>
-										<ion-label position="floating">Username</ion-label>
-											<ion-input type="text" [(ngModel)]="username"></ion-input>
-									</ion-item>
-													  
-									<ion-item>
-										<ion-label position="floating">Password</ion-label>
-											<ion-input type="password" [(ngModel)]="password"></ion-input>
-									</ion-item>		  
-									</ion-list>
-									<ion-button class="button" fill="solid"  color="dark" (click)="login()">Login</ion-button>
-									<ion-button class="button" fill="solid"  color="dark" [routerLink]="['/register']">Sign Up</ion-button>
-							</ion-col>			
-						</ion-row>		
-					</ion-card>
-		</div>	
-</ion-content>
+		<ion-grid>
+			<ion-row>
+			  <ion-col size-md="6" offset-md="3">
+				  <ion-card>
+					<div class="ion-text-center">
+					<ion-card-header>
+					  <ion-card-title>Login</ion-card-title>
+					</ion-card-header>
+						<ion-card-content>
+							<ion-item>
+								<ion-label position="floating"> Username: </ion-label>
+								<ion-input type="text" [(ngModel)]="username"></ion-input>
+							</ion-item>
+							<ion-item>
+								<ion-label position="floating"> Password </ion-label>
+								<ion-input type="password" [(ngModel)]="password"></ion-input>
+							</ion-item>
+							<ion-button class="button" fill="solid"  color="dark" (click)="login()">Login</ion-button>
+							<ion-button class="button" fill="solid"  color="dark" [routerLink]="['/register']">Sign Up</ion-button>
+							<br>
+							<!-- <ion-button id="btn-confirm"><ion-icon slot="start" name="add"></ion-icon> Sign Up </ion-button>
+							<ion-button fill="outline" color="danger" id="btn-cancel"> <ion-icon slot="start" name="close"></ion-icon>Cancel </ion-button>  -->
+						</ion-card-content>
+					</div>	
+				  </ion-card>
+			  </ion-col>
+			</ion-row>
+		</ion-grid>
+	  </ion-content>
+

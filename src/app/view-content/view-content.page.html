@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar color="dark">
+      <!-- <ion-title>{{content.title}}</ion-title> -->
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-card color="secondary">
+      <ion-card-header>
+        <!-- <ion-card-subtitle>{{content.createdAt | date: 'short'}}</ion-card-subtitle> -->
+        <!-- <ion-card-title>{{hotel.hotelName}}</ion-card-title> -->
+      </ion-card-header>
+  
+      <ion-card-content>
+        <p align="justify">{{content.title}}</p>
+        <br>
+        <p align="justify">{{content.contentDetails}}</p>
+        <ion-button slot="start" color="warning" [routerLink]="'/update-content/' + content.id">Edit</ion-button>
+        <ion-button slot="end" color="danger" (click)="deleteContent()">Delete</ion-button>
+      </ion-card-content>
+  
+    </ion-card>
+  </ion-content>
+  

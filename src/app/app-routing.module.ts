@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'model',  loadChildren: () => import('./model/BookingSpa')},
   { path: 'model',loadChildren: () => import('./model/BookingVacc')},
   { path: 'model',loadChildren: () => import('./model/PurchasedItem')},
+  { path: 'model',loadChildren: () => import('./model/Content')},
   { path: 'add-note',loadChildren: () => import('./add-note/add-note.module').then( m => m.AddNotePageModule)},
   { path: 'view-note/:id', loadChildren: () => import('./view-note/view-note.module').then( m => m.ViewNotePageModule)},
   { path: 'update-note/:id',loadChildren: () => import('./update-note/update-note.module').then( m => m.UpdateNotePageModule)},
@@ -59,10 +60,10 @@ const routes: Routes = [
   { path: 'update-booking-vacc/:id', loadChildren: () => import('./update-booking-vacc/update-booking-vacc.module').then( m => m.UpdateBookingVaccPageModule)},
   { path: 'menuproduct', loadChildren: () => import('./menuproduct/menuproduct.module').then( m => m.MenuproductPageModule)},
   { path: 'checkout', loadChildren: () => import('./checkout/checkout.module').then( m => m.CheckoutPageModule)},
-  {
-    path: 'cart-modal/:id',
-    loadChildren: () => import('./cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
-  },
+  { path: 'cart-modal/:id', loadChildren: () => import('./cart-modal/cart-modal.module').then( m => m.CartModalPageModule)},
+  { path: 'add-content', loadChildren: () => import('./add-content/add-content.module').then( m => m.AddContentPageModule)},
+  { path: 'view-content/:id', loadChildren: () => import('./view-content/view-content.module').then( m => m.ViewContentPageModule)},
+  { path: 'update-content/:id', loadChildren: () => import('./update-content/update-content.module').then( m => m.UpdateContentPageModule)},
 ];
 
 @NgModule({

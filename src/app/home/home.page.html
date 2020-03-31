@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="dark">
     <ion-title>Home</ion-title>
     <ion-buttons slot="start">
         <ion-menu-button autoHide="false"></ion-menu-button>
@@ -9,25 +9,65 @@
 
 <ion-content [fullscreen]="true" class="background">
   
-    <h2>Welcome to Little Paws Station!</h2>
- 
-  <!-- <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Home</ion-title>
-    </ion-toolbar>
-  </ion-header> -->
-
-  <!-- <div id="container">
-      <ion-col>
-          <ion-button size="large" [routerLink]="['/login']" fill="solid" color="dark">Login</ion-button>
-      </ion-col>
-      <ion-col>
-          <ion-button size="large" [routerLink]="['/register']" fill="solid" color="dark">Sign Up</ion-button>
-      </ion-col>
-  </div> -->
-
-  <!-- <ion-button *ngIf="isAdmin" >Try</ion-button> -->
+     <ion-list>
+       <ion-card>
+          <ion-item *ngFor="let content of (contentItem | async)">
+              <ion-col>
+                  <!-- <ion-img size="med" class="img" src="assets/img/background.jpg"></ion-img> -->
+                  <ion-img src="https://ucarecdn.com/{{ contentPic }}/-/scale_crop/200x200/center/"></ion-img> 
+              </ion-col>
+              <div class="ion-text-center">
+              <ion-label>  
+                <h2>{{content.title}}</h2>
+                <p>{{content.contentDetails}}</p>
+              </ion-label>
+              </div>
+              <ion-button *ngIf="isAdmin" fill="outline" slot="end" [routerLink]="'/view-content/'+content.id">View</ion-button>
+            </ion-item>
+       </ion-card>
+     </ion-list>
+     <ion-fab *ngIf="isAdmin" vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button [routerLink]="'/add-content'">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
 </ion-content>
+
+  <ion-footer>
+    <ion-toolbar color="dark">
+      <ion-title>Footer</ion-title>
+    </ion-toolbar>
+  </ion-footer>
+
+<!-- <ion-row>
+          <ion-col size="6">
+            <ion-img class="img" src="assets/img/background.jpg"></ion-img>
+          </ion-col>
+         
+          <ion-col size="4">
+            <div class="ion-text-center">
+              <ion-text id="first" text-align="center">Best Cat Shop in Johor!</ion-text>
+            </div>
+          </ion-col>
+          
+      </ion-row>
+
+      <ion-row>
+        <div class="ion-text-center">
+            <h2>We provide the best services</h2>
+        </div>
+</ion-row> -->
+
+  <!-- <ion-card *ngIf="post as postData">
+      <ion-img src="https://ucarecdn.com/{{ postID }}/-/preview/{{ effect }}"></ion-img>
+      <ion-card-content>
+        <p>{{ postData.desc }}</p>
+      </ion-card-content>
+      <ion-item (click)="toggleHeart()">
+        <ion-icon [name]="heartType"></ion-icon>
+      </ion-item>
+    </ion-card> -->
+
 
 <!-- <ion-header>
   <ion-toolbar color="primary">
