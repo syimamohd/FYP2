@@ -27,7 +27,7 @@
         <ion-item>
             <ion-label>CHECK IN DATE</ion-label>
             <ion-input>
-                <ion-datetime displayFormat="D/MM/YYYY" pickerFormat="DDDD MMMM YYYY" placeholder="Select Date"  [(ngModel)]="bookinghotel.checkInDate"></ion-datetime>
+                <ion-datetime displayFormat="MMM DD, YYYY" pickerFormat="DDDD MMMM YYYY" placeholder="Select Date" value=(DateTime.Now) [(ngModel)]="todate" min = {{todate}} max="2025" [(ngModel)]="bookinghotel.checkInDate"></ion-datetime>
             </ion-input>
         </ion-item>
 
@@ -43,7 +43,7 @@
         <ion-item>
           <ion-label>CHECK OUT DATE</ion-label>
           <ion-input>
-              <ion-datetime displayFormat="D/MM/YYYY" pickerFormat="DDDD MMMM YYYY" placeholder="Select Date"  [(ngModel)]="bookinghotel.checkOutDate"></ion-datetime>
+              <ion-datetime displayFormat="D/MM/YYYY" pickerFormat="DDDD MMMM YYYY" placeholder="Select Date"  min = {{todate}} max="2025" [(ngModel)]="bookinghotel.checkOutDate"></ion-datetime>
           </ion-input>
         </ion-item>
 

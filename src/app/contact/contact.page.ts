@@ -11,12 +11,12 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-contact',
+  templateUrl: 'contact.page.html',
+  styleUrls: ['contact.page.scss'],
 })
 
-export class HomePage implements OnInit
+export class ContactPage implements OnInit
 {
   private contentItem : Observable<Content[]>;
 

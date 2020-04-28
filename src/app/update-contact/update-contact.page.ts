@@ -3,25 +3,26 @@ import {Content} from '../model/Content';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FirebaseService} from '../services/firebase.service';
 
-@Component({
-  selector: 'app-view-content',
-  templateUrl: './view-content.page.html',
-  styleUrls: ['./view-content.page.scss'],
+@Component
+({
+  selector: 'app-update-contact',
+  templateUrl: './update-contact.page.html',
+  styleUrls: ['./update-contact.page.scss'],
 })
 
-export class ViewContentPage implements OnInit, AfterViewInit 
+export class UpdateContactPage implements OnInit, AfterViewInit 
 {
-  //note properties
-  content: Content = {
-    
-    contentDetails: '',
+    content: Content = {
     title: '',
+    contentDetails: '',
     contactDetails:'',
     contacttitle:'',
-    // createdAt: ''
+    
+    // createdAt: new Date().getTime()
   };
 
-  constructor(private activatedRoute: ActivatedRoute, private fbService: FirebaseService, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private fbService: FirebaseService, private router: Router) 
+  {}
 
   ngOnInit() 
   {}
@@ -36,12 +37,11 @@ export class ViewContentPage implements OnInit, AfterViewInit
     }
   }
 
-  deleteContent() 
+  updateContent() 
   {
-    this.fbService.deleteContent(this.content.id).then(() => {
-      this.router.navigateByUrl('/home');
+    this.fbService.updateContent(this.content).then(() => {
+     this.router.navigate(['/home']);
     }, err => {
     });
   }
-
 }

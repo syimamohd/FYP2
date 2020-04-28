@@ -8,24 +8,99 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="background">
-  
      <ion-list>
-       <ion-card>
+        <ion-card>
           <ion-item *ngFor="let content of (contentItem | async)">
-              <ion-col>
-                  <!-- <ion-img size="med" class="img" src="assets/img/background.jpg"></ion-img> -->
-                  <ion-img src="https://ucarecdn.com/{{ contentPic }}/-/scale_crop/200x200/center/"></ion-img> 
-              </ion-col>
-              <div class="ion-text-center">
-              <ion-label>  
-                <h2>{{content.title}}</h2>
-                <p>{{content.contentDetails}}</p>
-              </ion-label>
-              </div>
-              <ion-button *ngIf="isAdmin" fill="outline" slot="end" [routerLink]="'/view-content/'+content.id">View</ion-button>
-            </ion-item>
-       </ion-card>
+            <ion-slides>
+              <ion-slide>
+                <div class="slide">
+                  <img src="assets/img/logo.png"/>
+                  <h2>{{content.title}}</h2>
+                  <p>{{content.contentDetails}}</p>
+                </div>
+              <ion-button *ngIf="isAdmin" fill="outline" slot="end" [routerLink]="'/view-content/'+content.id">Edit</ion-button>
+              </ion-slide>
+              <!-- <ion-slide>
+                <img src="assets/img/logo.png"/>
+                <h2>What is Ionic?</h2>
+                <p><b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.</p>
+              </ion-slide> -->
+            </ion-slides>
+          </ion-item>  
+        </ion-card>
+
+        <ion-card>
+            <ion-slide>
+                <div class="slide">
+                  <img src="background.jpg"/>
+                  <h2>We provide the best services</h2>
+                  <h2><a href="https://www.instagram.com/littlepawsstation/">Visit our insta!</a></h2>
+                  <p><a [routerLink]="'/menuhotel/'">Cat Boarding</a>,<a [routerLink]="'/menuspa/'"> Cat Spa & Grooming</a>,<a [routerLink]="'/menuvaccine/'">Cat Vaccine & Neuter</a>,<a [routerLink]="'/menugrab/'"> Cat Grab (soon)</a></p>
+                </div>
+                <ion-button *ngIf="isAdmin" fill="outline" slot="end" [routerLink]="'/view-content/'">Edit</ion-button>
+              </ion-slide>
+         </ion-card>
+        <ion-card>
+            <ion-slide>
+                <div class="slide">
+                  <img size="med" src="assets/img/vaccine.jpg"/>
+                  <!-- <h2>We provide the best services</h2> -->
+                  <!-- <p>The <b>ionic conference app</b> is a practical preview of the ionic framework in action, and a demonstration of proper code use.</p> -->
+                  <p>Vaccine and Neuter Service by our Certified Veterinarian every weekend.</p>
+                </div>
+                <ion-button *ngIf="isAdmin" fill="outline" slot="end" [routerLink]="'/view-content/'">Edit</ion-button>
+              </ion-slide>
+         </ion-card>
+         <ion-card>
+           <ion-slides>
+              <ion-slide>
+                  <div class="slide">
+                    <!-- <img src="vaccine.jpg"/> -->
+                    <h2>Operating Hours:</h2>
+                      <p>Everyday</p>
+                      <p>10 AM to PM</p>
+                    <h2>Address:</h2>
+                      <p>Little Paws Station</p>
+                      <p>57 Jalan Pulai 21,</p>
+                      <p>Taman Pulai Utama,</p>
+                      <p>81300 Skudai,</p>
+                      <p>Johor Bharu</p>
+  
+                    <!-- <ion-col>
+                      <ion-row>
+                        <h2>Operating Hours:</h2>
+                        <p>Everyday</p>
+                        <p>10 AM to PM</p>
+                      </ion-row>
+                      <ion-row>
+                          <h2>Address:</h2>
+                          <p>Little Paws Station</p>
+                          <p>57 Jalan Pulai 21,</p>
+                          <p>Taman Pulai Utama,</p>
+                          <p>81300 Skudai,</p>
+                          <p>Johor Bharu</p>
+                        </ion-row>
+                    </ion-col>
+                    <ion-col>
+                        <img src="assets/img/map.png"/>
+                    </ion-col> -->
+                  </div>
+                  <ion-button *ngIf="isAdmin" fill="outline" slot="end" [routerLink]="'/view-content/'">Edit</ion-button>
+                </ion-slide>
+                <ion-slide>
+                  
+                        <div class="slide">
+                            <img src="assets/img/map.png"/>
+                            <h2>Location</h2>
+                        </div>    
+                    
+                </ion-slide>
+           </ion-slides>
+          </ion-card> 
+         
+
      </ion-list>
+
      <ion-fab *ngIf="isAdmin" vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button [routerLink]="'/add-content'">
           <ion-icon name="add"></ion-icon>
@@ -33,73 +108,11 @@
       </ion-fab>
 </ion-content>
 
-  <ion-footer>
+  <!-- <ion-footer>
     <ion-toolbar color="dark">
       <ion-title>Footer</ion-title>
     </ion-toolbar>
-  </ion-footer>
-
-<!-- <ion-row>
-          <ion-col size="6">
-            <ion-img class="img" src="assets/img/background.jpg"></ion-img>
-          </ion-col>
-         
-          <ion-col size="4">
-            <div class="ion-text-center">
-              <ion-text id="first" text-align="center">Best Cat Shop in Johor!</ion-text>
-            </div>
-          </ion-col>
-          
-      </ion-row>
-
-      <ion-row>
-        <div class="ion-text-center">
-            <h2>We provide the best services</h2>
-        </div>
-</ion-row> -->
-
-  <!-- <ion-card *ngIf="post as postData">
-      <ion-img src="https://ucarecdn.com/{{ postID }}/-/preview/{{ effect }}"></ion-img>
-      <ion-card-content>
-        <p>{{ postData.desc }}</p>
-      </ion-card-content>
-      <ion-item (click)="toggleHeart()">
-        <ion-icon [name]="heartType"></ion-icon>
-      </ion-item>
-    </ion-card> -->
+  </ion-footer> -->
 
 
-<!-- <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>
-      My Notes
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
-  <div class="title-block">
-    <div class="heading">My Notes</div>
-  </div>
-  <ion-searchbar></ion-searchbar>
-  <ion-list>
-    <ion-list-header>
-      <ion-label>Notes</ion-label>
-    </ion-list-header>
-    <ion-item *ngFor="let note of (notes | async)">
-      <ion-thumbnail slot="start">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
-      </ion-thumbnail>
-      <ion-label>
-        <h2>{{note.title}}</h2>
-        <p>{{note.content}}</p>
-      </ion-label>
-      <ion-button fill="outline" slot="end" [routerLink]="'/view-note/'+note.id">View</ion-button>
-    </ion-item>
-  </ion-list>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button [routerLink]="'/add-note'">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-</ion-content> -->

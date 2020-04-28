@@ -4,12 +4,12 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FirebaseService} from '../services/firebase.service';
 
 @Component({
-  selector: 'app-view-content',
-  templateUrl: './view-content.page.html',
-  styleUrls: ['./view-content.page.scss'],
+  selector: 'app-view-contact',
+  templateUrl: './view-contact.page.html',
+  styleUrls: ['./view-contact.page.scss'],
 })
 
-export class ViewContentPage implements OnInit, AfterViewInit 
+export class ViewContactPage implements OnInit, AfterViewInit 
 {
   //note properties
   content: Content = {

@@ -8,11 +8,11 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { UserService } from '../user.service';
 
 @Component({
-  selector: 'app-add-content',
-  templateUrl: './add-content.page.html',
-  styleUrls: ['./add-content.page.scss'],
+  selector: 'app-add-contact',
+  templateUrl: './add-contact.page.html',
+  styleUrls: ['./add-contact.page.scss'],
 })
-export class AddContentPage implements OnInit 
+export class AddContactPage implements OnInit 
 {
     mainuser: AngularFirestoreDocument
     sub
@@ -53,14 +53,14 @@ export class AddContentPage implements OnInit
         // this.address = event.address
       })
       
-      // this.mainuser = afs.doc(`contentItem/${user.getUID()}`)
-      // this.sub = this.mainuser.valueChanges().subscribe(event => 
-      //   {
-      //     // this.username = event.username
-      //     //this.contentPic = event.contentPic
-      //     // this.isAdmin= event.isAdmin
-      //     // this.isCustomer= event.isCustomer
-      //   })
+      this.mainuser = afs.doc(`contentItem/${user.getUID()}`)
+      this.sub = this.mainuser.valueChanges().subscribe(event => 
+        {
+          // this.username = event.username
+          this.contentPic = event.contentPic
+          // this.isAdmin= event.isAdmin
+          // this.isCustomer= event.isCustomer
+        })
     }
 
   ngOnInit() 

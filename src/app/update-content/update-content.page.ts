@@ -14,7 +14,9 @@ export class UpdateContentPage implements OnInit, AfterViewInit
 {
     content: Content = {
     title: '',
-    contentDetails: ''
+    contentDetails: '',
+    contactDetails:'',
+    contacttitle:'',
     
     // createdAt: new Date().getTime()
   };

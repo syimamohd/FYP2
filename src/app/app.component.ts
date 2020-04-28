@@ -60,7 +60,7 @@ export class AppComponent {
         {
           pagename: "Contact Us",
           icon: "call",
-          url: "/"
+          url: "/contact"
         },
         // {
         //   pagename: "Information",

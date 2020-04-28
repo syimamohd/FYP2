@@ -64,6 +64,22 @@ const routes: Routes = [
   { path: 'add-content', loadChildren: () => import('./add-content/add-content.module').then( m => m.AddContentPageModule)},
   { path: 'view-content/:id', loadChildren: () => import('./view-content/view-content.module').then( m => m.ViewContentPageModule)},
   { path: 'update-content/:id', loadChildren: () => import('./update-content/update-content.module').then( m => m.UpdateContentPageModule)},
+  {
+    path: 'contact',
+    loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
+  },
+  {
+    path: 'add-contact',
+    loadChildren: () => import('./add-contact/add-contact.module').then( m => m.AddContactPageModule)
+  },
+  {
+    path: 'view-contact/:id',
+    loadChildren: () => import('./view-contact/view-contact.module').then( m => m.ViewContactPageModule)
+  },
+  {
+    path: 'update-contact/:id',
+    loadChildren: () => import('./update-contact/update-contact.module').then( m => m.UpdateContactPageModule)
+  },
 ];
 
 @NgModule({

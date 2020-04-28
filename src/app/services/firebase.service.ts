@@ -680,7 +680,7 @@ export class FirebaseService
   //update content details
   updateContent(content: Content): Promise<void> 
   {
-    return this.contentCollection.doc(content.id).update({ title: content.title, contentDetails: content.contentDetails });
+    return this.contentCollection.doc(content.id).update({ title: content.title, contentDetails: content.contentDetails,  contacttitle: content.contacttitle, contactDetails: content.contactDetails });
   }
 
   //delete hotel

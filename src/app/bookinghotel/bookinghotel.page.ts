@@ -22,6 +22,8 @@ export class BookinghotelPage implements OnInit
   mainuser: AngularFirestoreDocument;
   isAdmin: boolean = false;
   isCustomer: boolean = true;
+  today = new Date() ;
+  todate : string;
 
     bookinghotel: BookingHotel = {
       customerName: '',
@@ -60,6 +62,8 @@ export class BookinghotelPage implements OnInit
 
   ngOnInit(): void 
   {
+    this.today.setDate(this.today.getDate() + 3);
+    this.todate = this.today.toISOString().substr(0, 10);
     
     this.storage.setItem('username', this.username);
     this.storage.setItem('isAdmin', this.isAdmin);
