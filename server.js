@@ -16,8 +16,22 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use(express.static('www'))
+// Serve only the static files form the dist directory
+app.use(express.static('www'));
+
+app.get('/*', function(req,res) {
+
+  if(req.url === '/') {
+    res.sendFile(path.join(__dirname,'/www/index.html'));
+  }
+  else {
+    res.sendFile(path.join(__dirname, '/www' + req.url))
+  }
+
+});
+
 app.set('port', process.env.PORT || 5000)
+
 app.listen(app.get('port'), () => {
   var port = app.get('port')
   console.log(`No. Port ${port}`)
