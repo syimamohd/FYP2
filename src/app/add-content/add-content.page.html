@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar color="dark">
+      <ion-title>New Content</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  <!-- <ion-list> -->
+      <div *ngIf="!busy">
+      <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)" data-multiple="true" />
+
+      <div>
+        <ion-img class="content-pic" src="https://ucarecdn.com/{{ contentPic }}/-/scale_crop/150x150/center/"></ion-img>
+        <ion-button  (click)="updateContentPic()">Change</ion-button>
+      </div>
+      <div class="content-info">
+          <ion-item>
+              <ion-input placeholder="Enter Content Title" [(ngModel)]="content.title"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-textarea rows="6" [(ngModel)]="content.contentDetails" placeholder="Enter content details here..."></ion-textarea>
+            </ion-item>
+      </div>
+    </div>
+  <!-- </ion-list> -->
+    <ion-button color="primary" expand="full" (click)="addContent()">Add to Dashboard</ion-button>
+  </ion-content>

@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button icon="arrow-back-outline"></ion-back-button>
+          </ion-buttons>
+      <ion-title>Customer Details</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding class="background">
+    <ion-list>
+      <ion-item>
+        <!-- <ion-label position="floating">NAME  </ion-label> -->
+        <ion-input placeholder=" Name" [(ngModel)]="item.customerName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Contact Number" [(ngModel)]="item.contactNumber"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-input placeholder="Full Address" [(ngModel)]="item.address"></ion-input>
+        </ion-item>
+      <!-- <ion-item>
+        <ion-input placeholder="Remark" [(ngModel)]="bookinghotel.remark"></ion-input>
+      </ion-item> -->
+      <ion-item>
+          <ion-label>Payment Type</ion-label>
+          <ion-select placeholder="Select One">
+            <ion-select-option value="c">Cash On Delivery</ion-select-option>
+            <ion-select-option value="o">Online Payment</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="submitPurchasedItem()" fill="solid" expand="block" size="med" color="primary">Confirm</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button [routerLink]="['/menuproduct']" fill="solid" expand="block" size="med" color="warning" >Cancel</ion-button>
+        </ion-col>
+      </ion-row>
+      
+  </ion-content>
+  
+  <!-- [routerLink]="'/receipthotel/'+bookinghotel.id"  -->

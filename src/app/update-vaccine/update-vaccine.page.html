@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Update Vaccine</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+        <ion-item>
+            <ion-input placeholder="Enter Vaccine Name" [(ngModel)]="vaccine.vaccineName"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-textarea rows="6" [(ngModel)]="vaccine.vaccineDetails" placeholder="Enter vaccine details here..."></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-input placeholder="Enter Vaccine Price" [(ngModel)]="vaccine.vaccinePrice"></ion-input>
+          </ion-item>
+    </ion-list>
+    <ion-button color="primary" expand="full" (click)="updateVaccine()">Update</ion-button>
+  </ion-content>

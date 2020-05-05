@@ -1,0 +1,182 @@
+<ion-header>
+  <ion-toolbar  color="dark">
+    <ion-title >My Profile</ion-title>
+    <ion-buttons slot="start">
+        <ion-menu-button autoHide="false">
+          </ion-menu-button>
+        <!-- <ion-back-button icon="arrow-back-outline"></ion-back-button> -->
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+      <!-- <app-loading *ngIf="!posts"></app-loading> -->
+      <ion-grid>
+        <ion-row>
+            <div class="center" id="profile-info" *ngIf="username">
+                <!-- <ion-grid> -->
+                  <ion-row>
+                    <ion-col size="4" class="user-image">
+                      <ion-img src="https://ucarecdn.com/{{ profilePic }}/-/scale_crop/200x200/center/"></ion-img>
+                    </ion-col>
+                    <ion-col size="8">
+                      <h1>Welcome, {{ username }} !</h1>
+                      <!-- <p>Contact Number: {{ contact }}</p>
+                      <p>Address: {{ address }}</p> -->
+                      <ion-button shape="round" color="primary" routerLink="/edit-profile">Edit Profile</ion-button>
+                    </ion-col>
+                  </ion-row>
+              </div>
+        </ion-row>
+      
+      <div>  
+        <ion-card>
+            <ion-title>Your Hotel Booking:</ion-title>
+            <ion-item *ngFor="let bookinghotel of (hotelBooking | async)">
+              <ion-label>
+                  <ion-row>
+                      <ion-col>
+                          <p>Name: {{bookinghotel.customerName}}</p>
+                      </ion-col>
+                      <ion-col>
+                          <p>Cat Name: {{bookinghotel.catName}}</p>
+                      </ion-col>
+                    </ion-row> 
+                  <ion-row>
+                    <ion-col>
+                        <p>Check In : {{bookinghotel.checkInDate | date: "dd/MM/yyyy"}}</p>
+                    </ion-col>
+                    <ion-col>
+                        <p>Check Out : {{bookinghotel.checkOutDate | date: "dd/MM/yyyy"}}</p>
+                    </ion-col>
+                  </ion-row>  
+                  <ion-row>
+                    <ion-col>
+                        <p>Time In : {{bookinghotel.timeIn | date: "shortTime" }}</p>
+                    </ion-col>
+                    <ion-col>
+                        <p>Time Out : {{bookinghotel.timeOut | date: "shortTime" }}</p>
+                    </ion-col>
+                  </ion-row>
+              </ion-label>
+                <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/view-booking-hotel/'+bookinghotel.id">View</ion-button>
+              </ion-item>
+        </ion-card>     
+      </div>
+
+      <div>  
+        <ion-card>
+            <ion-title>Your Spa & Grooming Booking:</ion-title>
+            <ion-item *ngFor="let bookingspa of (spaBooking | async)">
+              <ion-label>
+                  <ion-row>
+                      <ion-col>
+                          <p>Name: {{bookingspa.customerName}}</p>
+                      </ion-col>
+                      <ion-col>
+                          <p>Cat Name: {{bookingspa.catName}}</p>
+                      </ion-col>
+                    </ion-row> 
+                  <ion-row>
+                    <ion-col>
+                        <p>Date : {{bookingspa.date | date: "dd/MM/yyyy"}}</p>
+                    </ion-col>
+                    <ion-col>
+                        <p>Time : {{bookingspa.time | date: "shortTime" }}</p>
+                    </ion-col>
+                  </ion-row>
+              </ion-label>
+                <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/view-booking-spa/'+bookingspa.id">View</ion-button>
+              </ion-item>
+        </ion-card>     
+      </div>
+
+      <div>  
+          <ion-card>
+              <ion-title>Your Vaccine & Neuter Booking:</ion-title>
+              <ion-item *ngFor="let bookingvacc of (vaccBooking | async)">
+                <ion-label>
+                    <ion-row>
+                        <ion-col>
+                            <p>Name: {{bookingvacc.customerName}}</p>
+                        </ion-col>
+                        <ion-col>
+                            <p>Cat Name: {{bookingvacc.catName}}</p>
+                        </ion-col>
+                      </ion-row> 
+                    <ion-row>
+                      <ion-col>
+                          <p>Date : {{bookingvacc.date | date: "dd/MM/yyyy"}}</p>
+                      </ion-col>
+                      <ion-col>
+                          <p>Time : {{bookingvacc.time | date: "shortTime" }}</p>
+                      </ion-col>
+                    </ion-row>
+                </ion-label>
+                  <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/view-booking-vaccine/'+bookingvacc.id">View</ion-button>
+                </ion-item>
+          </ion-card>     
+        </div>
+
+        <div>  
+            <ion-card>
+                <ion-title>Your Grab Booking:</ion-title>
+                <ion-item *ngFor="let bookinggrab of (grabBooking | async)">
+                  <ion-label>
+                      <ion-row>
+                          <ion-col>
+                              <p>Name: {{bookinggrab.customerName}}</p>
+                          </ion-col>
+                          <ion-col>
+                              <p>Cat Name: {{bookinggrab.catName}}</p>
+                          </ion-col>
+                        </ion-row> 
+                      <ion-row>
+                        <ion-col>
+                            <p>Date : {{bookinggrab.date | date: "dd/MM/yyyy"}}</p>
+                        </ion-col>
+                        <ion-col>
+                            <p>Time : {{bookinggrab.time | date: "shortTime" }}</p>
+                        </ion-col>
+                      </ion-row>
+                  </ion-label>
+                    <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/view-booking-grab/'+bookinggrab.id">View</ion-button>
+                  </ion-item>
+            </ion-card>     
+          </div>
+
+          <div>  
+              <ion-card>
+                  <ion-title>Your Purchased Item:</ion-title>
+                  <ion-item *ngFor="let item of (purchasedItem | async)">
+                    <ion-label>
+                        <ion-row>
+                            <ion-col>
+                                <p>Name: {{item.customerName}}</p>
+                            </ion-col>
+                            <ion-col>
+                                <p>Contact Number: {{item.contactNumber}}</p>
+                            </ion-col>
+                          </ion-row> 
+                          <ion-row>
+                              <ion-col>
+                                  <p>Address: {{item.address}}</p>
+                              </ion-col>
+                          </ion-row>
+                          <ion-row>
+                              <ion-col>
+                                  <p>Total: RM52.50</p>
+                              </ion-col>
+                              <ion-col>
+                                  <p>Payment: Cash On Delivery</p>
+                              </ion-col>
+                          </ion-row>
+                    </ion-label>
+                      <!-- <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/view-booking-grab/'+bookinggrab.id">View</ion-button> -->
+                    </ion-item>
+              </ion-card>     
+            </div>
+
+      <!-- </div> -->
+  </ion-grid>
+  </ion-content>

@@ -1,0 +1,50 @@
+
+<ion-header>
+    <ion-toolbar color="dark">
+      <ion-title>
+        Cat Grab Booking Receipt
+      </ion-title>
+              <ion-buttons slot="start">     
+                  <ion-back-button icon="arrow-back-outline"></ion-back-button>
+                </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Booking Receipt</ion-label>
+      </ion-list-header>
+        <ion-card-content>
+            <ion-item>
+                <h2>Customer Name : </h2>
+                <h2>{{bookinggrab.customerName}}</h2>
+            </ion-item>
+            <ion-item>
+                <h2>Contact Number : </h2>
+                <h2>{{bookinggrab.contactNumber}}</h2>
+            </ion-item>
+            <ion-item>
+                <h2>Cat Name : </h2>
+                <p>{{bookinggrab.catName}}</p>
+            </ion-item>
+            <ion-item>
+                <h2>Remark : </h2>
+                <p>{{bookinggrab.remark}}</p>
+            </ion-item>
+            <ion-item>
+                <h2>Date : </h2>
+                <p>{{bookinggrab.date | date: "dd/MM/yyyy"}}</p>
+            </ion-item>
+            <ion-item>
+                <h2>Check Out Time : </h2>
+                <p>{{bookinggrab.time | date: "shortTime" }}</p>
+            </ion-item>
+            <!-- <ion-item>
+
+            </ion-item> -->  
+            <ion-button slot="start" color="warning" [routerLink]="'/update-booking-grab/' + bookinggrab.id">Edit</ion-button>
+            <ion-button slot="end" color="danger" (click)="deleteBookingGrab()">Delete</ion-button>
+          </ion-card-content>
+    </ion-list>
+  </ion-content>

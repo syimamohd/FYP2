@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>New Hotel</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+  <ion-item>
+    <ion-input placeholder="Enter Hotel Name" [(ngModel)]="hotel.hotelName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-textarea rows="6" [(ngModel)]="hotel.hotelDetails" placeholder="Enter hotel details here..."></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Enter Hotel Price" [(ngModel)]="hotel.hotelPrice"></ion-input>
+  </ion-item>
+</ion-list>
+  <ion-button color="primary" expand="full" (click)="addNote()">Create</ion-button>
+</ion-content>

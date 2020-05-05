@@ -1,0 +1,98 @@
+<ion-header>
+    <ion-toolbar color="dark">
+        <ion-title> Cat Vaccine & Neuter Menu </ion-title>
+        <ion-buttons slot="start">
+            <ion-menu-button autoHide="false">
+              </ion-menu-button>
+            <!-- <ion-back-button icon="arrow-back-outline"></ion-back-button> -->
+          </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Vaccine & Neuter</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let vaccine of (catVaccine | async)">
+        <ion-thumbnail slot="start">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{vaccine.vaccineName}}</h2>
+          <p>{{vaccine.vaccineDetails}}</p>
+          <p>{{vaccine.vaccinePrice}}</p>
+        </ion-label>
+        <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/bookingvacc'">BOOK</ion-button>
+      <ion-button *ngIf="isAdmin" fill="outline" slot="end" [routerLink]="'/view-vaccine/'+vaccine.id">View</ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-fab *ngIf="isAdmin" vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button [routerLink]="'/add-vaccine'">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-content>
+  
+<!-- 
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="arrow-back-outline"></ion-back-button>
+        </ion-buttons>
+    <ion-title>Cat Vaccine Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <ion-card>
+      <ion-item>
+            <ion-col>
+                <ion-img class="img" src="assets/img/cat.png"></ion-img>
+            </ion-col>
+  
+        <ion-col>
+            <ion-text>
+                <h3>Cat Vaccine</h3>
+                <h2>RM50</h2>
+            
+              </ion-text>
+        </ion-col>  
+        <ion-col size-sm="3"><ion-button size="med" [routerLink]="['/bookingservice']" fill="solid" expand="block" color="dark" >Book</ion-button></ion-col> 
+        </ion-item>
+  </ion-card>
+
+  <ion-card>
+      <ion-item>
+            <ion-col>
+                <ion-img class="img" src="assets/img/cat.png"></ion-img>
+            </ion-col>
+
+        <ion-col>
+            <ion-text>
+                <h3>Cat Neuter</h3>
+                <h2>RM150</h2>
+              <p>Female Cat</p>
+              </ion-text>
+        </ion-col>  
+        <ion-col size-sm="3"><ion-button size="med" [routerLink]="['/bookingservice']" fill="solid" expand="block" color="dark" >Book</ion-button></ion-col> 
+        </ion-item>
+  </ion-card>
+
+  <ion-card>
+      <ion-item>
+            <ion-col>
+                <ion-img class="img" src="assets/img/cat.png"></ion-img>
+            </ion-col>
+
+        <ion-col>
+            <ion-text>
+                <h3>Cat Neuter</h3>
+                <h2>RM100</h2>
+              <p>Male Cat</p>
+              </ion-text>
+        </ion-col>  
+        <ion-col size-sm="3"><ion-button size="med" [routerLink]="['/bookingservice']" fill="solid" expand="block" color="dark" >Book</ion-button></ion-col> 
+        </ion-item>
+  </ion-card>
+</ion-content> -->
