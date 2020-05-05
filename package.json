@@ -4,11 +4,11 @@
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
-    "clean": "ionic-app-scripts clean",
-    "build": "ionic-app-scripts serve",
-    "lint": "ionic-app-scripts lint",
-    "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
+    "clean": "ionic clean",
+    "build": "ionic serve",
+    "lint": "ionic lint",
+    "ionic:build": "ionic build",
+    "ionic:serve": "ionic serve"
   },
   "private": true,
   "dependencies": {
