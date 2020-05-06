@@ -7,17 +7,19 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content padding class="background">
+<!-- <form [formGroup]="myform"> -->
 	<ion-list>
 		<ion-item>
-		  <!-- <ion-label position="floating">NAME  </ion-label> -->
-      <ion-input placeholder=" Name" [(ngModel)]="bookinghotel.customerName"></ion-input>
+		 
+      <ion-input  placeholder=" Name" [(ngModel)]="bookinghotel.customerName"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Contact Number" [(ngModel)]="bookinghotel.contactNumber"></ion-input>
+      <ion-input  placeholder="Contact Number" [(ngModel)]="bookinghotel.contactNumber"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Cat Name" [(ngModel)]="bookinghotel.catName"></ion-input>
+      <ion-input  placeholder="Cat Name" [(ngModel)]="bookinghotel.catName"></ion-input>
     </ion-item>
     <ion-item>
       <ion-input placeholder="Remark" [(ngModel)]="bookinghotel.remark"></ion-input>
@@ -68,7 +70,7 @@
         <ion-button [routerLink]="['/menuhotel']" fill="solid" expand="block" size="med" color="warning" >Cancel</ion-button>
       </ion-col>
     </ion-row>
-    
+  <!-- </form>     -->
 </ion-content>
 
 <!-- [routerLink]="'/receipthotel/'+bookinghotel.id"  -->

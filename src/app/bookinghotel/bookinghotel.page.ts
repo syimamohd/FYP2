@@ -7,7 +7,7 @@ import {ToastController} from '@ionic/angular';
 import {BookingHotel} from '../model/BookingHotel';
 import { AlertController } from '@ionic/angular';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
-
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-bookinghotel',
@@ -17,6 +17,8 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 export class BookinghotelPage implements OnInit 
 {
+  myform: FormGroup;
+
   sub: any;
   username: string;
   mainuser: AngularFirestoreDocument;
@@ -49,6 +51,13 @@ export class BookinghotelPage implements OnInit
       private alertController: AlertController,
   ) 
   {
+    // this.myform = new FormGroup
+    // ({
+    //   customerName: new FormControl('',Validators.required),
+    //   contactNumber: new FormControl('',Validators.required),
+    //   catName: new FormControl('',[Validators.required, Validators.maxLength(20)]),
+    // })
+
     this.mainuser = afs.doc(`users/${user.getUID()}`)
     this.sub = this.mainuser.valueChanges().subscribe(event => 
       {

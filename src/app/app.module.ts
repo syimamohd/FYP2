@@ -1,24 +1,22 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
 import firebaseConfig from './firebase'
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth'
 import { UserService } from './user.service';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
-// import { HTTP } from '@ionic-native/http/ngx';
 import { HttpModule } from '@angular/http';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { AuthService } from './auth.service';
 import { CartModalPageModule } from './cart-modal/cart-modal.module';
+//import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,7 +29,8 @@ import { CartModalPageModule } from './cart-modal/cart-modal.module';
 	  AngularFireAuthModule,
     AngularFirestoreModule,
     HttpModule,
-    CartModalPageModule
+    CartModalPageModule,
+     FormsModule,
   ],
   providers: [
     StatusBar,
