@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>{{hotel.hotelName}}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-card color=\"secondary\">\n    <ion-card-header>\n      <ion-card-subtitle>{{hotel.createdAt | date: 'short'}}</ion-card-subtitle>\n      <ion-card-title>{{hotel.hotelName}}</ion-card-title>\n    </ion-card-header>\n\n    <ion-card-content>\n      <p align=\"justify\">{{hotel.hotelDetails}}</p>\n      <br>\n      <p align=\"justify\">{{hotel.hotelPrice}}</p>\n      <ion-button slot=\"start\" color=\"warning\" [routerLink]=\"'/update-hotel/' + hotel.id\">Edit</ion-button>\n      <ion-button slot=\"end\" color=\"danger\" (click)=\"deleteHotel()\">Delete</ion-button>\n    </ion-card-content>\n\n  </ion-card>\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>{{hotel.hotelName}}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-card color=\"secondary\">\r\n    <ion-card-header>\r\n      <ion-card-subtitle>{{hotel.createdAt | date: 'short'}}</ion-card-subtitle>\r\n      <ion-card-title>{{hotel.hotelName}}</ion-card-title>\r\n    </ion-card-header>\r\n\r\n    <ion-card-content>\r\n<<<<<<< HEAD\r\n=======\r\n      \r\n    <ion-img *ngIf=\"!!hotel.image\" class=\"profile-pic\"  [src]=\"hotel.image\"></ion-img>\r\n           \r\n        \r\n>>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3\r\n      <p align=\"justify\">{{hotel.hotelDetails}}</p>\r\n      <br>\r\n      <p align=\"justify\">{{hotel.hotelPrice}}</p>\r\n      <ion-button slot=\"start\" color=\"warning\" [routerLink]=\"'/update-hotel/' + hotel.id\">Edit</ion-button>\r\n      <ion-button slot=\"end\" color=\"danger\" (click)=\"deleteHotel()\">Delete</ion-button>\r\n    </ion-card-content>\r\n\r\n  </ion-card>\r\n</ion-content>\r\n";
     /***/
   },
 
@@ -235,7 +235,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.hotel = {
           hotelName: '',
           hotelDetails: '',
-          hotelPrice: '' // createdAt: ''
+          hotelPrice: '',
+          image: '' // createdAt: ''
 
         };
       }
