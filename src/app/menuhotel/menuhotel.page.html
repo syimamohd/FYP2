@@ -16,12 +16,18 @@
     </ion-list-header>
     <ion-item *ngFor="let hotel of (catHotel | async)">
       <ion-col>
+<<<<<<< HEAD
           <ion-img class="img" src="assets/img/cat_villa.png"></ion-img>
       </ion-col>
       <!-- <ion-thumbnail slot="start">
          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
         <ion-img class="img" src="assets/img/cat_villa.png"></ion-img>
       </ion-thumbnail> -->
+=======
+          <ion-img *ngIf="!!hotel.image" class="profile-pic"  [src]="hotel.image"></ion-img>
+      </ion-col>
+    
+>>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
       <ion-label>
         <h2>{{hotel.hotelName}}</h2>
         <p>{{hotel.hotelDetails}}</p>

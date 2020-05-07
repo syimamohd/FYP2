@@ -10,7 +10,10 @@
 </ion-header>
 
 <ion-content padding>
+<<<<<<< HEAD
       <!-- <app-loading *ngIf="!posts"></app-loading> -->
+=======
+>>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
       <ion-grid>
         <ion-row>
             <div class="center" id="profile-info" *ngIf="username">
@@ -60,9 +63,23 @@
                   </ion-row>
               </ion-label>
                 <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/view-booking-hotel/'+bookinghotel.id">View</ion-button>
+<<<<<<< HEAD
               </ion-item>
         </ion-card>     
       </div>
+=======
+              </ion-item> 
+              <ion-button *ngIf="isCustomer" [routerLink]="['/menuhotel']" fill="solid" size="med" color="secondary" >Book More Hotel</ion-button>
+     
+        </ion-card>
+        <!-- <ion-fab *ngIf="isCustomer" vertical="bottom" horizontal="end" slot="fixed">
+            <ion-fab-button [routerLink]="'/menuhotel'">
+              <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+        </ion-fab> -->
+      </div>
+      
+>>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
 
       <div>  
         <ion-card>
@@ -88,8 +105,14 @@
               </ion-label>
                 <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/view-booking-spa/'+bookingspa.id">View</ion-button>
               </ion-item>
+<<<<<<< HEAD
         </ion-card>     
       </div>
+=======
+        </ion-card>    
+      </div>
+      <ion-button  *ngIf="isCustomer" [routerLink]="['/menuspa']" fill="solid" size="med"  color="secondary" >Book More Spa</ion-button>
+>>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
 
       <div>  
           <ion-card>
@@ -115,8 +138,14 @@
                 </ion-label>
                   <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/view-booking-vaccine/'+bookingvacc.id">View</ion-button>
                 </ion-item>
+<<<<<<< HEAD
           </ion-card>     
         </div>
+=======
+          </ion-card>    
+        </div>
+        <ion-button  *ngIf="isCustomer" [routerLink]="['/menuvaccine']" fill="solid" size="med"  color="secondary" >Book More Vacc</ion-button>
+>>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
 
         <div>  
             <ion-card>
@@ -142,9 +171,16 @@
                   </ion-label>
                     <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/view-booking-grab/'+bookinggrab.id">View</ion-button>
                   </ion-item>
+<<<<<<< HEAD
             </ion-card>     
           </div>
 
+=======
+            </ion-card>    
+          </div>
+          <ion-button  *ngIf="isCustomer" [routerLink]="['/menugrab']" fill="solid" size="med"  color="secondary" >Book More Grab</ion-button>
+      
+>>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
           <div>  
               <ion-card>
                   <ion-title>Your Purchased Item:</ion-title>
@@ -174,9 +210,15 @@
                     </ion-label>
                       <!-- <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/view-booking-grab/'+bookinggrab.id">View</ion-button> -->
                     </ion-item>
+<<<<<<< HEAD
               </ion-card>     
             </div>
 
+=======
+              </ion-card>    
+            </div>
+            <ion-button  *ngIf="isCustomer" [routerLink]="['/menuproduct']" fill="solid" size="med"  color="secondary" >Add More Product</ion-button>
+>>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
       <!-- </div> -->
   </ion-grid>
   </ion-content>

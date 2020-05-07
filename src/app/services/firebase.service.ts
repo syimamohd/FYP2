@@ -290,7 +290,11 @@ export class FirebaseService
   //update hotel details
   updateHotel(hotel: CatHotel): Promise<void> 
   {
+<<<<<<< HEAD
     return this.catHotelCollection.doc(hotel.id).update({ hotelName: hotel.hotelName, hotelDetails: hotel.hotelDetails, hotelPrice: hotel.hotelPrice });
+=======
+    return this.catHotelCollection.doc(hotel.id).update(hotel);
+>>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
   }
 
   //delete hotel
@@ -680,7 +684,11 @@ export class FirebaseService
   //update content details
   updateContent(content: Content): Promise<void> 
   {
+<<<<<<< HEAD
     return this.contentCollection.doc(content.id).update({ title: content.title, contentDetails: content.contentDetails,  contacttitle: content.contacttitle, contactDetails: content.contactDetails });
+=======
+    return this.contentCollection.doc(content.id).update(content);
+>>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
   }
 
   //delete hotel

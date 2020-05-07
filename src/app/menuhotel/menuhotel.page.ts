@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
 import {Observable} from 'rxjs';
 import {CatHotel} from '../model/CatHotel';
 //call the page that has crud operations in firebase.service
@@ -17,18 +21,32 @@ export class MenuhotelPage implements OnInit
 {
   private catHotel: Observable<CatHotel[]>;
 
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
   sub: any;
   username: string;
   mainuser: AngularFirestoreDocument;
   isAdmin: boolean = false;
   isCustomer: boolean = true;
 
+<<<<<<< HEAD
+=======
+  
+  
+>>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
   constructor
   (
     private fbService: FirebaseService,
     private afs: AngularFirestore,
     private user: UserService, 
+<<<<<<< HEAD
     private storage: NativeStorage
+=======
+    private storage: NativeStorage,
+    
+>>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
   )
     {
       this.mainuser = afs.doc(`users/${user.getUID()}`)
@@ -50,4 +68,10 @@ export class MenuhotelPage implements OnInit
     this.storage.setItem('isCustomer', this.isCustomer);
   }
 
+<<<<<<< HEAD
+=======
+  
+
+
+>>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
 }
