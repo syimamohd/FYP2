@@ -15,12 +15,8 @@ export class ViewHotelPage implements OnInit, AfterViewInit
   hotel: CatHotel = {
     hotelName: '',
     hotelDetails: '',
-<<<<<<< HEAD
-    hotelPrice: ''
-=======
     hotelPrice: '',
     image:''
->>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
     // createdAt: ''
   };
 

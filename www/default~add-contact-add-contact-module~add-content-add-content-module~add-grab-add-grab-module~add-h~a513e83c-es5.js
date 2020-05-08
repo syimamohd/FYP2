@@ -254,11 +254,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "updateHotel",
         value: function updateHotel(hotel) {
-          return this.catHotelCollection.doc(hotel.id).update({
-            hotelName: hotel.hotelName,
-            hotelDetails: hotel.hotelDetails,
-            hotelPrice: hotel.hotelPrice
-          });
+          return this.catHotelCollection.doc(hotel.id).update(hotel);
         } //delete hotel
 
       }, {
@@ -645,12 +641,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "updateContent",
         value: function updateContent(content) {
-          return this.contentCollection.doc(content.id).update({
-            title: content.title,
-            contentDetails: content.contentDetails,
-            contacttitle: content.contacttitle,
-            contactDetails: content.contactDetails
-          });
+          return this.contentCollection.doc(content.id).update(content);
         } //delete hotel
 
       }, {

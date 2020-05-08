@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {CatHotel} from '../model/CatHotel';
-import {ActivatedRoute, Router} from '@angular/router';
-import {FirebaseService} from '../services/firebase.service';
-=======
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {CatHotel} from '../model/CatHotel';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FirebaseService} from '../services/firebase.service';
 import { Http } from '@angular/http';
->>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
 
 @Component
 ({
@@ -27,16 +20,12 @@ export class UpdateHotelPage implements OnInit, AfterViewInit
     // createdAt: new Date().getTime()
   };
 
-<<<<<<< HEAD
-  constructor(private activatedRoute: ActivatedRoute, private fbService: FirebaseService, private router: Router) 
-=======
   @ViewChild('fileBtn', {static: false}) fileBtn: 
   {
 		nativeElement: HTMLInputElement
   }
 
   constructor(private activatedRoute: ActivatedRoute, private fbService: FirebaseService, private router: Router, private http: Http ) 
->>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
   {}
 
   ngOnInit() 
@@ -59,8 +48,6 @@ export class UpdateHotelPage implements OnInit, AfterViewInit
     }, err => {
     });
   }
-<<<<<<< HEAD
-=======
 
   updateProfilePic() 
   {
@@ -86,5 +73,4 @@ export class UpdateHotelPage implements OnInit, AfterViewInit
       // })
     })
   }
->>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
 }
