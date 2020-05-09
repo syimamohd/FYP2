@@ -1514,7 +1514,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Backup C\Desktop\SEM 8\PROJECT\fyp2\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\irsya\Desktop\FYP2-master\src\main.ts */"./src/main.ts");
 
 
 /***/ })

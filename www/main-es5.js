@@ -2770,7 +2770,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! D:\Backup C\Desktop\SEM 8\PROJECT\fyp2\src\main.ts */
+    /*! C:\Users\irsya\Desktop\FYP2-master\src\main.ts */
     "./src/main.ts");
     /***/
   }
