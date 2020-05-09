@@ -6,8 +6,6 @@
 
 <ion-content>
 <ion-list>
-<<<<<<< HEAD
-=======
     <ion-item>
       <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
         <div *ngIf="!hotel.image">
@@ -17,7 +15,6 @@
         <ion-img class="profile-pic" (click)="updateProfilePic()" [src]="hotel.image"></ion-img>
       </div>
     </ion-item>   
->>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3
   <ion-item>
     <ion-input placeholder="Enter Hotel Name" [(ngModel)]="hotel.hotelName"></ion-input>
   </ion-item>
