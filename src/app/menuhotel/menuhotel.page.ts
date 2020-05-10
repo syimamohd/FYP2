@@ -17,22 +17,18 @@ export class MenuhotelPage implements OnInit
 {
   private catHotel: Observable<CatHotel[]>;
 
- 
   sub: any;
   username: string;
   mainuser: AngularFirestoreDocument;
   isAdmin: boolean = false;
   isCustomer: boolean = true;
 
-  
-  
   constructor
   (
     private fbService: FirebaseService,
     private afs: AngularFirestore,
     private user: UserService, 
     private storage: NativeStorage,
-    
   )
     {
       this.mainuser = afs.doc(`users/${user.getUID()}`)

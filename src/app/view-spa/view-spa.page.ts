@@ -15,7 +15,8 @@ export class ViewSpaPage implements OnInit, AfterViewInit
   spa: CatSpa = {
     spaName: '',
     spaDetails: '',
-    spaPrice: ''
+    spaPrice: '',
+    image:''
     // createdAt: ''
   };
 
@@ -37,7 +38,7 @@ export class ViewSpaPage implements OnInit, AfterViewInit
   deleteSpa() 
   {
     this.fbService.deleteSpa(this.spa.id).then(() => {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/menuspa');
     }, err => {
     });
   }

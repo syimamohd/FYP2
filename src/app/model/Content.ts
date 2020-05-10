@@ -6,5 +6,6 @@ export interface Content
     contentDetails: string;
     contacttitle: string;
     contactDetails: string;
+    image?: any;
     // createdAt: any;
 }

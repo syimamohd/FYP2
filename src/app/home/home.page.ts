@@ -47,15 +47,6 @@ export class HomePage implements OnInit
       this.isAdmin= event.isAdmin
       this.isCustomer= event.isCustomer
     })
-
-    // this.mainuser = afs.doc(`contentItem/${user.getUID()}`)
-    // this.sub = this.mainuser.valueChanges().subscribe(event => 
-    //   {
-    //     // this.username = event.username
-    //     //this.contentPic = event.contentPic
-    //     // this.isAdmin= event.isAdmin
-    //     // this.isCustomer= event.isCustomer
-    //   })
   
   }
 
@@ -72,16 +63,6 @@ export class HomePage implements OnInit
     this.storage.setItem('isAdmin', this.isAdmin);
     this.storage.setItem('isCustomer', this.isCustomer);
   }
-  
-  // ngOnInit(): void 
-  // {
-  //   this.notes = this.fbService.getNotes();
-  // }
 
-  //   onLogout() 
-  //   {
-  //     this.afAuth.logout;
-  //     this.router.navigateByUrl('/login');
-  // }
 
 }

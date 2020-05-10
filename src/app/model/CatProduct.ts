@@ -7,5 +7,6 @@ export interface CatProduct
     productDetails: string;
     productPrice: number;
     amount: number;
+    image?: any;
     // createdAt: any;
 }

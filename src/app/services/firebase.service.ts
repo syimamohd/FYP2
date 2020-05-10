@@ -327,7 +327,7 @@ export class FirebaseService
   //update spa details
   updateSpa(spa: CatSpa): Promise<void> 
   {
-    return this.catSpaCollection.doc(spa.id).update({ spaName: spa.spaName, spaDetails: spa.spaDetails, spaPrice: spa.spaPrice });
+    return this.catSpaCollection.doc(spa.id).update(spa);
   }
 
   //delete spa
@@ -364,7 +364,7 @@ export class FirebaseService
   //update vaccine details
   updateVaccine(vaccine: CatVaccine): Promise<void> 
   {
-    return this.catVaccineCollection.doc(vaccine.id).update({ vaccineName: vaccine.vaccineName, vaccineDetails: vaccine.vaccineDetails, vaccinePrice: vaccine.vaccinePrice });
+    return this.catVaccineCollection.doc(vaccine.id).update(vaccine);
   }
 
   //delete vaccine
@@ -401,7 +401,7 @@ export class FirebaseService
   //update grab details
   updateGrab(grab: CatGrab): Promise<void> 
   {
-    return this.catGrabCollection.doc(grab.id).update({ grabName: grab.grabName, grabDetails: grab.grabDetails, grabPrice: grab.grabPrice });
+    return this.catGrabCollection.doc(grab.id).update(grab);
   }
 
   //delete grab
@@ -438,7 +438,7 @@ export class FirebaseService
   //update product details
   updateProduct(product: CatProduct): Promise<void> 
   {
-    return this.catProductCollection.doc(product.id).update({ productName: product.productName, productDetails: product.productDetails, productPrice: product.productPrice });
+    return this.catProductCollection.doc(product.id).update(product);
   }
 
   //delete product

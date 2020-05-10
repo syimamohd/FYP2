@@ -15,7 +15,8 @@ export class ViewVaccinePage implements OnInit, AfterViewInit
   vaccine: CatVaccine = {
     vaccineName: '',
     vaccineDetails: '',
-    vaccinePrice: ''
+    vaccinePrice: '',
+    image:''
     // createdAt: ''
   };
 
@@ -37,7 +38,7 @@ export class ViewVaccinePage implements OnInit, AfterViewInit
   deleteVaccine() 
   {
     this.fbService.deleteVaccine(this.vaccine.id).then(() => {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/menuvaccine');
     }, err => {
     });
   }

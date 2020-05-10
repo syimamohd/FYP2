@@ -18,6 +18,7 @@ export class ViewContentPage implements OnInit, AfterViewInit
     title: '',
     contactDetails:'',
     contacttitle:'',
+    image:''
     // createdAt: ''
   };
 

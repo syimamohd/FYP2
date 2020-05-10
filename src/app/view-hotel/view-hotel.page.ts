@@ -11,7 +11,6 @@ import {FirebaseService} from '../services/firebase.service';
 
 export class ViewHotelPage implements OnInit, AfterViewInit 
 {
-  //note properties
   hotel: CatHotel = {
     hotelName: '',
     hotelDetails: '',
@@ -20,7 +19,9 @@ export class ViewHotelPage implements OnInit, AfterViewInit
     // createdAt: ''
   };
 
-  constructor(private activatedRoute: ActivatedRoute, private fbService: FirebaseService, private router: Router) { }
+  constructor
+  (private activatedRoute: ActivatedRoute, private fbService: FirebaseService, private router: Router) 
+  { }
 
   ngOnInit() 
   {}
@@ -38,7 +39,7 @@ export class ViewHotelPage implements OnInit, AfterViewInit
   deleteHotel() 
   {
     this.fbService.deleteHotel(this.hotel.id).then(() => {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/menuhotel');
     }, err => {
     });
   }

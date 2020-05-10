@@ -16,7 +16,7 @@
       </ion-list-header>
       <ion-item *ngFor="let vaccine of (catVaccine | async)">
         <ion-thumbnail slot="start">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+          <ion-img *ngIf="!!vaccine.image" class="profile-pic"  [src]="vaccine.image"></ion-img>
         </ion-thumbnail>
         <ion-label>
           <h2>{{vaccine.vaccineName}}</h2>

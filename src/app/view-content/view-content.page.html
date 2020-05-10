@@ -12,6 +12,7 @@
       </ion-card-header>
   
       <ion-card-content>
+          <ion-img *ngIf="!!content.image" class="profile-pic"  [src]="content.image"></ion-img>
         <p align="justify">{{content.title}}</p>
         <br>
         <p align="justify">{{content.contentDetails}}</p>

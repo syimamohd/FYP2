@@ -16,8 +16,11 @@
       <ion-label>Spa & Grooming</ion-label>
     </ion-list-header>
     <ion-item *ngFor="let spa of (catSpa | async)">
+        <!-- <ion-col>
+            <ion-img *ngIf="!!hotel.image" class="profile-pic"  [src]="hotel.image"></ion-img>
+        </ion-col> -->
       <ion-thumbnail slot="start">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+          <ion-img *ngIf="!!spa.image" class="profile-pic"  [src]="spa.image"></ion-img>
       </ion-thumbnail>
       <ion-label>
         <h2>{{spa.spaName}}</h2>

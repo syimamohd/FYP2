@@ -15,7 +15,8 @@ export class ViewGrabPage implements OnInit, AfterViewInit
   grab: CatGrab = {
     grabName: '',
     grabDetails: '',
-    grabPrice: ''
+    grabPrice: '',
+    image:''
     // createdAt: ''
   };
 
@@ -37,7 +38,7 @@ export class ViewGrabPage implements OnInit, AfterViewInit
   deleteGrab() 
   {
     this.fbService.deleteGrab(this.grab.id).then(() => {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/menugrab');
     }, err => {
     });
   }

@@ -12,6 +12,7 @@
       </ion-card-header>
   
       <ion-card-content>
+        <ion-img *ngIf="!!vaccine.image" class="profile-pic"  [src]="vaccine.image"></ion-img>
         <p align="justify">{{vaccine.vaccineDetails}}</p>
         <br>
         <p align="justify">{{vaccine.vaccinePrice}}</p>

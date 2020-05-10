@@ -16,7 +16,8 @@ export class UpdateHotelPage implements OnInit, AfterViewInit
   hotel: CatHotel = {
     hotelName: '',
     hotelDetails: '',
-    hotelPrice:''
+    hotelPrice:'',
+    image:''
     // createdAt: new Date().getTime()
   };
 
@@ -25,7 +26,8 @@ export class UpdateHotelPage implements OnInit, AfterViewInit
 		nativeElement: HTMLInputElement
   }
 
-  constructor(private activatedRoute: ActivatedRoute, private fbService: FirebaseService, private router: Router, private http: Http ) 
+  constructor
+  (private activatedRoute: ActivatedRoute, private fbService: FirebaseService, private router: Router, private http: Http ) 
   {}
 
   ngOnInit() 
@@ -52,7 +54,7 @@ export class UpdateHotelPage implements OnInit, AfterViewInit
   updateProfilePic() 
   {
   this.fileBtn.nativeElement.click()
-}
+  }
 
   uploadPic(event) 
   {

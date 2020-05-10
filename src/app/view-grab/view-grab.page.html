@@ -12,6 +12,7 @@
     </ion-card-header>
 
     <ion-card-content>
+      <ion-img *ngIf="!!grab.image" class="profile-pic"  [src]="grab.image"></ion-img>
       <p align="justify">{{grab.grabDetails}}</p>
       <br>
       <p align="justify">{{grab.grabPrice}}</p>

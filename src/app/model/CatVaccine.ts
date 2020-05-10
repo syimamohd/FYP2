@@ -5,5 +5,6 @@ export interface CatVaccine
     vaccineName: string;
     vaccineDetails: string;
     vaccinePrice: string;
+    image?: any;
     // createdAt: any;
 }

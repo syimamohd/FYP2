@@ -5,5 +5,6 @@ export interface CatGrab
     grabName: string;
     grabDetails: string;
     grabPrice: string;
+    image?: any;
     // createdAt: any;
 }

@@ -5,5 +5,6 @@ export interface CatSpa
     spaName: string;
     spaDetails: string;
     spaPrice: string;
+    image?: any;
     // createdAt: any;
 }

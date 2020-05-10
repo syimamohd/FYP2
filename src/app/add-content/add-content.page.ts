@@ -25,6 +25,7 @@ export class AddContentPage implements OnInit
     title:'',
     contactDetails:'',
     contacttitle:'',
+    image:''
     // createdAt: new Date().getTime()
     };
 
@@ -53,47 +54,11 @@ export class AddContentPage implements OnInit
         // this.address = event.address
       })
       
-      // this.mainuser = afs.doc(`contentItem/${user.getUID()}`)
-      // this.sub = this.mainuser.valueChanges().subscribe(event => 
-      //   {
-      //     // this.username = event.username
-      //     //this.contentPic = event.contentPic
-      //     // this.isAdmin= event.isAdmin
-      //     // this.isCustomer= event.isCustomer
-      //   })
+     
     }
 
   ngOnInit() 
   {}
-
-  ngOnDestroy() 
-  {
-    this.sub.unsubscribe()
-  }
-
-  updateContentPic() 
-  {
-    this.fileBtn.nativeElement.click()
-  }
-
-  uploadPic(event) 
-  {
-    const files = event.target.files
-
-    const data = new FormData()
-    data.append('file', files[0])
-    data.append('UPLOADCARE_STORE', '1')
-    data.append('UPLOADCARE_PUB_KEY', '00f055ada25dcea69cac')
-
-    
-    this.http.post('https://upload.uploadcare.com/base/', data)
-    .subscribe(event => {
-      const uuid = event.json().file
-      this.mainuser.update({
-        contentPic: uuid
-      })
-    })
-  }
 
   addContent() 
   {
@@ -102,5 +67,31 @@ export class AddContentPage implements OnInit
     }, err => {
     });
   }
+
+  updateProfilePic() 
+  {
+		this.fileBtn.nativeElement.click()
+	}
+
+	uploadPic(event) 
+	{
+			const files = event.target.files
+
+			const data = new FormData()
+			data.append('file', files[0])
+			data.append('UPLOADCARE_STORE', '1')
+			data.append('UPLOADCARE_PUB_KEY', '00f055ada25dcea69cac')
+
+			
+			this.http.post('https://upload.uploadcare.com/base/', data)
+			.subscribe(event => {
+        const uuid = event.json().file
+        this.content.image=`https://ucarecdn.com/${uuid}/-/scale_crop/150x150/center/`;
+				// this.mainuser.update({
+				// 	profilePic: uuid
+				// })
+			})
+		}
+
 
 }

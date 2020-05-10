@@ -1,4 +1,4 @@
-import { Component, OnInit,  ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Http } from '@angular/http';
 import {FirebaseService} from '../services/firebase.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -16,7 +16,7 @@ export class AddHotelPage implements OnInit
     hotelName: '',
     hotelDetails: '',
     hotelPrice:'',
-    // image:''
+    image:''
     // createdAt: new Date().getTime()
   };
 
@@ -25,12 +25,14 @@ export class AddHotelPage implements OnInit
 		nativeElement: HTMLInputElement
   }
 
-  constructor(
+  constructor
+  (
       private activatedRoute: ActivatedRoute,
       private fbService: FirebaseService,
       private toastCtrl: ToastController,
       private router: Router,
-      private http: Http  ) { }
+      private http: Http  
+  ) { }
 
   ngOnInit() {
   }
@@ -44,7 +46,7 @@ export class AddHotelPage implements OnInit
   }
 
   updateProfilePic() 
-  	{
+  {
 		this.fileBtn.nativeElement.click()
 	}
 
@@ -61,7 +63,7 @@ export class AddHotelPage implements OnInit
 			this.http.post('https://upload.uploadcare.com/base/', data)
 			.subscribe(event => {
         const uuid = event.json().file
-        // this.hotel.image=`https://ucarecdn.com/${uuid}/-/scale_crop/150x150/center/`;
+        this.hotel.image=`https://ucarecdn.com/${uuid}/-/scale_crop/150x150/center/`;
 				// this.mainuser.update({
 				// 	profilePic: uuid
 				// })

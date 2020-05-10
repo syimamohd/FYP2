@@ -12,6 +12,7 @@
       </ion-card-header>
   
       <ion-card-content>
+          <ion-img *ngIf="!!spa.image" class="profile-pic"  [src]="spa.image"></ion-img>
         <p align="justify">{{spa.spaDetails}}</p>
         <br>
         <p align="justify">{{spa.spaPrice}}</p>
