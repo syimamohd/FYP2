@@ -239,7 +239,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.hotel = {
           hotelName: '',
           hotelDetails: '',
-          hotelPrice: '' // createdAt: new Date().getTime()
+          hotelPrice: '',
+          image: '' // createdAt: new Date().getTime()
 
         };
       }

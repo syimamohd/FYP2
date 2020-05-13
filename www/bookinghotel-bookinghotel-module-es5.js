@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n      <ion-buttons slot=\"start\">\r\n          <ion-back-button icon=\"arrow-back-outline\"></ion-back-button>\r\n        </ion-buttons>\r\n    <ion-title>Cat Hotel Booking</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<<<<<<< HEAD\r\n<ion-content padding class=\"background\">\r\n\t<ion-list>\r\n\t\t<ion-item>\r\n\t\t  <!-- <ion-label position=\"floating\">NAME  </ion-label> -->\r\n      <ion-input placeholder=\" Name\" [(ngModel)]=\"bookinghotel.customerName\"></ion-input>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-input placeholder=\"Contact Number\" [(ngModel)]=\"bookinghotel.contactNumber\"></ion-input>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-input placeholder=\"Cat Name\" [(ngModel)]=\"bookinghotel.catName\"></ion-input>\r\n=======\r\n\r\n<ion-content padding class=\"background\">\r\n<!-- <form [formGroup]=\"myform\"> -->\r\n\t<ion-list>\r\n\t\t<ion-item>\r\n\t\t \r\n      <ion-input  placeholder=\" Name\" [(ngModel)]=\"bookinghotel.customerName\"></ion-input>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-input  placeholder=\"Contact Number\" [(ngModel)]=\"bookinghotel.contactNumber\"></ion-input>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-input  placeholder=\"Cat Name\" [(ngModel)]=\"bookinghotel.catName\"></ion-input>\r\n>>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-input placeholder=\"Remark\" [(ngModel)]=\"bookinghotel.remark\"></ion-input>\r\n    </ion-item>\r\n    <ion-row>\r\n      <ion-col>\r\n        <ion-item>\r\n            <ion-label>CHECK IN DATE</ion-label>\r\n            <ion-input>\r\n                <ion-datetime displayFormat=\"MMM DD, YYYY\" pickerFormat=\"DDDD MMMM YYYY\" placeholder=\"Select Date\" value=(DateTime.Now) [(ngModel)]=\"todate\" min = {{todate}} max=\"2025\" [(ngModel)]=\"bookinghotel.checkInDate\"></ion-datetime>\r\n            </ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n            <ion-label>TIME IN</ion-label>\r\n            <ion-input>\r\n                <ion-datetime display-format=\"h:mm A\" picker-format=\"h:mm A\" placeholder=\"Select Time\" [(ngModel)]=\"bookinghotel.timeIn\"></ion-datetime>\r\n            </ion-input>\r\n        </ion-item>\r\n      </ion-col>\r\n      \r\n      <ion-col>\r\n        <ion-item>\r\n          <ion-label>CHECK OUT DATE</ion-label>\r\n          <ion-input>\r\n              <ion-datetime displayFormat=\"D/MM/YYYY\" pickerFormat=\"DDDD MMMM YYYY\" placeholder=\"Select Date\"  min = {{todate}} max=\"2025\" [(ngModel)]=\"bookinghotel.checkOutDate\"></ion-datetime>\r\n          </ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n          <ion-label>TIME OUT</ion-label>\r\n          <ion-input>\r\n              <ion-datetime display-format=\"h:mm A\" picker-format=\"h:mm A\" placeholder=\"Select Time\" [(ngModel)]=\"bookinghotel.timeOut\"></ion-datetime>\r\n          </ion-input>\r\n        </ion-item>\r\n      </ion-col>\r\n    </ion-row>\r\n    <!-- <ion-item>\r\n      <ion-checkbox slot=\"start\" ></ion-checkbox>\r\n      <ion-label>Add cat food in booking.</ion-label>\r\n    </ion-item> -->\r\n    </ion-list>\r\n    <ion-row>\r\n      <ion-col>\r\n        <ion-button (click)=\"submitBookingHotel()\" fill=\"solid\" expand=\"block\" size=\"med\" color=\"primary\">Confirm</ion-button>\r\n      </ion-col>\r\n      <ion-col>\r\n        <ion-button [routerLink]=\"['/menuhotel']\" fill=\"solid\" expand=\"block\" size=\"med\" color=\"warning\" >Cancel</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n<<<<<<< HEAD\r\n    \r\n=======\r\n  <!-- </form>     -->\r\n>>>>>>> 2bc00cab9c51230f7f6b420a0cc1f156856cd0d3\r\n</ion-content>\r\n\r\n<!-- [routerLink]=\"'/receipthotel/'+bookinghotel.id\"  -->";
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n      <ion-buttons slot=\"start\">\r\n          <ion-back-button icon=\"arrow-back-outline\"></ion-back-button>\r\n        </ion-buttons>\r\n    <ion-title>Cat Hotel Booking</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n\r\n<ion-content padding class=\"background\">\r\n<!-- <form [formGroup]=\"myform\"> -->\r\n\t<ion-list>\r\n\t\t<ion-item>\r\n      <ion-input  placeholder=\" Name\" [(ngModel)]=\"bookinghotel.customerName\"></ion-input>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-input  placeholder=\"Contact Number\" [(ngModel)]=\"bookinghotel.contactNumber\"></ion-input>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-input  placeholder=\"Cat Name\" [(ngModel)]=\"bookinghotel.catName\"></ion-input>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-input placeholder=\"Remark\" [(ngModel)]=\"bookinghotel.remark\"></ion-input>\r\n    </ion-item>\r\n    <ion-row>\r\n      <ion-col>\r\n        <ion-item>\r\n            <ion-label>CHECK IN DATE</ion-label>\r\n            <ion-input>\r\n                <ion-datetime displayFormat=\"MMM DD, YYYY\" pickerFormat=\"DDDD MMMM YYYY\" placeholder=\"Select Date\" value=(DateTime.Now) [(ngModel)]=\"todate\" min = {{todate}} max=\"2025\" [(ngModel)]=\"bookinghotel.checkInDate\"></ion-datetime>\r\n            </ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n            <ion-label>TIME IN</ion-label>\r\n            <ion-input>\r\n                <ion-datetime display-format=\"h:mm A\" picker-format=\"h:mm A\" placeholder=\"Select Time\" [(ngModel)]=\"bookinghotel.timeIn\"></ion-datetime>\r\n            </ion-input>\r\n        </ion-item>\r\n      </ion-col>\r\n      \r\n      <ion-col>\r\n        <ion-item>\r\n          <ion-label>CHECK OUT DATE</ion-label>\r\n          <ion-input>\r\n              <ion-datetime displayFormat=\"D/MM/YYYY\" pickerFormat=\"DDDD MMMM YYYY\" placeholder=\"Select Date\"  min = {{todate}} max=\"2025\" [(ngModel)]=\"bookinghotel.checkOutDate\"></ion-datetime>\r\n          </ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n          <ion-label>TIME OUT</ion-label>\r\n          <ion-input>\r\n              <ion-datetime display-format=\"h:mm A\" picker-format=\"h:mm A\" placeholder=\"Select Time\" [(ngModel)]=\"bookinghotel.timeOut\"></ion-datetime>\r\n          </ion-input>\r\n        </ion-item>\r\n      </ion-col>\r\n    </ion-row>\r\n    <!-- <ion-item>\r\n      <ion-checkbox slot=\"start\" ></ion-checkbox>\r\n      <ion-label>Add cat food in booking.</ion-label>\r\n    </ion-item> -->\r\n    </ion-list>\r\n    <ion-row>\r\n      <ion-col>\r\n        <ion-button (click)=\" submitBookingHotel() \" fill=\"solid\" expand=\"block\" size=\"med\" color=\"primary\">Confirm</ion-button>\r\n      </ion-col>\r\n      <ion-col>\r\n        <ion-button [routerLink]=\"['/menuhotel']\" fill=\"solid\" expand=\"block\" size=\"med\" color=\"warning\" >Cancel</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n  <!-- </form>     -->\r\n</ion-content>\r\n\r\n<!-- [routerLink]=\"'/receipthotel/'+bookinghotel.id\"  -->";
     /***/
   },
 
@@ -247,9 +247,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! @ionic-native/native-storage/ngx */
     "./node_modules/@ionic-native/native-storage/ngx/index.js");
+    /* harmony import */
+
+
+    var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @angular/fire/auth */
+    "./node_modules/@angular/fire/auth/es2015/index.js");
 
     var BookinghotelPage = /*#__PURE__*/function () {
-      function BookinghotelPage(activatedRoute, fbService, afs, user, storage, toastCtrl, router, alertController) {
+      function BookinghotelPage(activatedRoute, fbService, afs, user, auth, storage, toastCtrl, router, alertController) {
         var _this = this;
 
         _classCallCheck(this, BookinghotelPage);
@@ -264,10 +270,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.fbService = fbService;
         this.afs = afs;
         this.user = user;
+        this.auth = auth;
         this.storage = storage;
         this.toastCtrl = toastCtrl;
         this.router = router;
         this.alertController = alertController;
+        this.book = {};
         this.isAdmin = false;
         this.isCustomer = true;
         this.today = new Date();
@@ -285,8 +293,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
         this.mainuser = afs.doc("users/".concat(user.getUID()));
         this.sub = this.mainuser.valueChanges().subscribe(function (event) {
-          _this.username = event.username; // this.profilePic = event.profilePic
-
+          _this.username = event.username;
           _this.isAdmin = event.isAdmin;
           _this.isCustomer = event.isCustomer;
         });
@@ -356,6 +363,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         type: _user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"]
       }, {
+        type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_8__["AngularFireAuth"]
+      }, {
         type: _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeStorage"]
       }, {
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"]
@@ -374,7 +383,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./bookinghotel.page.scss */
       "./src/app/bookinghotel/bookinghotel.page.scss"))["default"]]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_2__["FirebaseService"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__["AngularFirestore"], _user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"], _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeStorage"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"]])], BookinghotelPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_2__["FirebaseService"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__["AngularFirestore"], _user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"], _angular_fire_auth__WEBPACK_IMPORTED_MODULE_8__["AngularFireAuth"], _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeStorage"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"]])], BookinghotelPage);
     /***/
   }
 }]);

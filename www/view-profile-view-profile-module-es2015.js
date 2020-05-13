@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar  color=\"dark\">\r\n    <ion-title >My Profile</ion-title>\r\n    <ion-buttons slot=\"start\">\r\n        <ion-menu-button autoHide=\"false\">\r\n          </ion-menu-button>\r\n        <!-- <ion-back-button icon=\"arrow-back-outline\"></ion-back-button> -->\r\n      </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content padding>\r\n      <ion-grid>\r\n        <ion-row>\r\n            <div class=\"center\" id=\"profile-info\" *ngIf=\"username\">\r\n                <!-- <ion-grid> -->\r\n                  <ion-row>\r\n                    <ion-col size=\"4\" class=\"user-image\">\r\n                      <ion-img src=\"https://ucarecdn.com/{{ profilePic }}/-/scale_crop/200x200/center/\"></ion-img>\r\n                    </ion-col>\r\n                    <ion-col size=\"8\">\r\n                      <h1>Welcome, {{ username }} !</h1>\r\n                      <!-- <p>Contact Number: {{ contact }}</p>\r\n                      <p>Address: {{ address }}</p> -->\r\n                      <ion-button shape=\"round\" color=\"primary\" routerLink=\"/edit-profile\">Edit Profile</ion-button>\r\n                    </ion-col>\r\n                  </ion-row>\r\n              </div>\r\n        </ion-row>\r\n      \r\n      <div>  \r\n        <ion-card>\r\n            <ion-title>Your Hotel Booking:</ion-title>\r\n            <ion-item *ngFor=\"let bookinghotel of (hotelBooking | async)\">\r\n              <ion-label>\r\n                  <ion-row>\r\n                      <ion-col>\r\n                          <p>Name: {{bookinghotel.customerName}}</p>\r\n                      </ion-col>\r\n                      <ion-col>\r\n                          <p>Cat Name: {{bookinghotel.catName}}</p>\r\n                      </ion-col>\r\n                    </ion-row> \r\n                  <ion-row>\r\n                    <ion-col>\r\n                        <p>Check In : {{bookinghotel.checkInDate | date: \"dd/MM/yyyy\"}}</p>\r\n                    </ion-col>\r\n                    <ion-col>\r\n                        <p>Check Out : {{bookinghotel.checkOutDate | date: \"dd/MM/yyyy\"}}</p>\r\n                    </ion-col>\r\n                  </ion-row>  \r\n                  <ion-row>\r\n                    <ion-col>\r\n                        <p>Time In : {{bookinghotel.timeIn | date: \"shortTime\" }}</p>\r\n                    </ion-col>\r\n                    <ion-col>\r\n                        <p>Time Out : {{bookinghotel.timeOut | date: \"shortTime\" }}</p>\r\n                    </ion-col>\r\n                  </ion-row>\r\n              </ion-label>\r\n                <ion-button *ngIf=\"isCustomer\" fill=\"outline\" slot=\"end\" [routerLink]=\"'/view-booking-hotel/'+bookinghotel.id\">View</ion-button>\r\n              </ion-item> \r\n              <ion-button *ngIf=\"isCustomer\" [routerLink]=\"['/menuhotel']\" fill=\"solid\" size=\"med\" color=\"secondary\" >Book More Hotel</ion-button>\r\n     \r\n        </ion-card>\r\n        <!-- <ion-fab *ngIf=\"isCustomer\" vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n            <ion-fab-button [routerLink]=\"'/menuhotel'\">\r\n              <ion-icon name=\"add\"></ion-icon>\r\n            </ion-fab-button>\r\n        </ion-fab> -->\r\n      </div>\r\n      \r\n\r\n      <div>  \r\n        <ion-card>\r\n            <ion-title>Your Spa & Grooming Booking:</ion-title>\r\n            <ion-item *ngFor=\"let bookingspa of (spaBooking | async)\">\r\n              <ion-label>\r\n                  <ion-row>\r\n                      <ion-col>\r\n                          <p>Name: {{bookingspa.customerName}}</p>\r\n                      </ion-col>\r\n                      <ion-col>\r\n                          <p>Cat Name: {{bookingspa.catName}}</p>\r\n                      </ion-col>\r\n                    </ion-row> \r\n                  <ion-row>\r\n                    <ion-col>\r\n                        <p>Date : {{bookingspa.date | date: \"dd/MM/yyyy\"}}</p>\r\n                    </ion-col>\r\n                    <ion-col>\r\n                        <p>Time : {{bookingspa.time | date: \"shortTime\" }}</p>\r\n                    </ion-col>\r\n                  </ion-row>\r\n              </ion-label>\r\n                <ion-button *ngIf=\"isCustomer\" fill=\"outline\" slot=\"end\" [routerLink]=\"'/view-booking-spa/'+bookingspa.id\">View</ion-button>\r\n              </ion-item>\r\n        </ion-card>    \r\n      </div>\r\n      <ion-button  *ngIf=\"isCustomer\" [routerLink]=\"['/menuspa']\" fill=\"solid\" size=\"med\"  color=\"secondary\" >Book More Spa</ion-button>\r\n\r\n      <div>  \r\n          <ion-card>\r\n              <ion-title>Your Vaccine & Neuter Booking:</ion-title>\r\n              <ion-item *ngFor=\"let bookingvacc of (vaccBooking | async)\">\r\n                <ion-label>\r\n                    <ion-row>\r\n                        <ion-col>\r\n                            <p>Name: {{bookingvacc.customerName}}</p>\r\n                        </ion-col>\r\n                        <ion-col>\r\n                            <p>Cat Name: {{bookingvacc.catName}}</p>\r\n                        </ion-col>\r\n                      </ion-row> \r\n                    <ion-row>\r\n                      <ion-col>\r\n                          <p>Date : {{bookingvacc.date | date: \"dd/MM/yyyy\"}}</p>\r\n                      </ion-col>\r\n                      <ion-col>\r\n                          <p>Time : {{bookingvacc.time | date: \"shortTime\" }}</p>\r\n                      </ion-col>\r\n                    </ion-row>\r\n                </ion-label>\r\n                  <ion-button *ngIf=\"isCustomer\" fill=\"outline\" slot=\"end\" [routerLink]=\"'/view-booking-vaccine/'+bookingvacc.id\">View</ion-button>\r\n                </ion-item>\r\n          </ion-card>    \r\n        </div>\r\n        <ion-button  *ngIf=\"isCustomer\" [routerLink]=\"['/menuvaccine']\" fill=\"solid\" size=\"med\"  color=\"secondary\" >Book More Vacc</ion-button>\r\n\r\n        <div>  \r\n            <ion-card>\r\n                <ion-title>Your Grab Booking:</ion-title>\r\n                <ion-item *ngFor=\"let bookinggrab of (grabBooking | async)\">\r\n                  <ion-label>\r\n                      <ion-row>\r\n                          <ion-col>\r\n                              <p>Name: {{bookinggrab.customerName}}</p>\r\n                          </ion-col>\r\n                          <ion-col>\r\n                              <p>Cat Name: {{bookinggrab.catName}}</p>\r\n                          </ion-col>\r\n                        </ion-row> \r\n                      <ion-row>\r\n                        <ion-col>\r\n                            <p>Date : {{bookinggrab.date | date: \"dd/MM/yyyy\"}}</p>\r\n                        </ion-col>\r\n                        <ion-col>\r\n                            <p>Time : {{bookinggrab.time | date: \"shortTime\" }}</p>\r\n                        </ion-col>\r\n                      </ion-row>\r\n                  </ion-label>\r\n                    <ion-button *ngIf=\"isCustomer\" fill=\"outline\" slot=\"end\" [routerLink]=\"'/view-booking-grab/'+bookinggrab.id\">View</ion-button>\r\n                  </ion-item>\r\n            </ion-card>    \r\n          </div>\r\n          <ion-button  *ngIf=\"isCustomer\" [routerLink]=\"['/menugrab']\" fill=\"solid\" size=\"med\"  color=\"secondary\" >Book More Grab</ion-button>\r\n      \r\n          <div>  \r\n              <ion-card>\r\n                  <ion-title>Your Purchased Item:</ion-title>\r\n                  <ion-item *ngFor=\"let item of (purchasedItem | async)\">\r\n                    <ion-label>\r\n                        <ion-row>\r\n                            <ion-col>\r\n                                <p>Name: {{item.customerName}}</p>\r\n                            </ion-col>\r\n                            <ion-col>\r\n                                <p>Contact Number: {{item.contactNumber}}</p>\r\n                            </ion-col>\r\n                          </ion-row> \r\n                          <ion-row>\r\n                              <ion-col>\r\n                                  <p>Address: {{item.address}}</p>\r\n                              </ion-col>\r\n                          </ion-row>\r\n                          <ion-row>\r\n                              <ion-col>\r\n                                  <p>Total: RM52.50</p>\r\n                              </ion-col>\r\n                              <ion-col>\r\n                                  <p>Payment: Cash On Delivery</p>\r\n                              </ion-col>\r\n                          </ion-row>\r\n                    </ion-label>\r\n                      <!-- <ion-button *ngIf=\"isCustomer\" fill=\"outline\" slot=\"end\" [routerLink]=\"'/view-booking-grab/'+bookinggrab.id\">View</ion-button> -->\r\n                    </ion-item>\r\n              </ion-card>    \r\n            </div>\r\n            <ion-button  *ngIf=\"isCustomer\" [routerLink]=\"['/menuproduct']\" fill=\"solid\" size=\"med\"  color=\"secondary\" >Add More Product</ion-button>\r\n      <!-- </div> -->\r\n  </ion-grid>\r\n  </ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar  color=\"dark\">\r\n    <ion-title >My Profile</ion-title>\r\n    <ion-buttons slot=\"start\">\r\n        <ion-menu-button autoHide=\"false\">\r\n          </ion-menu-button>\r\n        <!-- <ion-back-button icon=\"arrow-back-outline\"></ion-back-button> -->\r\n      </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content padding>\r\n      <ion-grid>\r\n        <ion-row>\r\n            <div class=\"center\" id=\"profile-info\" *ngIf=\"username\">\r\n                <!-- <ion-grid> -->\r\n                  <ion-row>\r\n                    <ion-col size=\"4\" class=\"user-image\">\r\n                      <ion-img src=\"https://ucarecdn.com/{{ profilePic }}/-/scale_crop/200x200/center/\"></ion-img>\r\n                    </ion-col>\r\n                    <ion-col size=\"8\">\r\n                      <h1>Welcome, {{ username }} !</h1>\r\n                      <!-- <p>Contact Number: {{ contact }}</p>\r\n                      <p>Address: {{ address }}</p> -->\r\n                      <ion-button shape=\"round\" color=\"primary\" routerLink=\"/edit-profile\">Edit Profile</ion-button>\r\n                    </ion-col>\r\n                  </ion-row>\r\n              </div>\r\n        </ion-row>\r\n      \r\n      <div>  \r\n        <ion-card>\r\n            <ion-title>Hotel Booking:</ion-title>\r\n            <ion-item *ngFor=\"let bookinghotel of (hotelBooking | async)\">\r\n              <ion-label>\r\n                  <ion-row>\r\n                      <ion-col>\r\n                          <p>Name: {{bookinghotel.customerName}}</p>\r\n                      </ion-col>\r\n                      <ion-col>\r\n                          <p>Cat Name:  {{bookinghotel.catName}}</p>\r\n                      </ion-col>\r\n                    </ion-row> \r\n                  <ion-row>\r\n                    <ion-col>\r\n                        <p>Check In : {{bookinghotel.checkInDate | date: \"dd/MM/yyyy\"}}</p>\r\n                    </ion-col>\r\n                    <ion-col>\r\n                        <p>Check Out : {{bookinghotel.checkOutDate | date: \"dd/MM/yyyy\"}}</p>\r\n                    </ion-col>\r\n                  </ion-row>  \r\n                  <ion-row>\r\n                    <ion-col>\r\n                        <p>Time In : {{bookinghotel.timeIn | date: \"shortTime\" }}</p>\r\n                    </ion-col>\r\n                    <ion-col>\r\n                        <p>Time Out : {{bookinghotel.timeOut | date: \"shortTime\" }}</p>\r\n                    </ion-col>\r\n                  </ion-row>\r\n              </ion-label>\r\n                <ion-button *ngIf=\"isCustomer\" fill=\"outline\" slot=\"end\" [routerLink]=\"'/view-booking-hotel/'+bookinghotel.id\">View</ion-button>\r\n              </ion-item> \r\n              <!-- <ion-button *ngIf=\"isCustomer\" [routerLink]=\"['/menuhotel']\" fill=\"solid\" size=\"med\" color=\"secondary\" >Book More Hotel</ion-button> -->\r\n     \r\n        </ion-card>\r\n        <!-- <ion-fab *ngIf=\"isCustomer\" vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n            <ion-fab-button [routerLink]=\"'/menuhotel'\">\r\n              <ion-icon name=\"add\"></ion-icon>\r\n            </ion-fab-button>\r\n        </ion-fab> -->\r\n      </div>\r\n      \r\n\r\n      <div>  \r\n        <ion-card>\r\n            <ion-title>Spa & Grooming Booking:</ion-title>\r\n            <ion-item *ngFor=\"let bookingspa of (spaBooking | async)\">\r\n              <ion-label>\r\n                  <ion-row>\r\n                      <ion-col>\r\n                          <p>Name: {{bookingspa.customerName}}</p>\r\n                      </ion-col>\r\n                      <ion-col>\r\n                          <p>Cat Name: {{bookingspa.catName}}</p>\r\n                      </ion-col>\r\n                    </ion-row> \r\n                  <ion-row>\r\n                    <ion-col>\r\n                        <p>Date : {{bookingspa.date | date: \"dd/MM/yyyy\"}}</p>\r\n                    </ion-col>\r\n                    <ion-col>\r\n                        <p>Time : {{bookingspa.time | date: \"shortTime\" }}</p>\r\n                    </ion-col>\r\n                  </ion-row>\r\n              </ion-label>\r\n                <ion-button *ngIf=\"isCustomer\" fill=\"outline\" slot=\"end\" [routerLink]=\"'/view-booking-spa/'+bookingspa.id\">View</ion-button>\r\n              </ion-item>\r\n        </ion-card>    \r\n      </div>\r\n      <!-- <ion-button  *ngIf=\"isCustomer\" [routerLink]=\"['/menuspa']\" fill=\"solid\" size=\"med\"  color=\"secondary\" >Book More Spa</ion-button> -->\r\n\r\n      <div>  \r\n          <ion-card>\r\n              <ion-title>Vaccine & Neuter Booking:</ion-title>\r\n              <ion-item *ngFor=\"let bookingvacc of (vaccBooking | async)\">\r\n                <ion-label>\r\n                    <ion-row>\r\n                        <ion-col>\r\n                            <p>Name: {{bookingvacc.customerName}}</p>\r\n                        </ion-col>\r\n                        <ion-col>\r\n                            <p>Cat Name: {{bookingvacc.catName}}</p>\r\n                        </ion-col>\r\n                      </ion-row> \r\n                    <ion-row>\r\n                      <ion-col>\r\n                          <p>Date : {{bookingvacc.date | date: \"dd/MM/yyyy\"}}</p>\r\n                      </ion-col>\r\n                      <ion-col>\r\n                          <p>Time : {{bookingvacc.time | date: \"shortTime\" }}</p>\r\n                      </ion-col>\r\n                    </ion-row>\r\n                </ion-label>\r\n                  <ion-button *ngIf=\"isCustomer\" fill=\"outline\" slot=\"end\" [routerLink]=\"'/view-booking-vaccine/'+bookingvacc.id\">View</ion-button>\r\n                </ion-item>\r\n          </ion-card>    \r\n        </div>\r\n        <!-- <ion-button  *ngIf=\"isCustomer\" [routerLink]=\"['/menuvaccine']\" fill=\"solid\" size=\"med\"  color=\"secondary\" >Book More Vacc</ion-button> -->\r\n\r\n        <div>  \r\n            <ion-card>\r\n                <ion-title>Grab Booking:</ion-title>\r\n                <ion-item *ngFor=\"let bookinggrab of (grabBooking | async)\">\r\n                  <ion-label>\r\n                      <ion-row>\r\n                          <ion-col>\r\n                              <p>Name: {{bookinggrab.customerName}}</p>\r\n                          </ion-col>\r\n                          <ion-col>\r\n                              <p>Cat Name: {{bookinggrab.catName}}</p>\r\n                          </ion-col>\r\n                        </ion-row> \r\n                      <ion-row>\r\n                        <ion-col>\r\n                            <p>Date : {{bookinggrab.date | date: \"dd/MM/yyyy\"}}</p>\r\n                        </ion-col>\r\n                        <ion-col>\r\n                            <p>Time : {{bookinggrab.time | date: \"shortTime\" }}</p>\r\n                        </ion-col>\r\n                      </ion-row>\r\n                  </ion-label>\r\n                    <ion-button *ngIf=\"isCustomer\" fill=\"outline\" slot=\"end\" [routerLink]=\"'/view-booking-grab/'+bookinggrab.id\">View</ion-button>\r\n                  </ion-item>\r\n            </ion-card>    \r\n          </div>\r\n          <!-- <ion-button  *ngIf=\"isCustomer\" [routerLink]=\"['/menugrab']\" fill=\"solid\" size=\"med\"  color=\"secondary\" >Book More Grab</ion-button> -->\r\n      \r\n          <div>  \r\n              <ion-card>\r\n                  <ion-title>Purchased Item:</ion-title>\r\n                  <ion-item *ngFor=\"let item of (purchasedItem | async)\">\r\n                    <ion-label>\r\n                        <ion-row>\r\n                            <ion-col>\r\n                                <p>Name: {{item.customerName}}</p>\r\n                            </ion-col>\r\n                            <ion-col>\r\n                                <p>Contact Number: {{item.contactNumber}}</p>\r\n                            </ion-col>\r\n                          </ion-row> \r\n                          <ion-row>\r\n                              <ion-col>\r\n                                  <p>Address: {{item.address}}</p>\r\n                              </ion-col>\r\n                          </ion-row>\r\n                          <ion-row>\r\n                              <ion-col>\r\n                                  <p>Total Price: RM{{item.totalPrice}}</p>\r\n                              </ion-col>\r\n                              <ion-col>\r\n                                  <p>Payment: {{item.paymenttype}}</p>\r\n                              </ion-col>\r\n                          </ion-row>\r\n                          <!-- <ion-row>\r\n                              <ion-col>\r\n                                  <p>Item: {{product.productName}}</p>\r\n                              </ion-col>\r\n                             \r\n                          </ion-row> -->\r\n                    </ion-label>\r\n                      <!-- <ion-button *ngIf=\"isCustomer\" fill=\"outline\" slot=\"end\" [routerLink]=\"'/view-booking-grab/'+bookinggrab.id\">View</ion-button> -->\r\n                    </ion-item>\r\n              </ion-card>    \r\n            </div>\r\n            <!-- <ion-button  *ngIf=\"isCustomer\" [routerLink]=\"['/menuproduct']\" fill=\"solid\" size=\"med\"  color=\"secondary\" >Add More Product</ion-button> -->\r\n      <!-- </div> -->\r\n  </ion-grid>\r\n  </ion-content>");
 
 /***/ }),
 
@@ -134,17 +134,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let ViewProfilePage = class ViewProfilePage {
-    constructor(http, activatedRoute, fbService, afs, user, storage, router, alertController) {
+    constructor(http, fbService, afs, user, storage, router, alertController, route, activatedRoute) {
         this.http = http;
-        this.activatedRoute = activatedRoute;
         this.fbService = fbService;
         this.afs = afs;
         this.user = user;
         this.storage = storage;
         this.router = router;
         this.alertController = alertController;
+        this.route = route;
+        this.activatedRoute = activatedRoute;
         this.isAdmin = false;
         this.isCustomer = true;
+        //booking: any;
         this.bookinghotel = {
             customerName: '',
             contactNumber: '',
@@ -182,17 +184,33 @@ let ViewProfilePage = class ViewProfilePage {
         this.item = {
             customerName: '',
             contactNumber: '',
-            address: ''
+            address: '',
+            quantity: 0,
+            totalPrice: 0,
+            paymenttype: ''
         };
+        this.product = {
+            productName: '',
+            productDetails: '',
+            productPrice: 0,
+            quantity: 0,
+            image: ''
+        };
+        //   const routeUserId = this.route.snapshot.paramMap.get('userId');
+        // let userId = user.getUID();
+        // if (routeUserId) {
+        //   userId = routeUserId;
+        // }
         this.mainuser = afs.doc(`users/${user.getUID()}`);
-        this.sub = this.mainuser.valueChanges().subscribe(event => {
+        this.sub = this.mainuser.valueChanges().subscribe((event) => {
             this.username = event.username;
             this.isAdmin = event.isAdmin;
             this.isCustomer = event.isCustomer;
-            // this.posts = event.posts
             this.profilePic = event.profilePic;
             this.contact = event.contact;
             this.address = event.address;
+            // this.booking = Object.values(event.booking)
+            // console.log(this.booking);
         });
     }
     ngOnDestroy() {
@@ -204,22 +222,36 @@ let ViewProfilePage = class ViewProfilePage {
         this.vaccBooking = this.fbService.getVaccBookings();
         this.grabBooking = this.fbService.getGrabBookings();
         this.purchasedItem = this.fbService.getPurchasedItems();
+        //this.catProduct = this.fbService.getProducts();
         this.storage.setItem('username', this.username);
         this.storage.setItem('isAdmin', this.isAdmin);
         this.storage.setItem('isCustomer', this.isCustomer);
         this.storage.setItem('contact', this.contact);
         this.storage.setItem('address', this.address);
+        //this.storage.setItem('booking', this.booking);
+    }
+    ngAfterViewInit() {
+        const id = this.activatedRoute.snapshot.paramMap.get('id');
+        if (id) {
+            this.fbService.getProduct(id).subscribe(productData => {
+                this.product = productData;
+                this.fbService.getPurchasedItem(id).subscribe(itemData => {
+                    this.item = itemData;
+                });
+            });
+        }
     }
 };
 ViewProfilePage.ctorParameters = () => [
     { type: _angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["ActivatedRoute"] },
     { type: _services_firebase_service__WEBPACK_IMPORTED_MODULE_5__["FirebaseService"] },
     { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__["AngularFirestore"] },
     { type: _user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"] },
     { type: _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_6__["NativeStorage"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["AlertController"] }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["AlertController"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["ActivatedRoute"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["ActivatedRoute"] }
 ];
 ViewProfilePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -228,13 +260,14 @@ ViewProfilePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./view-profile.page.scss */ "./src/app/view-profile/view-profile.page.scss")).default]
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"],
-        _angular_router__WEBPACK_IMPORTED_MODULE_7__["ActivatedRoute"],
         _services_firebase_service__WEBPACK_IMPORTED_MODULE_5__["FirebaseService"],
         _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__["AngularFirestore"],
         _user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"],
         _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_6__["NativeStorage"],
         _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"],
-        _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["AlertController"]])
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["AlertController"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_7__["ActivatedRoute"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_7__["ActivatedRoute"]])
 ], ViewProfilePage);
 
 

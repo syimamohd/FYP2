@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>New Hotel</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n<ion-list>\r\n    <ion-item>\r\n      <input type=\"file\" #fileBtn class=\"filebtn\" (change)=\"uploadPic($event)\"/>\r\n        <div *ngIf=\"!hotel.image\">\r\n          <ion-img class=\"profile-pic\" (click)=\"updateProfilePic()\" src=\"assets/defaultPic.png\"></ion-img>\r\n        </div>\r\n        <div *ngIf=\"hotel.image\">\r\n        <ion-img class=\"profile-pic\" (click)=\"updateProfilePic()\" [src]=\"hotel.image\"></ion-img>\r\n      </div>\r\n    </ion-item>   \r\n  <ion-item>\r\n    <ion-input placeholder=\"Enter Hotel Name\" [(ngModel)]=\"hotel.hotelName\"></ion-input>\r\n  </ion-item>\r\n  <ion-item>\r\n    <ion-textarea rows=\"6\" [(ngModel)]=\"hotel.hotelDetails\" placeholder=\"Enter hotel details here...\"></ion-textarea>\r\n  </ion-item>\r\n  <ion-item>\r\n    <ion-input placeholder=\"Enter Hotel Price\" [(ngModel)]=\"hotel.hotelPrice\"></ion-input>\r\n  </ion-item>\r\n</ion-list>\r\n  <ion-button color=\"primary\" expand=\"full\" (click)=\"addNote()\">Create</ion-button>\r\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>New Hotel</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n<ion-list>\r\n    <ion-item>\r\n      <input type=\"file\" #fileBtn class=\"filebtn\" (change)=\"uploadPic($event)\"/>\r\n        <div *ngIf=\"!hotel.image\">\r\n          <ion-img class=\"profile-pic\" (click)=\"updateProfilePic()\" src=\"assets/defaultPic.png\"></ion-img>\r\n        </div>\r\n        <div *ngIf=\"hotel.image\">\r\n        <ion-img class=\"profile-pic\" (click)=\"updateProfilePic()\" [src]=\"hotel.image\"></ion-img>\r\n      </div>\r\n    </ion-item>  \r\n  <ion-item>\r\n    <ion-input placeholder=\"Enter Hotel Name\" [(ngModel)]=\"hotel.hotelName\"></ion-input>\r\n  </ion-item>\r\n  <ion-item>\r\n    <ion-textarea rows=\"6\" [(ngModel)]=\"hotel.hotelDetails\" placeholder=\"Enter hotel details here...\"></ion-textarea>\r\n  </ion-item>\r\n  <ion-item>\r\n    <ion-input placeholder=\"Enter Hotel Price\" [(ngModel)]=\"hotel.hotelPrice\"></ion-input>\r\n  </ion-item>\r\n</ion-list>\r\n  <ion-button color=\"primary\" expand=\"full\" (click)=\"addNote()\">Create</ion-button>\r\n</ion-content>");
 
 /***/ }),
 
@@ -138,6 +138,8 @@ let AddHotelPage = class AddHotelPage {
             hotelName: '',
             hotelDetails: '',
             hotelPrice: '',
+            image: ''
+            // createdAt: new Date().getTime()
         };
     }
     ngOnInit() {
@@ -160,7 +162,7 @@ let AddHotelPage = class AddHotelPage {
         this.http.post('https://upload.uploadcare.com/base/', data)
             .subscribe(event => {
             const uuid = event.json().file;
-            // this.hotel.image=`https://ucarecdn.com/${uuid}/-/scale_crop/150x150/center/`;
+            this.hotel.image = `https://ucarecdn.com/${uuid}/-/scale_crop/150x150/center/`;
             // this.mainuser.update({
             // 	profilePic: uuid
             // })

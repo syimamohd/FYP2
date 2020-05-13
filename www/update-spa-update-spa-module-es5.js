@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n    <ion-toolbar color=\"primary\">\n      <ion-title>Update Spa</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  <ion-content>\n    <ion-list>\n        <ion-item>\n            <ion-input placeholder=\"Enter Spa Name\" [(ngModel)]=\"spa.spaName\"></ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-textarea rows=\"6\" [(ngModel)]=\"spa.spaDetails\" placeholder=\"Enter spa details here...\"></ion-textarea>\n          </ion-item>\n          <ion-item>\n            <ion-input placeholder=\"Enter Spa Price\" [(ngModel)]=\"spa.spaPrice\"></ion-input>\n          </ion-item>\n    </ion-list>\n    <ion-button color=\"primary\" expand=\"full\" (click)=\"updateSpa()\">Update</ion-button>\n  </ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header>\r\n    <ion-toolbar color=\"primary\">\r\n      <ion-title>Update Spa</ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  \r\n  <ion-content>\r\n    <ion-list>\r\n        <ion-item>\r\n            <input type=\"file\" #fileBtn class=\"filebtn\" (change)=\"uploadPic($event)\"/>\r\n              <div *ngIf=\"!spa.image\">\r\n                <ion-img class=\"profile-pic\" (click)=\"updateProfilePic()\" src=\"assets/defaultPic.png\"></ion-img>\r\n              </div>\r\n              <div *ngIf=\"spa.image\">\r\n              <ion-img class=\"profile-pic\" (click)=\"updateProfilePic()\" [src]=\"spa.image\"></ion-img>\r\n            </div>\r\n          </ion-item> \r\n        <ion-item>\r\n            <ion-input placeholder=\"Enter Spa Name\" [(ngModel)]=\"spa.spaName\"></ion-input>\r\n          </ion-item>\r\n          <ion-item>\r\n            <ion-textarea rows=\"6\" [(ngModel)]=\"spa.spaDetails\" placeholder=\"Enter spa details here...\"></ion-textarea>\r\n          </ion-item>\r\n          <ion-item>\r\n            <ion-input placeholder=\"Enter Spa Price\" [(ngModel)]=\"spa.spaPrice\"></ion-input>\r\n          </ion-item>\r\n    </ion-list>\r\n    <ion-button color=\"primary\" expand=\"full\" (click)=\"updateSpa()\">Update</ion-button>\r\n  </ion-content>\r\n";
     /***/
   },
 
@@ -221,18 +221,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _services_firebase_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! ../services/firebase.service */
     "./src/app/services/firebase.service.ts");
+    /* harmony import */
+
+
+    var _angular_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/http */
+    "./node_modules/@angular/http/fesm2015/http.js");
 
     var UpdateSpaPage = /*#__PURE__*/function () {
-      function UpdateSpaPage(activatedRoute, fbService, router) {
+      function UpdateSpaPage(activatedRoute, fbService, router, http) {
         _classCallCheck(this, UpdateSpaPage);
 
         this.activatedRoute = activatedRoute;
         this.fbService = fbService;
         this.router = router;
+        this.http = http;
         this.spa = {
           spaName: '',
           spaDetails: '',
-          spaPrice: '' // createdAt: new Date().getTime()
+          spaPrice: '',
+          image: '' // createdAt: new Date().getTime()
 
         };
       }
@@ -262,6 +270,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _this2.router.navigate(['/menuspa']);
           }, function (err) {});
         }
+      }, {
+        key: "updateProfilePic",
+        value: function updateProfilePic() {
+          this.fileBtn.nativeElement.click();
+        }
+      }, {
+        key: "uploadPic",
+        value: function uploadPic(event) {
+          var _this3 = this;
+
+          var files = event.target.files;
+          var data = new FormData();
+          data.append('file', files[0]);
+          data.append('UPLOADCARE_STORE', '1');
+          data.append('UPLOADCARE_PUB_KEY', '00f055ada25dcea69cac');
+          this.http.post('https://upload.uploadcare.com/base/', data).subscribe(function (event) {
+            var uuid = event.json().file;
+            _this3.spa.image = "https://ucarecdn.com/".concat(uuid, "/-/scale_crop/150x150/center/"); // this.mainuser.update({
+            // 	profilePic: uuid
+            // })
+          });
+        }
       }]);
 
       return UpdateSpaPage;
@@ -274,9 +304,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _services_firebase_service__WEBPACK_IMPORTED_MODULE_3__["FirebaseService"]
       }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }, {
+        type: _angular_http__WEBPACK_IMPORTED_MODULE_4__["Http"]
       }];
     };
 
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('fileBtn', {
+      "static": false
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)], UpdateSpaPage.prototype, "fileBtn", void 0);
     UpdateSpaPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-update-spa',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
@@ -285,7 +320,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./update-spa.page.scss */
       "./src/app/update-spa/update-spa.page.scss"))["default"]]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_3__["FirebaseService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])], UpdateSpaPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_3__["FirebaseService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_http__WEBPACK_IMPORTED_MODULE_4__["Http"]])], UpdateSpaPage);
     /***/
   }
 }]);

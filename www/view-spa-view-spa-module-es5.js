@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n    <ion-toolbar color=\"primary\">\n      <ion-title>{{spa.spaName}}</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  <ion-content>\n    <ion-card color=\"secondary\">\n      <ion-card-header>\n        <ion-card-subtitle>{{spa.createdAt | date: 'short'}}</ion-card-subtitle>\n        <ion-card-title>{{spa.spaName}}</ion-card-title>\n      </ion-card-header>\n  \n      <ion-card-content>\n        <p align=\"justify\">{{spa.spaDetails}}</p>\n        <br>\n        <p align=\"justify\">{{spa.spaPrice}}</p>\n        <ion-button slot=\"start\" color=\"warning\" [routerLink]=\"'/update-spa/' + spa.id\">Edit</ion-button>\n        <ion-button slot=\"end\" color=\"danger\" (click)=\"deleteSpa()\">Delete</ion-button>\n      </ion-card-content>\n  \n    </ion-card>\n  </ion-content>\n  ";
+    __webpack_exports__["default"] = "<ion-header>\r\n    <ion-toolbar color=\"primary\">\r\n      <ion-title>{{spa.spaName}}</ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  \r\n  <ion-content>\r\n    <ion-card color=\"secondary\">\r\n      <ion-card-header>\r\n        <ion-card-subtitle>{{spa.createdAt | date: 'short'}}</ion-card-subtitle>\r\n        <ion-card-title>{{spa.spaName}}</ion-card-title>\r\n      </ion-card-header>\r\n  \r\n      <ion-card-content>\r\n          <ion-img *ngIf=\"!!spa.image\" class=\"profile-pic\"  [src]=\"spa.image\"></ion-img>\r\n        <p align=\"justify\">{{spa.spaDetails}}</p>\r\n        <br>\r\n        <p align=\"justify\">{{spa.spaPrice}}</p>\r\n        <ion-button slot=\"start\" color=\"warning\" [routerLink]=\"'/update-spa/' + spa.id\">Edit</ion-button>\r\n        <ion-button slot=\"end\" color=\"danger\" (click)=\"deleteSpa()\">Delete</ion-button>\r\n      </ion-card-content>\r\n  \r\n    </ion-card>\r\n  </ion-content>\r\n  ";
     /***/
   },
 
@@ -233,7 +233,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.spa = {
           spaName: '',
           spaDetails: '',
-          spaPrice: '' // createdAt: ''
+          spaPrice: '',
+          image: '' // createdAt: ''
 
         };
       }
@@ -260,7 +261,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this2 = this;
 
           this.fbService.deleteSpa(this.spa.id).then(function () {
-            _this2.router.navigateByUrl('/');
+            _this2.router.navigateByUrl('/menuspa');
           }, function (err) {});
         }
       }]);

@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>{{hotel.hotelName}}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-card color=\"secondary\">\r\n    <ion-card-header>\r\n      <ion-card-subtitle>{{hotel.createdAt | date: 'short'}}</ion-card-subtitle>\r\n      <ion-card-title>{{hotel.hotelName}}</ion-card-title>\r\n    </ion-card-header>\r\n\r\n    <ion-card-content>\r\n      \r\n    <ion-img *ngIf=\"!!hotel.image\" class=\"profile-pic\"  [src]=\"hotel.image\"></ion-img>\r\n           \r\n        \r\n      <p align=\"justify\">{{hotel.hotelDetails}}</p>\r\n      <br>\r\n      <p align=\"justify\">{{hotel.hotelPrice}}</p>\r\n      <ion-button slot=\"start\" color=\"warning\" [routerLink]=\"'/update-hotel/' + hotel.id\">Edit</ion-button>\r\n      <ion-button slot=\"end\" color=\"danger\" (click)=\"deleteHotel()\">Delete</ion-button>\r\n    </ion-card-content>\r\n\r\n  </ion-card>\r\n</ion-content>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>{{hotel.hotelName}}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-card color=\"secondary\">\r\n    <ion-card-header>\r\n      <ion-card-subtitle>{{hotel.createdAt | date: 'short'}}</ion-card-subtitle>\r\n      <ion-card-title>{{hotel.hotelName}}</ion-card-title>\r\n    </ion-card-header>\r\n\r\n    <ion-card-content>\r\n      <ion-img *ngIf=\"!!hotel.image\" class=\"profile-pic\"  [src]=\"hotel.image\"></ion-img>\r\n      <p align=\"justify\">{{hotel.hotelDetails}}</p>\r\n      <br>\r\n      <p align=\"justify\">{{hotel.hotelPrice}}</p>\r\n      <ion-button slot=\"start\" color=\"warning\" [routerLink]=\"'/update-hotel/' + hotel.id\">Edit</ion-button>\r\n      <ion-button slot=\"end\" color=\"danger\" (click)=\"deleteHotel()\">Delete</ion-button>\r\n    </ion-card-content>\r\n\r\n  </ion-card>\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -128,7 +128,6 @@ let ViewHotelPage = class ViewHotelPage {
         this.activatedRoute = activatedRoute;
         this.fbService = fbService;
         this.router = router;
-        //note properties
         this.hotel = {
             hotelName: '',
             hotelDetails: '',
@@ -148,7 +147,7 @@ let ViewHotelPage = class ViewHotelPage {
     }
     deleteHotel() {
         this.fbService.deleteHotel(this.hotel.id).then(() => {
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/menuhotel');
         }, err => {
         });
     }

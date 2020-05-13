@@ -21,6 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 let FirebaseService = class FirebaseService {
     constructor(afs) {
         this.afs = afs;
+        this.usersCollection = this.afs.collection('/users');
         //define collection
         this.noteCollection = this.afs.collection('notes');
         this.catHotelCollection = this.afs.collection('catHotel');
@@ -197,7 +198,7 @@ let FirebaseService = class FirebaseService {
     }
     //update spa details
     updateSpa(spa) {
-        return this.catSpaCollection.doc(spa.id).update({ spaName: spa.spaName, spaDetails: spa.spaDetails, spaPrice: spa.spaPrice });
+        return this.catSpaCollection.doc(spa.id).update(spa);
     }
     //delete spa
     deleteSpa(id) {
@@ -221,7 +222,7 @@ let FirebaseService = class FirebaseService {
     }
     //update vaccine details
     updateVaccine(vaccine) {
-        return this.catVaccineCollection.doc(vaccine.id).update({ vaccineName: vaccine.vaccineName, vaccineDetails: vaccine.vaccineDetails, vaccinePrice: vaccine.vaccinePrice });
+        return this.catVaccineCollection.doc(vaccine.id).update(vaccine);
     }
     //delete vaccine
     deleteVaccine(id) {
@@ -245,7 +246,7 @@ let FirebaseService = class FirebaseService {
     }
     //update grab details
     updateGrab(grab) {
-        return this.catGrabCollection.doc(grab.id).update({ grabName: grab.grabName, grabDetails: grab.grabDetails, grabPrice: grab.grabPrice });
+        return this.catGrabCollection.doc(grab.id).update(grab);
     }
     //delete grab
     deleteGrab(id) {
@@ -269,7 +270,7 @@ let FirebaseService = class FirebaseService {
     }
     //update product details
     updateProduct(product) {
-        return this.catProductCollection.doc(product.id).update({ productName: product.productName, productDetails: product.productDetails, productPrice: product.productPrice });
+        return this.catProductCollection.doc(product.id).update(product);
     }
     //delete product
     deleteProduct(id) {
@@ -291,14 +292,14 @@ let FirebaseService = class FirebaseService {
     submitBookingHotel(bookinghotel) {
         return this.catHotelBookingCollection.add(bookinghotel);
     }
+    // submitBookingHotel(something: { book: {}; uid: string }) 
+    // {
+    //   this.usersCollection.doc(something.uid).update({ booking: something.book, catnem : something.book });
+    //   console.log({ something });
+    // }
     //update hotel details
     updateBookingHotel(bookinghotel) {
-        return this.catHotelBookingCollection.doc(bookinghotel.id).update({
-            customerName: bookinghotel.customerName, contactNumber: bookinghotel.contactNumber,
-            catName: bookinghotel.catName, remark: bookinghotel.remark, checkInDate: bookinghotel.checkInDate,
-            checkOutDate: bookinghotel.checkOutDate, timeIn: bookinghotel.timeIn,
-            timeOut: bookinghotel.timeOut
-        });
+        return this.catHotelBookingCollection.doc(bookinghotel.id).update(bookinghotel);
     }
     //delete hotel
     deleteBookingHotel(id) {
@@ -322,10 +323,7 @@ let FirebaseService = class FirebaseService {
     }
     //update spa details
     updateBookingSpa(bookingspa) {
-        return this.catSpaBookingCollection.doc(bookingspa.id).update({ customerName: bookingspa.customerName, contactNumber: bookingspa.contactNumber,
-            catName: bookingspa.catName, remark: bookingspa.remark, date: bookingspa.date,
-            time: bookingspa.time
-        });
+        return this.catSpaBookingCollection.doc(bookingspa.id).update(bookingspa);
     }
     //delete spa
     deleteBookingSpa(id) {
@@ -349,9 +347,7 @@ let FirebaseService = class FirebaseService {
     }
     //update vaccine details
     updateBookingVacc(bookingvacc) {
-        return this.catVaccBookingCollection.doc(bookingvacc.id).update({ customerName: bookingvacc.customerName, contactNumber: bookingvacc.contactNumber,
-            catName: bookingvacc.catName, remark: bookingvacc.remark, date: bookingvacc.date,
-            time: bookingvacc.time });
+        return this.catVaccBookingCollection.doc(bookingvacc.id).update(bookingvacc);
     }
     //delete vaccine
     deleteBookingVacc(id) {
@@ -375,9 +371,7 @@ let FirebaseService = class FirebaseService {
     }
     //update grab details
     updateBookingGrab(bookinggrab) {
-        return this.catGrabBookingCollection.doc(bookinggrab.id).update({ customerName: bookinggrab.customerName, contactNumber: bookinggrab.contactNumber,
-            catName: bookinggrab.catName, remark: bookinggrab.remark, date: bookinggrab.date,
-            time: bookinggrab.time });
+        return this.catGrabBookingCollection.doc(bookinggrab.id).update(bookinggrab);
     }
     //delete grab
     deleteBookingGrab(id) {

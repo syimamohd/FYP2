@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar color=\"dark\">\n    <ion-title>Update Product</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n      <div *ngIf=\"!busy\">\n        <ion-item>\n            <input type=\"file\" #fileBtn class=\"filebtn\" (change)=\"uploadPic($event)\" />\n            <div>\n              <ion-img class=\"profile-pic\" src=\"https://ucarecdn.com/{{ productPic }}/-/scale_crop/150x150/center/\"></ion-img>\n              <ion-button  (click)=\"updateProductPic()\">Change</ion-button>\n            </div>\n        </ion-item>\n        <ion-item>\n          <ion-input placeholder=\"Enter Product Name\" [(ngModel)]=\"product.productName\"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-textarea rows=\"6\" [(ngModel)]=\"product.productDetails\" placeholder=\"Enter product details here...\"></ion-textarea>\n        </ion-item>\n        <ion-item>\n          <ion-input placeholder=\"Enter Product Pricein RM\" [(ngModel)]=\"product.productPrice\"></ion-input>\n        </ion-item>\n      </div> \n  </ion-list>\n  <ion-button color=\"primary\" expand=\"full\" (click)=\"updateProduct()\">Update</ion-button>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"dark\">\r\n    <ion-title>Update Product</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-list>\r\n     \r\n      <ion-item>\r\n          <input type=\"file\" #fileBtn class=\"filebtn\" (change)=\"uploadPic($event)\"/>\r\n            <div *ngIf=\"!product.image\">\r\n              <ion-img class=\"profile-pic\" (click)=\"updateProfilePic()\" src=\"assets/defaultPic.png\"></ion-img>\r\n            </div>\r\n            <div *ngIf=\"product.image\">\r\n            <ion-img class=\"profile-pic\" (click)=\"updateProfilePic()\" [src]=\"product.image\"></ion-img>\r\n          </div>\r\n        </ion-item> \r\n        <ion-item>\r\n          <ion-input placeholder=\"Enter Product Name\" [(ngModel)]=\"product.productName\"></ion-input>\r\n        </ion-item>\r\n        <ion-item>\r\n          <ion-textarea rows=\"6\" [(ngModel)]=\"product.productDetails\" placeholder=\"Enter product details here...\"></ion-textarea>\r\n        </ion-item>\r\n        <ion-item>\r\n          <ion-input placeholder=\"Enter Product Pricein RM\" [(ngModel)]=\"product.productPrice\"></ion-input>\r\n        </ion-item>\r\n     \r\n  </ion-list>\r\n  <ion-button color=\"primary\" expand=\"full\" (click)=\"updateProduct()\">Update</ion-button>\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -150,7 +150,8 @@ let UpdateProductPage = class UpdateProductPage {
             productName: '',
             productDetails: '',
             productPrice: null,
-            amount: null
+            quantity: null,
+            image: ''
             // createdAt: new Date().getTime()
         };
         this.mainuser = afs.doc(`users/${user.getUID()}`);
@@ -186,7 +187,7 @@ let UpdateProductPage = class UpdateProductPage {
     ngOnDestroy() {
         this.sub.unsubscribe();
     }
-    updateProductPic() {
+    updateProfilePic() {
         this.fileBtn.nativeElement.click();
     }
     uploadPic(event) {
@@ -198,9 +199,10 @@ let UpdateProductPage = class UpdateProductPage {
         this.http.post('https://upload.uploadcare.com/base/', data)
             .subscribe(event => {
             const uuid = event.json().file;
-            this.mainuser.update({
-                productPic: uuid
-            });
+            this.product.image = `https://ucarecdn.com/${uuid}/-/scale_crop/150x150/center/`;
+            // this.mainuser.update({
+            // 	profilePic: uuid
+            // })
         });
     }
     presentAlert(title, content) {

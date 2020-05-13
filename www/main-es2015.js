@@ -775,7 +775,7 @@ const routes = [
     { path: 'update-booking-grab/:id', loadChildren: () => Promise.all(/*! import() | update-booking-grab-update-booking-grab-module */[__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("update-booking-grab-update-booking-grab-module")]).then(__webpack_require__.bind(null, /*! ./update-booking-grab/update-booking-grab.module */ "./src/app/update-booking-grab/update-booking-grab.module.ts")).then(m => m.UpdateBookingGrabPageModule) },
     { path: 'update-booking-vacc/:id', loadChildren: () => Promise.all(/*! import() | update-booking-vacc-update-booking-vacc-module */[__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("update-booking-vacc-update-booking-vacc-module")]).then(__webpack_require__.bind(null, /*! ./update-booking-vacc/update-booking-vacc.module */ "./src/app/update-booking-vacc/update-booking-vacc.module.ts")).then(m => m.UpdateBookingVaccPageModule) },
     { path: 'menuproduct', loadChildren: () => Promise.all(/*! import() | menuproduct-menuproduct-module */[__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("menuproduct-menuproduct-module")]).then(__webpack_require__.bind(null, /*! ./menuproduct/menuproduct.module */ "./src/app/menuproduct/menuproduct.module.ts")).then(m => m.MenuproductPageModule) },
-    { path: 'checkout', loadChildren: () => Promise.all(/*! import() | checkout-checkout-module */[__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("checkout-checkout-module")]).then(__webpack_require__.bind(null, /*! ./checkout/checkout.module */ "./src/app/checkout/checkout.module.ts")).then(m => m.CheckoutPageModule) },
+    { path: 'checkout/:id', loadChildren: () => Promise.all(/*! import() | checkout-checkout-module */[__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("checkout-checkout-module")]).then(__webpack_require__.bind(null, /*! ./checkout/checkout.module */ "./src/app/checkout/checkout.module.ts")).then(m => m.CheckoutPageModule) },
     { path: 'cart-modal/:id', loadChildren: () => Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./cart-modal/cart-modal.module */ "./src/app/cart-modal/cart-modal.module.ts")).then(m => m.CartModalPageModule) },
     { path: 'add-content', loadChildren: () => Promise.all(/*! import() | add-content-add-content-module */[__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("add-content-add-content-module")]).then(__webpack_require__.bind(null, /*! ./add-content/add-content.module */ "./src/app/add-content/add-content.module.ts")).then(m => m.AddContentPageModule) },
     { path: 'view-content/:id', loadChildren: () => Promise.all(/*! import() | view-content-view-content-module */[__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("view-content-view-content-module")]).then(__webpack_require__.bind(null, /*! ./view-content/view-content.module */ "./src/app/view-content/view-content.module.ts")).then(m => m.ViewContentPageModule) },
@@ -795,6 +795,10 @@ const routes = [
     {
         path: 'update-contact/:id',
         loadChildren: () => Promise.all(/*! import() | update-contact-update-contact-module */[__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("update-contact-update-contact-module")]).then(__webpack_require__.bind(null, /*! ./update-contact/update-contact.module */ "./src/app/update-contact/update-contact.module.ts")).then(m => m.UpdateContactPageModule)
+    },
+    {
+        path: 'paymentsuccess',
+        loadChildren: () => __webpack_require__.e(/*! import() | paymentsuccess-paymentsuccess-module */ "paymentsuccess-paymentsuccess-module").then(__webpack_require__.bind(null, /*! ./paymentsuccess/paymentsuccess.module */ "./src/app/paymentsuccess/paymentsuccess.module.ts")).then(m => m.PaymentsuccessPageModule)
     },
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -889,11 +893,6 @@ let AppComponent = class AppComponent {
                     pagename: "Cat Products",
                     icon: "basket",
                     url: "/menuproduct"
-                },
-                {
-                    pagename: "Contact Us",
-                    icon: "call",
-                    url: "/contact"
                 },
             ];
         });
@@ -1184,9 +1183,9 @@ let CartModalPage = class CartModalPage {
         this.product = {
             productName: '',
             productDetails: '',
-            productPrice: null,
-            amount: null,
-            id: null
+            productPrice: 0,
+            quantity: 0,
+            image: '',
         };
         this.cart = [];
     }
@@ -1203,7 +1202,7 @@ let CartModalPage = class CartModalPage {
         this.cartService.removeProduct(product);
     }
     getTotal() {
-        return this.cart.reduce((i, j) => i + j.productPrice * j.amount, 0);
+        return this.cart.reduce((i, j) => i + j.productPrice * j.quantity, 0);
     }
     close() {
         this.modalCtrl.dismiss();
@@ -1296,7 +1295,7 @@ let CartService = class CartService {
             productName: '',
             productDetails: '',
             productPrice: null,
-            amount: null,
+            quantity: null,
             id: null
         };
         this.cart = [];

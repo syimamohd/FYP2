@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>New Product</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n<ion-list>\n  <ion-item>\n    <ion-input placeholder=\"Enter Product Name\" [(ngModel)]=\"product.productName\"></ion-input>\n  </ion-item>\n  <ion-item>\n    <ion-textarea rows=\"6\" [(ngModel)]=\"product.productDetails\" placeholder=\"Enter product details here...\"></ion-textarea>\n  </ion-item>\n  <ion-item>\n    <ion-input placeholder=\"Enter Product Price\" [(ngModel)]=\"product.productPrice\"></ion-input>\n  </ion-item>\n</ion-list>\n  <ion-button color=\"primary\" expand=\"full\" (click)=\"addProduct()\">Create</ion-button>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>New Product</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n<ion-list>\r\n    <ion-item>\r\n        <input type=\"file\" #fileBtn class=\"filebtn\" (change)=\"uploadPic($event)\"/>\r\n          <div *ngIf=\"!product.image\">\r\n            <ion-img class=\"profile-pic\" (click)=\"updateProfilePic()\" src=\"assets/defaultPic.png\"></ion-img>\r\n          </div>\r\n          <div *ngIf=\"product.image\">\r\n          <ion-img class=\"profile-pic\" (click)=\"updateProfilePic()\" [src]=\"product.image\"></ion-img>\r\n        </div>\r\n      </ion-item> \r\n  <ion-item>\r\n    <ion-input placeholder=\"Enter Product Name\" [(ngModel)]=\"product.productName\"></ion-input>\r\n  </ion-item>\r\n  <ion-item>\r\n    <ion-textarea rows=\"6\" [(ngModel)]=\"product.productDetails\" placeholder=\"Enter product details here...\"></ion-textarea>\r\n  </ion-item>\r\n  <ion-item>\r\n    <ion-input placeholder=\"Enter Product Price\" [(ngModel)]=\"product.productPrice\"></ion-input>\r\n  </ion-item>\r\n</ion-list>\r\n  <ion-button color=\"primary\" expand=\"full\" (click)=\"addProduct()\">Create</ion-button>\r\n</ion-content>");
 
 /***/ }),
 
@@ -123,6 +123,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
 /* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
 /* harmony import */ var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/native-storage/ngx */ "./node_modules/@ionic-native/native-storage/ngx/index.js");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm2015/http.js");
+
 
 
 
@@ -132,7 +134,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AddProductPage = class AddProductPage {
-    constructor(activatedRoute, fbService, toastCtrl, router, afs, user, storage) {
+    constructor(activatedRoute, fbService, toastCtrl, router, afs, user, storage, http) {
         this.activatedRoute = activatedRoute;
         this.fbService = fbService;
         this.toastCtrl = toastCtrl;
@@ -140,13 +142,14 @@ let AddProductPage = class AddProductPage {
         this.afs = afs;
         this.user = user;
         this.storage = storage;
+        this.http = http;
         this.isAdmin = false;
         this.isCustomer = true;
         this.product = {
             productName: '',
             productDetails: '',
             productPrice: null,
-            amount: null
+            quantity: null
             // createdAt: new Date().getTime()
         };
         this.mainuser = afs.doc(`users/${user.getUID()}`);
@@ -164,8 +167,26 @@ let AddProductPage = class AddProductPage {
     }
     addProduct() {
         this.fbService.addProduct(this.product).then(() => {
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/menuproduct');
         }, err => {
+        });
+    }
+    updateProfilePic() {
+        this.fileBtn.nativeElement.click();
+    }
+    uploadPic(event) {
+        const files = event.target.files;
+        const data = new FormData();
+        data.append('file', files[0]);
+        data.append('UPLOADCARE_STORE', '1');
+        data.append('UPLOADCARE_PUB_KEY', '00f055ada25dcea69cac');
+        this.http.post('https://upload.uploadcare.com/base/', data)
+            .subscribe(event => {
+            const uuid = event.json().file;
+            this.product.image = `https://ucarecdn.com/${uuid}/-/scale_crop/150x150/center/`;
+            // this.mainuser.update({
+            // 	profilePic: uuid
+            // })
         });
     }
 };
@@ -176,8 +197,13 @@ AddProductPage.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
     { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"] },
     { type: _user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"] },
-    { type: _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeStorage"] }
+    { type: _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeStorage"] },
+    { type: _angular_http__WEBPACK_IMPORTED_MODULE_8__["Http"] }
 ];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('fileBtn', { static: false }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], AddProductPage.prototype, "fileBtn", void 0);
 AddProductPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-add-product',
@@ -190,7 +216,8 @@ AddProductPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
         _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"],
         _user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"],
-        _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeStorage"]])
+        _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeStorage"],
+        _angular_http__WEBPACK_IMPORTED_MODULE_8__["Http"]])
 ], AddProductPage);
 
 

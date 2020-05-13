@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n    <ion-toolbar color=\"dark\">\n      <!-- <ion-title>{{content.title}}</ion-title> -->\n    </ion-toolbar>\n  </ion-header>\n  \n  <ion-content>\n    <ion-card color=\"secondary\">\n      <ion-card-header>\n        <!-- <ion-card-subtitle>{{content.createdAt | date: 'short'}}</ion-card-subtitle> -->\n        <!-- <ion-card-title>{{hotel.hotelName}}</ion-card-title> -->\n      </ion-card-header>\n  \n      <ion-card-content>\n        <p align=\"justify\">{{content.title}}</p>\n        <br>\n        <p align=\"justify\">{{content.contentDetails}}</p>\n        <ion-button slot=\"start\" color=\"warning\" [routerLink]=\"'/update-content/' + content.id\">Edit</ion-button>\n        <ion-button slot=\"end\" color=\"danger\" (click)=\"deleteContent()\">Delete</ion-button>\n      </ion-card-content>\n  \n    </ion-card>\n  </ion-content>\n  ");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n    <ion-toolbar color=\"dark\">\r\n      <!-- <ion-title>{{content.title}}</ion-title> -->\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  \r\n  <ion-content>\r\n    <ion-card color=\"secondary\">\r\n      <ion-card-header>\r\n        <!-- <ion-card-subtitle>{{content.createdAt | date: 'short'}}</ion-card-subtitle> -->\r\n        <!-- <ion-card-title>{{hotel.hotelName}}</ion-card-title> -->\r\n      </ion-card-header>\r\n  \r\n      <ion-card-content>\r\n          <ion-img *ngIf=\"!!content.image\" class=\"profile-pic\"  [src]=\"content.image\"></ion-img>\r\n        <p align=\"justify\">{{content.title}}</p>\r\n        <br>\r\n        <p align=\"justify\">{{content.contentDetails}}</p>\r\n        <ion-button slot=\"start\" color=\"warning\" [routerLink]=\"'/update-content/' + content.id\">Edit</ion-button>\r\n        <ion-button slot=\"end\" color=\"danger\" (click)=\"deleteContent()\">Delete</ion-button>\r\n      </ion-card-content>\r\n  \r\n    </ion-card>\r\n  </ion-content>\r\n  ");
 
 /***/ }),
 
@@ -134,6 +134,8 @@ let ViewContentPage = class ViewContentPage {
             title: '',
             contactDetails: '',
             contacttitle: '',
+            image: ''
+            // createdAt: ''
         };
     }
     ngOnInit() { }

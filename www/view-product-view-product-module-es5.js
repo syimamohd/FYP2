@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>{{product.productName}}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-card color=\"secondary\">\n    <ion-card-header>\n      <ion-col size=\"2\" class=\"user-image\">\n        <ion-img src=\"https://ucarecdn.com/{{ productPic }}/-/scale_crop/30x30/center/\"></ion-img>\n      </ion-col>\n      <ion-card-subtitle>{{product.createdAt | date: 'short'}}</ion-card-subtitle>\n      <ion-card-title>{{product.productName}}</ion-card-title>\n    </ion-card-header>\n\n    <ion-card-content>\n      <p align=\"justify\">{{product.productDetails}}</p>\n      <br>\n      <p align=\"justify\">RM{{product.productPrice}}</p>\n      <ion-button slot=\"start\" color=\"warning\" [routerLink]=\"'/update-product/' + product.id\">Edit</ion-button>\n      <ion-button slot=\"end\" color=\"danger\" (click)=\"deleteProduct()\">Delete</ion-button>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>{{product.productName}}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-card color=\"secondary\">\r\n    <ion-card-header>\r\n      <ion-col size=\"2\" class=\"user-image\">\r\n          <ion-img *ngIf=\"!!product.image\" class=\"profile-pic\"  [src]=\"product.image\"></ion-img>\r\n      </ion-col>\r\n      <ion-card-subtitle>{{product.createdAt | date: 'short'}}</ion-card-subtitle>\r\n      <ion-card-title>{{product.productName}}</ion-card-title>\r\n    </ion-card-header>\r\n\r\n    <ion-card-content>\r\n      <p align=\"justify\">{{product.productDetails}}</p>\r\n      <br>\r\n      <p align=\"justify\">RM{{product.productPrice}}</p>\r\n      <ion-button slot=\"start\" color=\"warning\" [routerLink]=\"'/update-product/' + product.id\">Edit</ion-button>\r\n      <ion-button slot=\"end\" color=\"danger\" (click)=\"deleteProduct()\">Delete</ion-button>\r\n    </ion-card-content>\r\n  </ion-card>\r\n</ion-content>\r\n";
     /***/
   },
 
@@ -258,7 +258,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           productName: '',
           productDetails: '',
           productPrice: null,
-          amount: null // createdAt: ''
+          quantity: 0,
+          image: '' // createdAt: ''
 
         };
         this.mainuser = afs.doc("users/".concat(user.getUID()));
@@ -296,7 +297,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this3 = this;
 
           this.fbService.deleteProduct(this.product.id).then(function () {
-            _this3.router.navigateByUrl('/');
+            _this3.router.navigateByUrl('/menuproduct');
           }, function (err) {});
         }
       }]);

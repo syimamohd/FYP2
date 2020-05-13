@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"dark\">\n    <ion-title>\n      Cat Products \n    </ion-title>\n    <ion-buttons slot=\"start\">\n        <ion-menu-button autoHide=\"false\"></ion-menu-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n \n<ion-content>\n  <ion-fab vertical=\"top\" horizontal=\"end\" slot=\"fixed\">\n    <ion-fab-button (click)=\"openCart()\" #cart>\n      <div class=\"cart-length\">{{ cartItemCount | async }}</div>\n      <ion-icon name=\"cart\" class=\"cart-icon\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n  <ion-list>\n    <ion-card *ngFor=\"let product of (catProduct | async)\">\n      <ion-card-header>\n        <ion-card-title>{{product.productName}}</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <ion-row class=\"ion-align-items-center\">\n          <ion-col size=\"8\">\n            <ion-label color=\"secondary\">\n              <b>{{ product.productPrice | currency:'MYR' }}</b>\n            </ion-label>\n          </ion-col>\n          <ion-col size=\"2\" class=\"ion-text-right\">\n            <ion-button fill=\"clear\" (click)=\"minusToCart(product)\">\n              <ion-icon name=\"remove\"></ion-icon>\n            </ion-button>\n          </ion-col>\n          <ion-col size=\"2\" class=\"ion-text-right\">\n            <ion-button fill=\"clear\" (click)=\"addToCart(product)\">\n              <ion-icon name=\"add\"></ion-icon>\n            </ion-button>\n          </ion-col>\n        </ion-row>\n      </ion-card-content>\n    </ion-card>\n  </ion-list>\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"dark\">\r\n    <ion-title>\r\n      Cat Products \r\n    </ion-title>\r\n    <ion-buttons slot=\"start\">\r\n        <ion-menu-button autoHide=\"false\"></ion-menu-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-list>\r\n    <ion-list-header>\r\n    </ion-list-header>\r\n    <ion-item *ngFor=\"let product of (catProduct | async)\">\r\n      <ion-col>\r\n          <ion-img *ngIf=\"!!product.image\" class=\"profile-pic\"  [src]=\"product.image\"></ion-img>\r\n      </ion-col>\r\n    \r\n      <ion-label>\r\n        <h2>{{product.productName}}</h2>\r\n        <p>RM{{product.productPrice}}</p>\r\n      </ion-label>\r\n      <ion-button *ngIf=\"isCustomer\" fill=\"outline\" slot=\"end\" [routerLink]=\"'/checkout/'+product.id\">PURCHASE</ion-button>\r\n      <ion-button *ngIf=\"isAdmin\" fill=\"outline\" slot=\"end\" [routerLink]=\"'/view-product/'+product.id\">View</ion-button>\r\n    </ion-item>\r\n  </ion-list>\r\n  <ion-fab *ngIf=\"isAdmin\" vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n      <ion-fab-button [routerLink]=\"'/add-product'\">\r\n        <ion-icon name=\"add\"></ion-icon>\r\n      </ion-fab-button>\r\n    </ion-fab>\r\n</ion-content>\r\n\r\n\r\n<!--contain cart-->\r\n<!-- <ion-content>\r\n  <ion-fab vertical=\"top\" horizontal=\"end\" slot=\"fixed\">\r\n    <ion-fab-button (click)=\"openCart()\" #cart>\r\n      <div class=\"cart-length\">{{ cartItemCount | async }}</div>\r\n      <ion-icon name=\"cart\" class=\"cart-icon\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab>\r\n  <ion-list>\r\n    <ion-card *ngFor=\"let product of (catProduct | async)\">\r\n      <ion-card-header>\r\n        <ion-card-title>{{product.productName}}</ion-card-title>\r\n      </ion-card-header>\r\n      <ion-card-content>\r\n        <ion-row class=\"ion-align-items-center\">\r\n          <ion-col size=\"8\">\r\n            <ion-label color=\"secondary\">\r\n              <b>{{ product.productPrice | currency:'MYR' }}</b>\r\n            </ion-label>\r\n          </ion-col>\r\n          <ion-col size=\"2\" class=\"ion-text-right\">\r\n            <ion-button fill=\"clear\" (click)=\"minusToCart(product)\">\r\n              <ion-icon name=\"remove\"></ion-icon>\r\n            </ion-button>\r\n          </ion-col>\r\n          <ion-col size=\"2\" class=\"ion-text-right\">\r\n            <ion-button fill=\"clear\" (click)=\"addToCart(product)\">\r\n              <ion-icon name=\"add\"></ion-icon>\r\n            </ion-button>\r\n          </ion-col>\r\n        </ion-row>\r\n      </ion-card-content>\r\n    </ion-card>\r\n  </ion-list>\r\n</ion-content> -->";
     /***/
   },
 
@@ -251,12 +251,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! @ionic/angular */
     "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
-    /* harmony import */
-
-
-    var _cart_modal_cart_modal_page__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-    /*! ../cart-modal/cart-modal.page */
-    "./src/app/cart-modal/cart-modal.page.ts");
 
     var MenuproductPage = /*#__PURE__*/function () {
       function MenuproductPage(cartService, modalCtrl, activatedRoute, router, fbService, afs, user, storage) {
@@ -277,10 +271,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.product = {
           productName: '',
           productDetails: '',
-          productPrice: null,
-          amount: null // length
-          // createdAt: ''
-
+          productPrice: 0,
+          quantity: 0
         };
         this.cart = [];
         this.products = [];
@@ -296,9 +288,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(MenuproductPage, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          this.catProduct = this.fbService.getProducts();
-          this.cart = this.cartService.getCart();
-          this.cartItemCount = this.cartService.getCartItemCount();
+          this.catProduct = this.fbService.getProducts(); // this.cart = this.cartService.getCart();
+          // this.cartItemCount = this.cartService.getCartItemCount();
+
           this.storage.setItem('username', this.username);
           this.storage.setItem('isAdmin', this.isAdmin);
           this.storage.setItem('isCustomer', this.isCustomer);
@@ -315,70 +307,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               _this2.product = productData;
             });
           }
-        }
-      }, {
-        key: "addToCart",
-        value: function addToCart(product) {
-          this.cartService.addProduct(product);
-          this.animateCSS('tada');
-        }
-      }, {
-        key: "minusToCart",
-        value: function minusToCart(product) {
-          this.cartService.minusProduct(product);
-          this.animateCSS('tada');
-        }
-      }, {
-        key: "openCart",
-        value: function openCart() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-            var _this3 = this;
-
-            var modal;
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    this.animateCSS('bounceOutLeft', true);
-                    _context.next = 3;
-                    return this.modalCtrl.create({
-                      component: _cart_modal_cart_modal_page__WEBPACK_IMPORTED_MODULE_9__["CartModalPage"],
-                      cssClass: 'cart-modal'
-                    });
-
-                  case 3:
-                    modal = _context.sent;
-                    modal.onWillDismiss().then(function () {
-                      _this3.fab.nativeElement.classList.remove('animated', 'bounceOutLeft');
-
-                      _this3.animateCSS('bounceInLeft');
-                    });
-                    modal.present();
-
-                  case 6:
-                  case "end":
-                    return _context.stop();
-                }
-              }
-            }, _callee, this);
-          }));
-        }
-      }, {
-        key: "animateCSS",
-        value: function animateCSS(animationName) {
-          var keepAnimated = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-          var node = this.fab.nativeElement;
-          node.classList.add('animated', animationName); //https://github.com/daneden/animate.css
-
-          function handleAnimationEnd() {
-            if (!keepAnimated) {
-              node.classList.remove('animated', animationName);
-            }
-
-            node.removeEventListener('animationend', handleAnimationEnd);
-          }
-
-          node.addEventListener('animationend', handleAnimationEnd);
         }
       }]);
 

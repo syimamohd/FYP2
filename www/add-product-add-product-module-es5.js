@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>New Product</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n<ion-list>\n  <ion-item>\n    <ion-input placeholder=\"Enter Product Name\" [(ngModel)]=\"product.productName\"></ion-input>\n  </ion-item>\n  <ion-item>\n    <ion-textarea rows=\"6\" [(ngModel)]=\"product.productDetails\" placeholder=\"Enter product details here...\"></ion-textarea>\n  </ion-item>\n  <ion-item>\n    <ion-input placeholder=\"Enter Product Price\" [(ngModel)]=\"product.productPrice\"></ion-input>\n  </ion-item>\n</ion-list>\n  <ion-button color=\"primary\" expand=\"full\" (click)=\"addProduct()\">Create</ion-button>\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>New Product</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n<ion-list>\r\n    <ion-item>\r\n        <input type=\"file\" #fileBtn class=\"filebtn\" (change)=\"uploadPic($event)\"/>\r\n          <div *ngIf=\"!product.image\">\r\n            <ion-img class=\"profile-pic\" (click)=\"updateProfilePic()\" src=\"assets/defaultPic.png\"></ion-img>\r\n          </div>\r\n          <div *ngIf=\"product.image\">\r\n          <ion-img class=\"profile-pic\" (click)=\"updateProfilePic()\" [src]=\"product.image\"></ion-img>\r\n        </div>\r\n      </ion-item> \r\n  <ion-item>\r\n    <ion-input placeholder=\"Enter Product Name\" [(ngModel)]=\"product.productName\"></ion-input>\r\n  </ion-item>\r\n  <ion-item>\r\n    <ion-textarea rows=\"6\" [(ngModel)]=\"product.productDetails\" placeholder=\"Enter product details here...\"></ion-textarea>\r\n  </ion-item>\r\n  <ion-item>\r\n    <ion-input placeholder=\"Enter Product Price\" [(ngModel)]=\"product.productPrice\"></ion-input>\r\n  </ion-item>\r\n</ion-list>\r\n  <ion-button color=\"primary\" expand=\"full\" (click)=\"addProduct()\">Create</ion-button>\r\n</ion-content>";
     /***/
   },
 
@@ -245,9 +245,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! @ionic-native/native-storage/ngx */
     "./node_modules/@ionic-native/native-storage/ngx/index.js");
+    /* harmony import */
+
+
+    var _angular_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @angular/http */
+    "./node_modules/@angular/http/fesm2015/http.js");
 
     var AddProductPage = /*#__PURE__*/function () {
-      function AddProductPage(activatedRoute, fbService, toastCtrl, router, afs, user, storage) {
+      function AddProductPage(activatedRoute, fbService, toastCtrl, router, afs, user, storage, http) {
         var _this = this;
 
         _classCallCheck(this, AddProductPage);
@@ -259,13 +265,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.afs = afs;
         this.user = user;
         this.storage = storage;
+        this.http = http;
         this.isAdmin = false;
         this.isCustomer = true;
         this.product = {
           productName: '',
           productDetails: '',
           productPrice: null,
-          amount: null // createdAt: new Date().getTime()
+          quantity: null // createdAt: new Date().getTime()
 
         };
         this.mainuser = afs.doc("users/".concat(user.getUID()));
@@ -290,8 +297,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this2 = this;
 
           this.fbService.addProduct(this.product).then(function () {
-            _this2.router.navigateByUrl('/');
+            _this2.router.navigateByUrl('/menuproduct');
           }, function (err) {});
+        }
+      }, {
+        key: "updateProfilePic",
+        value: function updateProfilePic() {
+          this.fileBtn.nativeElement.click();
+        }
+      }, {
+        key: "uploadPic",
+        value: function uploadPic(event) {
+          var _this3 = this;
+
+          var files = event.target.files;
+          var data = new FormData();
+          data.append('file', files[0]);
+          data.append('UPLOADCARE_STORE', '1');
+          data.append('UPLOADCARE_PUB_KEY', '00f055ada25dcea69cac');
+          this.http.post('https://upload.uploadcare.com/base/', data).subscribe(function (event) {
+            var uuid = event.json().file;
+            _this3.product.image = "https://ucarecdn.com/".concat(uuid, "/-/scale_crop/150x150/center/"); // this.mainuser.update({
+            // 	profilePic: uuid
+            // })
+          });
         }
       }]);
 
@@ -313,9 +342,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"]
       }, {
         type: _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeStorage"]
+      }, {
+        type: _angular_http__WEBPACK_IMPORTED_MODULE_8__["Http"]
       }];
     };
 
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('fileBtn', {
+      "static": false
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)], AddProductPage.prototype, "fileBtn", void 0);
     AddProductPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-add-product',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
@@ -324,7 +358,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./add-product.page.scss */
       "./src/app/add-product/add-product.page.scss"))["default"]]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_2__["FirebaseService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"], _user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"], _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeStorage"]])], AddProductPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_2__["FirebaseService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"], _user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"], _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeStorage"], _angular_http__WEBPACK_IMPORTED_MODULE_8__["Http"]])], AddProductPage);
     /***/
   }
 }]);

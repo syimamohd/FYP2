@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n    <ion-toolbar color=\"dark\">\n      <ion-title>New Content</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  <ion-content>\n  <!-- <ion-list> -->\n      <div *ngIf=\"!busy\">\n      <input type=\"file\" #fileBtn class=\"filebtn\" (change)=\"uploadPic($event)\" data-multiple=\"true\" />\n\n      <div>\n        <ion-img class=\"content-pic\" src=\"https://ucarecdn.com/{{ contentPic }}/-/scale_crop/150x150/center/\"></ion-img>\n        <ion-button  (click)=\"updateContentPic()\">Change</ion-button>\n      </div>\n      <div class=\"content-info\">\n          <ion-item>\n              <ion-input placeholder=\"Enter Content Title\" [(ngModel)]=\"content.title\"></ion-input>\n            </ion-item>\n            <ion-item>\n              <ion-textarea rows=\"6\" [(ngModel)]=\"content.contentDetails\" placeholder=\"Enter content details here...\"></ion-textarea>\n            </ion-item>\n      </div>\n    </div>\n  <!-- </ion-list> -->\n    <ion-button color=\"primary\" expand=\"full\" (click)=\"addContent()\">Add to Dashboard</ion-button>\n  </ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n    <ion-toolbar color=\"dark\">\r\n      <ion-title>New Content</ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  \r\n  <ion-content>\r\n  <!-- <ion-list> -->\r\n      \r\n      <ion-item>\r\n          <input type=\"file\" #fileBtn class=\"filebtn\" (change)=\"uploadPic($event)\"/>\r\n            <div *ngIf=\"!content.image\">\r\n              <ion-img class=\"profile-pic\" (click)=\"updateProfilePic()\" src=\"assets/defaultPic.png\"></ion-img>\r\n            </div>\r\n            <div *ngIf=\"content.image\">\r\n            <ion-img class=\"profile-pic\" (click)=\"updateProfilePic()\" [src]=\"content.image\"></ion-img>\r\n          </div>\r\n        </ion-item> \r\n\r\n      <!-- <div class=\"content-info\"> -->\r\n          <ion-item>\r\n              <ion-input placeholder=\"Enter Content Title\" [(ngModel)]=\"content.title\"></ion-input>\r\n            </ion-item>\r\n            <ion-item>\r\n              <ion-textarea rows=\"6\" [(ngModel)]=\"content.contentDetails\" placeholder=\"Enter content details here...\"></ion-textarea>\r\n            </ion-item>\r\n      <!-- </div> -->\r\n    \r\n  <!-- </ion-list> -->\r\n    <ion-button color=\"primary\" expand=\"full\" (click)=\"addContent()\">Add to Dashboard</ion-button>\r\n  </ion-content>");
 
 /***/ }),
 
@@ -146,6 +146,8 @@ let AddContentPage = class AddContentPage {
             title: '',
             contactDetails: '',
             contacttitle: '',
+            image: ''
+            // createdAt: new Date().getTime()
         };
         this.mainuser = afs.doc(`users/${user.getUID()}`);
         this.sub = this.mainuser.valueChanges().subscribe(event => {
@@ -154,20 +156,15 @@ let AddContentPage = class AddContentPage {
             // this.contact = event.contact
             // this.address = event.address
         });
-        // this.mainuser = afs.doc(`contentItem/${user.getUID()}`)
-        // this.sub = this.mainuser.valueChanges().subscribe(event => 
-        //   {
-        //     // this.username = event.username
-        //     //this.contentPic = event.contentPic
-        //     // this.isAdmin= event.isAdmin
-        //     // this.isCustomer= event.isCustomer
-        //   })
     }
     ngOnInit() { }
-    ngOnDestroy() {
-        this.sub.unsubscribe();
+    addContent() {
+        this.fbService.addContent(this.content).then(() => {
+            this.router.navigateByUrl('/home');
+        }, err => {
+        });
     }
-    updateContentPic() {
+    updateProfilePic() {
         this.fileBtn.nativeElement.click();
     }
     uploadPic(event) {
@@ -179,15 +176,11 @@ let AddContentPage = class AddContentPage {
         this.http.post('https://upload.uploadcare.com/base/', data)
             .subscribe(event => {
             const uuid = event.json().file;
-            this.mainuser.update({
-                contentPic: uuid
-            });
-        });
-    }
-    addContent() {
-        this.fbService.addContent(this.content).then(() => {
-            this.router.navigateByUrl('/home');
-        }, err => {
+            //this.content.image=`https://ucarecdn.com/${uuid}/-/smart/1024x1024/`;
+            this.content.image = `https://ucarecdn.com/${uuid}/-/scale_crop/150x150/center/`;
+            // this.mainuser.update({
+            // 	profilePic: uuid
+            // })
         });
     }
 };

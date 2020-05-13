@@ -1408,7 +1408,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         });
       }
     }, {
-      path: 'checkout',
+      path: 'checkout/:id',
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | checkout-checkout-module */
@@ -1502,6 +1502,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         /*! ./update-contact/update-contact.module */
         "./src/app/update-contact/update-contact.module.ts")).then(function (m) {
           return m.UpdateContactPageModule;
+        });
+      }
+    }, {
+      path: 'paymentsuccess',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | paymentsuccess-paymentsuccess-module */
+        "paymentsuccess-paymentsuccess-module").then(__webpack_require__.bind(null,
+        /*! ./paymentsuccess/paymentsuccess.module */
+        "./src/app/paymentsuccess/paymentsuccess.module.ts")).then(function (m) {
+          return m.PaymentsuccessPageModule;
         });
       }
     }];
@@ -1646,10 +1657,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               pagename: "Cat Products",
               icon: "basket",
               url: "/menuproduct"
-            }, {
-              pagename: "Contact Us",
-              icon: "call",
-              url: "/contact"
             }];
           });
         }
@@ -2168,9 +2175,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.product = {
           productName: '',
           productDetails: '',
-          productPrice: null,
-          amount: null,
-          id: null
+          productPrice: 0,
+          quantity: 0,
+          image: ''
         };
         this.cart = [];
       }
@@ -2199,7 +2206,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "getTotal",
         value: function getTotal() {
           return this.cart.reduce(function (i, j) {
-            return i + j.productPrice * j.amount;
+            return i + j.productPrice * j.quantity;
           }, 0);
         }
       }, {
@@ -2356,7 +2363,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           productName: '',
           productDetails: '',
           productPrice: null,
-          amount: null,
+          quantity: null,
           id: null
         };
         this.cart = [];

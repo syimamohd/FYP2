@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n    <ion-toolbar color=\"dark\">\n      <ion-title>Contact</ion-title>\n      <ion-buttons slot=\"start\">\n          <ion-menu-button autoHide=\"false\"></ion-menu-button>\n      </ion-buttons>\n    </ion-toolbar>\n  </ion-header>\n  \n  <ion-content [fullscreen]=\"true\" class=\"background\">\n       <ion-list>\n          <ion-card>\n            <ion-item *ngFor=\"let content of (contentItem | async)\">\n              <ion-slides>\n                <ion-slide>\n                  <div class=\"slide\">\n                    <!-- <img src=\"assets/img/logo.png\"/> -->\n                    <!-- <ion-icon name=\"call\" slot=\"start\"></ion-icon> -->\n                    <h2>{{content.contacttitle}}</h2>\n                    <p>{{content.contactDetails}}</p>\n                    <ion-button *ngIf=\"isAdmin\" fill=\"outline\" slot=\"end\" [routerLink]=\"'/view-contact/'+content.id\">Edit</ion-button>\n                  </div>\n                \n                </ion-slide>\n              </ion-slides>\n            </ion-item>  \n          </ion-card>\n   \n       </ion-list>\n  \n       <ion-fab *ngIf=\"isAdmin\" vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\n          <ion-fab-button [routerLink]=\"'/add-contact'\">\n            <ion-icon name=\"add\"></ion-icon>\n          </ion-fab-button>\n        </ion-fab>\n  </ion-content>\n  \n    <!-- <ion-footer>\n      <ion-toolbar color=\"dark\">\n        <ion-title>Footer</ion-title>\n      </ion-toolbar>\n    </ion-footer> -->\n  \n  \n  \n  ";
+    __webpack_exports__["default"] = "\r\n<ion-header [translucent]=\"true\">\r\n    <ion-toolbar color=\"dark\">\r\n      <ion-title>Contact</ion-title>\r\n      <ion-buttons slot=\"start\">\r\n          <ion-menu-button autoHide=\"false\"></ion-menu-button>\r\n      </ion-buttons>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  \r\n  <ion-content [fullscreen]=\"true\" class=\"background\">\r\n       <ion-list>\r\n          <ion-card>\r\n            <ion-item *ngFor=\"let content of (contentItem | async)\">\r\n              <ion-slides>\r\n                <ion-slide>\r\n                  <div class=\"slide\">\r\n                    <h2>{{content.contacttitle}}</h2>\r\n                    <p>{{content.contactDetails}}</p>\r\n                    <ion-button *ngIf=\"isAdmin\" fill=\"outline\" slot=\"end\" [routerLink]=\"'/view-contact/'+content.id\">Edit</ion-button>\r\n                  </div>\r\n                \r\n                </ion-slide>\r\n              </ion-slides>\r\n            </ion-item>  \r\n          </ion-card>\r\n   \r\n       </ion-list>\r\n  \r\n       <ion-fab *ngIf=\"isAdmin\" vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n          <ion-fab-button [routerLink]=\"'/add-contact'\">\r\n            <ion-icon name=\"add\"></ion-icon>\r\n          </ion-fab-button>\r\n        </ion-fab>\r\n  </ion-content>\r\n  \r\n    <!-- <ion-footer>\r\n      <ion-toolbar color=\"dark\">\r\n        <ion-title>Footer</ion-title>\r\n      </ion-toolbar>\r\n    </ion-footer> -->\r\n  \r\n  \r\n  \r\n  ";
     /***/
   },
 
@@ -212,83 +212,135 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _angular_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! @angular/http */
-    "./node_modules/@angular/http/fesm2015/http.js");
-    /* harmony import */
-
-
-    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
     /* harmony import */
 
 
-    var _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _services_firebase_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! ../services/firebase.service */
     "./src/app/services/firebase.service.ts");
     /* harmony import */
 
 
-    var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @angular/fire/firestore */
     "./node_modules/@angular/fire/firestore/es2015/index.js");
     /* harmony import */
 
 
-    var _user_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ../user.service */
     "./src/app/user.service.ts");
     /* harmony import */
 
 
-    var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! @ionic-native/native-storage/ngx */
     "./node_modules/@ionic-native/native-storage/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+    /* harmony import */
+
+
+    var _services_cart_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! ./../services/cart.service */
+    "./src/app/services/cart.service.ts");
 
     var ContactPage = /*#__PURE__*/function () {
-      function ContactPage(http, activatedRoute, fbService, afs, user, storage, router) {
+      function ContactPage(cartService, modalCtrl, activatedRoute, fbService, router, afs, user, storage, alertController) {
         var _this = this;
 
         _classCallCheck(this, ContactPage);
 
-        this.http = http;
+        this.cartService = cartService;
+        this.modalCtrl = modalCtrl;
         this.activatedRoute = activatedRoute;
         this.fbService = fbService;
+        this.router = router;
         this.afs = afs;
         this.user = user;
         this.storage = storage;
-        this.router = router;
+        this.alertController = alertController;
         this.isAdmin = false;
         this.isCustomer = true;
+        this.item = {
+          customerName: '',
+          contactNumber: '',
+          address: '',
+          quantity: 0,
+          totalPrice: 0,
+          paymenttype: ''
+        };
+        this.product = {
+          productName: '',
+          productDetails: '',
+          productPrice: 0,
+          quantity: 0,
+          image: ''
+        };
         this.mainuser = afs.doc("users/".concat(user.getUID()));
         this.sub = this.mainuser.valueChanges().subscribe(function (event) {
-          _this.username = event.username; //this.contentPic = event.contentPic
+          _this.username = event.username; // this.profilePic = event.profilePic
 
           _this.isAdmin = event.isAdmin;
           _this.isCustomer = event.isCustomer;
-        }); // this.mainuser = afs.doc(`contentItem/${user.getUID()}`)
-        // this.sub = this.mainuser.valueChanges().subscribe(event => 
-        //   {
-        //     // this.username = event.username
-        //     //this.contentPic = event.contentPic
-        //     // this.isAdmin= event.isAdmin
-        //     // this.isCustomer= event.isCustomer
-        //   })
+        });
       }
 
       _createClass(ContactPage, [{
-        key: "ngOnDestroy",
-        value: function ngOnDestroy() {
-          this.sub.unsubscribe();
-        }
-      }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          this.contentItem = this.fbService.getContents();
+          //this.product = this.cartService.getProducts();
           this.storage.setItem('username', this.username);
           this.storage.setItem('isAdmin', this.isAdmin);
           this.storage.setItem('isCustomer', this.isCustomer);
+        }
+      }, {
+        key: "presentAlert",
+        value: function presentAlert(title, content) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var alert;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.alertController.create({
+                      header: title,
+                      message: content,
+                      buttons: ['OK']
+                    });
+
+                  case 2:
+                    alert = _context.sent;
+                    _context.next = 5;
+                    return alert.present();
+
+                  case 5:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+        }
+      }, {
+        key: "submitPurchasedItem",
+        value: function submitPurchasedItem() {
+          var _this2 = this;
+
+          this.item.totalPrice = this.product.quantity * this.product.productPrice;
+          this.fbService.submitPurchasedItem(this.item).then(function () {
+            _this2.presentAlert('Done!', 'You have purchased item. We will deliver soon!');
+
+            _this2.router.navigateByUrl('/menuproduct');
+          }, function (err) {});
         }
       }]);
 
@@ -297,19 +349,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     ContactPage.ctorParameters = function () {
       return [{
-        type: _angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"]
+        type: _services_cart_service__WEBPACK_IMPORTED_MODULE_8__["CartService"]
       }, {
-        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["ModalController"]
       }, {
-        type: _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__["FirebaseService"]
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]
       }, {
-        type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"]
+        type: _services_firebase_service__WEBPACK_IMPORTED_MODULE_3__["FirebaseService"]
       }, {
-        type: _user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"]
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
       }, {
-        type: _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeStorage"]
+        type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_4__["AngularFirestore"]
       }, {
-        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+        type: _user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"]
+      }, {
+        type: _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_6__["NativeStorage"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["AlertController"]
       }];
     };
 
@@ -321,7 +377,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./contact.page.scss */
       "./src/app/contact/contact.page.scss"))["default"]]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_4__["FirebaseService"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"], _user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"], _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeStorage"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])], ContactPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_cart_service__WEBPACK_IMPORTED_MODULE_8__["CartService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["ModalController"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_3__["FirebaseService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_4__["AngularFirestore"], _user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"], _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_6__["NativeStorage"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["AlertController"]])], ContactPage);
     /***/
   }
 }]);

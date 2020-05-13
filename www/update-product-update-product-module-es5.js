@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"dark\">\n    <ion-title>Update Product</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n      <div *ngIf=\"!busy\">\n        <ion-item>\n            <input type=\"file\" #fileBtn class=\"filebtn\" (change)=\"uploadPic($event)\" />\n            <div>\n              <ion-img class=\"profile-pic\" src=\"https://ucarecdn.com/{{ productPic }}/-/scale_crop/150x150/center/\"></ion-img>\n              <ion-button  (click)=\"updateProductPic()\">Change</ion-button>\n            </div>\n        </ion-item>\n        <ion-item>\n          <ion-input placeholder=\"Enter Product Name\" [(ngModel)]=\"product.productName\"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-textarea rows=\"6\" [(ngModel)]=\"product.productDetails\" placeholder=\"Enter product details here...\"></ion-textarea>\n        </ion-item>\n        <ion-item>\n          <ion-input placeholder=\"Enter Product Pricein RM\" [(ngModel)]=\"product.productPrice\"></ion-input>\n        </ion-item>\n      </div> \n  </ion-list>\n  <ion-button color=\"primary\" expand=\"full\" (click)=\"updateProduct()\">Update</ion-button>\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"dark\">\r\n    <ion-title>Update Product</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-list>\r\n     \r\n      <ion-item>\r\n          <input type=\"file\" #fileBtn class=\"filebtn\" (change)=\"uploadPic($event)\"/>\r\n            <div *ngIf=\"!product.image\">\r\n              <ion-img class=\"profile-pic\" (click)=\"updateProfilePic()\" src=\"assets/defaultPic.png\"></ion-img>\r\n            </div>\r\n            <div *ngIf=\"product.image\">\r\n            <ion-img class=\"profile-pic\" (click)=\"updateProfilePic()\" [src]=\"product.image\"></ion-img>\r\n          </div>\r\n        </ion-item> \r\n        <ion-item>\r\n          <ion-input placeholder=\"Enter Product Name\" [(ngModel)]=\"product.productName\"></ion-input>\r\n        </ion-item>\r\n        <ion-item>\r\n          <ion-textarea rows=\"6\" [(ngModel)]=\"product.productDetails\" placeholder=\"Enter product details here...\"></ion-textarea>\r\n        </ion-item>\r\n        <ion-item>\r\n          <ion-input placeholder=\"Enter Product Pricein RM\" [(ngModel)]=\"product.productPrice\"></ion-input>\r\n        </ion-item>\r\n     \r\n  </ion-list>\r\n  <ion-button color=\"primary\" expand=\"full\" (click)=\"updateProduct()\">Update</ion-button>\r\n</ion-content>\r\n";
     /***/
   },
 
@@ -273,7 +273,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           productName: '',
           productDetails: '',
           productPrice: null,
-          amount: null // createdAt: new Date().getTime()
+          quantity: null,
+          image: '' // createdAt: new Date().getTime()
 
         };
         this.mainuser = afs.doc("users/".concat(user.getUID()));
@@ -335,8 +336,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.sub.unsubscribe();
         }
       }, {
-        key: "updateProductPic",
-        value: function updateProductPic() {
+        key: "updateProfilePic",
+        value: function updateProfilePic() {
           this.fileBtn.nativeElement.click();
         }
       }, {
@@ -351,10 +352,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           data.append('UPLOADCARE_PUB_KEY', '00f055ada25dcea69cac');
           this.http.post('https://upload.uploadcare.com/base/', data).subscribe(function (event) {
             var uuid = event.json().file;
-
-            _this4.mainuser.update({
-              productPic: uuid
-            });
+            _this4.product.image = "https://ucarecdn.com/".concat(uuid, "/-/scale_crop/150x150/center/"); // this.mainuser.update({
+            // 	profilePic: uuid
+            // })
           });
         }
       }, {

@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n    <ion-toolbar>\n        <ion-buttons slot=\"start\">\n            <ion-back-button icon=\"arrow-back-outline\"></ion-back-button>\n          </ion-buttons>\n      <ion-title>Customer Details</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  <ion-content padding class=\"background\">\n    <ion-list>\n      <ion-item>\n        <!-- <ion-label position=\"floating\">NAME  </ion-label> -->\n        <ion-input placeholder=\" Name\" [(ngModel)]=\"item.customerName\"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-input placeholder=\"Contact Number\" [(ngModel)]=\"item.contactNumber\"></ion-input>\n      </ion-item>\n      <ion-item>\n          <ion-input placeholder=\"Full Address\" [(ngModel)]=\"item.address\"></ion-input>\n        </ion-item>\n      <!-- <ion-item>\n        <ion-input placeholder=\"Remark\" [(ngModel)]=\"bookinghotel.remark\"></ion-input>\n      </ion-item> -->\n      <ion-item>\n          <ion-label>Payment Type</ion-label>\n          <ion-select placeholder=\"Select One\">\n            <ion-select-option value=\"c\">Cash On Delivery</ion-select-option>\n            <ion-select-option value=\"o\">Online Payment</ion-select-option>\n          </ion-select>\n        </ion-item>\n      </ion-list>\n      <ion-row>\n        <ion-col>\n          <ion-button (click)=\"submitPurchasedItem()\" fill=\"solid\" expand=\"block\" size=\"med\" color=\"primary\">Confirm</ion-button>\n        </ion-col>\n        <ion-col>\n          <ion-button [routerLink]=\"['/menuproduct']\" fill=\"solid\" expand=\"block\" size=\"med\" color=\"warning\" >Cancel</ion-button>\n        </ion-col>\n      </ion-row>\n      \n  </ion-content>\n  \n  <!-- [routerLink]=\"'/receipthotel/'+bookinghotel.id\"  -->");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n    <ion-toolbar>\r\n        <ion-buttons slot=\"start\">\r\n            <ion-back-button icon=\"arrow-back-outline\"></ion-back-button>\r\n          </ion-buttons>\r\n      <ion-title>Customer Details</ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  \r\n  <ion-content padding class=\"background\">\r\n    <ion-list>\r\n      <ion-item>\r\n        <ion-input placeholder=\" Name\" [(ngModel)]=\"item.customerName\"></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-input placeholder=\"Contact Number\" [(ngModel)]=\"item.contactNumber\"></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n          <ion-input placeholder=\"Full Address\" [(ngModel)]=\"item.address\"></ion-input>\r\n        </ion-item>\r\n      <ion-item>\r\n        <ion-input type=\"number\" [(ngModel)]=\"item.quantity\" ></ion-input>\r\n      </ion-item>  \r\n        \r\n      <!-- <ion-item>\r\n        <ion-input placeholder=\"Remark\" [(ngModel)]=\"bookinghotel.remark\"></ion-input>\r\n      </ion-item> -->\r\n      <ion-item>\r\n          <ion-label>Payment Type</ion-label>\r\n          <ion-select placeholder=\"Select One\" [(ngModel)]=\"item.paymenttype\">\r\n            <ion-select-option value=\"Cash on Delivery\">Cash On Delivery</ion-select-option>\r\n            <ion-select-option value=\"Online Payment\">Online Payment</ion-select-option>\r\n          </ion-select>\r\n        </ion-item>\r\n        <ion-item>\r\n          <h2>Total Price: {{item.totalPrice}}</h2>\r\n        </ion-item>\r\n      </ion-list>\r\n\r\n      <ion-row>\r\n        <ion-col>\r\n          <ion-button (click)=\"submitPurchasedItem()\" fill=\"solid\" expand=\"block\" size=\"med\" color=\"primary\">Confirm</ion-button>\r\n        </ion-col>\r\n        <ion-col>\r\n          <ion-button [routerLink]=\"['/menuproduct']\" fill=\"solid\" expand=\"block\" size=\"med\" color=\"warning\" >Cancel</ion-button>\r\n        </ion-col>\r\n      </ion-row>\r\n      \r\n  </ion-content>\r\n  \r\n  <!-- [routerLink]=\"'/receipthotel/'+bookinghotel.id\"  -->");
 
 /***/ }),
 
@@ -150,7 +150,17 @@ let CheckoutPage = class CheckoutPage {
         this.item = {
             customerName: '',
             contactNumber: '',
-            address: ''
+            address: '',
+            quantity: 0,
+            totalPrice: 0,
+            paymenttype: ''
+        };
+        this.product = {
+            productName: '',
+            productDetails: '',
+            productPrice: 0,
+            quantity: 0,
+            image: ''
         };
         this.mainuser = afs.doc(`users/${user.getUID()}`);
         this.sub = this.mainuser.valueChanges().subscribe(event => {
@@ -161,7 +171,6 @@ let CheckoutPage = class CheckoutPage {
         });
     }
     ngOnInit() {
-        //this.product = this.cartService.getProducts();
         this.storage.setItem('username', this.username);
         this.storage.setItem('isAdmin', this.isAdmin);
         this.storage.setItem('isCustomer', this.isCustomer);
@@ -176,10 +185,25 @@ let CheckoutPage = class CheckoutPage {
             yield alert.present();
         });
     }
+    ngAfterViewInit() {
+        const id = this.activatedRoute.snapshot.paramMap.get('id');
+        if (id) {
+            this.fbService.getProduct(id).subscribe(productData => {
+                this.product = productData;
+            });
+        }
+    }
     submitPurchasedItem() {
+        this.item.totalPrice = this.item.quantity * this.product.productPrice;
+        //console.log( this.item.totalPrice);
         this.fbService.submitPurchasedItem(this.item).then(() => {
-            this.presentAlert('Done!', 'You have purchased item. We will deliver soon!');
-            this.router.navigateByUrl('/menuproduct');
+            if (this.item.paymenttype == "Online Payment") {
+                this.router.navigateByUrl('/paymentsuccess');
+            }
+            else {
+                this.presentAlert('Done!', 'You have purchased item. We will deliver soon!');
+                this.router.navigateByUrl('/menuproduct');
+            }
         }, err => {
         });
     }

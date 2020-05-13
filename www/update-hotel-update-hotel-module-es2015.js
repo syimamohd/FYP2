@@ -134,7 +134,8 @@ let UpdateHotelPage = class UpdateHotelPage {
         this.hotel = {
             hotelName: '',
             hotelDetails: '',
-            hotelPrice: ''
+            hotelPrice: '',
+            image: ''
             // createdAt: new Date().getTime()
         };
     }
