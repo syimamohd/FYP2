@@ -29,7 +29,8 @@ export class UpdateProductPage implements OnInit, AfterViewInit
     productName: '',
     productDetails: '',
     productPrice: null,
-    amount: null
+    quantity: null,
+    image:''
     // createdAt: new Date().getTime()
   };
 
@@ -93,9 +94,9 @@ export class UpdateProductPage implements OnInit, AfterViewInit
     this.sub.unsubscribe()
   }
 
-  updateProductPic() 
+  updateProfilePic() 
   {
-    this.fileBtn.nativeElement.click()
+  this.fileBtn.nativeElement.click()
   }
 
   uploadPic(event) 
@@ -111,9 +112,10 @@ export class UpdateProductPage implements OnInit, AfterViewInit
     this.http.post('https://upload.uploadcare.com/base/', data)
     .subscribe(event => {
       const uuid = event.json().file
-      this.mainuser.update({
-        productPic: uuid
-      })
+      this.product.image=`https://ucarecdn.com/${uuid}/-/scale_crop/150x150/center/`;
+      // this.mainuser.update({
+      // 	profilePic: uuid
+      // })
     })
   }
 

@@ -86,6 +86,7 @@ export class AddContentPage implements OnInit
 			this.http.post('https://upload.uploadcare.com/base/', data)
 			.subscribe(event => {
         const uuid = event.json().file
+        //this.content.image=`https://ucarecdn.com/${uuid}/-/smart/1024x1024/`;
         this.content.image=`https://ucarecdn.com/${uuid}/-/scale_crop/150x150/center/`;
 				// this.mainuser.update({
 				// 	profilePic: uuid

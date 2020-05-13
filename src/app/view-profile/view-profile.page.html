@@ -30,7 +30,7 @@
       
       <div>  
         <ion-card>
-            <ion-title>Your Hotel Booking:</ion-title>
+            <ion-title>Hotel Booking:</ion-title>
             <ion-item *ngFor="let bookinghotel of (hotelBooking | async)">
               <ion-label>
                   <ion-row>
@@ -38,7 +38,7 @@
                           <p>Name: {{bookinghotel.customerName}}</p>
                       </ion-col>
                       <ion-col>
-                          <p>Cat Name: {{bookinghotel.catName}}</p>
+                          <p>Cat Name:  {{bookinghotel.catName}}</p>
                       </ion-col>
                     </ion-row> 
                   <ion-row>
@@ -60,7 +60,7 @@
               </ion-label>
                 <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/view-booking-hotel/'+bookinghotel.id">View</ion-button>
               </ion-item> 
-              <ion-button *ngIf="isCustomer" [routerLink]="['/menuhotel']" fill="solid" size="med" color="secondary" >Book More Hotel</ion-button>
+              <!-- <ion-button *ngIf="isCustomer" [routerLink]="['/menuhotel']" fill="solid" size="med" color="secondary" >Book More Hotel</ion-button> -->
      
         </ion-card>
         <!-- <ion-fab *ngIf="isCustomer" vertical="bottom" horizontal="end" slot="fixed">
@@ -73,7 +73,7 @@
 
       <div>  
         <ion-card>
-            <ion-title>Your Spa & Grooming Booking:</ion-title>
+            <ion-title>Spa & Grooming Booking:</ion-title>
             <ion-item *ngFor="let bookingspa of (spaBooking | async)">
               <ion-label>
                   <ion-row>
@@ -97,11 +97,11 @@
               </ion-item>
         </ion-card>    
       </div>
-      <ion-button  *ngIf="isCustomer" [routerLink]="['/menuspa']" fill="solid" size="med"  color="secondary" >Book More Spa</ion-button>
+      <!-- <ion-button  *ngIf="isCustomer" [routerLink]="['/menuspa']" fill="solid" size="med"  color="secondary" >Book More Spa</ion-button> -->
 
       <div>  
           <ion-card>
-              <ion-title>Your Vaccine & Neuter Booking:</ion-title>
+              <ion-title>Vaccine & Neuter Booking:</ion-title>
               <ion-item *ngFor="let bookingvacc of (vaccBooking | async)">
                 <ion-label>
                     <ion-row>
@@ -125,11 +125,11 @@
                 </ion-item>
           </ion-card>    
         </div>
-        <ion-button  *ngIf="isCustomer" [routerLink]="['/menuvaccine']" fill="solid" size="med"  color="secondary" >Book More Vacc</ion-button>
+        <!-- <ion-button  *ngIf="isCustomer" [routerLink]="['/menuvaccine']" fill="solid" size="med"  color="secondary" >Book More Vacc</ion-button> -->
 
         <div>  
             <ion-card>
-                <ion-title>Your Grab Booking:</ion-title>
+                <ion-title>Grab Booking:</ion-title>
                 <ion-item *ngFor="let bookinggrab of (grabBooking | async)">
                   <ion-label>
                       <ion-row>
@@ -153,11 +153,11 @@
                   </ion-item>
             </ion-card>    
           </div>
-          <ion-button  *ngIf="isCustomer" [routerLink]="['/menugrab']" fill="solid" size="med"  color="secondary" >Book More Grab</ion-button>
+          <!-- <ion-button  *ngIf="isCustomer" [routerLink]="['/menugrab']" fill="solid" size="med"  color="secondary" >Book More Grab</ion-button> -->
       
           <div>  
               <ion-card>
-                  <ion-title>Your Purchased Item:</ion-title>
+                  <ion-title>Purchased Item:</ion-title>
                   <ion-item *ngFor="let item of (purchasedItem | async)">
                     <ion-label>
                         <ion-row>
@@ -175,18 +175,24 @@
                           </ion-row>
                           <ion-row>
                               <ion-col>
-                                  <p>Total: RM52.50</p>
+                                  <p>Total Price: RM{{item.totalPrice}}</p>
                               </ion-col>
                               <ion-col>
-                                  <p>Payment: Cash On Delivery</p>
+                                  <p>Payment: {{item.paymenttype}}</p>
                               </ion-col>
                           </ion-row>
+                          <!-- <ion-row>
+                              <ion-col>
+                                  <p>Item: {{product.productName}}</p>
+                              </ion-col>
+                             
+                          </ion-row> -->
                     </ion-label>
                       <!-- <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/view-booking-grab/'+bookinggrab.id">View</ion-button> -->
                     </ion-item>
               </ion-card>    
             </div>
-            <ion-button  *ngIf="isCustomer" [routerLink]="['/menuproduct']" fill="solid" size="med"  color="secondary" >Add More Product</ion-button>
+            <!-- <ion-button  *ngIf="isCustomer" [routerLink]="['/menuproduct']" fill="solid" size="med"  color="secondary" >Add More Product</ion-button> -->
       <!-- </div> -->
   </ion-grid>
   </ion-content>

@@ -32,10 +32,9 @@ export class MenuproductPage implements OnInit, AfterViewInit
   product: CatProduct = {
     productName: '',
     productDetails: '',
-    productPrice: null,
-    amount: null
-    // length
-    // createdAt: ''
+    productPrice: 0,
+    quantity: 0
+   
   };
 
   cart = [];
@@ -71,8 +70,8 @@ export class MenuproductPage implements OnInit, AfterViewInit
   ngOnInit(): void 
   {
     this.catProduct = this.fbService.getProducts();
-    this.cart = this.cartService.getCart();
-    this.cartItemCount = this.cartService.getCartItemCount();
+    // this.cart = this.cartService.getCart();
+    // this.cartItemCount = this.cartService.getCartItemCount();
 
     this.storage.setItem('username', this.username);
     this.storage.setItem('isAdmin', this.isAdmin);
@@ -89,46 +88,46 @@ export class MenuproductPage implements OnInit, AfterViewInit
     }
   }
 
-  addToCart(product) 
-  {
-    this.cartService.addProduct(product);
-    this.animateCSS('tada');
-  }
+  // addToCart(product) 
+  // {
+  //   this.cartService.addProduct(product);
+  //   this.animateCSS('tada');
+  // }
 
-  minusToCart(product) 
-  {
-    this.cartService.minusProduct(product);
-    this.animateCSS('tada');
-  }
+  // minusToCart(product) 
+  // {
+  //   this.cartService.minusProduct(product);
+  //   this.animateCSS('tada');
+  // }
  
-  async openCart() 
-  {
-    this.animateCSS('bounceOutLeft', true);
+  // async openCart() 
+  // {
+  //   this.animateCSS('bounceOutLeft', true);
  
-    let modal = await this.modalCtrl.create({
-      component: CartModalPage,
-      cssClass: 'cart-modal'
-    });
-    modal.onWillDismiss().then(() => {
-      this.fab.nativeElement.classList.remove('animated', 'bounceOutLeft')
-      this.animateCSS('bounceInLeft');
-    });
-    modal.present();
-  }
+  //   let modal = await this.modalCtrl.create({
+  //     component: CartModalPage,
+  //     cssClass: 'cart-modal'
+  //   });
+  //   modal.onWillDismiss().then(() => {
+  //     this.fab.nativeElement.classList.remove('animated', 'bounceOutLeft')
+  //     this.animateCSS('bounceInLeft');
+  //   });
+  //   modal.present();
+  // }
  
-  animateCSS(animationName, keepAnimated = false) 
-  {
-    const node = this.fab.nativeElement;
-    node.classList.add('animated', animationName)
+  // animateCSS(animationName, keepAnimated = false) 
+  // {
+  //   const node = this.fab.nativeElement;
+  //   node.classList.add('animated', animationName)
     
-    //https://github.com/daneden/animate.css
-    function handleAnimationEnd() {
-      if (!keepAnimated) {
-        node.classList.remove('animated', animationName);
-      }
-      node.removeEventListener('animationend', handleAnimationEnd)
-    }
-    node.addEventListener('animationend', handleAnimationEnd)
-  }
+  //   //https://github.com/daneden/animate.css
+  //   function handleAnimationEnd() {
+  //     if (!keepAnimated) {
+  //       node.classList.remove('animated', animationName);
+  //     }
+  //     node.removeEventListener('animationend', handleAnimationEnd)
+  //   }
+  //   node.addEventListener('animationend', handleAnimationEnd)
+  // }
 
 }

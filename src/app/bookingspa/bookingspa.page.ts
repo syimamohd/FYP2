@@ -70,7 +70,9 @@ export class BookingspaPage implements OnInit
 		})
 
 		await alert.present()
-	}
+  }
+  
+  
 
   submitBookingSpa() 
   {

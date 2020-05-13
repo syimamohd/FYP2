@@ -7,6 +7,7 @@ import {ToastController} from '@ionic/angular';
 import {BookingHotel} from '../model/BookingHotel';
 import { AlertController } from '@ionic/angular';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -17,8 +18,10 @@ import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angula
 
 export class BookinghotelPage implements OnInit 
 {
-  myform: FormGroup;
 
+  doBook: any;
+  myform: FormGroup; 
+  book: {} = {};
   sub: any;
   username: string;
   mainuser: AngularFirestoreDocument;
@@ -45,6 +48,7 @@ export class BookinghotelPage implements OnInit
       private fbService: FirebaseService,
       private afs: AngularFirestore,
       private user: UserService, 
+      private auth: AngularFireAuth,
       private storage: NativeStorage,
       private toastCtrl: ToastController,
       private router: Router,
@@ -62,8 +66,7 @@ export class BookinghotelPage implements OnInit
     this.sub = this.mainuser.valueChanges().subscribe(event => 
       {
 		
-			this.username = event.username
-      // this.profilePic = event.profilePic
+			this.username = event.username     
       this.isAdmin= event.isAdmin
       this.isCustomer= event.isCustomer
 		})
@@ -78,6 +81,8 @@ export class BookinghotelPage implements OnInit
     this.storage.setItem('isAdmin', this.isAdmin);
     this.storage.setItem('isCustomer', this.isCustomer);
   }
+ 
+  
 
   async presentAlert(title: string, content: string) 
   {
@@ -103,4 +108,27 @@ export class BookinghotelPage implements OnInit
 
   }
 
+  // async  bookingCat(bookinghotel: BookingHotel, book:string, index:number)
+  // {
+  //   this.book= book;
+  // }
+
+  // submitBookingHotel() 
+  // {
+  //   this.fbService.submitBookingHotel
+  //   ({
+  //     book: this.book,
+  //     uid: this.auth.auth.currentUser.uid,
+  //   });
+  // }
+
+  //   async  submit() 
+  //   {
+  //     this.fbService.submitBookingUser(
+  //       {
+  //        book: this.book,
+  //        uid: this.auth.auth.currentUser.uid 
+      
+  //   });
+  //   }
 }

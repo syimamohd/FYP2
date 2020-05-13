@@ -8,7 +8,7 @@
   <ion-card color="secondary">
     <ion-card-header>
       <ion-col size="2" class="user-image">
-        <ion-img src="https://ucarecdn.com/{{ productPic }}/-/scale_crop/30x30/center/"></ion-img>
+          <ion-img *ngIf="!!product.image" class="profile-pic"  [src]="product.image"></ion-img>
       </ion-col>
       <ion-card-subtitle>{{product.createdAt | date: 'short'}}</ion-card-subtitle>
       <ion-card-title>{{product.productName}}</ion-card-title>

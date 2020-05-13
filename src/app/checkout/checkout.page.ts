@@ -11,7 +11,8 @@ import { CartService } from './../services/cart.service';
 import { ViewChild, ElementRef } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { CatProduct } from '../model/CatProduct';
  
 @Component({
   selector: 'app-checkout',
@@ -28,11 +29,29 @@ export class CheckoutPage implements OnInit //, AfterViewInit
   isCustomer: boolean = true;
   productPic: string;
 
-  item: PurchasedItem = {
+  private catProduct: Observable<CatProduct[]>;
+  
+  item: PurchasedItem = 
+  {
     customerName: '',
     contactNumber: '',
-    address: ''
+    address: '',
+    quantity: 0,
+    totalPrice:0,
+    paymenttype:''
+
   };
+
+  product: CatProduct =
+  {
+    
+    productName: '',
+    productDetails: '',
+    productPrice: 0,
+    quantity: 0,
+    image: ''
+    
+  }
  
   constructor
   (
@@ -58,9 +77,7 @@ export class CheckoutPage implements OnInit //, AfterViewInit
   }
  
   ngOnInit():void 
-  {
-    //this.product = this.cartService.getProducts();
-    
+  { 
     this.storage.setItem('username', this.username);
     this.storage.setItem('isAdmin', this.isAdmin);
     this.storage.setItem('isCustomer', this.isCustomer);
@@ -77,28 +94,41 @@ export class CheckoutPage implements OnInit //, AfterViewInit
 		await alert.present()
 	}
 
+  
+  ngAfterViewInit(): void 
+  {
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id) {
+      this.fbService.getProduct(id).subscribe(productData => {
+        this.product = productData;
+      });
+    }
+  }
+
   submitPurchasedItem() 
   {
+    this.item.totalPrice = this.item.quantity * this.product.productPrice;
+    //console.log( this.item.totalPrice);
+
     this.fbService.submitPurchasedItem(this.item).then(() => 
     {
+      if(this.item.paymenttype == "Online Payment")
+      {
+        this.router.navigateByUrl('/paymentsuccess');
+      }
 
-      this.presentAlert('Done!', 'You have purchased item. We will deliver soon!')
+      else
+      {
+        this.presentAlert('Done!', 'You have purchased item. We will deliver soon!')
 
-      this.router.navigateByUrl('/menuproduct');
+        this.router.navigateByUrl('/menuproduct');
+      }
+     
     }, err => {
     })
 
   }
  
-  // ngAfterViewInit(): void 
-  // {
-  //   const id = this.activatedRoute.snapshot.paramMap.get('id');
-  //   if (id) {
-  //     this.fbService.getProduct(id).subscribe(productData => {
-  //       this.product = productData;
-  //     });
-  //   }
-  // }
 
 
 }

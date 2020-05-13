@@ -59,7 +59,7 @@ const routes: Routes = [
   { path: 'update-booking-grab/:id', loadChildren: () => import('./update-booking-grab/update-booking-grab.module').then( m => m.UpdateBookingGrabPageModule)},
   { path: 'update-booking-vacc/:id', loadChildren: () => import('./update-booking-vacc/update-booking-vacc.module').then( m => m.UpdateBookingVaccPageModule)},
   { path: 'menuproduct', loadChildren: () => import('./menuproduct/menuproduct.module').then( m => m.MenuproductPageModule)},
-  { path: 'checkout', loadChildren: () => import('./checkout/checkout.module').then( m => m.CheckoutPageModule)},
+  { path: 'checkout/:id', loadChildren: () => import('./checkout/checkout.module').then( m => m.CheckoutPageModule)},
   { path: 'cart-modal/:id', loadChildren: () => import('./cart-modal/cart-modal.module').then( m => m.CartModalPageModule)},
   { path: 'add-content', loadChildren: () => import('./add-content/add-content.module').then( m => m.AddContentPageModule)},
   { path: 'view-content/:id', loadChildren: () => import('./view-content/view-content.module').then( m => m.ViewContentPageModule)},
@@ -79,6 +79,10 @@ const routes: Routes = [
   {
     path: 'update-contact/:id',
     loadChildren: () => import('./update-contact/update-contact.module').then( m => m.UpdateContactPageModule)
+  },
+  {
+    path: 'paymentsuccess',
+    loadChildren: () => import('./paymentsuccess/paymentsuccess.module').then( m => m.PaymentsuccessPageModule)
   },
 ];
 

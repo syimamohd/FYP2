@@ -57,11 +57,11 @@ export class AppComponent {
           icon: "basket",
           url: "/menuproduct"
         },
-        {
-          pagename: "Contact Us",
-          icon: "call",
-          url: "/contact"
-        },
+        // {
+        //   pagename: "Contact Us",
+        //   icon: "call",
+        //   url: "/contact"
+        // },
         // {
         //   pagename: "Information",
         //   icon: "information",

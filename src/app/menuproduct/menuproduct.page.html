@@ -8,8 +8,34 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
- 
+
 <ion-content>
+  <ion-list>
+    <ion-list-header>
+    </ion-list-header>
+    <ion-item *ngFor="let product of (catProduct | async)">
+      <ion-col>
+          <ion-img *ngIf="!!product.image" class="profile-pic"  [src]="product.image"></ion-img>
+      </ion-col>
+    
+      <ion-label>
+        <h2>{{product.productName}}</h2>
+        <p>RM{{product.productPrice}}</p>
+      </ion-label>
+      <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/checkout/'+product.id">PURCHASE</ion-button>
+      <ion-button *ngIf="isAdmin" fill="outline" slot="end" [routerLink]="'/view-product/'+product.id">View</ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-fab *ngIf="isAdmin" vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button [routerLink]="'/add-product'">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+</ion-content>
+
+
+<!--contain cart-->
+<!-- <ion-content>
   <ion-fab vertical="top" horizontal="end" slot="fixed">
     <ion-fab-button (click)="openCart()" #cart>
       <div class="cart-length">{{ cartItemCount | async }}</div>
@@ -42,4 +68,4 @@
       </ion-card-content>
     </ion-card>
   </ion-list>
-</ion-content>
+</ion-content> -->

@@ -6,14 +6,16 @@
 
 <ion-content>
   <ion-list>
-      <div *ngIf="!busy">
-        <ion-item>
-            <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)" />
-            <div>
-              <ion-img class="profile-pic" src="https://ucarecdn.com/{{ productPic }}/-/scale_crop/150x150/center/"></ion-img>
-              <ion-button  (click)="updateProductPic()">Change</ion-button>
+     
+      <ion-item>
+          <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
+            <div *ngIf="!product.image">
+              <ion-img class="profile-pic" (click)="updateProfilePic()" src="assets/defaultPic.png"></ion-img>
             </div>
-        </ion-item>
+            <div *ngIf="product.image">
+            <ion-img class="profile-pic" (click)="updateProfilePic()" [src]="product.image"></ion-img>
+          </div>
+        </ion-item> 
         <ion-item>
           <ion-input placeholder="Enter Product Name" [(ngModel)]="product.productName"></ion-input>
         </ion-item>
@@ -23,7 +25,7 @@
         <ion-item>
           <ion-input placeholder="Enter Product Pricein RM" [(ngModel)]="product.productPrice"></ion-input>
         </ion-item>
-      </div> 
+     
   </ion-list>
   <ion-button color="primary" expand="full" (click)="updateProduct()">Update</ion-button>
 </ion-content>

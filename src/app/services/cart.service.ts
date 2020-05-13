@@ -39,7 +39,7 @@ product: CatProduct = {
   productName: '',
   productDetails: '',
   productPrice: null,
-  amount: null,
+  quantity: null,
   id: null
 
 };

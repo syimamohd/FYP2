@@ -10,7 +10,6 @@
   <ion-content padding class="background">
     <ion-list>
       <ion-item>
-        <!-- <ion-label position="floating">NAME  </ion-label> -->
         <ion-input placeholder=" Name" [(ngModel)]="item.customerName"></ion-input>
       </ion-item>
       <ion-item>
@@ -19,17 +18,25 @@
       <ion-item>
           <ion-input placeholder="Full Address" [(ngModel)]="item.address"></ion-input>
         </ion-item>
+      <ion-item>
+        <ion-input type="number" [(ngModel)]="item.quantity" ></ion-input>
+      </ion-item>  
+        
       <!-- <ion-item>
         <ion-input placeholder="Remark" [(ngModel)]="bookinghotel.remark"></ion-input>
       </ion-item> -->
       <ion-item>
           <ion-label>Payment Type</ion-label>
-          <ion-select placeholder="Select One">
-            <ion-select-option value="c">Cash On Delivery</ion-select-option>
-            <ion-select-option value="o">Online Payment</ion-select-option>
+          <ion-select placeholder="Select One" [(ngModel)]="item.paymenttype">
+            <ion-select-option value="Cash on Delivery">Cash On Delivery</ion-select-option>
+            <ion-select-option value="Online Payment">Online Payment</ion-select-option>
           </ion-select>
         </ion-item>
+        <ion-item>
+          <h2>Total Price: {{item.totalPrice}}</h2>
+        </ion-item>
       </ion-list>
+
       <ion-row>
         <ion-col>
           <ion-button (click)="submitPurchasedItem()" fill="solid" expand="block" size="med" color="primary">Confirm</ion-button>

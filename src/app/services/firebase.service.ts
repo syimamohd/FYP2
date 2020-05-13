@@ -19,6 +19,7 @@ import { Content } from '../model/Content';
 
 export class FirebaseService 
 {
+  private usersCollection: any;
   //hotel & services & product info in db
   private notes: Observable<Note[]>;
   private catHotel: Observable<CatHotel[]>;
@@ -51,6 +52,7 @@ export class FirebaseService
 
   constructor(private afs: AngularFirestore) 
   {
+    this.usersCollection = this.afs.collection<any>('/users');
     //define collection
     this.noteCollection = this.afs.collection<Note>('notes');
     this.catHotelCollection = this.afs.collection<CatHotel>('catHotel');
@@ -472,16 +474,17 @@ export class FirebaseService
     return this.catHotelBookingCollection.add(bookinghotel);
   }
 
+  // submitBookingHotel(something: { book: {}; uid: string }) 
+  // {
+  //   this.usersCollection.doc(something.uid).update({ booking: something.book, catnem : something.book });
+  //   console.log({ something });
+   
+  // }
+  
   //update hotel details
   updateBookingHotel(bookinghotel: BookingHotel): Promise<void> 
   {
-    return this.catHotelBookingCollection.doc(bookinghotel.id).update
-    ({ 
-      customerName: bookinghotel.customerName, contactNumber: bookinghotel.contactNumber,
-      catName: bookinghotel.catName, remark: bookinghotel.remark, checkInDate: bookinghotel.checkInDate,
-      checkOutDate: bookinghotel.checkOutDate, timeIn: bookinghotel.timeIn,
-      timeOut: bookinghotel.timeOut 
-    });
+    return this.catHotelBookingCollection.doc(bookinghotel.id).update(bookinghotel);
   }
 
   //delete hotel
@@ -518,11 +521,7 @@ export class FirebaseService
   //update spa details
   updateBookingSpa(bookingspa: BookingSpa): Promise<void> 
   {
-    return this.catSpaBookingCollection.doc(bookingspa.id).update(
-      { customerName: bookingspa.customerName, contactNumber: bookingspa.contactNumber,
-        catName: bookingspa.catName, remark: bookingspa.remark, date: bookingspa.date,
-        time: bookingspa.time 
-      });
+    return this.catSpaBookingCollection.doc(bookingspa.id).update(bookingspa);
   }
 
   //delete spa
@@ -559,10 +558,7 @@ export class FirebaseService
   //update vaccine details
   updateBookingVacc(bookingvacc: BookingVacc): Promise<void> 
   {
-    return this.catVaccBookingCollection.doc(bookingvacc.id).update(
-      { customerName: bookingvacc.customerName, contactNumber: bookingvacc.contactNumber,
-        catName: bookingvacc.catName, remark:bookingvacc.remark, date: bookingvacc.date,
-        time: bookingvacc.time  });
+    return this.catVaccBookingCollection.doc(bookingvacc.id).update(bookingvacc);
   }
 
   //delete vaccine
@@ -599,10 +595,7 @@ export class FirebaseService
   //update grab details
   updateBookingGrab(bookinggrab: BookingGrab): Promise<void> 
   {
-    return this.catGrabBookingCollection.doc(bookinggrab.id).update(
-    { customerName: bookinggrab.customerName, contactNumber: bookinggrab.contactNumber,
-      catName: bookinggrab.catName, remark:bookinggrab.remark, date:bookinggrab.date,
-      time: bookinggrab.time });
+    return this.catGrabBookingCollection.doc(bookinggrab.id).update(bookinggrab);
   }
 
   //delete grab
@@ -676,7 +669,6 @@ export class FirebaseService
     return this.contentCollection.add(content);
   }
 
-
   //update content details
   updateContent(content: Content): Promise<void> 
   {
@@ -688,5 +680,13 @@ export class FirebaseService
   {
     return this.contentCollection.doc(id).delete();
   }
+
+
+  // submitBookingUser(something:{ book: {}; uid: string }) {
+  //   this.usersCollection
+  //     .doc(something.uid)
+  //     .update({ booking: something.book });
+  //   console.log({ something });
+  // }
 
 }

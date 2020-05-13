@@ -1,3 +1,4 @@
+
 <ion-header [translucent]="true">
     <ion-toolbar color="dark">
       <ion-title>Contact</ion-title>
@@ -14,8 +15,6 @@
               <ion-slides>
                 <ion-slide>
                   <div class="slide">
-                    <!-- <img src="assets/img/logo.png"/> -->
-                    <!-- <ion-icon name="call" slot="start"></ion-icon> -->
                     <h2>{{content.contacttitle}}</h2>
                     <p>{{content.contactDetails}}</p>
                     <ion-button *ngIf="isAdmin" fill="outline" slot="end" [routerLink]="'/view-contact/'+content.id">Edit</ion-button>

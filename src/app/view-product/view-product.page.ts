@@ -25,7 +25,8 @@ export class ViewProductPage implements OnInit, AfterViewInit
     productName: '',
     productDetails: '',
     productPrice: null,
-    amount: null
+    quantity: 0,
+    image:''
     // createdAt: ''
   };
 
@@ -70,7 +71,7 @@ export class ViewProductPage implements OnInit, AfterViewInit
   deleteProduct() 
   {
     this.fbService.deleteProduct(this.product.id).then(() => {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/menuproduct');
     }, err => {
     });
   }

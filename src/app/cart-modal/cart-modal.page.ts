@@ -13,10 +13,10 @@ export class CartModalPage implements OnInit
 {
   product: CatProduct = {
     productName: '',
-    productDetails: '',
-    productPrice: null,
-    amount: null,
-    id: null
+    productDetails:'',
+    productPrice: 0,
+    quantity: 0,
+    image: '',
   };
  
   cart: CatProduct[] = [];
@@ -46,7 +46,7 @@ export class CartModalPage implements OnInit
  
   getTotal() 
   {
-    return this.cart.reduce((i, j) => i + j.productPrice * j.amount, 0);
+    return this.cart.reduce((i, j) => i + j.productPrice * j.quantity, 0);
   }
  
   close() 

@@ -13,6 +13,8 @@ import { BookingSpa } from '../model/BookingSpa';
 import { BookingVacc } from '../model/BookingVacc';
 import { BookingGrab } from '../model/BookingGrab';
 import { PurchasedItem } from '../model/PurchasedItem';
+import { CatProduct } from '../model/CatProduct';
+
 
 @Component({
   selector: 'app-view-profile',
@@ -36,7 +38,8 @@ export class ViewProfilePage implements OnInit //, AfterViewInit
   profilePic: string
   contact: string;
   address: string;
-  
+  //booking: any;
+
   bookinghotel: BookingHotel = 
   {
     customerName: '',
@@ -79,36 +82,61 @@ export class ViewProfilePage implements OnInit //, AfterViewInit
     time: ''
   };
 
-  item: PurchasedItem =
+  item: PurchasedItem = 
   {
     customerName: '',
     contactNumber: '',
-    address:''
+    address: '',
+    quantity: 0,
+    totalPrice:0,
+    paymenttype:''
+
   };
+
+  product: CatProduct =
+  {
+    
+    productName: '',
+    productDetails: '',
+    productPrice: 0,
+    quantity: 0,
+    image: ''
+    
+  }
+  catProduct: Observable<CatProduct[]>;
 
   constructor
   (
     public http: Http,
-    private activatedRoute: ActivatedRoute, 
+    
     private fbService: FirebaseService,
     private afs: AngularFirestore,
     private user: UserService, 
     private storage: NativeStorage,
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute
     ) 
 
     { 
+
+    //   const routeUserId = this.route.snapshot.paramMap.get('userId');
+    // let userId = user.getUID();
+    // if (routeUserId) {
+    //   userId = routeUserId;
+    // }
       this.mainuser = afs.doc(`users/${user.getUID()}`)
-      this.sub = this.mainuser.valueChanges().subscribe(event => 
+      this.sub = this.mainuser.valueChanges().subscribe((event) => 
         {
           this.username = event.username
           this.isAdmin= event.isAdmin
           this.isCustomer = event.isCustomer
-          // this.posts = event.posts
           this.profilePic = event.profilePic
           this.contact = event.contact
           this.address = event.address
+          // this.booking = Object.values(event.booking)
+          // console.log(this.booking);
         })
     }
   
@@ -124,12 +152,30 @@ export class ViewProfilePage implements OnInit //, AfterViewInit
     this.vaccBooking = this.fbService.getVaccBookings();
     this.grabBooking = this.fbService.getGrabBookings();
     this.purchasedItem = this.fbService.getPurchasedItems();
+    //this.catProduct = this.fbService.getProducts();
 
     this.storage.setItem('username', this.username);
     this.storage.setItem('isAdmin', this.isAdmin);
     this.storage.setItem('isCustomer', this.isCustomer);
     this.storage.setItem('contact', this.contact);
     this.storage.setItem('address', this.address);
+    //this.storage.setItem('booking', this.booking);
   }
 
+  ngAfterViewInit(): void 
+  {
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id) {
+
+      this.fbService.getProduct(id).subscribe(productData => {
+
+        this.product = productData;
+
+        this.fbService.getPurchasedItem(id).subscribe(itemData => {
+          this.item = itemData;
+        });
+
+      });
+    }
+  }
 }

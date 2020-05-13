@@ -6,7 +6,7 @@ export interface CatProduct
     productName: string;
     productDetails: string;
     productPrice: number;
-    amount: number;
+    quantity: number;
     image?: any;
     // createdAt: any;
 }
