@@ -4,7 +4,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"], {
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"], {
   /***/
   "./src/app/services/firebase.service.ts":
   /*!**********************************************!*\
@@ -396,7 +396,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "deleteProduct",
         value: function deleteProduct(id) {
           return this.catProductCollection.doc(id)["delete"]();
-        } //--------------------------------------CAT HOTEL BOOKING------------------------------------------------
+        } //--------------------------------------CAT HOTEL BOOKING-----------------------------------------------
         //getting all catHotel booking
 
       }, {
@@ -624,4 +624,4 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /***/
   }
 }]);
-//# sourceMappingURL=default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c-es5.js.map
+//# sourceMappingURL=default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b-es5.js.map

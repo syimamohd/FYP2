@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n      <ion-buttons slot=\"start\">\n          <ion-back-button icon=\"arrow-back-outline\"></ion-back-button>\n        </ion-buttons>\n    <ion-title>Cat Grab Booking</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding class=\"background\">\n\t<ion-list>\n\t\t<ion-item>\n      <ion-input placeholder=\" Name\" [(ngModel)]=\"bookinggrab.customerName\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-input placeholder=\"Contact Number\" [(ngModel)]=\"bookinggrab.contactNumber\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-input placeholder=\"Cat Name\" [(ngModel)]=\"bookinggrab.catName\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-input placeholder=\"Remark\" [(ngModel)]=\"bookinggrab.remark\"></ion-input>\n    </ion-item>\n    <ion-row>\n      <ion-col>\n        <ion-item>\n            <ion-label> DATE</ion-label>\n            <ion-input>\n                <ion-datetime value=\"19-02-1990\" placeholder=\"Select Date\"  [(ngModel)]=\"bookinggrab.date\"></ion-datetime>\n            </ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label>TIME </ion-label>\n            <ion-input>\n                <ion-datetime display-format=\"h:mm A\" picker-format=\"h:mm A\" value=\"1990-02-19T07:43Z\" placeholder=\"Select Time\" [(ngModel)]=\"bookinggrab.time\"></ion-datetime>\n            </ion-input>\n        </ion-item>\n      </ion-col>\n    </ion-row>\n    <!-- <ion-item>\n      <ion-checkbox slot=\"start\" ></ion-checkbox>\n      <ion-label>Add cat food in booking.</ion-label>\n    </ion-item> -->\n    </ion-list>\n    <ion-row>\n      <ion-col>\n        <ion-button color=\"primary\" expand=\"full\"  (click)=\"submitBookingGrab()\">Confirm</ion-button>\n      </ion-col>\n      <ion-col>\n        <ion-button [routerLink]=\"['/menugrab']\" fill=\"solid\" expand=\"block\" size=\"med\" color=\"warning\" >Cancel</ion-button>\n      </ion-col>\n    </ion-row>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"dark\">\r\n      <ion-buttons slot=\"start\">\r\n          <ion-back-button icon=\"arrow-back-outline\"></ion-back-button>\r\n        </ion-buttons>\r\n    <ion-title>Cat Grab Booking</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content padding class=\"background\">\r\n  <form class=\"form\" [formGroup]=\"validations_form\"  (ngSubmit)=\"submitBookingGrab(validations_form.value)\">\r\n\t<ion-list>\r\n      <ion-row>\r\n          <ion-col>\r\n              <ion-item>Type: {{grab.grabName}}</ion-item>\r\n          </ion-col>\r\n          <ion-col>\r\n              <ion-item>Price: RM{{grab.grabPrice}}</ion-item>\r\n          </ion-col>\r\n          </ion-row>\r\n\t\t<ion-item>\r\n      <ion-input placeholder=\"Name\" formControlName=\"customerName\"></ion-input>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-input placeholder=\"Contact Number\" formControlName=\"contactNumber\"></ion-input>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-input placeholder=\"Cat Name\" formControlName=\"catName\"></ion-input>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-input placeholder=\"Remark\" formControlName=\"remark\"></ion-input>\r\n    </ion-item>\r\n    <ion-row>\r\n      <ion-col>\r\n        <ion-item>\r\n            <ion-label> DATE</ion-label>\r\n            <ion-input>\r\n                <ion-datetime value=\"19-02-1990\" placeholder=\"Select Date\"  formControlName=\"date\"></ion-datetime>\r\n            </ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n            <ion-label>TIME </ion-label>\r\n            <ion-input>\r\n                <ion-datetime display-format=\"h:mm A\" picker-format=\"h:mm A\" value=\"1990-02-19T07:43Z\" placeholder=\"Select Time\" formControlName=\"time\"></ion-datetime>\r\n            </ion-input>\r\n        </ion-item>\r\n      </ion-col>\r\n    </ion-row>\r\n    </ion-list>\r\n    <ion-row>\r\n      <ion-col>\r\n          <ion-button class=\"submit-btn\" type=\"submit\" [disabled]=\"!validations_form.valid\" fill=\"solid\" expand=\"block\" size=\"med\" color=\"primary\">Confirm</ion-button>\r\n        <!-- <ion-button color=\"primary\" expand=\"full\"  (click)=\"submitBookingGrab()\">Confirm</ion-button> -->\r\n      </ion-col>\r\n      <ion-col>\r\n        <ion-button [routerLink]=\"['/menugrab']\" fill=\"solid\" expand=\"block\" size=\"med\" color=\"warning\" >Cancel</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n    </form>\r\n</ion-content>");
 
 /***/ }),
 
@@ -74,6 +74,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 let BookinggrabPageModule = class BookinggrabPageModule {
 };
 BookinggrabPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -82,6 +83,7 @@ BookinggrabPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
             _bookinggrab_routing_module__WEBPACK_IMPORTED_MODULE_5__["BookinggrabPageRoutingModule"]
         ],
         declarations: [_bookinggrab_page__WEBPACK_IMPORTED_MODULE_6__["BookinggrabPage"]]
@@ -123,6 +125,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
 /* harmony import */ var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/native-storage/ngx */ "./node_modules/@ionic-native/native-storage/ngx/index.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+
 
 
 
@@ -133,7 +137,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let BookinggrabPage = class BookinggrabPage {
-    constructor(activatedRoute, fbService, afs, user, storage, toastCtrl, router, alertController) {
+    constructor(activatedRoute, fbService, afs, user, storage, toastCtrl, router, alertController, formBuilder) {
         this.activatedRoute = activatedRoute;
         this.fbService = fbService;
         this.afs = afs;
@@ -142,6 +146,8 @@ let BookinggrabPage = class BookinggrabPage {
         this.toastCtrl = toastCtrl;
         this.router = router;
         this.alertController = alertController;
+        this.formBuilder = formBuilder;
+        this.errorMessage = '';
         this.isAdmin = false;
         this.isCustomer = true;
         this.bookinggrab = {
@@ -154,6 +160,13 @@ let BookinggrabPage = class BookinggrabPage {
             // catFood: Selection;
             // createdAt: new Date().getTime()
         };
+        this.grab = {
+            grabName: '',
+            grabDetails: '',
+            grabPrice: '',
+            image: ''
+            // createdAt: ''
+        };
         this.mainuser = afs.doc(`users/${user.getUID()}`);
         this.sub = this.mainuser.valueChanges().subscribe(event => {
             this.username = event.username;
@@ -163,6 +176,26 @@ let BookinggrabPage = class BookinggrabPage {
         });
     }
     ngOnInit() {
+        this.validations_form = this.formBuilder.group({
+            customerName: new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].compose([
+                _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required,
+            ])),
+            contactNumber: new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].compose([
+                _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required
+            ])),
+            catName: new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].compose([
+                _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required
+            ])),
+            remark: new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].compose([
+                _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required,
+            ])),
+            date: new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].compose([
+                _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required
+            ])),
+            time: new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].compose([
+                _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required
+            ])),
+        });
         this.storage.setItem('username', this.username);
         this.storage.setItem('isAdmin', this.isAdmin);
         this.storage.setItem('isCustomer', this.isCustomer);
@@ -177,12 +210,26 @@ let BookinggrabPage = class BookinggrabPage {
             yield alert.present();
         });
     }
-    submitBookingGrab() {
+    submitBookingGrab(value) {
+        this.bookinggrab.customerName = value.customerName;
+        this.bookinggrab.catName = value.catName;
+        this.bookinggrab.contactNumber = value.contactNumber;
+        this.bookinggrab.remark = value.remark;
+        this.bookinggrab.date = value.date;
+        this.bookinggrab.time = value.time;
         this.fbService.submitBookingGrab(this.bookinggrab).then(() => {
             this.presentAlert('Done!', 'Your booking was created!');
             this.router.navigateByUrl('/menugrab');
         }, err => {
         });
+    }
+    ionViewWillEnter() {
+        const id = this.activatedRoute.snapshot.paramMap.get('id');
+        if (id) {
+            this.fbService.getGrab(id).subscribe(grabData => {
+                this.grab = grabData;
+            });
+        }
     }
 };
 BookinggrabPage.ctorParameters = () => [
@@ -193,7 +240,8 @@ BookinggrabPage.ctorParameters = () => [
     { type: _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeStorage"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"] }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"] },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormBuilder"] }
 ];
 BookinggrabPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -208,7 +256,8 @@ BookinggrabPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeStorage"],
         _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"],
         _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
-        _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"]])
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"],
+        _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormBuilder"]])
 ], BookinggrabPage);
 
 

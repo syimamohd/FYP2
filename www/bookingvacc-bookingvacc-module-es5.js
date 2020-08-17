@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n      <ion-buttons slot=\"start\">\n          <ion-back-button icon=\"arrow-back-outline\"></ion-back-button>\n        </ion-buttons>\n    <ion-title>Cat Vaccine Booking</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding class=\"background\">\n\t<ion-list>\n\t\t<ion-item>\n      <ion-input placeholder=\" Name\" [(ngModel)]=\"bookingvacc.customerName\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-input placeholder=\"Contact Number\" [(ngModel)]=\"bookingvacc.contactNumber\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-input placeholder=\"Cat Name\" [(ngModel)]=\"bookingvacc.catName\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-input placeholder=\"Remark\" [(ngModel)]=\"bookingvacc.remark\"></ion-input>\n    </ion-item>\n    <ion-row>\n      <ion-col>\n        <ion-item>\n            <ion-label> DATE</ion-label>\n            <ion-input>\n                <ion-datetime value=\"19-02-1990\" placeholder=\"Select Date\"  [(ngModel)]=\"bookingvacc.date\"></ion-datetime>\n            </ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label>TIME </ion-label>\n            <ion-input>\n                <ion-datetime display-format=\"h:mm A\" placeholder=\"Select Time\" picker-format=\"h:mm A\" value=\"1990-02-19T07:43Z\"  [(ngModel)]=\"bookingvacc.time\"></ion-datetime>\n            </ion-input>\n        </ion-item>\n      </ion-col>\n    </ion-row>\n    <!-- <ion-item>\n      <ion-checkbox slot=\"start\" ></ion-checkbox>\n      <ion-label>Add cat food in booking.</ion-label>\n    </ion-item> -->\n    </ion-list>\n    <ion-row>\n      <ion-col>\n        <ion-button color=\"primary\" expand=\"full\"  (click)=\"submitBookingVacc()\">Confirm</ion-button>\n      </ion-col>\n      <ion-col>\n        <ion-button [routerLink]=\"['/menuhotel']\" fill=\"solid\" expand=\"block\" size=\"med\" color=\"warning\" >Cancel</ion-button>\n      </ion-col>\n    </ion-row>\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"dark\">\r\n      <ion-buttons slot=\"start\">\r\n          <ion-back-button icon=\"arrow-back-outline\"></ion-back-button>\r\n        </ion-buttons>\r\n    <ion-title>Cat Vaccine Booking</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content padding class=\"background\">\r\n  <form class=\"form\" [formGroup]=\"validations_form\" (ngSubmit)=\"submitBookingVacc(validations_form.value)\">\r\n\t<ion-list>\r\n      <ion-row>\r\n          <ion-col>\r\n              <ion-item>Type: {{vaccine.vaccineName}}</ion-item>\r\n          </ion-col>\r\n          <ion-col>\r\n              <ion-item>Price: RM{{vaccine.vaccinePrice}}</ion-item>\r\n          </ion-col>\r\n          </ion-row>\r\n\t\t<ion-item>\r\n      <ion-input placeholder=\"Name\" formControlName=\"customerName\"></ion-input>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-input placeholder=\"Contact Number\" formControlName=\"contactNumber\"></ion-input>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-input placeholder=\"Cat Name\" formControlName=\"catName\"></ion-input>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-input placeholder=\"Remark\" formControlName=\"remark\"></ion-input>\r\n    </ion-item>\r\n    <ion-row>\r\n      <ion-col>\r\n        <ion-item>\r\n            <ion-label> DATE</ion-label>\r\n            <ion-input>\r\n                <ion-datetime value=\"19-02-1990\" placeholder=\"Select Date\" formControlName=\"date\"></ion-datetime>\r\n            </ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n            <ion-label>TIME </ion-label>\r\n            <ion-input>\r\n                <ion-datetime display-format=\"h:mm A\" placeholder=\"Select Time\" picker-format=\"h:mm A\" value=\"1990-02-19T07:43Z\"  formControlName=\"time\"></ion-datetime>\r\n            </ion-input>\r\n        </ion-item>\r\n      </ion-col>\r\n    </ion-row>\r\n    </ion-list>\r\n    <ion-row>\r\n      <ion-col>\r\n        <ion-button class=\"submit-btn\" type=\"submit\" [disabled]=\"!validations_form.valid\" fill=\"solid\" expand=\"block\" size=\"med\" color=\"primary\">Confirm</ion-button>\r\n        <!-- <ion-button color=\"primary\" expand=\"full\"  (click)=\"submitBookingVacc()\">Confirm</ion-button> -->\r\n      </ion-col>\r\n      <ion-col>\r\n        <ion-button [routerLink]=\"['/menuhotel']\" fill=\"solid\" expand=\"block\" size=\"med\" color=\"warning\" >Cancel</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n  </form>\r\n</ion-content>";
     /***/
   },
 
@@ -152,7 +152,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     BookingvaccPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _bookingvacc_routing_module__WEBPACK_IMPORTED_MODULE_5__["BookingvaccPageRoutingModule"]],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"], _bookingvacc_routing_module__WEBPACK_IMPORTED_MODULE_5__["BookingvaccPageRoutingModule"]],
       declarations: [_bookingvacc_page__WEBPACK_IMPORTED_MODULE_6__["BookingvaccPage"]]
     })], BookingvaccPageModule);
     /***/
@@ -245,9 +245,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! @ionic-native/native-storage/ngx */
     "./node_modules/@ionic-native/native-storage/ngx/index.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
 
     var BookingvaccPage = /*#__PURE__*/function () {
-      function BookingvaccPage(activatedRoute, fbService, afs, user, storage, toastCtrl, router, alertController) {
+      function BookingvaccPage(activatedRoute, fbService, afs, user, storage, toastCtrl, router, alertController, formBuilder) {
         var _this = this;
 
         _classCallCheck(this, BookingvaccPage);
@@ -260,6 +266,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.toastCtrl = toastCtrl;
         this.router = router;
         this.alertController = alertController;
+        this.formBuilder = formBuilder;
+        this.errorMessage = '';
         this.isAdmin = false;
         this.isCustomer = true;
         this.bookingvacc = {
@@ -268,8 +276,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           catName: '',
           remark: '',
           date: '',
-          time: '' // catFood: Selection;
-          // createdAt: new Date().getTime()
+          time: ''
+        };
+        this.vaccine = {
+          vaccineName: '',
+          vaccineDetails: '',
+          vaccinePrice: '',
+          image: '' // createdAt: ''
 
         };
         this.mainuser = afs.doc("users/".concat(user.getUID()));
@@ -284,6 +297,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(BookingvaccPage, [{
         key: "ngOnInit",
         value: function ngOnInit() {
+          this.validations_form = this.formBuilder.group({
+            customerName: new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required])),
+            contactNumber: new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required])),
+            catName: new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required])),
+            remark: new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required])),
+            date: new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required])),
+            time: new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required]))
+          });
           this.storage.setItem('username', this.username);
           this.storage.setItem('isAdmin', this.isAdmin);
           this.storage.setItem('isCustomer', this.isCustomer);
@@ -319,14 +340,33 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "submitBookingVacc",
-        value: function submitBookingVacc() {
+        value: function submitBookingVacc(value) {
           var _this2 = this;
 
+          this.bookingvacc.customerName = value.customerName;
+          this.bookingvacc.catName = value.catName;
+          this.bookingvacc.contactNumber = value.contactNumber;
+          this.bookingvacc.remark = value.remark;
+          this.bookingvacc.date = value.date;
+          this.bookingvacc.time = value.time;
           this.fbService.submitBookingVacc(this.bookingvacc).then(function () {
             _this2.presentAlert('Done!', 'Your booking was created!');
 
             _this2.router.navigateByUrl('/menuvaccine');
           }, function (err) {});
+        }
+      }, {
+        key: "ionViewWillEnter",
+        value: function ionViewWillEnter() {
+          var _this3 = this;
+
+          var id = this.activatedRoute.snapshot.paramMap.get('id');
+
+          if (id) {
+            this.fbService.getVaccine(id).subscribe(function (vaccineData) {
+              _this3.vaccine = vaccineData;
+            });
+          }
         }
       }]);
 
@@ -350,6 +390,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
       }, {
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"]
+      }, {
+        type: _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormBuilder"]
       }];
     };
 
@@ -361,7 +403,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./bookingvacc.page.scss */
       "./src/app/bookingvacc/bookingvacc.page.scss"))["default"]]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_2__["FirebaseService"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"], _user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"], _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeStorage"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"]])], BookingvaccPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _services_firebase_service__WEBPACK_IMPORTED_MODULE_2__["FirebaseService"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"], _user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"], _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeStorage"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormBuilder"]])], BookingvaccPage);
     /***/
   }
 }]);

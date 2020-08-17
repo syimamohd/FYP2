@@ -844,7 +844,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | home-home-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null,
         /*! ./home/home.module */
         "./src/app/home/home.module.ts")).then(function (m) {
           return m.HomePageModule;
@@ -884,11 +884,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         });
       }
     }, {
-      path: 'bookinghotel',
+      path: 'bookinghotel/:id',
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | bookinghotel-bookinghotel-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("bookinghotel-bookinghotel-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("bookinghotel-bookinghotel-module")]).then(__webpack_require__.bind(null,
         /*! ./bookinghotel/bookinghotel.module */
         "./src/app/bookinghotel/bookinghotel.module.ts")).then(function (m) {
           return m.BookinghotelPageModule;
@@ -899,7 +899,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | menuhotel-menuhotel-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("menuhotel-menuhotel-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("menuhotel-menuhotel-module")]).then(__webpack_require__.bind(null,
         /*! ./menuhotel/menuhotel.module */
         "./src/app/menuhotel/menuhotel.module.ts")).then(function (m) {
           return m.MenuhotelPageModule;
@@ -910,7 +910,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | menuspa-menuspa-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("menuspa-menuspa-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("menuspa-menuspa-module")]).then(__webpack_require__.bind(null,
         /*! ./menuspa/menuspa.module */
         "./src/app/menuspa/menuspa.module.ts")).then(function (m) {
           return m.MenuspaPageModule;
@@ -921,7 +921,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | menugrab-menugrab-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("menugrab-menugrab-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("menugrab-menugrab-module")]).then(__webpack_require__.bind(null,
         /*! ./menugrab/menugrab.module */
         "./src/app/menugrab/menugrab.module.ts")).then(function (m) {
           return m.MenugrabPageModule;
@@ -932,7 +932,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | menuvaccine-menuvaccine-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("menuvaccine-menuvaccine-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("menuvaccine-menuvaccine-module")]).then(__webpack_require__.bind(null,
         /*! ./menuvaccine/menuvaccine.module */
         "./src/app/menuvaccine/menuvaccine.module.ts")).then(function (m) {
           return m.MenuvaccinePageModule;
@@ -943,7 +943,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return __webpack_require__.e(
         /*! import() | services-firebase-service */
-        "default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c").then(__webpack_require__.bind(null,
+        "default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b").then(__webpack_require__.bind(null,
         /*! ./services/firebase.service */
         "./src/app/services/firebase.service.ts"));
       }
@@ -1060,7 +1060,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | add-note-add-note-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("add-note-add-note-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("add-note-add-note-module")]).then(__webpack_require__.bind(null,
         /*! ./add-note/add-note.module */
         "./src/app/add-note/add-note.module.ts")).then(function (m) {
           return m.AddNotePageModule;
@@ -1071,7 +1071,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | view-note-view-note-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("view-note-view-note-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("view-note-view-note-module")]).then(__webpack_require__.bind(null,
         /*! ./view-note/view-note.module */
         "./src/app/view-note/view-note.module.ts")).then(function (m) {
           return m.ViewNotePageModule;
@@ -1082,7 +1082,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | update-note-update-note-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("update-note-update-note-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("update-note-update-note-module")]).then(__webpack_require__.bind(null,
         /*! ./update-note/update-note.module */
         "./src/app/update-note/update-note.module.ts")).then(function (m) {
           return m.UpdateNotePageModule;
@@ -1093,7 +1093,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | add-hotel-add-hotel-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("add-hotel-add-hotel-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("add-hotel-add-hotel-module")]).then(__webpack_require__.bind(null,
         /*! ./add-hotel/add-hotel.module */
         "./src/app/add-hotel/add-hotel.module.ts")).then(function (m) {
           return m.AddHotelPageModule;
@@ -1104,7 +1104,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | view-hotel-view-hotel-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("view-hotel-view-hotel-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("view-hotel-view-hotel-module")]).then(__webpack_require__.bind(null,
         /*! ./view-hotel/view-hotel.module */
         "./src/app/view-hotel/view-hotel.module.ts")).then(function (m) {
           return m.ViewHotelPageModule;
@@ -1115,7 +1115,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | update-hotel-update-hotel-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("update-hotel-update-hotel-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("update-hotel-update-hotel-module")]).then(__webpack_require__.bind(null,
         /*! ./update-hotel/update-hotel.module */
         "./src/app/update-hotel/update-hotel.module.ts")).then(function (m) {
           return m.UpdateHotelPageModule;
@@ -1126,7 +1126,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | add-spa-add-spa-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("add-spa-add-spa-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("add-spa-add-spa-module")]).then(__webpack_require__.bind(null,
         /*! ./add-spa/add-spa.module */
         "./src/app/add-spa/add-spa.module.ts")).then(function (m) {
           return m.AddSpaPageModule;
@@ -1137,7 +1137,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | view-spa-view-spa-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("view-spa-view-spa-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("view-spa-view-spa-module")]).then(__webpack_require__.bind(null,
         /*! ./view-spa/view-spa.module */
         "./src/app/view-spa/view-spa.module.ts")).then(function (m) {
           return m.ViewSpaPageModule;
@@ -1148,7 +1148,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | update-spa-update-spa-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("update-spa-update-spa-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("update-spa-update-spa-module")]).then(__webpack_require__.bind(null,
         /*! ./update-spa/update-spa.module */
         "./src/app/update-spa/update-spa.module.ts")).then(function (m) {
           return m.UpdateSpaPageModule;
@@ -1159,7 +1159,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | add-vaccine-add-vaccine-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("add-vaccine-add-vaccine-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("add-vaccine-add-vaccine-module")]).then(__webpack_require__.bind(null,
         /*! ./add-vaccine/add-vaccine.module */
         "./src/app/add-vaccine/add-vaccine.module.ts")).then(function (m) {
           return m.AddVaccinePageModule;
@@ -1170,7 +1170,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | view-vaccine-view-vaccine-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("view-vaccine-view-vaccine-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("view-vaccine-view-vaccine-module")]).then(__webpack_require__.bind(null,
         /*! ./view-vaccine/view-vaccine.module */
         "./src/app/view-vaccine/view-vaccine.module.ts")).then(function (m) {
           return m.ViewVaccinePageModule;
@@ -1181,7 +1181,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | update-vaccine-update-vaccine-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("update-vaccine-update-vaccine-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("update-vaccine-update-vaccine-module")]).then(__webpack_require__.bind(null,
         /*! ./update-vaccine/update-vaccine.module */
         "./src/app/update-vaccine/update-vaccine.module.ts")).then(function (m) {
           return m.UpdateVaccinePageModule;
@@ -1192,7 +1192,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | add-grab-add-grab-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("add-grab-add-grab-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("add-grab-add-grab-module")]).then(__webpack_require__.bind(null,
         /*! ./add-grab/add-grab.module */
         "./src/app/add-grab/add-grab.module.ts")).then(function (m) {
           return m.AddGrabPageModule;
@@ -1203,7 +1203,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | view-grab-view-grab-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("view-grab-view-grab-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("view-grab-view-grab-module")]).then(__webpack_require__.bind(null,
         /*! ./view-grab/view-grab.module */
         "./src/app/view-grab/view-grab.module.ts")).then(function (m) {
           return m.ViewGrabPageModule;
@@ -1214,7 +1214,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | update-grab-update-grab-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("update-grab-update-grab-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("update-grab-update-grab-module")]).then(__webpack_require__.bind(null,
         /*! ./update-grab/update-grab.module */
         "./src/app/update-grab/update-grab.module.ts")).then(function (m) {
           return m.UpdateGrabPageModule;
@@ -1225,7 +1225,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | add-product-add-product-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("add-product-add-product-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("add-product-add-product-module")]).then(__webpack_require__.bind(null,
         /*! ./add-product/add-product.module */
         "./src/app/add-product/add-product.module.ts")).then(function (m) {
           return m.AddProductPageModule;
@@ -1236,7 +1236,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | view-product-view-product-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("view-product-view-product-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("view-product-view-product-module")]).then(__webpack_require__.bind(null,
         /*! ./view-product/view-product.module */
         "./src/app/view-product/view-product.module.ts")).then(function (m) {
           return m.ViewProductPageModule;
@@ -1247,40 +1247,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | update-product-update-product-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("update-product-update-product-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("update-product-update-product-module")]).then(__webpack_require__.bind(null,
         /*! ./update-product/update-product.module */
         "./src/app/update-product/update-product.module.ts")).then(function (m) {
           return m.UpdateProductPageModule;
         });
       }
     }, {
-      path: 'bookingspa',
+      path: 'bookingspa/:id',
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | bookingspa-bookingspa-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("bookingspa-bookingspa-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("bookingspa-bookingspa-module")]).then(__webpack_require__.bind(null,
         /*! ./bookingspa/bookingspa.module */
         "./src/app/bookingspa/bookingspa.module.ts")).then(function (m) {
           return m.BookingspaPageModule;
         });
       }
     }, {
-      path: 'bookingvacc',
+      path: 'bookingvacc/:id',
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | bookingvacc-bookingvacc-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("bookingvacc-bookingvacc-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("bookingvacc-bookingvacc-module")]).then(__webpack_require__.bind(null,
         /*! ./bookingvacc/bookingvacc.module */
         "./src/app/bookingvacc/bookingvacc.module.ts")).then(function (m) {
           return m.BookingvaccPageModule;
         });
       }
     }, {
-      path: 'bookinggrab',
+      path: 'bookinggrab/:id',
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | bookinggrab-bookinggrab-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("bookinggrab-bookinggrab-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("bookinggrab-bookinggrab-module")]).then(__webpack_require__.bind(null,
         /*! ./bookinggrab/bookinggrab.module */
         "./src/app/bookinggrab/bookinggrab.module.ts")).then(function (m) {
           return m.BookinggrabPageModule;
@@ -1302,7 +1302,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | view-profile-view-profile-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("view-profile-view-profile-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("view-profile-view-profile-module")]).then(__webpack_require__.bind(null,
         /*! ./view-profile/view-profile.module */
         "./src/app/view-profile/view-profile.module.ts")).then(function (m) {
           return m.ViewProfilePageModule;
@@ -1313,7 +1313,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | view-booking-hotel-view-booking-hotel-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("view-booking-hotel-view-booking-hotel-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("view-booking-hotel-view-booking-hotel-module")]).then(__webpack_require__.bind(null,
         /*! ./view-booking-hotel/view-booking-hotel.module */
         "./src/app/view-booking-hotel/view-booking-hotel.module.ts")).then(function (m) {
           return m.ViewBookingHotelPageModule;
@@ -1324,7 +1324,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | view-booking-spa-view-booking-spa-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("view-booking-spa-view-booking-spa-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("view-booking-spa-view-booking-spa-module")]).then(__webpack_require__.bind(null,
         /*! ./view-booking-spa/view-booking-spa.module */
         "./src/app/view-booking-spa/view-booking-spa.module.ts")).then(function (m) {
           return m.ViewBookingSpaPageModule;
@@ -1335,7 +1335,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | view-booking-grab-view-booking-grab-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("view-booking-grab-view-booking-grab-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("view-booking-grab-view-booking-grab-module")]).then(__webpack_require__.bind(null,
         /*! ./view-booking-grab/view-booking-grab.module */
         "./src/app/view-booking-grab/view-booking-grab.module.ts")).then(function (m) {
           return m.ViewBookingGrabPageModule;
@@ -1346,7 +1346,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | view-booking-vaccine-view-booking-vaccine-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("view-booking-vaccine-view-booking-vaccine-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("view-booking-vaccine-view-booking-vaccine-module")]).then(__webpack_require__.bind(null,
         /*! ./view-booking-vaccine/view-booking-vaccine.module */
         "./src/app/view-booking-vaccine/view-booking-vaccine.module.ts")).then(function (m) {
           return m.ViewBookingVaccinePageModule;
@@ -1357,7 +1357,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | update-booking-hotel-update-booking-hotel-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("update-booking-hotel-update-booking-hotel-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("update-booking-hotel-update-booking-hotel-module")]).then(__webpack_require__.bind(null,
         /*! ./update-booking-hotel/update-booking-hotel.module */
         "./src/app/update-booking-hotel/update-booking-hotel.module.ts")).then(function (m) {
           return m.UpdateBookingHotelPageModule;
@@ -1368,7 +1368,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | update-booking-spa-update-booking-spa-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("update-booking-spa-update-booking-spa-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("update-booking-spa-update-booking-spa-module")]).then(__webpack_require__.bind(null,
         /*! ./update-booking-spa/update-booking-spa.module */
         "./src/app/update-booking-spa/update-booking-spa.module.ts")).then(function (m) {
           return m.UpdateBookingSpaPageModule;
@@ -1379,7 +1379,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | update-booking-grab-update-booking-grab-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("update-booking-grab-update-booking-grab-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("update-booking-grab-update-booking-grab-module")]).then(__webpack_require__.bind(null,
         /*! ./update-booking-grab/update-booking-grab.module */
         "./src/app/update-booking-grab/update-booking-grab.module.ts")).then(function (m) {
           return m.UpdateBookingGrabPageModule;
@@ -1390,7 +1390,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | update-booking-vacc-update-booking-vacc-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("update-booking-vacc-update-booking-vacc-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("update-booking-vacc-update-booking-vacc-module")]).then(__webpack_require__.bind(null,
         /*! ./update-booking-vacc/update-booking-vacc.module */
         "./src/app/update-booking-vacc/update-booking-vacc.module.ts")).then(function (m) {
           return m.UpdateBookingVaccPageModule;
@@ -1401,7 +1401,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | menuproduct-menuproduct-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("menuproduct-menuproduct-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("menuproduct-menuproduct-module")]).then(__webpack_require__.bind(null,
         /*! ./menuproduct/menuproduct.module */
         "./src/app/menuproduct/menuproduct.module.ts")).then(function (m) {
           return m.MenuproductPageModule;
@@ -1412,7 +1412,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | checkout-checkout-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("checkout-checkout-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("checkout-checkout-module")]).then(__webpack_require__.bind(null,
         /*! ./checkout/checkout.module */
         "./src/app/checkout/checkout.module.ts")).then(function (m) {
           return m.CheckoutPageModule;
@@ -1432,7 +1432,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | add-content-add-content-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("add-content-add-content-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("add-content-add-content-module")]).then(__webpack_require__.bind(null,
         /*! ./add-content/add-content.module */
         "./src/app/add-content/add-content.module.ts")).then(function (m) {
           return m.AddContentPageModule;
@@ -1443,7 +1443,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | view-content-view-content-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("view-content-view-content-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("view-content-view-content-module")]).then(__webpack_require__.bind(null,
         /*! ./view-content/view-content.module */
         "./src/app/view-content/view-content.module.ts")).then(function (m) {
           return m.ViewContentPageModule;
@@ -1454,54 +1454,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | update-content-update-content-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("update-content-update-content-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"), __webpack_require__.e("update-content-update-content-module")]).then(__webpack_require__.bind(null,
         /*! ./update-content/update-content.module */
         "./src/app/update-content/update-content.module.ts")).then(function (m) {
           return m.UpdateContentPageModule;
-        });
-      }
-    }, {
-      path: 'contact',
-      loadChildren: function loadChildren() {
-        return Promise.all(
-        /*! import() | contact-contact-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("contact-contact-module")]).then(__webpack_require__.bind(null,
-        /*! ./contact/contact.module */
-        "./src/app/contact/contact.module.ts")).then(function (m) {
-          return m.ContactPageModule;
-        });
-      }
-    }, {
-      path: 'add-contact',
-      loadChildren: function loadChildren() {
-        return Promise.all(
-        /*! import() | add-contact-add-contact-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("add-contact-add-contact-module")]).then(__webpack_require__.bind(null,
-        /*! ./add-contact/add-contact.module */
-        "./src/app/add-contact/add-contact.module.ts")).then(function (m) {
-          return m.AddContactPageModule;
-        });
-      }
-    }, {
-      path: 'view-contact/:id',
-      loadChildren: function loadChildren() {
-        return Promise.all(
-        /*! import() | view-contact-view-contact-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("view-contact-view-contact-module")]).then(__webpack_require__.bind(null,
-        /*! ./view-contact/view-contact.module */
-        "./src/app/view-contact/view-contact.module.ts")).then(function (m) {
-          return m.ViewContactPageModule;
-        });
-      }
-    }, {
-      path: 'update-contact/:id',
-      loadChildren: function loadChildren() {
-        return Promise.all(
-        /*! import() | update-contact-update-contact-module */
-        [__webpack_require__.e("default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"), __webpack_require__.e("update-contact-update-contact-module")]).then(__webpack_require__.bind(null,
-        /*! ./update-contact/update-contact.module */
-        "./src/app/update-contact/update-contact.module.ts")).then(function (m) {
-          return m.UpdateContactPageModule;
         });
       }
     }, {
@@ -1513,6 +1469,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         /*! ./paymentsuccess/paymentsuccess.module */
         "./src/app/paymentsuccess/paymentsuccess.module.ts")).then(function (m) {
           return m.PaymentsuccessPageModule;
+        });
+      }
+    }, {
+      path: 'banklist',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | banklist-banklist-module */
+        "banklist-banklist-module").then(__webpack_require__.bind(null,
+        /*! ./banklist/banklist.module */
+        "./src/app/banklist/banklist.module.ts")).then(function (m) {
+          return m.BanklistPageModule;
         });
       }
     }];
@@ -1829,7 +1796,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _cart_modal_cart_modal_module__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
     /*! ./cart-modal/cart-modal.module */
-    "./src/app/cart-modal/cart-modal.module.ts"); // import { HTTP } from '@ionic-native/http/ngx';
+    "./src/app/cart-modal/cart-modal.module.ts");
+    /* harmony import */
+
+
+    var ngx_qrcode2__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
+    /*! ngx-qrcode2 */
+    "./node_modules/ngx-qrcode2/fesm2015/ngx-qrcode2.js");
+    /* harmony import */
+
+
+    var _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
+    /*! @ionic-native/barcode-scanner/ngx */
+    "./node_modules/@ionic-native/barcode-scanner/ngx/index.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js"); // import { HTTP } from '@ionic-native/http/ngx';
 
 
     var AppModule = function AppModule() {
@@ -1839,8 +1824,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]],
       entryComponents: [],
-      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_10__["AngularFireModule"].initializeApp(_firebase__WEBPACK_IMPORTED_MODULE_9__["default"]), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_11__["AngularFireAuthModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_13__["AngularFirestoreModule"], _angular_http__WEBPACK_IMPORTED_MODULE_14__["HttpModule"], _cart_modal_cart_modal_module__WEBPACK_IMPORTED_MODULE_17__["CartModalPageModule"]],
-      providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_15__["NativeStorage"], _auth_service__WEBPACK_IMPORTED_MODULE_16__["AuthService"], {
+      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_10__["AngularFireModule"].initializeApp(_firebase__WEBPACK_IMPORTED_MODULE_9__["default"]), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_11__["AngularFireAuthModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_13__["AngularFirestoreModule"], _angular_http__WEBPACK_IMPORTED_MODULE_14__["HttpModule"], _cart_modal_cart_modal_module__WEBPACK_IMPORTED_MODULE_17__["CartModalPageModule"], ngx_qrcode2__WEBPACK_IMPORTED_MODULE_18__["NgxQRCodeModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_20__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_20__["ReactiveFormsModule"]],
+      providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_15__["NativeStorage"], _auth_service__WEBPACK_IMPORTED_MODULE_16__["AuthService"], _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_19__["BarcodeScanner"], {
         provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"],
         useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"]
       }, {
@@ -2777,7 +2762,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! C:\Users\irsya\Desktop\FYP2-master\src\main.ts */
+    /*! C:\Users\irsya\Desktop\fyp2-master\src\main.ts */
     "./src/main.ts");
     /***/
   }

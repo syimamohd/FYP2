@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>Payment Succesful</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n      <ion-card>\r\n          <ion-img src=\"assets/img/payment_successful.png\"></ion-img>\r\n      </ion-card>\r\n      <ion-button [routerLink]=\"'/home'\">Back to Home</ion-button>\r\n</ion-content>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"dark\">\r\n    <ion-title>Payment Succesful</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n      <ion-card>\r\n          <ion-img src=\"assets/img/payment_successful.png\"></ion-img>\r\n      </ion-card>\r\n      <ion-button [routerLink]=\"'/home'\">Back to Home</ion-button>\r\n</ion-content>\r\n");
 
 /***/ }),
 

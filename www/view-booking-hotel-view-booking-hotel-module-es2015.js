@@ -140,6 +140,7 @@ let ViewBookingHotelPage = class ViewBookingHotelPage {
         this.isAdmin = false;
         this.isCustomer = true;
         this.bookinghotel = {
+            hotelid: '',
             customerName: '',
             contactNumber: '',
             catName: '',

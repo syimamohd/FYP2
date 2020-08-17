@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b"],{
 
 /***/ "./src/app/services/firebase.service.ts":
 /*!**********************************************!*\
@@ -276,7 +276,7 @@ let FirebaseService = class FirebaseService {
     deleteProduct(id) {
         return this.catProductCollection.doc(id).delete();
     }
-    //--------------------------------------CAT HOTEL BOOKING------------------------------------------------
+    //--------------------------------------CAT HOTEL BOOKING-----------------------------------------------
     //getting all catHotel booking
     getHotelBookings() {
         return this.hotelBooking;
@@ -444,4 +444,4 @@ FirebaseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /***/ })
 
 }]);
-//# sourceMappingURL=default~add-contact-add-contact-module~add-content-add-content-module~add-grab-add-grab-module~add-h~a513e83c-es2015.js.map
+//# sourceMappingURL=default~add-content-add-content-module~add-grab-add-grab-module~add-hotel-add-hotel-module~add-note-~1432e33b-es2015.js.map

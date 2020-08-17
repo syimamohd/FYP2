@@ -255,6 +255,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.isAdmin = false;
         this.isCustomer = true;
         this.bookinghotel = {
+          hotelid: '',
           customerName: '',
           contactNumber: '',
           catName: '',
