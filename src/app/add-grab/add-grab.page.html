@@ -1,10 +1,14 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="dark">
+      <ion-buttons slot="start">
+          <ion-back-button icon="arrow-back-outline"></ion-back-button>
+        </ion-buttons>
     <ion-title>New Grab</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form class="form" [formGroup]="validations_form"  (ngSubmit)="addGrab(validations_form.value)">
 <ion-list>
     <ion-item>
         <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
@@ -16,14 +20,16 @@
         </div>
       </ion-item>
   <ion-item>
-    <ion-input placeholder="Enter Grab Name" [(ngModel)]="grab.grabName"></ion-input>
+    <ion-input placeholder="Enter Grab Name"  formControlName="grabName"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-textarea rows="6" [(ngModel)]="grab.grabDetails" placeholder="Enter grab details here..."></ion-textarea>
+    <ion-textarea rows="6"  formControlName="grabDetails" placeholder="Enter grab details here..."></ion-textarea>
   </ion-item>
   <ion-item>
-    <ion-input placeholder="Enter Grab Price" [(ngModel)]="grab.grabPrice"></ion-input>
+    <ion-input placeholder="Enter Grab Price"  formControlName="grabPrice"></ion-input>
   </ion-item>
 </ion-list>
-  <ion-button color="primary" expand="full" (click)="addGrab()">Create</ion-button>
+<ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid" fill="solid" expand="block" size="med" color="primary">Create</ion-button>
+  <!-- <ion-button color="primary" expand="full" (click)="addGrab()">Create</ion-button> -->
+  </form>
 </ion-content>

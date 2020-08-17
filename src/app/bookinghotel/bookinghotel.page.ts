@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {FirebaseService} from '../services/firebase.service';
+import { FirebaseService} from '../services/firebase.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ToastController} from '@ionic/angular';
-import {BookingHotel} from '../model/BookingHotel';
+import { ActivatedRoute, Router} from '@angular/router';
+import { ToastController} from '@ionic/angular';
+import { BookingHotel} from '../model/BookingHotel';
 import { AlertController } from '@ionic/angular';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import {CatHotel} from '../model/CatHotel';
 
 @Component({
   selector: 'app-bookinghotel',
@@ -18,10 +20,12 @@ import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angula
 
 export class BookinghotelPage implements OnInit 
 {
-
-  doBook: any;
-  myform: FormGroup; 
-  book: {} = {};
+  validations_form: FormGroup;
+  errorMessage: string = '';
+  //doBook: any;
+  //book: {} = {};
+  
+  //form: FormGroup; 
   sub: any;
   username: string;
   mainuser: AngularFirestoreDocument;
@@ -29,8 +33,9 @@ export class BookinghotelPage implements OnInit
   isCustomer: boolean = true;
   today = new Date() ;
   todate : string;
-
+  
     bookinghotel: BookingHotel = {
+      hotelid:'',
       customerName: '',
       contactNumber: '',
       catName: '',
@@ -39,11 +44,19 @@ export class BookinghotelPage implements OnInit
       checkOutDate: '',
       timeIn: '',
       timeOut: ''
-      // catFood: Selection;
-    // createdAt: new Date().getTime()
-  };
+      };
+      
+      hotel: CatHotel = {
+        hotelName: '',
+        hotelDetails: '',
+        hotelPrice: '',
+        image:''
+        // createdAt: ''
+      };
 
-  constructor(
+
+    constructor
+    (
       private activatedRoute: ActivatedRoute,
       private fbService: FirebaseService,
       private afs: AngularFirestore,
@@ -53,14 +66,9 @@ export class BookinghotelPage implements OnInit
       private toastCtrl: ToastController,
       private router: Router,
       private alertController: AlertController,
+      private formBuilder: FormBuilder
   ) 
   {
-    // this.myform = new FormGroup
-    // ({
-    //   customerName: new FormControl('',Validators.required),
-    //   contactNumber: new FormControl('',Validators.required),
-    //   catName: new FormControl('',[Validators.required, Validators.maxLength(20)]),
-    // })
 
     this.mainuser = afs.doc(`users/${user.getUID()}`)
     this.sub = this.mainuser.valueChanges().subscribe(event => 
@@ -72,8 +80,52 @@ export class BookinghotelPage implements OnInit
 		})
   }
 
-  ngOnInit(): void 
+  ngOnInit()
   {
+    //this.bookinghotel.hotelid = this.activatedRoute.snapshot.paramMap.get('hotelid');
+    //console.log(this.activatedRoute.snapshot.paramMap.get('id'));
+    //console.log(this.activatedRoute.snapshot.params.id);
+    // this.activatedRoute.params.subscribe((params) => {
+    //   let id = params.get('id');
+
+  //     this.activatedRoute.params.subscribe((params) => {
+  //       const id: string =  params.id;
+    
+  //     console.log(id);
+  // });
+
+    this.validations_form = this.formBuilder.group
+    ({
+      customerName: new FormControl('', Validators.compose([
+        Validators.required,
+        //Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
+      contactNumber: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      catName: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      remark: new FormControl('', Validators.compose([
+        Validators.required,
+        //Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
+      checkInDate: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      checkOutDate: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      timeIn: new FormControl('', Validators.compose([
+        Validators.required,
+        //Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
+      timeOut: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      
+    });
+
     this.today.setDate(this.today.getDate() + 3);
     this.todate = this.today.toISOString().substr(0, 10);
     
@@ -81,9 +133,8 @@ export class BookinghotelPage implements OnInit
     this.storage.setItem('isAdmin', this.isAdmin);
     this.storage.setItem('isCustomer', this.isCustomer);
   }
- 
-  
 
+ 
   async presentAlert(title: string, content: string) 
   {
 		const alert = await this.alertController.create({
@@ -95,11 +146,24 @@ export class BookinghotelPage implements OnInit
 		await alert.present()
 	}
 
-  submitBookingHotel() 
+  
+ submitBookingHotel(value) 
   {
+    //console.log(this.bookinghotel.hotelid);
+
+    this.bookinghotel.customerName=value.customerName;
+    this.bookinghotel.catName=value.catName;
+    this.bookinghotel.contactNumber=value.contactNumber;
+    this.bookinghotel.remark=value.remark;
+    this.bookinghotel.checkInDate=value.checkInDate;
+    this.bookinghotel.checkOutDate=value.checkOutDate;
+    this.bookinghotel.timeIn=value.timeIn;
+    this.bookinghotel.timeOut=value.timeOut;
+
+    //this.bookinghotel.hoteltype==this.hotel.hotelName;
+
     this.fbService.submitBookingHotel(this.bookinghotel).then(() => 
     {
-
       this.presentAlert('Done!', 'Your booking was created!')
 
       this.router.navigateByUrl('/menuhotel');
@@ -108,27 +172,19 @@ export class BookinghotelPage implements OnInit
 
   }
 
-  // async  bookingCat(bookinghotel: BookingHotel, book:string, index:number)
-  // {
-  //   this.book= book;
-  // }
+  ionViewWillEnter()
+  {
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id) {
 
-  // submitBookingHotel() 
-  // {
-  //   this.fbService.submitBookingHotel
-  //   ({
-  //     book: this.book,
-  //     uid: this.auth.auth.currentUser.uid,
-  //   });
-  // }
+      this.fbService.getHotel(id).subscribe(hotelData => {
 
-  //   async  submit() 
-  //   {
-  //     this.fbService.submitBookingUser(
-  //       {
-  //        book: this.book,
-  //        uid: this.auth.auth.currentUser.uid 
-      
-  //   });
-  //   }
+        this.hotel = hotelData;
+
+
+      });
+    }
+  }  
+
+ 
 }

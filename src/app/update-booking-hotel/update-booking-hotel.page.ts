@@ -13,7 +13,6 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 })
 export class UpdateBookingHotelPage implements OnInit, AfterViewInit  
 {
-
   sub: any;
   username: string;
   mainuser: AngularFirestoreDocument;
@@ -27,6 +26,7 @@ export class UpdateBookingHotelPage implements OnInit, AfterViewInit
 
   bookinghotel: BookingHotel = 
   {
+    hotelid:'',
     customerName: '',
     contactNumber: '',
     catName: '',

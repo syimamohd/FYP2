@@ -4,6 +4,8 @@ import {FirebaseService} from '../services/firebase.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastController} from '@ionic/angular';
 import {CatHotel} from '../model/CatHotel';
+import { AlertController } from '@ionic/angular';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-hotel',
@@ -12,13 +14,16 @@ import {CatHotel} from '../model/CatHotel';
 })
 export class AddHotelPage implements OnInit 
 {
+    validations_form: FormGroup;
+    errorMessage: string = '';
+
     hotel: CatHotel = {
     hotelName: '',
     hotelDetails: '',
     hotelPrice:'',
     image:''
     // createdAt: new Date().getTime()
-  };
+    };
 
   @ViewChild('fileBtn', {static: false}) fileBtn: 
   {
@@ -30,15 +35,46 @@ export class AddHotelPage implements OnInit
       private activatedRoute: ActivatedRoute,
       private fbService: FirebaseService,
       private toastCtrl: ToastController,
+      private alertController: AlertController,
       private router: Router,
-      private http: Http  
+      private http: Http,
+      private formBuilder: FormBuilder  
   ) { }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
+    this.validations_form = this.formBuilder.group
+    ({
+      hotelName: new FormControl('', Validators.compose([
+        Validators.required,
+        //Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
+      hotelDetails: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      hotelPrice: new FormControl('', Validators.compose([
+        Validators.required
+      ]))
+      
+    });
   }
 
-  addNote() 
+  async presentAlert(title: string, content: string) {
+		const alert = await this.alertController.create({
+			header: title,
+			message: content,
+			buttons: ['OK']
+		})
+
+		await alert.present()
+  }
+  
+  addHotel(value) 
   {
+    this.hotel.hotelName=value.hotelName;
+    this.hotel.hotelDetails=value.hotelDetails;
+    this.hotel.hotelPrice=value.hotelPrice;
+  
     this.fbService.addHotel(this.hotel).then(() => {
       this.router.navigateByUrl('/menuhotel');
     }, err => {

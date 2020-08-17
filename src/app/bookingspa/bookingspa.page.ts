@@ -7,6 +7,8 @@ import { AlertController } from '@ionic/angular';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import {CatSpa} from '../model/CatSpa';
 
 @Component({
   selector: 'app-bookingspa',
@@ -15,6 +17,8 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 })
 export class BookingspaPage implements OnInit 
 {
+    validations_form: FormGroup;
+    errorMessage: string = '';
     sub: any;
     username: string;
     mainuser: AngularFirestoreDocument;
@@ -28,11 +32,18 @@ export class BookingspaPage implements OnInit
       remark: '',
       date: '',
       time: ''
-      // catFood: Selection;
-    // createdAt: new Date().getTime()
   };
 
-  constructor(
+ spa: CatSpa = {
+    spaName: '',
+    spaDetails: '',
+    spaPrice: '',
+    image:''
+    // createdAt: ''
+  };
+
+  constructor
+  (
     private activatedRoute: ActivatedRoute,
     private fbService: FirebaseService,
     private afs: AngularFirestore,
@@ -41,6 +52,7 @@ export class BookingspaPage implements OnInit
     private toastCtrl: ToastController,
     private router: Router,
     private alertController: AlertController,
+    private formBuilder: FormBuilder
   ) 
   {
     this.mainuser = afs.doc(`users/${user.getUID()}`)
@@ -56,6 +68,31 @@ export class BookingspaPage implements OnInit
 
   ngOnInit() : void
   {
+    this.validations_form = this.formBuilder.group
+    ({
+      customerName: new FormControl('', Validators.compose([
+        Validators.required,
+        //Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
+      contactNumber: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      catName: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      remark: new FormControl('', Validators.compose([
+        Validators.required,
+        //Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
+      date: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      time: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      
+    });
+
     this.storage.setItem('username', this.username);
     this.storage.setItem('isAdmin', this.isAdmin);
     this.storage.setItem('isCustomer', this.isCustomer);
@@ -71,11 +108,16 @@ export class BookingspaPage implements OnInit
 
 		await alert.present()
   }
-  
-  
 
-  submitBookingSpa() 
+  submitBookingSpa(value) 
   {
+    this.bookingspa.customerName=value.customerName;
+    this.bookingspa.catName=value.catName;
+    this.bookingspa.contactNumber=value.contactNumber;
+    this.bookingspa.remark=value.remark;
+    this.bookingspa.date=value.date;
+    this.bookingspa.time=value.time;
+    
     this.fbService.submitBookingSpa(this.bookingspa).then(() => 
     {
       this.presentAlert('Done!', 'Your booking was created!')
@@ -84,6 +126,20 @@ export class BookingspaPage implements OnInit
     }, err => {
     });
   }
+
+  ionViewWillEnter()
+  {
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id) {
+
+      this.fbService.getSpa(id).subscribe(spaData => {
+
+        this.spa = spaData;
+
+
+      });
+    }
+  }  
 
 }
 

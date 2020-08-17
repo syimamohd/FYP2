@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="dark">
       <ion-buttons slot="start">
           <ion-back-button icon="arrow-back-outline"></ion-back-button>
         </ion-buttons>
@@ -8,47 +8,54 @@
 </ion-header>
 
 <ion-content padding class="background">
+  <form class="form" [formGroup]="validations_form"  (ngSubmit)="submitBookingGrab(validations_form.value)">
 	<ion-list>
+      <ion-row>
+          <ion-col>
+              <ion-item>Type: {{grab.grabName}}</ion-item>
+          </ion-col>
+          <ion-col>
+              <ion-item>Price: RM{{grab.grabPrice}}</ion-item>
+          </ion-col>
+          </ion-row>
 		<ion-item>
-      <ion-input placeholder=" Name" [(ngModel)]="bookinggrab.customerName"></ion-input>
+      <ion-input placeholder="Name" formControlName="customerName"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Contact Number" [(ngModel)]="bookinggrab.contactNumber"></ion-input>
+      <ion-input placeholder="Contact Number" formControlName="contactNumber"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Cat Name" [(ngModel)]="bookinggrab.catName"></ion-input>
+      <ion-input placeholder="Cat Name" formControlName="catName"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Remark" [(ngModel)]="bookinggrab.remark"></ion-input>
+      <ion-input placeholder="Remark" formControlName="remark"></ion-input>
     </ion-item>
     <ion-row>
       <ion-col>
         <ion-item>
             <ion-label> DATE</ion-label>
             <ion-input>
-                <ion-datetime value="19-02-1990" placeholder="Select Date"  [(ngModel)]="bookinggrab.date"></ion-datetime>
+                <ion-datetime value="19-02-1990" placeholder="Select Date"  formControlName="date"></ion-datetime>
             </ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label>TIME </ion-label>
             <ion-input>
-                <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z" placeholder="Select Time" [(ngModel)]="bookinggrab.time"></ion-datetime>
+                <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z" placeholder="Select Time" formControlName="time"></ion-datetime>
             </ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
-    <!-- <ion-item>
-      <ion-checkbox slot="start" ></ion-checkbox>
-      <ion-label>Add cat food in booking.</ion-label>
-    </ion-item> -->
     </ion-list>
     <ion-row>
       <ion-col>
-        <ion-button color="primary" expand="full"  (click)="submitBookingGrab()">Confirm</ion-button>
+          <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid" fill="solid" expand="block" size="med" color="primary">Confirm</ion-button>
+        <!-- <ion-button color="primary" expand="full"  (click)="submitBookingGrab()">Confirm</ion-button> -->
       </ion-col>
       <ion-col>
         <ion-button [routerLink]="['/menugrab']" fill="solid" expand="block" size="med" color="warning" >Cancel</ion-button>
       </ion-col>
     </ion-row>
+    </form>
 </ion-content>

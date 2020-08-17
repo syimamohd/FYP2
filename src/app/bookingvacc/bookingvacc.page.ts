@@ -7,6 +7,8 @@ import { AlertController } from '@ionic/angular';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import {CatVaccine} from '../model/CatVaccine';
 
 @Component({
   selector: 'app-bookingvacc',
@@ -15,7 +17,8 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 })
 export class BookingvaccPage implements OnInit 
 {
-  
+    validations_form: FormGroup;
+    errorMessage: string = '';
     sub: any;
     username: string;
     mainuser: AngularFirestoreDocument;
@@ -29,11 +32,18 @@ export class BookingvaccPage implements OnInit
       remark: '',
       date: '',
       time: ''
-      // catFood: Selection;
-    // createdAt: new Date().getTime()
   };
 
-  constructor(
+  vaccine: CatVaccine = {
+    vaccineName: '',
+    vaccineDetails: '',
+    vaccinePrice: '',
+    image:''
+    // createdAt: ''
+  };
+
+  constructor
+  (
     private activatedRoute: ActivatedRoute,
     private fbService: FirebaseService,
     private afs: AngularFirestore,
@@ -42,6 +52,7 @@ export class BookingvaccPage implements OnInit
     private toastCtrl: ToastController,
     private router: Router,
     private alertController: AlertController,
+    private formBuilder: FormBuilder
   )
   {
     this.mainuser = afs.doc(`users/${user.getUID()}`)
@@ -57,6 +68,31 @@ export class BookingvaccPage implements OnInit
 
   ngOnInit() : void
   {
+    this.validations_form = this.formBuilder.group
+    ({
+      customerName: new FormControl('', Validators.compose([
+        Validators.required,
+        //Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
+      contactNumber: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      catName: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      remark: new FormControl('', Validators.compose([
+        Validators.required,
+        //Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
+      date: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      time: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      
+    });
+
     this.storage.setItem('username', this.username);
     this.storage.setItem('isAdmin', this.isAdmin);
     this.storage.setItem('isCustomer', this.isCustomer);
@@ -74,8 +110,15 @@ export class BookingvaccPage implements OnInit
 		await alert.present()
 	}
 
-  submitBookingVacc() 
+  submitBookingVacc(value) 
   {
+    this.bookingvacc.customerName=value.customerName;
+    this.bookingvacc.catName=value.catName;
+    this.bookingvacc.contactNumber=value.contactNumber;
+    this.bookingvacc.remark=value.remark;
+    this.bookingvacc.date=value.date;
+    this.bookingvacc.time=value.time;
+
     this.fbService.submitBookingVacc(this.bookingvacc).then(() => 
     {
       this.presentAlert('Done!', 'Your booking was created!')
@@ -85,6 +128,20 @@ export class BookingvaccPage implements OnInit
     }, err => {
     });
   }
+
+  ionViewWillEnter()
+  {
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id) {
+
+      this.fbService.getVaccine(id).subscribe(vaccineData => {
+
+        this.vaccine = vaccineData;
+
+
+      });
+    }
+  }  
 
 }
 

@@ -27,11 +27,12 @@
                   </ion-row>
               </div>
         </ion-row>
-      
+    
+
       <div>  
         <ion-card>
             <ion-title>Hotel Booking:</ion-title>
-            <ion-item *ngFor="let bookinghotel of (hotelBooking | async)">
+            <ion-item  *ngFor="let bookinghotel of (hotelBooking | async)">
               <ion-label>
                   <ion-row>
                       <ion-col>
@@ -57,20 +58,13 @@
                         <p>Time Out : {{bookinghotel.timeOut | date: "shortTime" }}</p>
                     </ion-col>
                   </ion-row>
+                 
               </ion-label>
                 <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/view-booking-hotel/'+bookinghotel.id">View</ion-button>
               </ion-item> 
-              <!-- <ion-button *ngIf="isCustomer" [routerLink]="['/menuhotel']" fill="solid" size="med" color="secondary" >Book More Hotel</ion-button> -->
-     
         </ion-card>
-        <!-- <ion-fab *ngIf="isCustomer" vertical="bottom" horizontal="end" slot="fixed">
-            <ion-fab-button [routerLink]="'/menuhotel'">
-              <ion-icon name="add"></ion-icon>
-            </ion-fab-button>
-        </ion-fab> -->
       </div>
-      
-
+    
       <div>  
         <ion-card>
             <ion-title>Spa & Grooming Booking:</ion-title>
@@ -97,7 +91,6 @@
               </ion-item>
         </ion-card>    
       </div>
-      <!-- <ion-button  *ngIf="isCustomer" [routerLink]="['/menuspa']" fill="solid" size="med"  color="secondary" >Book More Spa</ion-button> -->
 
       <div>  
           <ion-card>
@@ -125,7 +118,6 @@
                 </ion-item>
           </ion-card>    
         </div>
-        <!-- <ion-button  *ngIf="isCustomer" [routerLink]="['/menuvaccine']" fill="solid" size="med"  color="secondary" >Book More Vacc</ion-button> -->
 
         <div>  
             <ion-card>
@@ -153,7 +145,6 @@
                   </ion-item>
             </ion-card>    
           </div>
-          <!-- <ion-button  *ngIf="isCustomer" [routerLink]="['/menugrab']" fill="solid" size="med"  color="secondary" >Book More Grab</ion-button> -->
       
           <div>  
               <ion-card>

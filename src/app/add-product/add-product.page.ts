@@ -7,6 +7,8 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { UserService } from '../user.service';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Http } from '@angular/http';
+import { AlertController } from '@ionic/angular';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-product',
@@ -15,6 +17,8 @@ import { Http } from '@angular/http';
 })
 export class AddProductPage implements OnInit 
 {
+  validations_form: FormGroup;
+  errorMessage: string = '';
   sub: any;
   username: string;
   mainuser: AngularFirestoreDocument;
@@ -38,11 +42,13 @@ export class AddProductPage implements OnInit
       private activatedRoute: ActivatedRoute,
       private fbService: FirebaseService,
       private toastCtrl: ToastController,
+      private alertController: AlertController,
       private router: Router,
       private afs: AngularFirestore,
       private user: UserService, 
       private storage: NativeStorage,
-      private http: Http 
+      private http: Http,
+      private formBuilder: FormBuilder  
   ) 
   {
     this.mainuser = afs.doc(`users/${user.getUID()}`)
@@ -57,13 +63,41 @@ export class AddProductPage implements OnInit
 
   ngOnInit(): void 
   {
+    this.validations_form = this.formBuilder.group
+    ({
+      productName: new FormControl('', Validators.compose([
+        Validators.required,
+        //Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
+      productDetails: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      productPrice: new FormControl('', Validators.compose([
+        Validators.required
+      ]))
+    });
+
     this.storage.setItem('username', this.username);
     this.storage.setItem('isAdmin', this.isAdmin);
     this.storage.setItem('isCustomer', this.isCustomer);
   }
 
-  addProduct() 
+  async presentAlert(title: string, content: string) {
+		const alert = await this.alertController.create({
+			header: title,
+			message: content,
+			buttons: ['OK']
+		})
+
+		await alert.present()
+  }
+
+  addProduct(value) 
   {
+    this.product.productName=value.productName;
+    this.product.productDetails=value.productDetails;
+    this.product.productPrice=value.productPrice;
+
     this.fbService.addProduct(this.product).then(() => {
       this.router.navigateByUrl('/menuproduct');
     }, err => {

@@ -6,7 +6,6 @@ import {FirebaseService} from '../services/firebase.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
-
 import { CartService } from './../services/cart.service';
 import { ViewChild, ElementRef } from '@angular/core';
 import { ModalController } from '@ionic/angular';

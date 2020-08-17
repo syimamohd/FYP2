@@ -21,9 +21,9 @@
         <ion-label>
           <h2>{{vaccine.vaccineName}}</h2>
           <p>{{vaccine.vaccineDetails}}</p>
-          <p>{{vaccine.vaccinePrice}}</p>
+          <p>RM{{vaccine.vaccinePrice}}</p>
         </ion-label>
-        <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/bookingvacc'">BOOK</ion-button>
+        <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/bookingvacc/'+vaccine.id">BOOK</ion-button>
       <ion-button *ngIf="isAdmin" fill="outline" slot="end" [routerLink]="'/view-vaccine/'+vaccine.id">View</ion-button>
     </ion-item>
   </ion-list>

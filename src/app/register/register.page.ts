@@ -21,7 +21,8 @@ export class RegisterPage implements OnInit {
 	contact: string;
 	address: string;
 
-	constructor(
+	constructor
+	(
 		public afAuth: AngularFireAuth,
 		public afstore: AngularFirestore,
 		public user: UserService,
@@ -42,7 +43,9 @@ export class RegisterPage implements OnInit {
 		await alert.present()
 	}
 
-	async register() {
+	async register() 
+	{
+
 		const { username, password, cpassword, isAdmin, isCustomer, contact, address } = this
 		if(password !== cpassword) {
 			return console.error("Passwords don't match")

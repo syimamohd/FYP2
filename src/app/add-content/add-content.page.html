@@ -1,12 +1,15 @@
 <ion-header>
     <ion-toolbar color="dark">
+      <ion-buttons slot="start">
+          <ion-back-button icon="arrow-back-outline"></ion-back-button>
+        </ion-buttons>
       <ion-title>New Content</ion-title>
     </ion-toolbar>
   </ion-header>
   
   <ion-content>
   <!-- <ion-list> -->
-      
+      <form class="form" [formGroup]="validations_form"  (ngSubmit)="addContent(validations_form.value)">
       <ion-item>
           <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
             <div *ngIf="!content.image">
@@ -19,13 +22,15 @@
 
       <!-- <div class="content-info"> -->
           <ion-item>
-              <ion-input placeholder="Enter Content Title" [(ngModel)]="content.title"></ion-input>
+              <ion-input placeholder="Enter Content Title" formControlName="title"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-textarea rows="6" [(ngModel)]="content.contentDetails" placeholder="Enter content details here..."></ion-textarea>
+              <ion-textarea rows="6" formControlName="contentDetails" placeholder="Enter content details here..."></ion-textarea>
             </ion-item>
       <!-- </div> -->
     
   <!-- </ion-list> -->
-    <ion-button color="primary" expand="full" (click)="addContent()">Add to Dashboard</ion-button>
+  <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid" fill="solid" expand="block" size="med" color="primary">Add to Dashboard</ion-button>
+    <!-- <ion-button color="primary" expand="full" (click)="addContent()">Add to Dashboard</ion-button> -->
+    </form>
   </ion-content>

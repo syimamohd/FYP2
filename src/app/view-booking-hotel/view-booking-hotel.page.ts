@@ -26,6 +26,7 @@ export class ViewBookingHotelPage implements OnInit, AfterViewInit
 
   bookinghotel: BookingHotel = 
   {
+    hotelid:'',
     customerName: '',
     contactNumber: '',
     catName: '',

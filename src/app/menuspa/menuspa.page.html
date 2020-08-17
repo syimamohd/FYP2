@@ -25,9 +25,9 @@
       <ion-label>
         <h2>{{spa.spaName}}</h2>
         <p>{{spa.spaDetails}}</p>
-        <p>{{spa.spaPrice}}</p>
+        <p>RM{{spa.spaPrice}}</p>
       </ion-label>
-      <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/bookingspa'">BOOK</ion-button>
+      <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/bookingspa/'+spa.id">BOOK</ion-button>
       <ion-button *ngIf="isAdmin" fill="outline" slot="end" [routerLink]="'/view-spa/'+spa.id">View</ion-button>
     </ion-item>
   </ion-list>

@@ -22,9 +22,9 @@
       <ion-label>
         <h2>{{grab.grabName}}</h2>
         <p>{{grab.grabDetails}}</p>
-        <p>{{grab.grabPrice}}</p>
+        <p>RM{{grab.grabPrice}}</p>
       </ion-label>
-      <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/bookinggrab'">BOOK</ion-button>
+      <ion-button *ngIf="isCustomer" fill="outline" slot="end" [routerLink]="'/bookinggrab/'+grab.id">BOOK</ion-button>
       <ion-button *ngIf="isAdmin" fill="outline" slot="end" [routerLink]="'/view-grab/'+grab.id">View</ion-button>
     </ion-item>
   </ion-list>

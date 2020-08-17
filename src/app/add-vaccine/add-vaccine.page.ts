@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ToastController} from '@ionic/angular';
 import {CatVaccine} from '../model/CatVaccine';
 import { Http } from '@angular/http';
+import { AlertController } from '@ionic/angular';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-vaccine',
@@ -12,6 +14,9 @@ import { Http } from '@angular/http';
 })
 export class AddVaccinePage implements OnInit 
 {
+  validations_form: FormGroup;
+  errorMessage: string = '';
+
   vaccine: CatVaccine = {
     vaccineName: '',
     vaccineDetails: '',
@@ -29,15 +34,46 @@ export class AddVaccinePage implements OnInit
       private activatedRoute: ActivatedRoute,
       private fbService: FirebaseService,
       private toastCtrl: ToastController,
+      private alertController: AlertController,
       private router: Router,
-      private http: Http 
+      private http: Http,
+      private formBuilder: FormBuilder  
   ) { }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
+    this.validations_form = this.formBuilder.group
+    ({
+      vaccineName: new FormControl('', Validators.compose([
+        Validators.required,
+        //Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
+      vaccineDetails: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      vaccinePrice: new FormControl('', Validators.compose([
+        Validators.required
+      ]))
+      
+    });
   }
 
-  addVaccine() 
+  async presentAlert(title: string, content: string) {
+		const alert = await this.alertController.create({
+			header: title,
+			message: content,
+			buttons: ['OK']
+		})
+
+		await alert.present()
+  }
+
+  addVaccine(value) 
   {
+    this.vaccine.vaccineName=value.vaccineName;
+    this.vaccine.vaccineDetails=value.vaccineDetails;
+    this.vaccine.vaccinePrice=value.vaccinePrice;
+
     this.fbService.addVaccine(this.vaccine).then(() => {
       this.router.navigateByUrl('/menuvaccine');
     }, err => {

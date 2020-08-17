@@ -14,7 +14,8 @@ import { BookingVacc } from '../model/BookingVacc';
 import { BookingGrab } from '../model/BookingGrab';
 import { PurchasedItem } from '../model/PurchasedItem';
 import { CatProduct } from '../model/CatProduct';
-
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import {CatHotel} from '../model/CatHotel';
 
 @Component({
   selector: 'app-view-profile',
@@ -42,6 +43,7 @@ export class ViewProfilePage implements OnInit //, AfterViewInit
 
   bookinghotel: BookingHotel = 
   {
+    hotelid:'',
     customerName: '',
     contactNumber: '',
     catName: '',
@@ -103,12 +105,26 @@ export class ViewProfilePage implements OnInit //, AfterViewInit
     image: ''
     
   }
+  
+  hotel: CatHotel = {
+    hotelName: '',
+    hotelDetails: '',
+    hotelPrice: '',
+    image:''
+    // createdAt: ''
+  };
+
   catProduct: Observable<CatProduct[]>;
+  catHotel: Observable<CatHotel[]>;
+
+  //qr code
+  // qrData = null;
+  // createdCode = null;
+  // scannedCode = null;
 
   constructor
   (
     public http: Http,
-    
     private fbService: FirebaseService,
     private afs: AngularFirestore,
     private user: UserService, 
@@ -116,16 +132,12 @@ export class ViewProfilePage implements OnInit //, AfterViewInit
     private router: Router,
     private alertController: AlertController,
     private route: ActivatedRoute,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private barcodeScanner: BarcodeScanner
     ) 
 
     { 
 
-    //   const routeUserId = this.route.snapshot.paramMap.get('userId');
-    // let userId = user.getUID();
-    // if (routeUserId) {
-    //   userId = routeUserId;
-    // }
       this.mainuser = afs.doc(`users/${user.getUID()}`)
       this.sub = this.mainuser.valueChanges().subscribe((event) => 
         {
@@ -133,12 +145,24 @@ export class ViewProfilePage implements OnInit //, AfterViewInit
           this.isAdmin= event.isAdmin
           this.isCustomer = event.isCustomer
           this.profilePic = event.profilePic
-          this.contact = event.contact
-          this.address = event.address
+          // this.contact = event.contact
+          // this.address = event.address
           // this.booking = Object.values(event.booking)
           // console.log(this.booking);
         })
     }
+
+    // createCode()
+    // {
+    //     this.createdCode = this.qrData;
+    // }
+
+    // scanCode()
+    // {
+    //     this.barcodeScanner.scan().then(barcodeData => {
+    //       this.scannedCode = barcodeData.text;
+    //     })
+    // }
   
   ngOnDestroy() 
   {
@@ -147,11 +171,14 @@ export class ViewProfilePage implements OnInit //, AfterViewInit
 
   ngOnInit() 
   {
+    //this.bookinghotel.hotelid = this.activatedRoute.snapshot.paramMap.get('hotelid');
+
     this.hotelBooking = this.fbService.getHotelBookings();
     this.spaBooking = this.fbService.getSpaBookings();
     this.vaccBooking = this.fbService.getVaccBookings();
     this.grabBooking = this.fbService.getGrabBookings();
     this.purchasedItem = this.fbService.getPurchasedItems();
+    //this.catHotel = this.fbService.getHotels();
     //this.catProduct = this.fbService.getProducts();
 
     this.storage.setItem('username', this.username);
@@ -165,7 +192,8 @@ export class ViewProfilePage implements OnInit //, AfterViewInit
   ngAfterViewInit(): void 
   {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    if (id) {
+    if (id) 
+    {
 
       this.fbService.getProduct(id).subscribe(productData => {
 
@@ -176,6 +204,26 @@ export class ViewProfilePage implements OnInit //, AfterViewInit
         });
 
       });
+
+      
+
     }
   }
+
+  ionViewWillEnter()
+  {
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id) 
+    {
+      this.fbService.getHotel(id).subscribe(hotelData => {
+
+        this.hotel = hotelData;
+
+        this.fbService.getHotelBooking(id).subscribe(hotelBookingData => {
+
+          this.bookinghotel = hotelBookingData;
+        });  
+      });
+    }
+  }  
 }

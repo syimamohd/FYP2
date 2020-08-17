@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="dark">
       <ion-buttons slot="start">
           <ion-back-button icon="arrow-back-outline"></ion-back-button>
         </ion-buttons>
@@ -7,35 +7,43 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content padding class="background">
-<!-- <form [formGroup]="myform"> -->
+<form class="form" [formGroup]="validations_form"  (ngSubmit)="submitBookingHotel(validations_form.value)">
 	<ion-list>
+    <ion-row>
+      <ion-col>
+          <ion-item>Type: {{hotel.hotelName}}</ion-item>
+      </ion-col>
+      <ion-col>
+          <ion-item>Price: RM{{hotel.hotelPrice}}</ion-item>
+      </ion-col>
+      </ion-row>
 		<ion-item>
-      <ion-input  placeholder=" Name" [(ngModel)]="bookinghotel.customerName"></ion-input>
+      <ion-input formControlName="customerName" placeholder=" Name" ></ion-input>
+      <!-- <ion-input  placeholder="Name" [(ngModel)]="bookinghotel.customerName" ></ion-input> -->
     </ion-item>
     <ion-item>
-      <ion-input  placeholder="Contact Number" [(ngModel)]="bookinghotel.contactNumber"></ion-input>
+      <ion-input formControlName="contactNumber" placeholder="Contact Number"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input  placeholder="Cat Name" [(ngModel)]="bookinghotel.catName"></ion-input>
+      <ion-input formControlName="catName" placeholder="Cat Name"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Remark" [(ngModel)]="bookinghotel.remark"></ion-input>
+      <ion-input formControlName="remark" placeholder="Remark" ></ion-input>
     </ion-item>
     <ion-row>
       <ion-col>
         <ion-item>
             <ion-label>CHECK IN DATE</ion-label>
             <ion-input>
-                <ion-datetime displayFormat="MMM DD, YYYY" pickerFormat="DDDD MMMM YYYY" placeholder="Select Date" value=(DateTime.Now) [(ngModel)]="todate" min = {{todate}} max="2025" [(ngModel)]="bookinghotel.checkInDate"></ion-datetime>
+                <ion-datetime formControlName="checkInDate" displayFormat="MMM DD, YYYY" pickerFormat="DDDD MMMM YYYY" placeholder="Select Date" value=(DateTime.Now) [(ngModel)]="todate" min = {{todate}} max="2025" ></ion-datetime>
             </ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label>TIME IN</ion-label>
             <ion-input>
-                <ion-datetime display-format="h:mm A" picker-format="h:mm A" placeholder="Select Time" [(ngModel)]="bookinghotel.timeIn"></ion-datetime>
+                <ion-datetime formControlName="timeIn"  display-format="h:mm A" picker-format="h:mm A" placeholder="Select Time" ></ion-datetime>
             </ion-input>
         </ion-item>
       </ion-col>
@@ -44,32 +52,30 @@
         <ion-item>
           <ion-label>CHECK OUT DATE</ion-label>
           <ion-input>
-              <ion-datetime displayFormat="D/MM/YYYY" pickerFormat="DDDD MMMM YYYY" placeholder="Select Date"  min = {{todate}} max="2025" [(ngModel)]="bookinghotel.checkOutDate"></ion-datetime>
+              <ion-datetime formControlName="checkOutDate" displayFormat="D/MM/YYYY" pickerFormat="DDDD MMMM YYYY" placeholder="Select Date"  min = {{todate}} max="2025" ></ion-datetime>
           </ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label>TIME OUT</ion-label>
           <ion-input>
-              <ion-datetime display-format="h:mm A" picker-format="h:mm A" placeholder="Select Time" [(ngModel)]="bookinghotel.timeOut"></ion-datetime>
+              <ion-datetime formControlName="timeOut" display-format="h:mm A" picker-format="h:mm A" placeholder="Select Time" ></ion-datetime>
           </ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
-    <!-- <ion-item>
-      <ion-checkbox slot="start" ></ion-checkbox>
-      <ion-label>Add cat food in booking.</ion-label>
-    </ion-item> -->
+ 
     </ion-list>
     <ion-row>
       <ion-col>
-        <ion-button (click)=" submitBookingHotel() " fill="solid" expand="block" size="med" color="primary">Confirm</ion-button>
+        <!-- <ngx-qrcode [value]="createdCode"></ngx-qrcode> -->
+        <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid" fill="solid" expand="block" size="med" color="primary">Confirm</ion-button>
+        <!-- <ion-button class="submit-btn" type="submit" (click)="submitBookingHotel()" fill="solid" expand="block" size="med" color="primary">Confirm</ion-button> -->
       </ion-col>
       <ion-col>
         <ion-button [routerLink]="['/menuhotel']" fill="solid" expand="block" size="med" color="warning" >Cancel</ion-button>
       </ion-col>
     </ion-row>
-  <!-- </form>     -->
-</ion-content>
+  </form>  
 
-<!-- [routerLink]="'/receipthotel/'+bookinghotel.id"  -->
+</ion-content>

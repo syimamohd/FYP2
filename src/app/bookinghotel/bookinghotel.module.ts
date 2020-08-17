@@ -4,14 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { BookinghotelPageRoutingModule } from './bookinghotel-routing.module';
 import { BookinghotelPage } from './bookinghotel.page';
-//import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    // ReactiveFormsModule, FormControl, Validators, 
+    ReactiveFormsModule, 
     BookinghotelPageRoutingModule
   ],
   declarations: [BookinghotelPage]

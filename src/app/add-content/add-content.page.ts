@@ -6,6 +6,8 @@ import {Content} from '../model/Content';
 import { Http } from '@angular/http';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
+import { AlertController } from '@ionic/angular';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-content',
@@ -14,6 +16,8 @@ import { UserService } from '../user.service';
 })
 export class AddContentPage implements OnInit 
 {
+    validations_form: FormGroup;
+    errorMessage: string = '';
     mainuser: AngularFirestoreDocument
     sub
     username: string
@@ -28,7 +32,7 @@ export class AddContentPage implements OnInit
     image:''
     // createdAt: new Date().getTime()
     };
-
+  
     @ViewChild('fileBtn', {static: false}) fileBtn: 
     {
       nativeElement: HTMLInputElement
@@ -41,8 +45,10 @@ export class AddContentPage implements OnInit
         private activatedRoute: ActivatedRoute,
         private fbService: FirebaseService,
         private toastCtrl: ToastController,
+        private alertController: AlertController,
         private router: Router,
-        private user: UserService
+        private user: UserService,        
+        private formBuilder: FormBuilder 
     ) 
     {
       this.mainuser = afs.doc(`users/${user.getUID()}`)
@@ -58,10 +64,35 @@ export class AddContentPage implements OnInit
     }
 
   ngOnInit() 
-  {}
-
-  addContent() 
   {
+    this.validations_form = this.formBuilder.group
+    ({
+      title: new FormControl('', Validators.compose([
+        Validators.required,
+        //Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
+      contentDetails: new FormControl('', Validators.compose([
+        Validators.required
+      ]))
+      
+    });
+  }
+
+  async presentAlert(title: string, content: string) {
+		const alert = await this.alertController.create({
+			header: title,
+			message: content,
+			buttons: ['OK']
+		})
+
+		await alert.present()
+  }
+
+  addContent(value) 
+  {
+    this.content.title=value.title;
+    this.content.contentDetails=value.contentDetails;
+
     this.fbService.addContent(this.content).then(() => {
       this.router.navigateByUrl('/home');
     }, err => {

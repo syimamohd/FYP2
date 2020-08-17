@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)},
   { path: 'register', loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)},
   { path: 'booking', loadChildren: () => import('./booking/booking.module').then( m => m.BookingPageModule)},
-  { path: 'bookinghotel', loadChildren: () => import('./bookinghotel/bookinghotel.module').then( m => m.BookinghotelPageModule)},
+  { path: 'bookinghotel/:id', loadChildren: () => import('./bookinghotel/bookinghotel.module').then( m => m.BookinghotelPageModule)},
   { path: 'menuhotel', loadChildren: () => import('./menuhotel/menuhotel.module').then( m => m.MenuhotelPageModule)},
   { path: 'menuspa', loadChildren: () => import('./menuspa/menuspa.module').then( m => m.MenuspaPageModule)},
   { path: 'menugrab', loadChildren: () => import('./menugrab/menugrab.module').then( m => m.MenugrabPageModule)},
@@ -45,9 +45,9 @@ const routes: Routes = [
   { path: 'add-product',  loadChildren: () => import('./add-product/add-product.module').then( m => m.AddProductPageModule)},
   { path: 'view-product/:id',loadChildren: () => import('./view-product/view-product.module').then( m => m.ViewProductPageModule)},
   { path: 'update-product/:id', loadChildren: () => import('./update-product/update-product.module').then( m => m.UpdateProductPageModule)},
-  { path: 'bookingspa',  loadChildren: () => import('./bookingspa/bookingspa.module').then( m => m.BookingspaPageModule)},
-  { path: 'bookingvacc',  loadChildren: () => import('./bookingvacc/bookingvacc.module').then( m => m.BookingvaccPageModule)},
-  { path: 'bookinggrab', loadChildren: () => import('./bookinggrab/bookinggrab.module').then( m => m.BookinggrabPageModule)},
+  { path: 'bookingspa/:id',  loadChildren: () => import('./bookingspa/bookingspa.module').then( m => m.BookingspaPageModule)},
+  { path: 'bookingvacc/:id',  loadChildren: () => import('./bookingvacc/bookingvacc.module').then( m => m.BookingvaccPageModule)},
+  { path: 'bookinggrab/:id', loadChildren: () => import('./bookinggrab/bookinggrab.module').then( m => m.BookinggrabPageModule)},
   { path: 'edit-profile', loadChildren: () => import('./edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)},
   { path: 'view-profile',  loadChildren: () => import('./view-profile/view-profile.module').then( m => m.ViewProfilePageModule)},
   { path: 'view-booking-hotel/:id', loadChildren: () => import('./view-booking-hotel/view-booking-hotel.module').then( m => m.ViewBookingHotelPageModule)},
@@ -65,24 +65,12 @@ const routes: Routes = [
   { path: 'view-content/:id', loadChildren: () => import('./view-content/view-content.module').then( m => m.ViewContentPageModule)},
   { path: 'update-content/:id', loadChildren: () => import('./update-content/update-content.module').then( m => m.UpdateContentPageModule)},
   {
-    path: 'contact',
-    loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
-  },
-  {
-    path: 'add-contact',
-    loadChildren: () => import('./add-contact/add-contact.module').then( m => m.AddContactPageModule)
-  },
-  {
-    path: 'view-contact/:id',
-    loadChildren: () => import('./view-contact/view-contact.module').then( m => m.ViewContactPageModule)
-  },
-  {
-    path: 'update-contact/:id',
-    loadChildren: () => import('./update-contact/update-contact.module').then( m => m.UpdateContactPageModule)
-  },
-  {
     path: 'paymentsuccess',
     loadChildren: () => import('./paymentsuccess/paymentsuccess.module').then( m => m.PaymentsuccessPageModule)
+  },
+  {
+    path: 'banklist',
+    loadChildren: () => import('./banklist/banklist.module').then( m => m.BanklistPageModule)
   },
 ];
 

@@ -449,7 +449,7 @@ export class FirebaseService
     return this.catProductCollection.doc(id).delete();
   }
 
-  //--------------------------------------CAT HOTEL BOOKING------------------------------------------------
+  //--------------------------------------CAT HOTEL BOOKING-----------------------------------------------
   //getting all catHotel booking
   getHotelBookings(): Observable<BookingHotel[]> 
   {

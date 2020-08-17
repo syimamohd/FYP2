@@ -6,5 +6,4 @@ export interface CatHotel
     hotelDetails: string;
     hotelPrice: string;
     image?: any;
-    // createdAt: any;
 }

@@ -4,6 +4,16 @@ ion-content.background
   color: grey;
 }
 
+ion-card
+{
+	color: #DCDCDC;
+}
+
+ion-item
+{
+	text-align: center;
+}
+
 ion-text.first
 {
   text-align: center;
@@ -17,16 +27,22 @@ div.second
 }
 
 #images {
-	display: flex;
-	flex-wrap: wrap;
-	margin: 0 auto;
-	max-width: 100%;
-	width: 606px;
+	// display: flex;
+	// flex-wrap: wrap;
+	// margin: 0 auto;
+	// max-width: 100%;
+	// width: 606px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .image {
-	margin-left: 1px;
-	margin-right: 1px;
+	// margin-left: 1px;
+	// margin-right: 1px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .main-image, .user-image {
@@ -81,8 +97,8 @@ ion-slides {
 .profile-pic
 {
 	
-	width: 750px;
-	height: 500px;
+	width: 150px;
+	height: 150px;
 	 
 }
 // #container {
