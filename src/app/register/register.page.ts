@@ -46,23 +46,48 @@ export class RegisterPage implements OnInit {
 	async register() 
 	{
 
-		const { username, password, cpassword, isAdmin, isCustomer, contact, address } = this
-		if(password !== cpassword) {
-			return console.error("Passwords don't match")
-		}
+		// const { username, password, cpassword, isAdmin, isCustomer, contact, address } = this
+		// if(password !== cpassword) {
+		// 	return console.error("Passwords don't match")
+		// }
 
-		try {
-			const res = await this.afAuth.auth.createUserWithEmailAndPassword(username  + '@codedamn.com', password);
-			this.afstore.doc(`users/${res.user.uid}`).set({	username, isAdmin, isCustomer, contact, address})//add
-			this.user.setUser({username, uid: res.user.uid})
-			// const res = await this.afAuth.auth.createUserWithEmailAndPassword(username , password)
+		// try {
+		// 	const res = await this.afAuth.auth.createUserWithEmailAndPassword(username  + '@codedamn.com', password);
+		// 	this.afstore.doc(`users/${res.user.uid}`).set({	username, isAdmin, isCustomer, contact, address})//add
+		// 	this.user.setUser({username, uid: res.user.uid})
+		// 	// const res = await this.afAuth.auth.createUserWithEmailAndPassword(username , password)
 
-			this.presentAlert('Success', 'You are registered!')
-			this.router.navigate(['/home'])
+		// 	this.presentAlert('Success', 'You are registered!')
+		// 	this.router.navigate(['/home'])
 
-		} catch(error) {
-			console.dir(error)
-		}
+		// } catch(error) {
+		// 	console.dir(error)
+		// }
+		const {username, password, cpassword, isAdmin, isCustomer} = this
+    if (password !== cpassword)
+    {
+      return console.error ("Password don't match")
+    }
+    try
+    {
+      const res = await this.afAuth.auth.createUserWithEmailAndPassword (username + '@codedamn.com', password)
+      this.afstore.doc(`users/${res.user.uid}`).set
+      ({
+        username, isAdmin, isCustomer
+      })
+      this.user.setUser
+      ({
+        username,
+        uid: res.user.uid
+      })
+
+      this.presentAlert('Success', 'You are registered!')
+      this.router.navigate(['/home'])
+    }
+    catch (error)
+    {
+      console.dir(error)
+    }
 	}
 
 }
