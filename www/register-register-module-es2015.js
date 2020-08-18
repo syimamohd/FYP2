@@ -153,15 +153,33 @@ let RegisterPage = class RegisterPage {
     }
     register() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            const { username, password, cpassword, isAdmin, isCustomer, contact, address } = this;
+            // const { username, password, cpassword, isAdmin, isCustomer, contact, address } = this
+            // if(password !== cpassword) {
+            // 	return console.error("Passwords don't match")
+            // }
+            // try {
+            // 	const res = await this.afAuth.auth.createUserWithEmailAndPassword(username  + '@codedamn.com', password);
+            // 	this.afstore.doc(`users/${res.user.uid}`).set({	username, isAdmin, isCustomer, contact, address})//add
+            // 	this.user.setUser({username, uid: res.user.uid})
+            // 	// const res = await this.afAuth.auth.createUserWithEmailAndPassword(username , password)
+            // 	this.presentAlert('Success', 'You are registered!')
+            // 	this.router.navigate(['/home'])
+            // } catch(error) {
+            // 	console.dir(error)
+            // }
+            const { username, password, cpassword, isAdmin, isCustomer } = this;
             if (password !== cpassword) {
-                return console.error("Passwords don't match");
+                return console.error("Password don't match");
             }
             try {
                 const res = yield this.afAuth.auth.createUserWithEmailAndPassword(username + '@codedamn.com', password);
-                this.afstore.doc(`users/${res.user.uid}`).set({ username, isAdmin, isCustomer, contact, address }); //add
-                this.user.setUser({ username, uid: res.user.uid });
-                // const res = await this.afAuth.auth.createUserWithEmailAndPassword(username , password)
+                this.afstore.doc(`users/${res.user.uid}`).set({
+                    username, isAdmin, isCustomer
+                });
+                this.user.setUser({
+                    username,
+                    uid: res.user.uid
+                });
                 this.presentAlert('Success', 'You are registered!');
                 this.router.navigate(['/home']);
             }

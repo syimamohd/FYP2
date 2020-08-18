@@ -289,19 +289,33 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "register",
         value: function register() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            var username, password, cpassword, isAdmin, isCustomer, contact, address, res;
+            var username, password, cpassword, isAdmin, isCustomer, res;
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
               while (1) {
                 switch (_context2.prev = _context2.next) {
                   case 0:
-                    username = this.username, password = this.password, cpassword = this.cpassword, isAdmin = this.isAdmin, isCustomer = this.isCustomer, contact = this.contact, address = this.address;
+                    // const { username, password, cpassword, isAdmin, isCustomer, contact, address } = this
+                    // if(password !== cpassword) {
+                    // 	return console.error("Passwords don't match")
+                    // }
+                    // try {
+                    // 	const res = await this.afAuth.auth.createUserWithEmailAndPassword(username  + '@codedamn.com', password);
+                    // 	this.afstore.doc(`users/${res.user.uid}`).set({	username, isAdmin, isCustomer, contact, address})//add
+                    // 	this.user.setUser({username, uid: res.user.uid})
+                    // 	// const res = await this.afAuth.auth.createUserWithEmailAndPassword(username , password)
+                    // 	this.presentAlert('Success', 'You are registered!')
+                    // 	this.router.navigate(['/home'])
+                    // } catch(error) {
+                    // 	console.dir(error)
+                    // }
+                    username = this.username, password = this.password, cpassword = this.cpassword, isAdmin = this.isAdmin, isCustomer = this.isCustomer;
 
                     if (!(password !== cpassword)) {
                       _context2.next = 3;
                       break;
                     }
 
-                    return _context2.abrupt("return", console.error("Passwords don't match"));
+                    return _context2.abrupt("return", console.error("Password don't match"));
 
                   case 3:
                     _context2.prev = 3;
@@ -313,16 +327,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     this.afstore.doc("users/".concat(res.user.uid)).set({
                       username: username,
                       isAdmin: isAdmin,
-                      isCustomer: isCustomer,
-                      contact: contact,
-                      address: address
-                    }); //add
-
+                      isCustomer: isCustomer
+                    });
                     this.user.setUser({
                       username: username,
                       uid: res.user.uid
-                    }); // const res = await this.afAuth.auth.createUserWithEmailAndPassword(username , password)
-
+                    });
                     this.presentAlert('Success', 'You are registered!');
                     this.router.navigate(['/home']);
                     _context2.next = 16;
